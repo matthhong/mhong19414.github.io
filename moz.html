@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="en-us" />
+<title>/mozscience-networkanalysis</title>
+</head>
+<body><b>Network Analysis and Visualization</b><br
+/>Mozilla Festival // "Science on the Web" track<br
+/>24-26 October 2014<br
+/><br
+/><b>Repository link:&nbsp;</b><br
+/><a href="https://github.com/mhong19414/InteractiveVis">https://github.com/mhong19414/InteractiveVis</a><br
+/><br
+/><b>Short description:</b><br
+/>Matt demonstrates techniques to visualize your Facebook network using the Facebook API and Python.&nbsp; Code currently only works for Mac or Linux.<br
+/><br
+/>PLEASE POST QUESTIONS HERE IF ANYTHING DOESN'T WORK&nbsp;<br
+/>======<br
+/>Questions:<br
+/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br
+/>======<br
+/><br
+/><ul><li>Generate the network graph</li></ul
+>1. Download the code from the GitHub repo. Unzip.<br
+/>2. Download your network data from the Facebook API. (apps.facebook.com/netvizz)<br
+/>&nbsp;&nbsp;&nbsp; -'personal network' -&gt; start -&gt; click 'gdf' and Save as...<br
+/>3. Put this data inside the unzipped folder from GitHub.<br
+/>4. On command line, go inside the InteractiveVis folder<br
+/>5. Make script 'setup.sh' executable using: chmod u+x setup.sh<br
+/>6. Run the GitHub script to install dependencies using: sudo ./setup.sh<br
+/>&nbsp;&nbsp;&nbsp; -This installs numpy, networkx, and pyparsing. It's important that the networkx installed in your Python is version 1.8.1.<br
+/>7. Run the Python script to load data, detect communities, and layout nodes: python main.py<br
+/>8. Load up a local server: python -m SimpleHTTPServer<br
+/>9. On Firefox, go to the address: <a href="http://localhost:8000/network/?config=config_fb.json/">http://localhost:8000/network/?config=config_fb.json/</a><br
+/><br
+/><ul><li>Mathematical analysis of the graph</li></ul
+>1. Import the NetworkX library into Python:&nbsp;<br
+/>&nbsp;&nbsp;&nbsp; import networkx as nx<br
+/>2. Import the Counter object:&nbsp;<br
+/>&nbsp;&nbsp;&nbsp; from collections import Counter<br
+/>3. Import graph data into Python: G = nx.read_gml('facebook.gml')<br
+/>4. This will allow you to export the nodes in a useable format, for example:<br
+/>&nbsp;&nbsp;&nbsp; cent = nx.degree_centrality(G)<br
+/>&nbsp;&nbsp;&nbsp; cent = Counter(cent)<br
+/>&nbsp;&nbsp;&nbsp; cent.most_common(10)<br
+/>&nbsp;&nbsp;&nbsp; -These functions combined will output the 10 most connected nodes in the graph. There are many other centrality measures. The documentation for NetworkX is here: <a href="http://networkx.lanl.gov/index.html">http://networkx.lanl.gov/index.html</a><br
+/><br
+/><ul><li>Discussion</li></ul
+>After generating the network, we discussed what we could interpolate about one another from the graphs. Basically some in-depth, half-hour-to-an-hour of Facebook stalking.<br
+/><br
+/>We discussed algorithms to rank players by different measures of centrality (degree, closeness, betweenness) and see how the different measures lead to different people being pointed out in the network.<br
+/><br
+/><ul><li>How do the graphs work?</li></ul
+>Force directed graph drawing algorithms are used to generate the positions of the nodes on the graph.&nbsp; In this case, the Fruchterman Reingold Algorithm has been used: nx.spring_layout(G). We used it because it's hard to install libraries that enable other layouts.&nbsp; The Spring Layout was used but there are other layout functions that can be used (Reference material available on networkx.lanl.gov) e.g.: nx.graphviz_layout(G, prog='sfdp')&nbsp;<br
+/><br
+/>Sometimes the Fruchterman Reingold Algorithm doesn't work as expected. If conducting this session among a group, you may be able to see examples of different networks that have been mapped with varying degrees of success.<br
+/><br
+/>The Clauset-Newman-Moore algorithm was used to automatically detect communities in the network.<br
+/><br
+/>It's hard to graph social networks because it's not possible to avoid crossing the edges. A graph cannot be drawn without edge crossings if it contains a subdivision of a complete graph on 5 nodes (K5) or that of a complete bipartite graph of size 3,3 (K3,3).<br
+/><br
+/>Terminology:<br
+/>1. Centrality: computes the number of connections to other nodes on the graph.<br
+/>2. Graph degree: number of connections a node has.<br
+/>3. Distance = maximal number of connection points between two nodes.<br
+/>4. Betweenness centrality<br
+/>5. Closeness centrality<br
+/><br
+/>I owe most of my knowledge to Amaral Lab: <a href="http://amaral-lab.org/">http://amaral-lab.org/</a>. If you're interested in football, have a go at this paper: <a href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010937">http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010937</a><br
+/><br
+/>Examples we talked about:<br
+/><br
+/>Reordered matrix: <a href="http://bost.ocks.org/mike/miserables/">http://bost.ocks.org/mike/miserables/</a><br
+/>Dynamic graph: <a href="http://www.youtube.com/watch?v=LdXv_TB0POQ">http://www.youtube.com/watch?v=LdXv_TB0POQ</a><br
+/>LinkedIn vis: <a href="http://grph.in/">http://grph.in/</a><br
+/>Movie character networks: <a href="http://moviegalaxies.com/">http://moviegalaxies.com/</a>&nbsp;<br
+/><br
+/>====================<br
+/><br
+/><b>Session Facilitators:</b><br
+/><br
+/><ul><li>Matt Hong/Northwestern U. Knight Lab (<a href="http://knightlab.northwestern.edu/)">http://knightlab.northwestern.edu/)</a><br/><br
+/></li></ul
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /@AllGoneMattHong<br
+/><br
+/><b>Participants:&nbsp;</b><br
+/><br
+/><ul><li>[Name / Affiliation / Twitter handle / Email]</li
+><li>Caitlin / TES Global / @caitiewrites</li
+><li>Oliver / @oliverroick</li
+><li>Stefano / @palutz</li
+><li>Kevin / @globalavocado&nbsp;</li
+><li>Krystina / @KrystinaShveda</li
+><li><br/></li
+><li><br/><br/><br
+/></li></ul
+>====================<br
+/><br
+/><b>What are you working on? Please indicate status after you wrap up.&nbsp;</b><br
+/><br
+/><ul><li>Project Idea / Task&nbsp;</li
+><li>Project Idea / Task</li
+><li>Project Idea / Task</li
+><li>Project Idea / Task<br/><br
+/></li></ul
+>=====================&nbsp;&nbsp;<br
+/><br
+/><b>Tracking Progress: show off what you've done!</b><br
+/><br
+/><ul><li>Krystina Shveda's network: <a href="http://krystinashveda.com/networkgraphanalysis/index.html?config=config_fb.json/">http://krystinashveda.com/networkgraphanalysis/index.html?config=config_fb.json/</a><br/><br
+/></li></ul
+>=====================<br
+/><br
+/><b>What needs to be worked on? What sort of help do you need?</b><br
+/><br
+/><ul><li>Currently the algorithm just shows who's connected to who by an explicit link (friendship), but you could show other types of metadata like workplace, etc, which would add another informational layer to the graph.</li
+><li>Network graphs don't store sentiment! You may know someone and have many common connections with them, but have negative feelings towards that person and thus want to isolate them from the remainder of your network.&nbsp; That's difficult to define without layers of additional information.</li
+><li><br/><br/><br
+/><br/><br
+/></li></ul
+>=====================<br
+/><br
+/><b>All participants: </b>Before&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; you leave for the day, be sure to record what you worked on, the&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; current status, and the next tasks, if applicable, as clearly as&nbsp;&nbsp; you&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; can. And thank you for joining us!<br
+/><br
+/>&nbsp;<br
+/><br
+/></body>
+</html>
