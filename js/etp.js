@@ -53,11 +53,26 @@ $.getJSON('JSON-passes/2011739-1', function(data) {
 		.links(links)
 		.start();
 
+	svg.append('defs')
+		.append("svg:marker")
+	    .attr("id", "arrowGray")
+	    .attr("viewBox", "0 0 10 10")
+	    .attr("refX", "10")
+	    .attr("refY", "5")
+	    // .attr("markerUnits", "strokeWidth")
+	    .attr("markerWidth", "10")
+	    .attr("markerHeight", "5")
+	    .attr("orient", "auto")
+	    .append("svg:path")
+	    .attr("d", "M 0 5 L 10 5 L 0 10 z")
+	    .attr("fill", "#000");
+
 	var link = group.selectAll(".link").data(links).enter()
 		.append('line')
 		.style('stroke', 'black')
 		.style('stroke-width', function(d) { return d.value; })
-		.style('opacity', 0.7);
+		.style('opacity', 0.7)
+		.attr("marker-end", "url(#arrowGray)");
 
 	var node = group.selectAll(".node").data(nodes).enter()
 		.append("circle")
@@ -77,10 +92,66 @@ $.getJSON('JSON-passes/2011739-1', function(data) {
                 .text(function(d) {  return d.name;  });
 
     var tick = function(){
-		link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+		link.attr("x1", function(d) { 
+			var v = d.value,
+				shift = v / 2 + 1,
+				dx = d.target.x - d.source.x,
+				dy = d.target.y - d.source.y,
+				sign = dx / Math.abs(dx);
+
+			sign2 = (dx/dy) / Math.abs(dx/dy);
+			sign *= (-1 * sign2)
+
+			if (dy === 0) { return d.source.x; };
+
+			var shiftx = Math.sqrt(Math.pow(shift,2)/(1 + Math.pow(dx/dy,2)));
+			return sign * shiftx + d.source.x; 
+		})
+        .attr("y1", function(d) { 
+			var v = d.value,
+				shift =  v / 2 + 1,
+				dx = d.target.x - d.source.x,
+				dy = d.target.y - d.source.y,
+				sign = dy / Math.abs(dy);
+
+			sign2 = (dx/dy) / Math.abs(dx/dy);
+			sign *= sign2
+
+			if (dx === 0) { return d.source.y; };
+
+			var shifty = Math.sqrt(Math.pow(shift,2)/(1 + Math.pow(dy/dx,2)));
+			return d.source.y + (sign * shifty); 
+		})
+        .attr("x2", function(d) { 
+			var v = d.value,
+				shift = v / 2 + 1,
+				dx = d.target.x - d.source.x,
+				dy = d.target.y - d.source.y,
+				sign = dx / Math.abs(dx);
+
+			sign2 = (dx/dy) / Math.abs(dx/dy);
+			sign *= (-1 * sign2)
+
+			if (dy === 0) { return d.target.x; };
+
+			var shiftx = Math.sqrt(Math.pow(shift,2)/(1 + Math.pow(dx/dy,2)));
+			return sign * shiftx + d.target.x; 
+		})
+        .attr("y2", function(d) { 
+			var v = d.value,
+				shift =  v / 2 + 1,
+				dx = d.target.x - d.source.x,
+				dy = d.target.y - d.source.y,
+				sign = dy / Math.abs(dy);
+
+			sign2 = (dx/dy) / Math.abs(dx/dy);
+			sign *= sign2
+
+			if (dx === 0) { return d.target.y; };
+
+			var shifty = Math.sqrt(Math.pow(shift,2)/(1 + Math.pow(dy/dx,2)));
+			return d.target.y + (sign * shifty); 
+		})
 
 		node.attr("cx", function(d) { return d.x; })
 		    .attr("cy", function(d) { return d.y; });
