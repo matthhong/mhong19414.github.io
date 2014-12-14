@@ -1,10 +1,3 @@
-/* Implementation of the Hungarian Algorithm to determine
-* "best" squad.  This is a "reverse" implementation.
-* References:
-* http://en.wikipedia.org/wiki/Hungarian_algorithm
-* http://www.ams.jhu.edu/~castello/362/Handouts/hungarian.pdf (Example #2)
-* http://www.public.iastate.edu/~ddoty/HungarianAlgorithm.html // Non-square
-*/
 var Hungarian = window.Hungarian = window.HG = {
  
  /* 2 dimension arrays */
@@ -25,7 +18,7 @@ var Hungarian = window.Hungarian = window.HG = {
   * Columns MUST BE the Squad (Workers)
   * Therefore, the Rows MUST BE PADDED
   */
- hungarianAlgortithm: function(formation, squad) {
+ hungarianAlgorithm: function(formation, squad) {
    HG.init(formation, squad);
    // Step 1
    HG.matrix = HG.subtractRowMins(HG.matrix);
@@ -58,7 +51,6 @@ var Hungarian = window.Hungarian = window.HG = {
    HG.dim = Math.max(HG.rows, HG.cols);
    HG.solutions = HG.dim;
    HG.skillMatrix = HG.initMatrix(HG.rows, HG.cols);
-   HG.matrix = [[1,6,6,6,6],[6,6,2,6,6],[6,6,6,3,6],[6,6,6,6,4],[6,5,6,6,6]];
    HG.stars = HG.initMatrix(HG.dim, HG.dim);
    // HG.matrix = HG.loadMatrix(squad, formation, HG.matrix, true);
    // HG.skillMatrix = HG.loadMatrix(squad, formation, HG.skillMatrix, false);
