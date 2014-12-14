@@ -1,9 +1,6 @@
-window.force = d3.layout.force()
-		.charge(-120)
-		.linkDistance(200)
-		.size([546, 726]);
+window.App = {};
 
-var save = function(){
+App.save = function(){
 	force.stop();
 
 	var nodes_dl = 'data:text/json;charset=utf8,' + encodeURIComponent(JSON.stringify(force.nodes()));
@@ -14,6 +11,10 @@ var save = function(){
 }
 
 $(function(){
+var force = d3.layout.force()
+		.charge(-120)
+		.linkDistance(200)
+		.size([546, 726]);
 
 var svg = d3.select('svg').attr('width', 546).attr('height', 726);
 
@@ -24,11 +25,11 @@ svg.append('defs')
 	    .attr("refX", "10")
 	    .attr("refY", "5")
 	    .attr("markerUnits", "userSpaceOnUse")
-	    .attr("markerWidth", "20")
-	    .attr("markerHeight", "20")
+	    .attr("markerWidth", "7")
+	    .attr("markerHeight", "55")
 	    .attr("orient", "auto")
 	    .append("svg:path")
-	    .attr("d", "M 0 5 L 10 5 L 0 10 z")
+	    .attr("d", "M 0 0 L 10 5 L 0 10 z")
 	    .attr("fill", "#000");
 
 var dblclick = function(d) {
@@ -68,10 +69,11 @@ $.getJSON('nodes.json', function(data){
 });
 
 $.getJSON('links.json', function(data){
+	var max_w = Math.max.apply(Math, data.map(function(d) {return d.value;}))
 	var link = group.selectAll(".link").data(data).enter()
 		.append('line')
 		.style('stroke', 'black')
-		.style('stroke-width', function(d) { return d.value / 1.5; })
+		.style('stroke-width', function(d) { return d.value * 10 / max_w; })
 		.style('opacity', 0.7)
 		.attr("marker-end", "url(#arrowGray)");
 
@@ -196,6 +198,7 @@ change = function(){
 			    });
 	})
 	$.getJSON('links2.json', function(data){
+		var max_w = Math.max.apply(Math, data.map(function(d) {return d.value;}))
 		var new_data = []
 		for (var i = 0; i<= 10; i++) {
 			for (var j = 0; j <= 10; j++) {
@@ -207,7 +210,7 @@ change = function(){
 			.transition()
 			.duration(3000)
 			.style('stroke', 'black')
-			.style('stroke-width', function(d) { return d.value / 1.5; })
+			.style('stroke-width', function(d) { return d.value *10 / max_w; })
 			.style('opacity', 0.7)
 			.attr("marker-end", "url(#arrowGray)")
 			.attr("x1", function(d) { 
