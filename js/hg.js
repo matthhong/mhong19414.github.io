@@ -229,7 +229,7 @@ var Hungarian = window.Hungarian = window.HG = {
   * go back to step 3
   */
  starZeroInRow: function(zero) { // Takes a Coords Object
-   TrU.log("Step 5: Uncovered Zero:" + zero.row + "," + zero.col, TrU.DEBUG );
+   // TrU.log("Step 5: Uncovered Zero:" + zero.row + "," + zero.col, TrU.DEBUG );
    var done = false;
    var count = 0;
    var path = HG.initMatrix(HG.dim*2, 2);
@@ -287,7 +287,7 @@ var Hungarian = window.Hungarian = window.HG = {
   * Count is needed to be sure we look at all items in the path
   */
  convertPath: function(path, count) {
-   HG.logMatrix(path, "Step 5: Converting Path.  Count = " + count);
+   //HG.logMatrix(path, "Step 5: Converting Path.  Count = " + count);
    for (var i=0; i < count+1; i++) {
      var x = path[i][0];
      var y = path[i][1];
@@ -330,8 +330,8 @@ var Hungarian = window.Hungarian = window.HG = {
   * if the column is not covered, subtract the smallest value
   */
  uncoverSmallest: function(smallest, matrix) {
-   TrU.log("Uncover Smallest: "+ smallest);
-       HG.logMatrix(matrix, "B4 Smallest uncovered");
+   // TrU.log("Uncover Smallest: "+ smallest);
+    // HG.logMatrix(matrix, "B4 Smallest uncovered");
  
    for (var i = 0; i < matrix.length; i++) {
      for (var j = 0; j < matrix[i].length; j++) {
@@ -343,7 +343,7 @@ var Hungarian = window.Hungarian = window.HG = {
        }
      }
    }
-   HG.logMatrix(matrix, "Smallest uncovered");
+   // HG.logMatrix(matrix, "Smallest uncovered");
    return matrix;
  },
  
