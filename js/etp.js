@@ -55,9 +55,11 @@ var toggle_highlight = function(n1, n2){
 var selected = [];
 var clicked = function(d){
 	if (selected.length == 1){
-		toggle_highlight(selected[0], d.name);
-		selected.pop();
-		selected.pop();
+		if (selected[0] !== d.name){
+			toggle_highlight(selected[0], d.name);
+			selected.pop();
+			selected.pop();
+		}
 	}
 	else{
 		selected.push(d.name)
