@@ -1,0 +1,22 @@
+div{
+	font-family: helvetica;
+}
+#content{
+	margin-top:4px;
+}
+.button{
+	text-indent: 4px;
+	margin-left: 5px;
+	height:20px;
+	width: 302px;
+}
+.button:hover{
+	cursor: pointer;
+}
+.odd{
+	background-color: #B2B2B2;
+}
+h1, h2{
+	display: inline;
+	margin-left: 3px;
+}
