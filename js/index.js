@@ -11,10 +11,4 @@ $(function(){
 		.click(function(){
 			$("#list-" + this.id).toggle('400ms');
 		})
-		.mouseenter(function(){				
-			$(this).animate({marginLeft:'8px'}, 'fast')
-		})
-		.mouseleave(function() {
-			$(this).animate({marginLeft:'5px'}, 'fast')
-		});
 });

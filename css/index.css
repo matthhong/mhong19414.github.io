@@ -2,10 +2,9 @@ div{
 	font-family: helvetica;
 }
 #content{
-	margin-top:4px;
+	margin-top:5px;
 }
 #tweets{
-	margin-top:0px;
 	margin-left:5px;
 	width: 300px;
 }
@@ -19,9 +18,10 @@ div{
 }
 .button:hover{
 	cursor: pointer;
+	text-decoration: underline; 
 }
 .odd{
-	background-color: #B2B2B2;
+	background: rgba(0,0,0,0.1);
 }
 h1, h2{
 	display: inline;
