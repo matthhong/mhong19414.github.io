@@ -144,28 +144,34 @@ labels.attr("class", "label")
             
 labels.attr("transform", function(d) { return "translate(" + (d.x - 6) + "," + (d.y + 6) + ")"; });
 
+// Interaction
+var selected = [];
+
 var toggle_highlight = function(n1, n2){
-	var lines = d3.selectAll('line')
-					.attr('class', function(d){
-						if (d.source.name === n1 && d.target.name === n2) {
-							console.log(this.attributes[0].value === 'hidden')
-							return this.attributes[0].value === 'hidden' ? 'seen' : 'hidden';
-						}
-						return this.attributes[0].value;
-					});
+	var lines = d3.selectAll('line');
+
+	lines.attr('class', function(d){
+		var c = this.attributes[0].value;
+		if (d.source.name === n1 && d.target.name === n2) {
+			return c === 'hidden' ? 'seen' : 'hidden';
+		}
+		return c;
+	});
 };
 
-var selected = [];
 var clicked = function(d){
-	if (selected.length == 1){
-		if (selected[0] !== d.name){
-			toggle_highlight(selected[0], d.name);
+	n = d.name;
+	
+	if (selected.length === 1){
+		n0 = selected[0];
+		if (n0 !== n){
+			toggle_highlight(n0, n);
 			selected.pop();
 			selected.pop();
 		}
 	}
 	else{
-		selected.push(d.name)
+		selected.push(n);
 	}
 }
 
