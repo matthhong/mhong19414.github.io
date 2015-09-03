@@ -1,0 +1,20 @@
+[
+{"name":"army", "display":"Army", "label1":"Number of Troops (thousands)", "label2":"Budget (billion $)", "study":true},
+{"name":"drivingsafety", "display":"Driving Safety", "label1":"Vehicle miles driven per capita", "label2":"Auto fatalities per 100,000 people", "study":true},
+{"name":"drivingshifts", "display":"Driving Shifts Into Reverse", "label1":"Miles driven per capita each year", "label2":"Price of a gallon of gas (US$)", "study":true},
+{"name":"helium", "display":"Helium", "label1":"Production of refined helium worldwide, in billions of cubic feet", "label2":"Price per thousand cubic feet of refined helium, adjusted for inflation", "study":true},
+{"name":"dow-gold", "display":"Dow vs. Gold", "label1":"Price of Gold", "label2":"Dow-Jones Industrial Index", "study":true},
+{"name":"scorpion", "display":"Unemployment/Scorpion", "label1":"Long-term Unemployment Rate (%)", "label2":"Job Openings Rate (%)", "study":true},
+{"name":"yellen", "display":"Yellen (cropped)", "label1":"Unemployment Rate (%)", "label2":"Inflation Rate (%)", "study":true},
+{"name":"steamship", "display":"Steamship", "label1":"", "label2":"", "study":true},
+{"name":"sofa", "display":"Sofa vs. Couch", "label1":"", "label2":"", "study":true},
+{"name":"sofa2", "display":"Sofa vs. Couch v.2", "label1":"", "label2":"", "study":true},
+{"name":"china", "display":"China vs. Japan", "label1":"", "label2":"", "study":true},
+{"name":"house", "display":"Congress - House", "label1":"Ideological gap between parties", "label2":"Bills passed into law", "study":false},
+{"name":"senate", "display":"Congress - Senate", "label1":"Ideological gap between parties", "label2":"Bills passed into law", "study":false},
+{"name":"threepoints", "display":"Three Points", "label1":"", "label2":"", "study":false},
+{"name":"fivepoints", "display":"Five Points", "label1":"", "label2":"", "study":false},
+{"name":"uv-curve", "display":"Excess Demand", "label1":"X1", "label2":"X2", "study":false},
+{"name":"uv-curve-cropped", "display":"Excess Demand (cropped)", "label1":"V", "label2":"U", "study":false},
+{"name":"uv-curve-cropped-2", "display":"Excess Demand (cropped 2)", "label1":"X1", "label2":"X2", "study":false}
+]

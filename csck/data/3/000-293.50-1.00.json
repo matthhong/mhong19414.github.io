@@ -1,0 +1,439 @@
+{
+ "chartType": "d",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 2.45
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.766666666666667,
+     "value2": 6.266666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.75,
+     "value2": 7.483333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.383392884396017,
+     "value2": 6.232384947128594
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.965053893160075,
+     "value2": 5.116061830427498
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.418338991235942,
+    "actualSlope2": -1.1163231167010963,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 169,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.7,
+     "value2": 8.420833333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.571192862465978,
+     "value2": 2.5279033993138
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.6933059352450073,
+     "value2": 1.736595398397185
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.4,
+     "value2": 7.620833333333333
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -3.8778869272209704,
+    "actualSlope2": -0.7913080009166151,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 192,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 6.783333333333333,
+     "value2": 2.4208333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.595119153149426,
+     "value2": 6.729282703483477
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.7648082645609975,
+     "value2": 5.630644714226946
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.2,
+     "value2": 4.687500000000001
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 8.004166666666666
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -3.8303108885884285,
+    "actualSlope2": -1.098637989256531,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 192,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.35,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.623843349516392,
+     "value2": 7.173760038800538
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.183679667301476,
+     "value2": 6.63376297801733
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.466666666666667,
+     "value2": 5.866666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 6.466666666666667,
+     "value2": 3.8
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 1,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.440163682214916,
+    "actualSlope2": -0.5399970607832074,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 185,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.966666666666667,
+     "value2": 7.883333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.885994228068739,
+     "value2": 2.409932406619191
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.3894836909603328,
+     "value2": 1.8655455124098808
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.15,
+     "value2": 6.616666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.883333333333335,
+     "value2": 8.9
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.496510537108406,
+    "actualSlope2": -0.5443868942093104,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 192,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 6.783333333333333,
+     "value2": 2.4208333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.422746731899679,
+     "value2": 8.502603714237921
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.409234559861943,
+     "value2": 7.329377577523701
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.2,
+     "value2": 4.687500000000001
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 8.004166666666666
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.013512172037736,
+    "actualSlope2": -1.17322613671422,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 497,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0999999999999999,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.875410659238696,
+     "value2": 9.826585752656683
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.425620313966647,
+     "value2": 8.47444522054866
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.6333333333333333,
+     "value2": 3.7833333333333337
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.9999999999999998,
+     "value2": 2.016666666666667
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.449790345272049,
+    "actualSlope2": -1.3521405321080238,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 320,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.35,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.6,
+     "value2": 6.816666666666668
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.866666666666667,
+     "value2": 6.716666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.572637665551156,
+     "value2": 5.324860940221697
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.519124279264361,
+     "value2": 4.766901004593819
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.053513386286795,
+    "actualSlope2": -0.5579599356278777,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 232,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.633333333333334,
+     "value2": 5.866666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.716666666666667,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.3703500889241695,
+     "value2": 1.4424445544136688
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.4745228313840926,
+     "value2": 0.4024283658945933
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -3.895827257540077,
+    "actualSlope2": -1.0400161885190755,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 303,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 2.45
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.766666666666667,
+     "value2": 6.266666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.365483909379691,
+     "value2": 8.154994933051057
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.0638584778644145,
+     "value2": 7.274347454193048
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 4.25,
+     "value2": 3.6000000000000005
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 2,
+   "params": {
+    "slope1": -4,
+    "slope2": -1,
+    "actualSlope1": -4.301625431515276,
+    "actualSlope2": -0.880647478858009,
+    "dist": 2.5
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 653,
+   "correct": true
+  }
+ ],
+ "avgRT": 293.5,
+ "avgCorrect": 1
+}

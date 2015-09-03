@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 1,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.35,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.6,
+     "value2": 6.816666666666668
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.866666666666667,
+     "value2": 6.716666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.913290926720947,
+     "value2": 6.271719196811318
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.170641565174792,
+     "value2": 6.7004039864731375
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 60,
+    "actualAngle": 59.022509989794344
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 216,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.85,
+     "value2": 9.137500000000001
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.1796749215573072,
+     "value2": 0.9468916454352438
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.7572366262073356,
+     "value2": 1.2143722739334772
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.566666666666666,
+     "value2": 1.9708333333333332
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.783333333333333,
+     "value2": 3.8875000000000006
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 1,
+   "params": {
+    "angle": 147,
+    "actualAngle": 147.65871600341052
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 143,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.85,
+     "value2": 9.137500000000001
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.2666666666666666,
+     "value2": 3.5375
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.283333333333334,
+     "value2": 1.6208333333333336
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.576066046021879,
+     "value2": 5.436994566116482
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.04956282627464,
+     "value2": 5.2763682946343
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 3,
+   "params": {
+    "angle": 342,
+    "actualAngle": 341.26130970707163
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 10258,
+   "correct": false
+  }
+ ],
+ "avgRT": 3539,
+ "avgCorrect": 0.3333333333333333
+}

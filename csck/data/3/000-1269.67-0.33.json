@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.2333333333333334,
+     "value2": 3.7833333333333337
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.5,
+     "value2": 2.933333333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.192134335171431,
+     "value2": 5.108198714442551
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.8158322946451473,
+     "value2": 5.437435368379738
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.1333333333333333,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 2,
+   "params": {
+    "angle": 138,
+    "actualAngle": 138.81645774748176
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1041,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 2.783333333333334,
+     "value2": 2.033333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.45,
+     "value2": 4.016666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.641077559441328,
+     "value2": 9.650591467507184
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.073762808044526,
+     "value2": 9.901157777375827
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.866666666666667,
+     "value2": 3.75
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 30,
+    "actualAngle": 30.074961851816624
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1454,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.988526321481913,
+     "value2": 2.7547497441992164
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.891924959623905,
+     "value2": 3.2453291739424315
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5,
+     "value2": 5
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.333333333333334,
+     "value2": 7.5
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.750000000000001,
+     "value2": 6.766666666666667
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 0,
+   "params": {
+    "angle": 102,
+    "actualAngle": 101.13975080335513
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1314,
+   "correct": false
+  }
+ ],
+ "avgRT": 1269.6666666666667,
+ "avgCorrect": 0.3333333333333333
+}

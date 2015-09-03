@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.416666666666667,
+     "value2": 7.754166666666668
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 0.5241069011390209,
+     "value2": 8.243958377279341
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 0.7069218683609024,
+     "value2": 8.70933853130362
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.5,
+     "value2": 1.3875
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.983333333333333,
+     "value2": 5.804166666666667
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 1,
+   "params": {
+    "angle": 69,
+    "actualAngle": 68.55364491743967
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1457,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.7,
+     "value2": 8.420833333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5,
+     "value2": 5
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.7750670737586915,
+     "value2": 4.355608108453453
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.3753104019025575,
+     "value2": 4.655932272160783
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 3,
+   "params": {
+    "angle": 144,
+    "actualAngle": 143.08365519857034
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 926,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.85,
+     "value2": 0.8
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.816666666666667,
+     "value2": 4.483333333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.716666666666667,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.810053776018322,
+     "value2": 7.331683919765055
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.553762864707219,
+     "value2": 7.761003111951154
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 3,
+   "params": {
+    "angle": 120,
+    "actualAngle": 120.83595718955621
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 994,
+   "correct": false
+  }
+ ],
+ "avgRT": 1125.6666666666667,
+ "avgCorrect": 0.3333333333333333
+}

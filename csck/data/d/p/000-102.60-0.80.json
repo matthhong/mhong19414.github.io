@@ -1,0 +1,224 @@
+{
+ "chartType": "d",
+ "blockClass": "p",
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.633333333333334,
+     "value2": 5.866666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.924920663703233,
+     "value2": 3.603529838146642
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.8627254927996546,
+     "value2": 4.667714205104858
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.6333333333333334,
+     "value2": 0.45000000000000007
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 2,
+   "params": {
+    "slope1": 0,
+    "slope2": 1,
+    "actualSlope1": -0.0621951709035784,
+    "actualSlope2": 1.0641843669582158,
+    "dist": 0
+   },
+   "opacity": 1,
+   "response": 68,
+   "responseTime": 153,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.5636668815277517,
+     "value2": 6.610056203440763
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2836517351679504,
+     "value2": 5.303856841637753
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 3,
+   "params": {
+    "slope1": 0,
+    "slope2": -1,
+    "actualSlope1": -0.2800151463598013,
+    "actualSlope2": -1.30619936180301,
+    "dist": 3
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 32,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 6.783333333333333,
+     "value2": 2.4208333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.723118705675006,
+     "value2": 0.3201244472293183
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.3291478988248855,
+     "value2": 1.548752916394733
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.2,
+     "value2": 4.687500000000001
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 8.004166666666666
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -2,
+    "slope2": 1,
+    "actualSlope1": -2.3939708068501204,
+    "actualSlope2": 1.2286284691654146,
+    "dist": 2
+   },
+   "opacity": 1,
+   "response": 68,
+   "responseTime": 143,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 2.876936490647495,
+     "value2": 5.162682828377001
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 1.7544340861495584,
+     "value2": 5.908205387997441
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.866666666666667,
+     "value2": 3.316666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.5,
+     "value2": 4.033333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.916666666666667,
+     "value2": 8.216666666666669
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 0,
+   "params": {
+    "slope1": -1,
+    "slope2": 1,
+    "actualSlope1": -1.1225024044979364,
+    "actualSlope2": 0.74552255962044,
+    "dist": 3
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 32,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.9,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 9.183333333333334,
+     "value2": 6.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 0.025777732953429222,
+     "value2": 3.1769071284215897
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.958214241079986,
+     "value2": 1.608738579088822
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "slope1": 2,
+    "slope2": -2,
+    "actualSlope1": 1.9324365081265569,
+    "actualSlope2": -1.5681685493327677,
+    "dist": 1
+   },
+   "opacity": 1,
+   "response": 68,
+   "responseTime": 153,
+   "correct": true
+  }
+ ],
+ "avgRT": 102.6,
+ "avgCorrect": 0.8
+}

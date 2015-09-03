@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.966666666666667,
+     "value2": 7.883333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 1.564041490200907,
+     "value2": 0.663563187699765
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.1443654952871363,
+     "value2": 0.3917690389527089
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.15,
+     "value2": 6.616666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.883333333333335,
+     "value2": 8.9
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "angle": 213,
+    "actualAngle": 212.92824552068487
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 873,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 6.783333333333333,
+     "value2": 2.4208333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.2,
+     "value2": 3.554166666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.5833333333333335,
+     "value2": 3.6208333333333336
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.4074621885083616,
+     "value2": 6.400828221812844
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.271449609906359,
+     "value2": 6.881973291892581
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "angle": 105,
+    "actualAngle": 105.78481111023575
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 12349,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.690471360459924,
+     "value2": 8.266510560642928
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.207663870724769,
+     "value2": 8.13652237711982
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 3,
+   "params": {
+    "angle": 195,
+    "actualAngle": 195.0686598541215
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1088,
+   "correct": true
+  }
+ ],
+ "avgRT": 4770,
+ "avgCorrect": 0.6666666666666666
+}

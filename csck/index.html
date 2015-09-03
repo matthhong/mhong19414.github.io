@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Connected Scatterplot Experiment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="drawstyle.css">
+	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="d3.v3.min.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript" src="draw.js"></script>
+	<style type="text/css">
+		.row {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page-header">
+		<h1>Connected Scatterplot Study</h1>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="switch btn btn-info active" onclick="switchHash('test');">
+						<input type="radio" name="options" id="test"> Test Run
+					</label>
+					<label class="switch btn btn-info" onclick="switchHash('real');">
+						<input type="radio" name="options" id="real"> Real Study
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 40px;">
+			<div class="col-sm-offset-4 col-sm-4">
+				<a href="draw-connected.html#test" role="button" class="btn btn-primary btn-lg btn-block study">Draw Connected Scatterplot</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<a href="translate.html#test" role="button" class="btn btn-primary btn-lg btn-block study">Translate Study</a>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 100px;">
+			<div class="col-sm-offset-4 col-sm-2">
+				<a href="csck.html" role="button" class="btn btn-default btn-lg btn-block">CSCK</a>
+			</div>
+			<div class="col-sm-2">
+				<a href="results.html" role="button" class="btn btn-success btn-lg btn-block">Results</a>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		function switchHash(hashVal) {
+			$('a.study').each(function(i, d) {
+				var link = $(d).attr('href');
+				link = link.substr(0, link.lastIndexOf('#'))+'#'+hashVal;
+				$(d).attr('href', link);
+			});
+			if (hashVal === 'test') {
+				d3.selectAll('label.switch').classed('btn-info', true).classed('btn-warning', false);
+			} else {
+				d3.selectAll('label.switch').classed('btn-info', false).classed('btn-warning', true);
+			}
+		}
+
+
+		$('.btn').button();
+	</script>
+</body>
+</html>

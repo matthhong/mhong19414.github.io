@@ -1,0 +1,133 @@
+{
+ "chartType": "d",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.7,
+     "value2": 8.420833333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.7083314107730985,
+     "value2": 2.6758740719174963
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.673198753874749,
+     "value2": 3.705656092730351
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.4,
+     "value2": 7.620833333333333
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "slope1": -3,
+    "slope2": 1,
+    "actualSlope1": -3.0351326568983494,
+    "actualSlope2": 1.029782020812854
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 2107,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.548005908727646,
+     "value2": 2.0558245555730537
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.518457426642999,
+     "value2": 6.010638779797592
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.45,
+     "value2": 5.55
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 2,
+   "params": {
+    "slope1": 1,
+    "slope2": 4,
+    "actualSlope1": 0.9704515179153531,
+    "actualSlope2": 3.954814224224538
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 2007,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.6166666666666667,
+     "value2": 1.3208333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 9.460073809605092,
+     "value2": 3.897689107642509
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.397654969943687,
+     "value2": 5.96003967190627
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.433333333333334,
+     "value2": 7.054166666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 4.170833333333333
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 1,
+   "params": {
+    "slope1": -1,
+    "slope2": 2,
+    "actualSlope1": -1.0624188396614045,
+    "actualSlope2": 2.062350564263761
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 2023,
+   "correct": false
+  }
+ ]
+}

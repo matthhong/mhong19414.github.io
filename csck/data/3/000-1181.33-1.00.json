@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 9.166666666666668,
+     "value2": 7.133333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 4.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.133333333333334,
+     "value2": 2.0833333333333335
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.5911222361028194,
+     "value2": 7.508293411228806
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.221001203880862,
+     "value2": 7.172123184250043
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 222,
+    "actualAngle": 222.24796017073095
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 657,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.2920788917690516,
+     "value2": 7.077505432534963
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.889565817295561,
+     "value2": 6.780885768861264
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.366666666666667,
+     "value2": 2.833333333333333
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.5,
+     "value2": 3.716666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.533333333333333,
+     "value2": 6.7
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 0,
+   "params": {
+    "angle": 216,
+    "actualAngle": 216.38721925579011
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 721,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.9,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 9.183333333333334,
+     "value2": 6.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.844565927051008,
+     "value2": 7.2690246580168605
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.354619976267365,
+     "value2": 7.169260108648297
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "angle": 192,
+    "actualAngle": 191.5094233667478
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 2166,
+   "correct": true
+  }
+ ],
+ "avgRT": 1181.3333333333333,
+ "avgCorrect": 1
+}

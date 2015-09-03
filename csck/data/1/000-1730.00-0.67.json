@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 1,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0999999999999999,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.167786023579538,
+     "value2": 6.969922392163426
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.935327936180289,
+     "value2": 7.412599743744329
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.6333333333333333,
+     "value2": 3.7833333333333337
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.9999999999999998,
+     "value2": 2.016666666666667
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "angle": 117,
+    "actualAngle": 117.70479716174304
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 1499,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.55,
+     "value2": 5.216666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.5354089494794607,
+     "value2": 3.8994975411333144
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.7894919289728364,
+     "value2": 4.33012712619659
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.066666666666666,
+     "value2": 6.616666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.350000000000001,
+     "value2": 0.9166666666666667
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 1,
+   "params": {
+    "angle": 60,
+    "actualAngle": 59.458257768303156
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 1704,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 4.892377418000251,
+     "value2": 8.942274586297572
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 4.971311951524445,
+     "value2": 9.436004613151638
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.133333333333334,
+     "value2": 2.0833333333333335
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.6333333333333337,
+     "value2": 2.2833333333333337
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 2.866666666666667,
+     "value2": 3.433333333333334
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 0,
+   "params": {
+    "angle": 81,
+    "actualAngle": 80.91676916414872
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 1987,
+   "correct": true
+  }
+ ],
+ "avgRT": 1730,
+ "avgCorrect": 0.6666666666666666
+}

@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.7,
+     "value2": 8.420833333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.979189391713589,
+     "value2": 3.860823588911444
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.522560211265716,
+     "value2": 4.06451401962311
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.4,
+     "value2": 7.620833333333333
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 156,
+    "actualAngle": 155.95958954049274
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 2169,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.500000000000001,
+     "value2": 8.004166666666666
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.55,
+     "value2": 9.970833333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.221160609740764,
+     "value2": 6.079089231789112
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.726710320003263,
+     "value2": 6.0047998585349145
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.100000000000001,
+     "value2": 5.720833333333334
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "angle": 189,
+    "actualAngle": 188.54457182018086
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 6543,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.803597702644765,
+     "value2": 0.2302096621133387
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.978642911124986,
+     "value2": 0.6985676181556336
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4,
+     "value2": 5.650000000000001
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.45,
+     "value2": 5.55
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 0,
+   "params": {
+    "angle": 69,
+    "actualAngle": 69.50715448195115
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1488,
+   "correct": true
+  }
+ ],
+ "avgRT": 3400,
+ "avgCorrect": 0.6666666666666666
+}

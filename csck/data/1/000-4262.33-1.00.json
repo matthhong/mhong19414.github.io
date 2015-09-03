@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 1,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.6257853144779801,
+     "value2": 5.115105854347348
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 0.9737615264854089,
+     "value2": 5.474149801346822
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 4.75
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.416666666666667,
+     "value2": 6.116666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.2,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 0,
+   "params": {
+    "angle": 45,
+    "actualAngle": 45.89683823753148
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 3888,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.35,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.6,
+     "value2": 6.816666666666668
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.866666666666667,
+     "value2": 6.716666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.401605163235217,
+     "value2": 1.1495473585091531
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.88302004228608,
+     "value2": 1.2846018446562026
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 15,
+    "actualAngle": 15.670751438476145
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 5621,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 4.704166666666667,
+     "value2": 0
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.5,
+     "value2": 2.5
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.6880308031104505,
+     "value2": 5.575782125815749
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.282672046359331,
+     "value2": 5.283063355790342
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.454166666666667,
+     "value2": 1.1875
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "angle": 216,
+    "actualAngle": 215.83390622586012
+   },
+   "opacity": 1,
+   "response": 83,
+   "responseTime": 3278,
+   "correct": true
+  }
+ ],
+ "avgRT": 4262.333333333333,
+ "avgCorrect": 1
+}

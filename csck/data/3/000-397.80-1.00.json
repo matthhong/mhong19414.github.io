@@ -1,0 +1,439 @@
+{
+ "chartType": "d",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.9,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.17058836016804,
+     "value2": 6.315708114532754
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.784608870046213,
+     "value2": 8.6394891156815
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.816666666666667,
+     "value2": 4.733333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 1,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 0.6140205098781735,
+    "actualSlope2": 2.3237810011487454,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 398,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.1362721445038915,
+     "value2": 0.5607533493312076
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.4096984923817217,
+     "value2": 2.9852172875544056
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.866666666666667,
+     "value2": 6.716666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.466666666666667,
+     "value2": 5.866666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 6.466666666666667,
+     "value2": 3.8
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 0,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.2734263478778303,
+    "actualSlope2": 2.424463938223198,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 305,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 9.166666666666668,
+     "value2": 7.133333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 4.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.133333333333334,
+     "value2": 2.0833333333333335
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.677283389028162,
+     "value2": 4.2128712576814
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 6.1371100198011845,
+     "value2": 6.601522151147947
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.4598266307730228,
+    "actualSlope2": 2.388650893466547,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 360,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 6.316666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.3,
+     "value2": 3.433333333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.866666666666667,
+     "value2": 3.316666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.688229136634618,
+     "value2": 6.459465795545839
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.009379147319123,
+     "value2": 8.238142488407902
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 3,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.321150010684505,
+    "actualSlope2": 1.7786766928620636,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 377,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.966666666666667,
+     "value2": 7.883333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 4.4,
+     "value2": 3.766666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.816666666666666,
+     "value2": 4.449999999999999
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.581779244355857,
+     "value2": 7.293280832469463
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.856126497965306,
+     "value2": 9.1446249098517
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.2743472536094487,
+    "actualSlope2": 1.8513440773822367,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 361,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.6166666666666667,
+     "value2": 1.3208333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.616666666666667,
+     "value2": 1.5208333333333335
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.572663731873035,
+     "value2": 5.091270121745765
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.687280907761306,
+     "value2": 7.168674517888576
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 4.170833333333333
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 2,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.1146171758882701,
+    "actualSlope2": 2.0774043961428106,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 321,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 2.45
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.912150335032493,
+     "value2": 7.475725283497013
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.813110456801951,
+     "value2": 9.24953550833743
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.216666666666667,
+     "value2": 6.383333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 4.25,
+     "value2": 3.6000000000000005
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 0.900960121769458,
+    "actualSlope2": 1.7738102248404175,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 351,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 2.3187962686643004,
+     "value2": 1.881218044552952
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.114763965830207,
+     "value2": 3.5523421899415553
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.466666666666667,
+     "value2": 7.370833333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.433333333333334,
+     "value2": 7.054166666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 4.170833333333333
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 0,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 0.7959676971659064,
+    "actualSlope2": 1.6711241453886032,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 368,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 6.316666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 1.3437870051711798,
+     "value2": 0.7431690522935241
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.4634618726558983,
+     "value2": 3.064079825533554
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.5,
+     "value2": 4.033333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.916666666666667,
+     "value2": 8.216666666666669
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 1,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 1.1196748674847186,
+    "actualSlope2": 2.32091077324003,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 360,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0999999999999999,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.066666666666667,
+     "value2": 4.733333333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.183333333333334,
+     "value2": 5.55
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.1112383902072906,
+     "value2": 1.315234289271757
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 2.7746601041872054,
+     "value2": 3.570664205122739
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "slope1": 1,
+    "slope2": 2,
+    "actualSlope1": 0.6634217139799148,
+    "actualSlope2": 2.255429915850982,
+    "dist": 0
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 777,
+   "correct": true
+  }
+ ],
+ "avgRT": 397.8,
+ "avgCorrect": 1
+}

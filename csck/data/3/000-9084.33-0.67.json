@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.733333333333334,
+     "value2": 4.65
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.366666666666667,
+     "value2": 2.833333333333333
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.364389727357775,
+     "value2": 8.910116092301905
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.7177913043595647,
+     "value2": 8.556410953276972
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 3,
+   "params": {
+    "angle": 315,
+    "actualAngle": 314.97540283342823
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 11922,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 0.29573101084679365,
+     "value2": 2.6693352521397173
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 0.4279191130949912,
+     "value2": 3.151545067079252
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.45,
+     "value2": 5.55
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 2,
+   "params": {
+    "angle": 75,
+    "actualAngle": 74.67010992905125
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 4415,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.55,
+     "value2": 5.216666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.45,
+     "value2": 5.116666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.343828730285168,
+     "value2": 9.365625944919884
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.701497739651078,
+     "value2": 9.715015240318596
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.350000000000001,
+     "value2": 0.9166666666666667
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "angle": 45,
+    "actualAngle": 44.329092126339674
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 10916,
+   "correct": true
+  }
+ ],
+ "avgRT": 9084.333333333334,
+ "avgCorrect": 0.6666666666666666
+}

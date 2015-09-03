@@ -1,0 +1,439 @@
+{
+ "chartType": "d",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 3.7455624667927623,
+     "value2": 5.933327481499873
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.779347658855841,
+     "value2": 7.59158264414873
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.283333333333334,
+     "value2": 1.6208333333333336
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.566666666666666,
+     "value2": 1.9708333333333332
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.783333333333333,
+     "value2": 3.8875000000000006
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 0,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 2.0337851920630783,
+    "actualSlope2": 1.6582551626488566,
+    "dist": 2
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 387,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.85,
+     "value2": 9.137500000000001
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 4.470181765500456,
+     "value2": 3.690656842314638
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.954073887551203,
+     "value2": 5.733598810737021
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 8.566666666666666,
+     "value2": 1.9708333333333332
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.783333333333333,
+     "value2": 3.8875000000000006
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 1,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 2.4838921220507473,
+    "actualSlope2": 2.042941968422383,
+    "dist": 1
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 376,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 2.783333333333334,
+     "value2": 2.033333333333333
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 4.5014989376068115,
+     "value2": 5.125766851240769
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.022329996572807,
+     "value2": 7.39806208293885
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.15,
+     "value2": 6.033333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.866666666666667,
+     "value2": 3.75
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 1,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.520831058965996,
+    "actualSlope2": 2.272295231698081,
+    "dist": 1
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 440,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.361728004645556,
+     "value2": 7.124019523500465
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.105923947645351,
+     "value2": 9.343632428790443
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.6833333333333333,
+     "value2": 4.533333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.75,
+     "value2": 2.5833333333333335
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 0,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.744195942999795,
+    "actualSlope2": 2.219612905289978,
+    "dist": 2
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 474,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.1,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.883333333333334,
+     "value2": 2.5
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5,
+     "value2": 5
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.622288212180138,
+     "value2": 7.771376138203777
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.935403388692066,
+     "value2": 9.786315462668426
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 3,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 2.3131151765119284,
+    "actualSlope2": 2.014939324464649,
+    "dist": 2
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 410,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.2333333333333334,
+     "value2": 3.7833333333333337
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.200504916254431,
+     "value2": 4.165538490982726
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 9.165713460883126,
+     "value2": 6.2006798861548305
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.9166666666666667,
+     "value2": 6.116666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.1333333333333333,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 1,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.9652085446286947,
+    "actualSlope2": 2.0351413951721042,
+    "dist": 3
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 436,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.5000000000000002,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.9000000000000004,
+     "value2": 2.65
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.40974699659273,
+     "value2": 3.335921960650012
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.369281991617754,
+     "value2": 5.4431070275604725
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.2,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.9595349950250238,
+    "actualSlope2": 2.1071850669104606,
+    "dist": 2
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 242,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.17206958727911115,
+     "value2": 1.030713033513166
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.1030070155393332,
+     "value2": 3.2443635693052784
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 4.75
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.9166666666666667,
+     "value2": 6.116666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.1333333333333333,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 0,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.930937428260222,
+    "actualSlope2": 2.2136505357921124,
+    "dist": 1
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 218,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.533333333333333,
+     "value2": 7.9
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 6.000000000000001
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.393397857900709,
+     "value2": 4.430324496468529
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.6839543152600527,
+     "value2": 6.6470276766922325
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 2.2905564573593438,
+    "actualSlope2": 2.2167031802237034,
+    "dist": 3
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 241,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 6.316666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.3,
+     "value2": 3.433333333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.866666666666667,
+     "value2": 3.316666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.492974759079516,
+     "value2": 5.291501358500682
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.159568719333038,
+     "value2": 7.361042119911872
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 3,
+   "params": {
+    "slope1": 2,
+    "slope2": 2,
+    "actualSlope1": 1.6665939602535218,
+    "actualSlope2": 2.06954076141119,
+    "dist": 2
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 230,
+   "correct": true
+  }
+ ],
+ "avgRT": 345.4,
+ "avgCorrect": 1
+}

@@ -1,0 +1,409 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 9.166666666666668,
+     "value2": 7.133333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 4.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.133333333333334,
+     "value2": 2.0833333333333335
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.5171468164771795,
+     "value2": 2.319538521114737
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.1410020044148563,
+     "value2": 1.9901222489626171
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 222,
+    "actualAngle": 221.2108966507949
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 769,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.3877444923855364,
+     "value2": 0.3214920614846051
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 1.1613160621743805,
+     "value2": 0.7672836787141261
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.616666666666667,
+     "value2": 5.700000000000001
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.15,
+     "value2": 6.033333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.866666666666667,
+     "value2": 3.75
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 0,
+   "params": {
+    "angle": 117,
+    "actualAngle": 116.92712542042136
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 738,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.816666666666666,
+     "value2": 2.45
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.766666666666667,
+     "value2": 6.266666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 0.4901477671228349,
+     "value2": 8.93571660388261
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 0.9780923941346431,
+     "value2": 9.04484973803676
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 4.25,
+     "value2": 3.6000000000000005
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 2,
+   "params": {
+    "angle": 12,
+    "actualAngle": 12.607222974766046
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 569,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.733586076647043,
+     "value2": 5.757740659173578
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.104700247307509,
+     "value2": 6.092814191901835
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "angle": 42,
+    "actualAngle": 42.078416398726404
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 529,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.5,
+     "value2": 0.9166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.566666666666666,
+     "value2": 3.3
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.384067895822227,
+     "value2": 4.618340404704213
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.83178090218602,
+     "value2": 4.395735229713392
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 2.9666666666666663,
+     "value2": 3.75
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 333,
+    "actualAngle": 333.5632023192011
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 529,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.416666666666667,
+     "value2": 7.754166666666668
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.2333333333333334,
+     "value2": 6.470833333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.318698975723237,
+     "value2": 4.873807495459914
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.688683958681002,
+     "value2": 4.537487540081495
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.983333333333333,
+     "value2": 5.804166666666667
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 2,
+   "params": {
+    "angle": 318,
+    "actualAngle": 317.7288571903482
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 586,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.5,
+     "value2": 0.9166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.566666666666666,
+     "value2": 3.3
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 9.656663362402469,
+     "value2": 9.29054705426097
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.902390902115211,
+     "value2": 9.725998516799244
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 2.9666666666666663,
+     "value2": 3.75
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 60,
+    "actualAngle": 60.563735333736986
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 578,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.6,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.55,
+     "value2": 2.8
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.7813640967942774,
+     "value2": 6.542495305184275
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 4.205204216295893,
+     "value2": 6.807749057468491
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 3,
+   "params": {
+    "angle": 33,
+    "actualAngle": 32.03975128149614
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 627,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 9.166666666666668,
+     "value2": 7.133333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 4.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.133333333333334,
+     "value2": 2.0833333333333335
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 1.064853339921683,
+     "value2": 7.926516069564968
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.0844226353090165,
+     "value2": 7.426899173655669
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 273,
+    "actualAngle": 272.24304897757247
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 562,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.533333333333333,
+     "value2": 7.9
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 6.000000000000001
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.813943919725716,
+     "value2": 5.940435379743576
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.102785718744429,
+     "value2": 6.348565769618715
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "angle": 54,
+    "actualAngle": 54.712216350249946
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 665,
+   "correct": true
+  }
+ ],
+ "avgRT": 615.2,
+ "avgCorrect": 0.6
+}

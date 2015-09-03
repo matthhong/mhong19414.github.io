@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.1,
+     "value2": 2.1166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.883333333333334,
+     "value2": 2.5
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.826209961436689,
+     "value2": 6.1301997769623995
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.036073812868274,
+     "value2": 6.584024813581471
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.750000000000001,
+     "value2": 6.766666666666667
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 66,
+    "actualAngle": 65.18260257039219
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 721,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.416666666666667,
+     "value2": 7.754166666666668
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.2333333333333334,
+     "value2": 6.470833333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.916666666666667,
+     "value2": 5.637500000000001
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.772423056419939,
+     "value2": 5.420187704730779
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.287506963830458,
+     "value2": 5.298300941102605
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 3,
+   "params": {
+    "angle": 195,
+    "actualAngle": 194.10936459014192
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 919,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.8210496823303401,
+     "value2": 3.4551198431290686
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 1.9739887441251966,
+     "value2": 2.979084504758786
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.904166666666667,
+     "value2": 4.520833333333333
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.2875,
+     "value2": 4.704166666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.454166666666667,
+     "value2": 1.1875
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 0,
+   "params": {
+    "angle": 288,
+    "actualAngle": 287.8110017175786
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1154,
+   "correct": false
+  }
+ ],
+ "avgRT": 931.3333333333334,
+ "avgCorrect": 0.6666666666666666
+}

@@ -1,0 +1,409 @@
+{
+ "chartType": "c",
+ "blockClass": 2,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.733333333333334,
+     "value2": 4.65
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 0.9463298018090427,
+     "value2": 2.2906167851760983
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 0.8620169879096323,
+     "value2": 2.783456870206084
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.533333333333333,
+     "value2": 6.7
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 2,
+   "params": {
+    "angle": 99,
+    "actualAngle": 99.70791976619512
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 674,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.263886864297092,
+     "value2": 8.310068666469306
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.832055257569973,
+     "value2": 8.562103313753116
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.866666666666667,
+     "value2": 6.833333333333333
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.916666666666667,
+     "value2": 3.433333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 0,
+   "params": {
+    "angle": 150,
+    "actualAngle": 149.73041046597064
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 610,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.9,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 9.183333333333334,
+     "value2": 6.166666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.656920374836773,
+     "value2": 3.990860895719379
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.211493856099486,
+     "value2": 4.218006700007247
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "angle": 153,
+    "actualAngle": 152.98063566209748
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 457,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0999999999999999,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.066666666666667,
+     "value2": 4.733333333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.183333333333334,
+     "value2": 5.55
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.817639501299709,
+     "value2": 2.547320907469839
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.147422924916699,
+     "value2": 2.9231438624731982
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "angle": 48,
+    "actualAngle": 48.73315353691578
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 449,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.500000000000001,
+     "value2": 8.004166666666666
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.735378183424473,
+     "value2": 8.42492331052199
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.5333954999514923,
+     "value2": 8.88231045023741
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.316666666666667,
+     "value2": 7.604166666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.100000000000001,
+     "value2": 5.720833333333334
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 1,
+   "params": {
+    "angle": 114,
+    "actualAngle": 113.82630794681609
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 473,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.533333333333333,
+     "value2": 7.9
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 6.000000000000001
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.817816982511431,
+     "value2": 5.930242019239813
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.274616875151019,
+     "value2": 6.133549318873793
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "angle": 24,
+    "actualAngle": 23.992345879320055
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 546,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.500000000000001,
+     "value2": 8.004166666666666
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.55,
+     "value2": 9.970833333333333
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.8833333333333337,
+     "value2": 6.3875
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.830812924541533,
+     "value2": 7.588763548992574
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 6.051568052866921,
+     "value2": 7.140135447645767
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 3,
+   "params": {
+    "angle": 297,
+    "actualAngle": 296.200281215366
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 746,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0139164049178362,
+     "value2": 0.7885749754495919
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 0.5162059206048442,
+     "value2": 0.8363690525400318
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.466666666666667,
+     "value2": 4.75
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.416666666666667,
+     "value2": 6.116666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.2,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 0,
+   "params": {
+    "angle": 174,
+    "actualAngle": 174.51482737623155
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 770,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.35,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 2.6,
+     "value2": 6.816666666666668
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.767358286771923,
+     "value2": 6.4099518628790975
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.8231095960563,
+     "value2": 5.913069792853344
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 6.466666666666667,
+     "value2": 3.8
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 2,
+   "params": {
+    "angle": 276,
+    "actualAngle": 276.4019421939738
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 722,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 5.68118030205369,
+     "value2": 1.5825015772134066
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 5.913639709319699,
+     "value2": 2.0251782357052854
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.5833333333333335,
+     "value2": 3.6208333333333336
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.2,
+     "value2": 4.687500000000001
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 8.004166666666666
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 0,
+   "params": {
+    "angle": 63,
+    "actualAngle": 62.29503200761974
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 787,
+   "correct": true
+  }
+ ],
+ "avgRT": 623.4,
+ "avgCorrect": 0.3
+}

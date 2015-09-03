@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 2,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.8345612795092165,
+     "value2": 8.685834396164864
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.065323082516589,
+     "value2": 8.242270432037044
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.5,
+     "value2": 3.716666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.6333333333333334,
+     "value2": 0.45000000000000007
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "angle": 297,
+    "actualAngle": 297.4854667917825
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 185,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.0999999999999999,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.260830326937139,
+     "value2": 2.4766952986828983
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 6.26730094405784,
+     "value2": 1.9767371693219715
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.6333333333333333,
+     "value2": 3.7833333333333337
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.9999999999999998,
+     "value2": 2.016666666666667
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "angle": 270,
+    "actualAngle": 270.74149880185723
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 186,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.5,
+     "value2": 0.9166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.566666666666666,
+     "value2": 3.3
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 2.1333333333333315,
+     "value2": 5.3
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 2.448800306301564,
+     "value2": 2.645194267388433
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 2.7176029317282513,
+     "value2": 3.0667925934806037
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 3,
+   "params": {
+    "angle": 57,
+    "actualAngle": 57.479233785066754
+   },
+   "opacity": 0.3,
+   "response": 83,
+   "responseTime": 190,
+   "correct": true
+  }
+ ],
+ "avgRT": 187,
+ "avgCorrect": 0.3333333333333333
+}

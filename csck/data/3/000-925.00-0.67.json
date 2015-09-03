@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 7.822703567799181,
+     "value2": 1.6673602303490043
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.005788219445117,
+     "value2": 2.1326343542068504
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 5.033333333333334,
+     "value2": 6.483333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.816666666666667,
+     "value2": 4.733333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 0,
+   "params": {
+    "angle": 69,
+    "actualAngle": 68.52043864689767
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 728,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.1166666666666667,
+     "value2": 8.416666666666668
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.341003238689154,
+     "value2": 6.25580141087994
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.540538660237898,
+     "value2": 5.797341362950608
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 7.75,
+     "value2": 2.5833333333333335
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 3.2,
+     "value2": 1.0666666666666667
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 1,
+   "params": {
+    "angle": 294,
+    "actualAngle": 293.52010523574427
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 742,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.5000000000000002,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.680860842578113,
+     "value2": 3.494238273706287
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.3800581938974443,
+     "value2": 3.0948415204061455
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 5.416666666666667,
+     "value2": 6.116666666666667
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 5.2,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 1,
+   "params": {
+    "angle": 234,
+    "actualAngle": 233.0150446780026
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1305,
+   "correct": true
+  }
+ ],
+ "avgRT": 925,
+ "avgCorrect": 0.6666666666666666
+}

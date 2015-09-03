@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.9,
+     "value2": 0.8166666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.957290911581367,
+     "value2": 8.242298860568553
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 7.688212423762087,
+     "value2": 8.663721175346602
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 4.816666666666667,
+     "value2": 4.733333333333334
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.266666666666667,
+     "value2": 3.5500000000000003
+    }
+   ],
+   "label1": "Vehicle miles driven per capita (thousands)",
+   "label2": "Auto fatalities per 1,000 people",
+   "ind": 1,
+   "params": {
+    "angle": 123,
+    "actualAngle": 122.55826411116868
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 537,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 8.8,
+     "value2": 8.583333333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 7.633333333333334,
+     "value2": 5.866666666666667
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 4.716666666666667,
+     "value2": 4.583333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 0.9279281320050359,
+     "value2": 1.4007283886894584
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 0.6544226752464803,
+     "value2": 1.819291126069763
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 3,
+   "params": {
+    "angle": 123,
+    "actualAngle": 123.16218982916325
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 585,
+   "correct": false
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 0.85,
+     "value2": 0.8
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.3469495782628655,
+     "value2": 5.445930762216449
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.451737868948147,
+     "value2": 4.957034644278029
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 6.333333333333334,
+     "value2": 6.2
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 8.566666666666666,
+     "value2": 8.166666666666668
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 1,
+   "params": {
+    "angle": 282,
+    "actualAngle": 282.097539993003
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 727,
+   "correct": false
+  }
+ ],
+ "avgRT": 616.3333333333334,
+ "avgCorrect": 0
+}

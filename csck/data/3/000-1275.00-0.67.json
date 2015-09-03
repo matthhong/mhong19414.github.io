@@ -1,0 +1,129 @@
+{
+ "chartType": "c",
+ "blockClass": 3,
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.9666666666666668,
+     "value2": 6.316666666666667
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 3.3,
+     "value2": 3.433333333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 8.761635073460639,
+     "value2": 3.884005870204419
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.226301069535346,
+     "value2": 4.06862849095253
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 7.916666666666667,
+     "value2": 8.216666666666669
+    }
+   ],
+   "label1": "China's Growth (%)",
+   "label2": "Japan's Growth (%)",
+   "ind": 2,
+   "params": {
+    "angle": 21,
+    "actualAngle": 21.669076906517148
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 801,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 6.7,
+     "value2": 8.420833333333334
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 3.1432933546602726,
+     "value2": 2.266706346999854
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 3.6266592110434983,
+     "value2": 2.3946025896456433
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 1.4,
+     "value2": 7.620833333333333
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 2,
+   "params": {
+    "angle": 15,
+    "actualAngle": 14.820548691786826
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1031,
+   "correct": true
+  },
+  {
+   "data": [
+    {
+     "date": "1980-01-01T06:00:00.000Z",
+     "value1": 1.1166666666666667,
+     "value2": 8.416666666666668
+    },
+    {
+     "date": "1981-01-01T06:00:00.000Z",
+     "value1": 8.500000000000002,
+     "value2": 6.000000000000001
+    },
+    {
+     "date": "1982-01-01T06:00:00.000Z",
+     "value1": 1.6833333333333333,
+     "value2": 4.533333333333334
+    },
+    {
+     "date": "1983-01-01T06:00:00.000Z",
+     "value1": 9.353426478337497,
+     "value2": 2.729758669156581
+    },
+    {
+     "date": "1984-01-01T06:00:00.000Z",
+     "value1": 9.384464219087393,
+     "value2": 2.230722940326328
+    }
+   ],
+   "label1": "Miles driven per capita each year (thousands)",
+   "label2": "Price of a gallon of gas (US$)",
+   "ind": 3,
+   "params": {
+    "angle": 273,
+    "actualAngle": 273.5589512581937
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 1993,
+   "correct": false
+  }
+ ],
+ "avgRT": 1275,
+ "avgCorrect": 0.6666666666666666
+}
