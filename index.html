@@ -14,13 +14,17 @@
 	<script type="text/javascript" src="js/portfolio.js"></script>
 	<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/paper-full.min.js"></script>
+	<script type="text/paperscript" canvas="myCanvas" src="js/raster.js"></script>
 </head>
 <body>
-<div id="header">
+<!-- <div id="header">
 	<h1>Matt Hong</h1>
 	<h2>portfolio</h2>
-</div>
+</div> -->
 <div id="content">
+	<canvas id="myCanvas" style="position: absolute;
+	z-index: -100;height:573px; width:750px; margin-left:318px;"></div>
 	<div class="button odd" id="photos">Computational Photography</div>
 	<div class="list" id="list-photos">
         <a class="fancybox" rel="group" href='http://cdn.knightlab.com/libs/storymapjs/latest/embed/?url=https://2e6cfa4c09a424d73d446edefbe2ef72484bfd76.googledrive.com/host/0B_01NMEpZZJkZ3pDeGdqaTRRQ0k/published.json'>
