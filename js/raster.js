@@ -37,6 +37,7 @@ function moveHandler(event) {
 		onMouseMove: moveHandler
 	});
 	path.fillColor = raster.getAverageColor(path);
+	console.log(raster.getAverageColor(path))
 
 	var path = new Path.Rectangle({
 		point: isLandscape
