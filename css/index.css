@@ -3,6 +3,7 @@ div{
 }
 #content{
 	margin-top:6px;
+	display: none;
 }
 a{
 	position: relative;
@@ -31,7 +32,7 @@ a{
     padding: 2px 4px 2px 4px;
 }
 #tweets{
-	margin-left:5px;
+	/*margin-left:5px;*/
 	width: 300px;
 }
 .button{
@@ -39,7 +40,7 @@ a{
 	font-weight: bold;
 	color: #292f33;
 	text-indent: 8px;
-	margin-left: 5px;
+	/*margin-left: 5px;*/
 	line-height:35px;
 	width: 300px;
 }

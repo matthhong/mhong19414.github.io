@@ -8,6 +8,7 @@ var loaded = false;
 raster.on('load', function() {
 	loaded = true;
 	onResize();
+	$('#content').show();
 });
 
 // Make the raster invisible:
