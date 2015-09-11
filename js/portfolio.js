@@ -69,6 +69,7 @@
                 'overflow-x': 'scroll',
                 'overflow-y': 'hidden',
                 'white-space': 'nowrap'
+                // 'background': 'rgba(255,255,255,0.5)'
             });
 
             $(this).find(image_tag).css({

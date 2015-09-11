@@ -8,7 +8,7 @@ var loaded = false;
 raster.on('load', function() {
 	loaded = true;
 	onResize();
-	$('#content').show();
+	$('.button').show();
 	$('#tweets').show();
 });
 
