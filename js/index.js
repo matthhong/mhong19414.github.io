@@ -10,13 +10,31 @@ $(function(){
 
 	$(".button")
 		.click(function(){
-			$("#list-" + this.id).toggle('400ms');
+			if ($("#list-" + this.id).is(":visible")) {
+				$("#list-" + this.id).hide('400ms', function() {
+					if ($('.list:visible').length > 0) {
+						$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0.95)'}, 200);
+					} else {
+						$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0)'},200);
+					};
+				});
+			} else {
+				$("#list-" + this.id).show('400ms');
+				$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0.95)'}, 200);
+			}
+			// $("#list-" + this.id).toggle('400ms', function(){
+			// 	if ($('.list:visible').length > 0) {
+			// 		$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0.8)'}, 200);
+			// 	} else {
+			// 		$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0)'},200);
+			// 	};
+			// });
 		})
-		.toggle(function(){
-			$('#overlay').css({'background': 'rgba(255,255,255,0.5)'});
-		}, function(){
-			$('#overlay').css({'background': 'rgba(255,255,255,0)'});
-		});
+		// .toggle(function(){
+		// 	$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0.8)'}, 200);
+		// }, function(){
+		// 	$('#overlay').animate({backgroundColor: 'rgba(255,255,255,0)'},200);
+		// });
 
 	$(".fancybox").fancybox({type:'iframe', arrows:false, 'width': 1000});
 });
