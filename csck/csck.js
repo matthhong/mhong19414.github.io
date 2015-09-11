@@ -101,6 +101,9 @@ function makeDataSets() {
 		d = new Date(d.getTime()+24*3600*1000);
 	}
 
+	// maxTime, numSteps, drift, volat, initVal1, initVal2
+	randomPaired = makePairedSeries(1,20,0,0.2,1,1);
+
 	datasets.push({"name":"parallel", "display":"Parallel Sines", "data":parallelSines, "commonScales":true});
 	datasets.push({"name":"increasing", "display":"Increasing Sines", "data":increasingSines, "commonScales":true});
 	datasets.push({"name":"spiral", "display":"Spiral", "data":spiral, "commonScales":true});
