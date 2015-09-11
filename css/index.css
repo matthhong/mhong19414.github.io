@@ -1,6 +1,13 @@
 div{
 	font-family: helvetica;
 }
+#wrapper{
+	position: absolute; 
+	z-index: -100;
+	height:573px; 
+	width:909px; 
+	margin-left:309px;
+}
 #content{
 	margin-top:6px;
 }
