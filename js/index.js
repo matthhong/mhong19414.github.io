@@ -13,5 +13,5 @@ $(function(){
 			$("#list-" + this.id).toggle('400ms');
 		});
 
-	$(".fancybox").fancybox({type:'iframe', arrows:false, 'width': 900});
+	$(".fancybox").fancybox({type:'iframe', arrows:false, 'width': 1000});
 });
