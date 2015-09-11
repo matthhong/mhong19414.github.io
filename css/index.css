@@ -32,7 +32,7 @@ a{
     padding: 2px 4px 2px 4px;
 }
 #tweets{
-	/*margin-left:5px;*/
+	display:none;
 	width: 300px;
 }
 .button{

@@ -9,6 +9,7 @@ raster.on('load', function() {
 	loaded = true;
 	onResize();
 	$('#content').show();
+	$('#tweets').show();
 });
 
 // Make the raster invisible:
