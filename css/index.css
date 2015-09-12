@@ -38,12 +38,12 @@ a{
     padding: 2px 4px 2px 4px;
 }
 #tweets{
-	display:none;
+	/*display:none;*/
 	width: 300px;
 	margin-left: 5px;
 }
 .button{
-	display:none;
+	/*display:none;*/
 	font-size: 14px;
 	font-weight: bold;
 	color: #292f33;
