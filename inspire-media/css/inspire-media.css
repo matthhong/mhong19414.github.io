@@ -4,15 +4,25 @@ body {
 
 #menu {
 	position:absolute;
-	margin-left: 24px;
+	margin-left: 36px;
+	margin-top: 12px;
 }
 
-label {
+label, a {
 	display: block;
 	font-family: 'Oswald',Impact,Arial,sans-serif;
 	font-size: 1em;
 	color: #555555;
 	margin: 12px 0;
+	text-decoration: none
+}
+
+.link {
+	margin-left:1em;
+}
+
+section {
+	margin-top:36px;
 }
 
 select {

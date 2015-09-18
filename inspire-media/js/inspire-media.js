@@ -15,13 +15,13 @@ texture, textureReflection;
 
 var mesh;
 
-var mouseX = 0;
-var mouseY = 0;
+var mouse = new THREE.Vector2();
 
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-var yOffset = 30;
+var yOffset = 60;
+var xOffset = 144;
 
 init();
 render();
@@ -74,15 +74,17 @@ function init() {
 
 	//
 
-	var plane = new THREE.PlaneGeometry( 480, 204, 4, 4 );
+	var plane = new THREE.PlaneGeometry( 600, 255, 4, 4 );
 
 	mesh = new THREE.Mesh( plane, material );
 	mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
-	mesh.position.y = - yOffset;
+	mesh.position.y = 78 - yOffset;
+	mesh.position.x = xOffset;
 	scene.add(mesh);
 
 	mesh = new THREE.Mesh( plane, materialReflection );
-	mesh.position.y = -306 - yOffset;
+	mesh.position.y = -384 - yOffset;
+	mesh.position.x = xOffset;
 	mesh.rotation.x = - Math.PI;
 	mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
 	scene.add( mesh );
@@ -94,9 +96,22 @@ function init() {
 	var amounty = 10;
 
 	var PI2 = Math.PI * 2;
-	var material = new THREE.SpriteCanvasMaterial( {
+	var material1 = new THREE.SpriteCanvasMaterial( {
 
-		color: 0x0808080,
+		color: 0x07ec0ee,
+		program: function ( context ) {
+
+			context.beginPath();
+			context.arc( 0, 0, 0.5, 0, PI2, true );
+			context.fill();
+
+		}
+
+	} );
+
+	var material2 = new THREE.SpriteCanvasMaterial( {
+
+		color: 0x0800080,
 		program: function ( context ) {
 
 			context.beginPath();
@@ -110,17 +125,22 @@ function init() {
 	for ( var ix = 0; ix < amountx; ix++ ) {
 
 		for ( var iy = 0; iy < amounty; iy++ ) {
-
-			particle = new THREE.Sprite( material );
+			if (ix % 2 == 0){
+				particle = new THREE.Sprite( material1 );
+			} else {
+				particle = new THREE.Sprite( material2 );
+			}
 			particle.position.x = ix * separation - ( ( amountx * separation ) / 2 );
 			particle.position.y = -153 - yOffset;
 			particle.position.z = iy * separation - ( ( amounty * separation ) / 2 );
-			particle.scale.x = particle.scale.y = 2;
+			particle.scale.x = particle.scale.y = 3.6;
 			scene.add( particle );
 
 		}
 
 	}
+
+	// LOGO
 
 	var loader = new THREE.ImageLoader();
 
@@ -134,15 +154,18 @@ function init() {
 
 			var logoMaterial = new THREE.MeshBasicMaterial( { map: logoTexture, overdraw: 0.5 } );
 			
-			var logoPlane = new THREE.PlaneGeometry( imgWidth / 2, imgHeight/2, 4, 4 );
+			var logoPlane = new THREE.PlaneBufferGeometry( imgWidth / 1.6, imgHeight/1.6, 4, 4 );
 			var logo = new THREE.Mesh( logoPlane, logoMaterial );
 
-			logo.position.y = 270;
+			logo.position.y = 300;
+			logo.position.x = xOffset;
 
 			scene.add( logo );
 		});
 
+
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	// document.addEventListener('mouseenter', onMouseEnter, false);
 
 	//
 
@@ -162,10 +185,30 @@ function onWindowResize() {
 
 }
 
-function onDocumentMouseMove( event ) {
+function onMouseEnter(e) {
+    var vectorMouse = new THREE.Vector3( //vector from camera to mouse
+        -(window.innerWidth/2-e.clientX)*2/window.innerHeight,
+        (window.innerHeight/2-e.clientY)*2/window.innerHeight,
+        -1/Math.tan(22.5*Math.PI/180)); //22.5 is half of camera frustum angle 45 degree
+    vectorMouse.applyQuaternion(camera.quaternion);
+    vectorMouse.normalize();        
 
-	mouseX = ( event.clientX - windowHalfX );
-	mouseY = ( event.clientY - windowHalfY ) * 0.2;
+    var vectorObject = new THREE.Vector3(); //vector from camera to object
+    vectorObject.set(textMesh1.position.x + 66 - camera.position.x,
+                     textMesh1.position.y - camera.position.y,
+                     textMesh1.position.z - camera.position.z);
+    vectorObject.normalize();
+    if (vectorMouse.angleTo(vectorObject)*180/Math.PI < 6) {
+        //mouse's position is near object's position
+        textMesh1.material.color = new THREE.Color(0xffffff);
+        console.log(textMesh1.material.color)
+    }
+}
+
+function onDocumentMouseMove( e ) {
+
+	mouse.x = ( e.clientX - windowHalfX );
+	mouse.y = ( e.clientY - windowHalfY ) * 0.2;
 
 }
 
@@ -174,8 +217,8 @@ function onDocumentMouseMove( event ) {
 function render() {
 	requestAnimationFrame( render );
 
-	camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-	camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+	camera.position.x += ( mouse.x - camera.position.x ) * 0.05;
+	camera.position.y += ( - mouse.y - camera.position.y ) * 0.05;
 	camera.lookAt( scene.position );
 
 	if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
@@ -190,7 +233,6 @@ function render() {
 	imageReflectionContext.drawImage( image, 0, 0 );
 	imageReflectionContext.fillStyle = imageReflectionGradient;
 	imageReflectionContext.fillRect( 0, 0, 480, 204 );
-
 	renderer.render( scene, camera );
 
 }
