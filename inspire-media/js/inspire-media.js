@@ -21,7 +21,7 @@ var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
 var yOffset = 60;
-var xOffset = 144;
+var xOffset = 120;
 
 init();
 render();
