@@ -1,10 +1,9 @@
 $(function(){
 
-// Dropdown menu
+// DROPDOWN MENU
 $( "#speed" ).selectmenu();
 
-var AMOUNT = 100;
-
+// THREE.JS
 var container;
 
 var camera, scene, renderer;
@@ -20,14 +19,19 @@ var mouse = new THREE.Vector2();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
-var yOffset = 60;
-var xOffset = 120;
+// Screen and logo position
+var xOffset = 162;
+var yOffset = -57;
+var zOffset = -60;
+
+var particlesY = -339;
 
 init();
 render();
 
 function init() {
 
+	// SETUP
 	container = document.createElement( 'div' );
 	document.body.appendChild( container );
 
@@ -42,6 +46,7 @@ function init() {
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
 
+	// SCREEN
 	video = document.getElementById( 'video' );
 
 	image = document.createElement( 'canvas' );
@@ -72,28 +77,27 @@ function init() {
 
 	var materialReflection = new THREE.MeshBasicMaterial( { map: textureReflection, side: THREE.BackSide, overdraw: 0.5 } );
 
-	//
-
-	var plane = new THREE.PlaneGeometry( 600, 255, 4, 4 );
+	var plane = new THREE.PlaneGeometry( 500, 375, 4, 4 );
 
 	mesh = new THREE.Mesh( plane, material );
 	mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
-	mesh.position.y = 78 - yOffset;
 	mesh.position.x = xOffset;
+	mesh.position.y = yOffset;
+	mesh.position.z = zOffset;
 	scene.add(mesh);
 
 	mesh = new THREE.Mesh( plane, materialReflection );
-	mesh.position.y = -384 - yOffset;
 	mesh.position.x = xOffset;
+	mesh.position.y = particlesY * 2 - yOffset;
+	mesh.position.z = zOffset;
 	mesh.rotation.x = - Math.PI;
 	mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
 	scene.add( mesh );
 
-	//
-
+	// PARTICLES
 	var separation = 150;
-	var amountx = 10;
-	var amounty = 10;
+	var amountx = 20;
+	var amounty = 20;
 
 	var PI2 = Math.PI * 2;
 	var material1 = new THREE.SpriteCanvasMaterial( {
@@ -131,9 +135,9 @@ function init() {
 				particle = new THREE.Sprite( material2 );
 			}
 			particle.position.x = ix * separation - ( ( amountx * separation ) / 2 );
-			particle.position.y = -153 - yOffset;
+			particle.position.y = particlesY;
 			particle.position.z = iy * separation - ( ( amounty * separation ) / 2 );
-			particle.scale.x = particle.scale.y = 3.6;
+			particle.scale.x = particle.scale.y = 6;
 			scene.add( particle );
 
 		}
@@ -141,7 +145,6 @@ function init() {
 	}
 
 	// LOGO
-
 	var loader = new THREE.ImageLoader();
 
 	loader.load(
@@ -157,17 +160,15 @@ function init() {
 			var logoPlane = new THREE.PlaneBufferGeometry( imgWidth / 1.6, imgHeight/1.6, 4, 4 );
 			var logo = new THREE.Mesh( logoPlane, logoMaterial );
 
-			logo.position.y = 300;
 			logo.position.x = xOffset;
+			logo.position.y = 294;
+			mesh.position.z = zOffset;
 
 			scene.add( logo );
 		});
 
 
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-	// document.addEventListener('mouseenter', onMouseEnter, false);
-
-	//
 
 	window.addEventListener( 'resize', onWindowResize, false );
 
@@ -185,34 +186,12 @@ function onWindowResize() {
 
 }
 
-function onMouseEnter(e) {
-    var vectorMouse = new THREE.Vector3( //vector from camera to mouse
-        -(window.innerWidth/2-e.clientX)*2/window.innerHeight,
-        (window.innerHeight/2-e.clientY)*2/window.innerHeight,
-        -1/Math.tan(22.5*Math.PI/180)); //22.5 is half of camera frustum angle 45 degree
-    vectorMouse.applyQuaternion(camera.quaternion);
-    vectorMouse.normalize();        
-
-    var vectorObject = new THREE.Vector3(); //vector from camera to object
-    vectorObject.set(textMesh1.position.x + 66 - camera.position.x,
-                     textMesh1.position.y - camera.position.y,
-                     textMesh1.position.z - camera.position.z);
-    vectorObject.normalize();
-    if (vectorMouse.angleTo(vectorObject)*180/Math.PI < 6) {
-        //mouse's position is near object's position
-        textMesh1.material.color = new THREE.Color(0xffffff);
-        console.log(textMesh1.material.color)
-    }
-}
-
 function onDocumentMouseMove( e ) {
 
 	mouse.x = ( e.clientX - windowHalfX );
 	mouse.y = ( e.clientY - windowHalfY ) * 0.2;
 
 }
-
-//
 
 function render() {
 	requestAnimationFrame( render );

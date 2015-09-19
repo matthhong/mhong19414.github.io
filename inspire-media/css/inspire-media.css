@@ -5,16 +5,24 @@ body {
 #menu {
 	position:absolute;
 	margin-left: 36px;
-	margin-top: 12px;
+	margin-top: 24px;
 }
 
-label, a {
+label, a, p {
 	display: block;
 	font-family: 'Oswald',Impact,Arial,sans-serif;
 	font-size: 1em;
 	color: #555555;
 	margin: 12px 0;
-	text-decoration: none
+	text-decoration: none;
+
+	max-height:240px; /* to limit word count */
+	overflow: hidden; /* remember: there is always text 
+									that can be cut */
+}
+
+a:hover {
+	color: #08AFF8;
 }
 
 .link {
@@ -23,6 +31,7 @@ label, a {
 
 section {
 	margin-top:36px;
+	max-width:220px;
 }
 
 select {
