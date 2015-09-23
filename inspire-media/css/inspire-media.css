@@ -17,12 +17,18 @@ label, a, p {
 	font-family: 'PT Sans',Impact,Arial,sans-serif;
 	font-size: 1em;
 	color: #ffffff;
-	margin: 12px 0;
 	text-decoration: none;
 
-	max-height:240px; /* to limit word count */
-	overflow: hidden; /* remember: there is always text 
+	max-height:200px; /* to limit word count */
+	overflow-y: auto;; /* remember: there is always text 
 									that can be cut */
+}
+label, p {
+	margin: 12px 0;
+}
+a {
+	color: #000;
+	padding: 12px 0;
 }
 
 a:hover {
@@ -38,8 +44,14 @@ section {
 	max-width:258px;
 }
 
+#visit {
+	background: #ffffff url("images/ui-bg_fine-grain_25_ffffff_60x60.png") 50% 50% repeat;
+	margin-top:0;
+}
+
+
 .top {
-	margin-top:18px;
+	margin: 0 0 18px 0;
 }
 
 section img{
@@ -51,5 +63,5 @@ section img{
 }
 
 select {
-	width: 260px;
+	width: 258px;
 }

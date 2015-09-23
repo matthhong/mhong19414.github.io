@@ -24,6 +24,8 @@ var video, image, imageContext,
 imageReflection, imageReflectionContext, imageReflectionGradient,
 texture, textureReflection;
 
+var light;
+
 var particleMaterials = [];
 
 var imageWidth = 960, imageHeight = 635;
@@ -40,7 +42,7 @@ var xOffset = 174;
 var yOffset = 0;
 var zOffset = -60;
 
-var particlesY = -509;
+var particlesY = -375;
 
 init();
 render();
@@ -57,10 +59,36 @@ function init() {
 	scene = new THREE.Scene();
 
 	renderer = new THREE.CanvasRenderer();
-	renderer.setClearColor( 0x181818 );
+	renderer.setClearColor( 0x363636 );
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	container.appendChild( renderer.domElement );
+
+	// LIGHTING
+	// light = new THREE.SpotLight(0xffffff,500);
+
+	// light.position.set( 0, 500, 0 );
+
+	// light.castShadow = true;
+
+	// light.shadowMapWidth = 1024;
+	// light.shadowMapHeight = 1024;
+
+	// light.shadowCameraNear = 500;
+	// light.shadowCameraFar = 4000;
+	// light.shadowCameraFov = 30;
+
+	// scene.add(light);
+
+// 	var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+// 				hemiLight.color.setHSL( 0.6, 1, 0.6 );
+// 				hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+// 				hemiLight.position.set( 0, 500, 0 );
+// 				scene.add( hemiLight );
+
+// 	light1 = new THREE.PointLight( 0xff0040, 1, 5000 );
+// light1.position.set( 500, 500, 500 );
+// scene.add(light1)
 
 	// SCREEN
 	var loader = new THREE.ImageLoader();
@@ -91,8 +119,8 @@ function init() {
 	imageReflectionContext.fillRect( 0, 0, imageWidth, imageHeight );
 
 	imageReflectionGradient = imageReflectionContext.createLinearGradient( 0, 0, 0, imageHeight );
-	imageReflectionGradient.addColorStop( 0.2, 'rgba(240, 240, 240, 1)' );
-	imageReflectionGradient.addColorStop( 1, 'rgba(240, 240, 240, 0.8)' );
+	imageReflectionGradient.addColorStop( 0.2, 'rgba(48, 48, 48, 1)' );
+	imageReflectionGradient.addColorStop( 1, 'rgba(48, 48, 48, 0.8)' );
 
 	textureReflection = new THREE.Texture( imageReflection );
 
@@ -108,9 +136,11 @@ function init() {
 	mesh.position.z = zOffset;
 	scene.add(mesh);
 
+	// spotlight.target = mesh.position;
+
 	mesh = new THREE.Mesh( plane, materialReflection );
 	mesh.position.x = xOffset;
-	mesh.position.y = particlesY * 2 - yOffset;
+	mesh.position.y = particlesY*2;
 	mesh.position.z = zOffset;
 	mesh.rotation.x = - Math.PI;
 	// mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
@@ -159,12 +189,50 @@ function init() {
 			particle.position.x = ix * separation - ( ( amountx * separation ) / 2 );
 			particle.position.y = particlesY;
 			particle.position.z = iy * separation - ( ( amounty * separation ) / 2 );
-			particle.scale.x = particle.scale.y = 6;
+			particle.scale.x = particle.scale.y = 8;
 			scene.add( particle );
 
 		}
 
 	}
+
+	// GROUND 
+
+	// var planeGeo = new THREE.PlaneBufferGeometry( 1000, 1000, 4, 4 );
+
+	// var mirrorCamera = new THREE.Camera();
+	// // mirrorCamera.lookAt
+	// scene.add(mirrorCamera);
+	// var mirrorMaterial = new THREE.MeshLambertMaterial( { emissive: 0xffffff, envMap: mirrorCamera.renderTarget } );
+
+	// mesh = new THREE.Mesh( planeGeo, mirrorMaterial );
+
+	// mesh.rotation.x = Math.PI/2;
+
+	// mesh.position.y = -100;
+
+	// scene.add(mesh);
+
+	// var planeGeo = new THREE.PlaneBufferGeometry( 100.1, 100.1 );
+
+	// // MIRROR planes
+	// var groundMirror = new THREE.Mirror( 
+	// 	renderer, 
+	// 	camera, 
+	// 	{ 
+	// 		clipBias: 0.003, 
+	// 		textureWidth: window.innerWidth, 
+	// 		textureHeight: window.innerHeight, 
+	// 		color: 0x777777 
+	// 	});
+
+	// var mirrorMesh = new THREE.Mesh( planeGeo, groundMirror.material );
+	// mirrorMesh.add( groundMirror );
+	// mirrorMesh.rotateX( - Math.PI / 2 );
+	// scene.add( mirrorMesh );
+
+	// groundMirror.render();
+
 
 	// LOGO
 	// var loader = new THREE.ImageLoader();
@@ -218,6 +286,8 @@ function onDocumentMouseMove( e ) {
 function render() {
 	requestAnimationFrame( render );
 
+	// groundMirror.render();
+
 	camera.position.x += ( mouse.x - camera.position.x ) * 0.05;
 	camera.position.y += ( - mouse.y - camera.position.y ) * 0.05;
 	camera.lookAt( scene.position );
@@ -225,6 +295,7 @@ function render() {
 	// if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
 
 		imageContext.drawImage( video, 0, 0, 960, 635 );
+		// console.log(video)
 
 	// 	if ( texture ) texture.needsUpdate = true;
 	// 	if ( textureReflection ) textureReflection.needsUpdate = true;
