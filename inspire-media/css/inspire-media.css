@@ -8,11 +8,15 @@ body {
 	margin-top: 24px;
 }
 
+#instructions {
+	font-style: italic;
+}
+
 label, a, p {
 	display: block;
-	font-family: 'Oswald',Impact,Arial,sans-serif;
+	font-family: 'PT Sans',Impact,Arial,sans-serif;
 	font-size: 1em;
-	color: #555555;
+	color: #ffffff;
 	margin: 12px 0;
 	text-decoration: none;
 
@@ -22,7 +26,7 @@ label, a, p {
 }
 
 a:hover {
-	color: #08AFF8;
+	color: #253B94;
 }
 
 .link {
@@ -30,10 +34,22 @@ a:hover {
 }
 
 section {
-	margin-top:36px;
-	max-width:220px;
+	margin:36px 0px;
+	max-width:258px;
+}
+
+.top {
+	margin-top:18px;
+}
+
+section img{
+	width:100%;
+}
+
+#logo-pause{
+	display: none;
 }
 
 select {
-	width: 222px;
+	width: 260px;
 }

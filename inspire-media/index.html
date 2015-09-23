@@ -10,7 +10,6 @@
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/inspire-media.js"></script>
 	<script src="js/Oswald_Regular.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/inspire-media.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
@@ -22,12 +21,26 @@
 </head>
 <body>
 	<div id="menu">
-		<label for="speed">Artists of the Week</label>
-	    <select name="speed" id="speed">
-	      <option selected="selected">Eric Johnson</option>
-	      <option>Javi Chapa</option>
-	      <option>Matt Hong</option>
-	    </select>
+		<section class="top">
+			<a href="#">
+	    		<img id="logo-play" src="img/logo.png"/>
+	    		<img id="logo-pause" src="img/logo-pause.png"/>
+	    	</a>
+	    </section>
+	    <section>
+		    <p>Visit:</p>
+		    <a href="#" class="link">Events Calendar</a>
+		    <a href="#" class="link">Facebook</a>
+	    </section>
+	    <section>
+			<label for="speed">Artists of the Week</label>
+		    <select name="speed" id="speed">
+		      <option selected="selected">Eric Johnson</option>
+		      <option>Javi Chapa</option>
+		      <option>Matt Hong</option>
+		    </select>
+		    <p id="instructions">Click our logo for Eric's showcase!</p>
+		</section>  
 	    <section>
 	    	<p>
 	    		Eric is a Scandinavian ukelele player who
@@ -43,11 +56,6 @@
 	    		suffered from the 2013 Manpapakulu
 	    		volcano eruption in Iceland.
 	    	</p>
-	    </section>
-	    <section>
-		    <p>Visit:</p>
-		    <a href="#" class="link">Events Calendar</a>
-		    <a href="#" class="link">Facebook</a>
 	    </section>
 	</div>
 	
