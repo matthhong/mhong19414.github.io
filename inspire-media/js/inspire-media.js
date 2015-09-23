@@ -39,10 +39,10 @@ var windowHalfY = window.innerHeight / 2;
 
 // Screen and logo position
 var xOffset = 174;
-var yOffset = 0;
+var yOffset = 12;
 var zOffset = -60;
 
-var particlesY = -375;
+var particlesY = -363;
 
 init();
 render();
@@ -140,7 +140,7 @@ function init() {
 
 	mesh = new THREE.Mesh( plane, materialReflection );
 	mesh.position.x = xOffset;
-	mesh.position.y = particlesY*2;
+	mesh.position.y = particlesY*2 - 12;
 	mesh.position.z = zOffset;
 	mesh.rotation.x = - Math.PI;
 	// mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
@@ -154,7 +154,7 @@ function init() {
 	var PI2 = Math.PI * 2;
 	var material1 = new THREE.SpriteCanvasMaterial( {
 
-		color: 0x07ec0ee,
+		color: 0x0ffffff,
 		program: function ( context ) {
 
 			context.beginPath();
@@ -167,7 +167,7 @@ function init() {
 
 	var material2 = new THREE.SpriteCanvasMaterial( {
 
-		color: 0x0800080,
+		color: 0x0253B94,
 		program: function ( context ) {
 
 			context.beginPath();
