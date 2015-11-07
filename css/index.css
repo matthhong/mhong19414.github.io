@@ -11,6 +11,9 @@ div{
 #content{
 	margin-top:6px;
 }
+#links{
+	margin-top: -6px;
+}
 a{
 	position: relative;
 }
