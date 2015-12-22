@@ -119,14 +119,20 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 		isConnected: false
 	}
 
+	y1Scale = d3.scale.linear()
+		.range([(width-PADY)/2, 0]);
+
+	y2Scale = d3.scale.linear()
+		.range([width, (width+PADY)/2]);
+
 	dualAxes.lineDA1 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return xScale(d.value1); })
+		.y(function(d) { return y1Scale(d.value1); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	dualAxes.lineDA2 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return yScale(d.value2); })
+		.y(function(d) { return y2Scale(d.value2); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	d3.select(lineChartSelector).select('svg').remove();
@@ -161,7 +167,7 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 
 	dualAxes.foreground.append('path')
 		.datum(dualAxes.points)
-		.attr('class', 'line line2');
+		.attr('class', 'line line2')
 
 	if (interactive) {	
 		dualAxes.foreground
@@ -198,7 +204,7 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 	dualAxes.toggleGrid = function() {
 		if (showGrid) {
 			dualAxes.background.selectAll('line.grid')
-				.data(d3.range(DAGRIDSIZE, height, DAGRIDSIZE))
+				.data(d3.range(DAGRIDSIZE, height/2, DAGRIDSIZE))
 				.enter().append('line')
 					.attr('class', 'grid')
 					.attr('x1', PADX)
@@ -366,15 +372,21 @@ function scaleScales() {
 	timeScale.domain([leftChart.points[0].date, leftChart.points[leftChart.points.length-1].date]);
 	if (study) {
 		xScale.domain([0, 10]);
+		y1Scale.domain([0, 10]);
+		y2Scale.domain([0, 10]);
 		yScale.domain([0, 10]);
 	} else if (commonScales) {
 		var e1 = d3.extent(leftChart.points, function(d) { return d.value1; });
 		var e2 = d3.extent(leftChart.points, function(d) { return d.value2; });
 		var extent = [Math.min(e1[0], e2[0]), Math.max(e1[1], e2[1])];
 		xScale.domain(extent);
+		y1Scale.domain(extent);
+		y2Scale.domain(extent);
 		yScale.domain(extent);
 	} else {
 		xScale.domain(d3.extent(leftChart.points, function(d) { return d.value1; }));
+		y1Scale.domain(d3.extent(leftChart.points, function(d) { return d.value1; }));
+		y2Scale.domain(d3.extent(leftChart.points, function(d) { return d.value2; }));
 		yScale.domain(d3.extent(leftChart.points, function(d) { return d.value2; }));
 
 		// xScale.domain([1, 2.4]);
@@ -593,7 +605,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			.call(timeAxis);
 
 		var axis1 = d3.svg.axis()
-			.scale(xScale)
+			.scale(y1Scale)
 			.orient('left');
 
 		dualAxes.background.append('g')
@@ -612,23 +624,39 @@ function redrawDualAxes(dualAxes, recreate) {
 				.text(currentDataSet.label1);
 
 		var axis2 = d3.svg.axis()
-			.scale(yScale)
-			.orient('right');
+			.scale(y2Scale)
+			.orient('left');
 
 		dualAxes.background.append('g')
 			.attr('class', 'axis2')
-			.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
+			.attr('transform', 'translate('+PADX+' '+PADY+')')
 			.call(axis2);
 
 		dualAxes.background.append('g')
 			.attr('class', 'axislabel')
-			.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
+			.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
 			.append('text')
 				.attr('class', 'axis2')
 				.attr('x', 0)
 				.attr('y', 0)
 				.attr('text-anchor', 'end')
-				.text(currentDataSet.label2);
+				.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
+				.text(currentDataSet.label2)
+
+		// dualAxes.background.append('g')
+		// 	.attr('class', 'axis2')
+		// 	.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
+		// 	.call(axis2);
+
+		// dualAxes.background.append('g')
+		// 	.attr('class', 'axislabel')
+		// 	.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
+		// 	.append('text')
+		// 		.attr('class', 'axis2')
+		// 		.attr('x', 0)
+		// 		.attr('y', 0)
+		// 		.attr('text-anchor', 'end')
+		// 		.text(currentDataSet.label2);
 
 		if (showDots) {
 			dualAxes.foreground.selectAll('circle').remove();
@@ -650,7 +678,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.blueCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return xScale(d.value1); });
+				.attr('cy', function(d) { return y1Scale(d.value1); });
 
 			dualAxes.greenCircles = dualAxes.foreground.selectAll('circle.line2')
 				.data(dualAxes.points.slice(0, pointsToDraw));
@@ -669,7 +697,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.greenCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return yScale(d.value2); });
+				.attr('cy', function(d) { return y2Scale(d.value2); });
 		} else {
 			dualAxes.blueCircles.remove();
 			dualAxes.greenCircles.remove();
@@ -686,11 +714,11 @@ function redrawDualAxes(dualAxes, recreate) {
 		dualAxes.blueCircles
 			.data(dualAxes.points.slice(0, pointsToDraw))
 			.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-			.attr('cy', function(d) { return xScale(d.value1); });
+			.attr('cy', function(d) { return y1Scale(d.value1); });
 		dualAxes.greenCircles
 			.data(dualAxes.points.slice(0, pointsToDraw))
 			.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-			.attr('cy', function(d) { return yScale(d.value2); });
+			.attr('cy', function(d) { return y2Scale(d.value2); });
 	}
 }
 
@@ -730,9 +758,9 @@ function mousemoveDALC(dualAxes) {
 	}
 
 	if (draggingBlue) {
-		dualAxes.points[draggedIndex].value1 = xScale.invert(Math.max(0, Math.max(0, m[1])));
+		dualAxes.points[draggedIndex].value1 = y1Scale.invert(Math.max(0, Math.max(0, m[1])));
 	} else {
-		dualAxes.points[draggedIndex].value2 = yScale.invert(Math.max(0, Math.min(height, m[1])));
+		dualAxes.points[draggedIndex].value2 = y2Scale.invert(Math.max(0, Math.min(height, m[1])));
 	}
 
 	if (!disconnected) {
@@ -803,8 +831,8 @@ function toggleCheatMode(checked) {
 }
 
 function flipH() {
-	var min = xScale.domain()[0];
-	var max = xScale.domain()[1];
+	var min = y1Scale.domain()[0];
+	var max = y1Scale.domain()[1];
 	leftChart.points.forEach(function(d) {
 		d.value1 = max-(d.value1-min);
 	});
@@ -825,8 +853,8 @@ function flipV() {
 function exchangeAxes() {
 	leftChart.points.forEach(function(d) {
 		var temp = d.value1;
-		d.value1 = xScale.invert(yScale(d.value2));
-		d.value2 = yScale.invert(xScale(temp));
+		d.value1 = y1Scale.invert(y2Scale(d.value2));
+		d.value2 = y2Scale.invert(y1Scale(temp));
 	});
 	copyLefttoRight();
 }
