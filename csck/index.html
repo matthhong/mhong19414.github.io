@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="row">
@@ -34,6 +35,34 @@
 			</form>
 		</div>
 	</div>
+
+	<div id="myModal" class="modal fade" role="dialog" data-show="false">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Import data</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="data" class="form-control" 
+                    id="inputData" placeholder="Data"/>
+                </div>
+              </div>
+            </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="importData();">Save</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-6">
 			<div id="drawSlider" class="slider"></div>
@@ -69,6 +98,7 @@
 			<label><input type="checkbox" id="cheatMode" onclick="toggleCheatMode(this.checked);" checked disabled /> Cheat</label>
 			<button type="button" onclick="addSamples();">Add samples</button>&nbsp;
 			<button type="button" onclick="exportData();">Export Data</button>&nbsp;
+			<button type="button" data-toggle="modal" data-target="#myModal">Import Data</button>&nbsp;
 		</div>
 	</div>
 

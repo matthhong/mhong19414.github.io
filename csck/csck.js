@@ -870,10 +870,28 @@ function rotateCCW() {
 }
 
 function loadData(index) {
+  if (index === 18 && $("#inputData").val().trim() === "") {
+  	$('#myModal').modal({
+  		show: true
+  	})
+  }
   currentDataSet = datasets[index];
   leftChart.points = rightChart.points = datasets[index].data;
   commonScales = !!datasets[index].commonScales;
   afterUpdatePoints();
+}
+
+function importData() {
+	var newData = $("#inputData").val().trim();
+	var oldData = datasets[18];
+	if(newData !== ""){
+		datasets[18].data = JSON.parse(newData);
+	};
+	if (currentDataSet === oldData) {
+		leftChart.points = rightChart.points = datasets[18].data;
+	  commonScales = !!datasets[18].commonScales;
+	  afterUpdatePoints();
+	};
 }
 
 function copyLefttoRight() {
