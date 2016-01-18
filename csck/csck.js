@@ -365,11 +365,14 @@ function initialSetup(leftChartDALC, rightChartDALC) {
 }
 
 function scaleScales() {
-	leftChart.points.forEach(function (d) {
-		d.date = new Date(d.date);
-	});
+	var d = new Date();
+	for (var i = leftChart.points.length - 1; i >= 0; i--) {
+		leftChart.points[i].date = d;
+		d = new Date(d.getTime()+24*3600*1000);
+	};
 
 	timeScale.domain([leftChart.points[0].date, leftChart.points[leftChart.points.length-1].date]);
+	console.log(timeScale.domain())
 	if (study) {
 		xScale.domain([0, 10]);
 		y1Scale.domain([0, 10]);
@@ -384,11 +387,11 @@ function scaleScales() {
 		y2Scale.domain(extent);
 		yScale.domain(extent);
 	} else {
-		xScale.domain(d3.extent(leftChart.points, function(d) { return d.value1; }));
-		y1Scale.domain(d3.extent(leftChart.points, function(d) { return d.value1; }));
-		y2Scale.domain(d3.extent(leftChart.points, function(d) { return d.value2; }));
-		yScale.domain(d3.extent(leftChart.points, function(d) { return d.value2; }));
-
+		xScale.domain(d3.extent(leftChart.points, function(d) { return +d.value1; }));
+		y1Scale.domain(d3.extent(leftChart.points, function(d) { return +d.value1; }));
+		y2Scale.domain(d3.extent(leftChart.points, function(d) { return +d.value2; }));
+		yScale.domain(d3.extent(leftChart.points, function(d) { return +d.value2; }));
+		console.log(y2Scale.domain())
 		// xScale.domain([1, 2.4]);
 		// yScale.domain([1, 2.4]);
 	}
