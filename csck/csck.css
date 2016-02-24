@@ -7,6 +7,10 @@ rect {
 	pointer-events: all;
 }
 
+.tick text{
+	display: none;
+}
+
 circle,
 line,
 .line {
@@ -100,7 +104,7 @@ line.grid1, line.grid2, line.grid {
 }
 
 text {
-	font-size: 10px;
+	font-size: 12px;
 	fill: rgb(199, 166, 199);
 }
 

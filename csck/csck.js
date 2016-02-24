@@ -10,7 +10,7 @@ var smoothLines = false;
 var disconnected = false;
 var cheatMode = true;
 
-var study = false;
+var study = true;
 
 var clockwise = true;
 
@@ -21,8 +21,8 @@ var randomizeRightChart = false;
 
 var initialDiamond = [{"date":"9/1/1980","value1":5,"value2":5},{"date":"1/1/1981","value1":5,"value2":6.11111111111111},{"date":"5/2/1981","value1":3.8888888888888895,"value2":5},{"date":"9/1/1981","value1":5,"value2":3.888888888888889},{"date":"1/1/1982","value1":6.111111111111112,"value2":5}];
 
-var interactDALC = true;
-var interactConnected = true;
+// var interactDALC = true;
+// var interactConnected = true;
 
 var DAGRIDSIZE = height/9;
 
@@ -374,20 +374,20 @@ function scaleScales() {
 
 	timeScale.domain([leftChart.points[0].date, leftChart.points[leftChart.points.length-1].date]);
 	console.log(timeScale.domain())
-	if (study) {
-		xScale.domain([0, 10]);
-		y1Scale.domain([0, 10]);
-		y2Scale.domain([0, 10]);
-		yScale.domain([0, 10]);
-	} else if (commonScales) {
-		var e1 = d3.extent(leftChart.points, function(d) { return d.value1; });
-		var e2 = d3.extent(leftChart.points, function(d) { return d.value2; });
-		var extent = [Math.min(e1[0], e2[0]), Math.max(e1[1], e2[1])];
-		xScale.domain(extent);
-		y1Scale.domain(extent);
-		y2Scale.domain(extent);
-		yScale.domain(extent);
-	} else {
+	// if (study) {
+	// 	xScale.domain([0, 10]);
+	// 	y1Scale.domain([0, 10]);
+	// 	y2Scale.domain([0, 10]);
+	// 	yScale.domain([0, 10]);
+	// } else if (commonScales) {
+	// 	var e1 = d3.extent(leftChart.points, function(d) { return d.value1; });
+	// 	var e2 = d3.extent(leftChart.points, function(d) { return d.value2; });
+	// 	var extent = [Math.min(e1[0], e2[0]), Math.max(e1[1], e2[1])];
+	// 	xScale.domain(extent);
+	// 	y1Scale.domain(extent);
+	// 	y2Scale.domain(extent);
+	// 	yScale.domain(extent);
+	// } else {
 		xScale.domain(d3.extent(leftChart.points, function(d) { return +d.value1; }));
 		y1Scale.domain(d3.extent(leftChart.points, function(d) { return +d.value1; }));
 		y2Scale.domain(d3.extent(leftChart.points, function(d) { return +d.value2; }));
@@ -395,7 +395,7 @@ function scaleScales() {
 		console.log(y2Scale.domain())
 		// xScale.domain([1, 2.4]);
 		// yScale.domain([1, 2.4]);
-	}
+	// }
 
 	copyLefttoRight();
 }
@@ -601,76 +601,116 @@ function redrawDualAxes(dualAxes, recreate) {
 			.tickFormat(d3.time.format('%Y'))
 			.orient('bottom');
 
-		if (study)
+		var axis1 = d3.svg.axis()
+				.scale(xScale)
+				.orient('left')
+
+		var axis2 = d3.svg.axis()
+				.scale(yScale)
+				.orient('right')
+
+		if (study) {
 			timeAxis.ticks(5);
+			axis1.ticks(3);
+			axis2.ticks(5);
+		}
 
 		dualAxes.background.append('g')
 			.attr('class', 'axis')
 			.attr('transform', 'translate('+PADX+' '+(PADY+height)+')')
 			.call(timeAxis);
 
-		var axis1 = d3.svg.axis()
-			.scale(y1Scale)
-			.orient('left');
-
-		dualAxes.background.append('g')
-			.attr('class', 'axis1')
-			.attr('transform', 'translate('+PADX+' '+PADY+')')
-			.call(axis1);
-
-		dualAxes.background.append('g')
-			.attr('class', 'axislabel')
-			.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
-			.append('text')
+		if (dalc) {
+			dualAxes.background.append('g')
 				.attr('class', 'axis1')
-				.attr('x', 0)
-				.attr('y', 0)
-				.attr('text-anchor', 'end')
-				.text(currentDataSet.label1);
+				.attr('transform', 'translate('+PADX+' '+PADY+')')
+				.call(axis1);
 
-		var axis2 = d3.svg.axis()
-			.scale(y2Scale)
-			.orient('left');
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis1')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.text(study ? 'Price' : currentDataSet.label1);
 
-		dualAxes.background.append('g')
-			.attr('class', 'axis2')
-			.attr('transform', 'translate('+PADX+' '+PADY+')')
-			.call(axis2);
-
-		dualAxes.background.append('g')
-			.attr('class', 'axislabel')
-			.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
-			.append('text')
+			dualAxes.background.append('g')
 				.attr('class', 'axis2')
-				.attr('x', 0)
-				.attr('y', 0)
-				.attr('text-anchor', 'end')
-				.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
-				.text(currentDataSet.label2)
+				.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
+				.call(axis2);
 
-		// dualAxes.background.append('g')
-		// 	.attr('class', 'axis2')
-		// 	.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
-		// 	.call(axis2);
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis2')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.text(study ? 'Demand' : currentDataSet.label2);
+		} else {
 
-		// dualAxes.background.append('g')
-		// 	.attr('class', 'axislabel')
-		// 	.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
-		// 	.append('text')
-		// 		.attr('class', 'axis2')
-		// 		.attr('x', 0)
-		// 		.attr('y', 0)
-		// 		.attr('text-anchor', 'end')
-		// 		.text(currentDataSet.label2);
+			dualAxes.background.append('g')
+				.attr('class', 'axis1')
+				.attr('transform', 'translate('+PADX+' '+PADY+')')
+				.call(axis1);
+
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis1')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.text(currentDataSet.label1);
+
+			dualAxes.background.append('g')
+				.attr('class', 'axis2')
+				.attr('transform', 'translate('+PADX+' '+PADY+')')
+				.call(axis2);
+
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis2')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
+					.text(currentDataSet.label2)
+				}
 
 		if (showDots) {
 			dualAxes.foreground.selectAll('circle').remove();
+			triSize = 3;
+			triHeight = Math.sqrt(3) * triSize;
+			circR = 2*triSize/Math.sqrt(3);
+			triPoints = "0,-"+circR+" "+triSize+","+(triHeight-circR)+" -"+triSize+","+(triHeight-circR);
+			console.log(triPoints)
+			dualAxes.foreground.append('defs')
+				.append('polygon')
+				.attr('id', 'triangle')
+				.attr('points', triPoints)
+				.style('fill', 'blue');
 
-			dualAxes.blueCircles = dualAxes.foreground.selectAll('circle.line1')
+			// dualAxes.foreground.append('use')
+			// 	.attr('xlink:href', '#triangle')
+			// 	.style('stroke-width', 1)
+			// 	.style('fill', 'blue');
+
+			dualAxes.blueCircles = dualAxes.foreground
+				.selectAll("use")
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
-			dualAxes.blueCircles.enter().append('circle')
-				.attr('r', 2)
+			// dualAxes.blueCircles = dualAxes.foreground.selectAll('triangle.line1')
+			// 	.data(dualAxes.points.slice(0, pointsToDraw));
+
+			dualAxes.blueCircles.enter().append('use').attr('xlink:href', '#triangle')
+				// .attr('r', 2)
 				.attr('class', 'line1')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -682,8 +722,8 @@ function redrawDualAxes(dualAxes, recreate) {
 
 			dualAxes.blueCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
+				.attr('x', function(d) { return timeScale(d.date); })
+				.attr('y', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
 
 			dualAxes.greenCircles = dualAxes.foreground.selectAll('circle.line2')
 				.data(dualAxes.points.slice(0, pointsToDraw));
