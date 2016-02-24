@@ -5,7 +5,7 @@ var showArrows = false;
 var showDots = true;
 var showLabels = false;
 var showGrid = false;
-var smoothLines = true;
+var smoothLines = false;
 
 var disconnected = false;
 var cheatMode = true;
@@ -108,6 +108,7 @@ function makeDataSets() {
 }
 
 function makeDALC(lineChartSelector, interactive, dataPoints) {
+	dalc = true;
 
 	var dualAxes = {
 		svg: null,
@@ -127,12 +128,12 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 
 	dualAxes.lineDA1 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return y1Scale(d.value1); })
+		.y(function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	dualAxes.lineDA2 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return y2Scale(d.value2); })
+		.y(function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	d3.select(lineChartSelector).select('svg').remove();
@@ -512,7 +513,8 @@ function redrawConnected(connected, recreate) {
 				.data(connected.points.slice(0, pointsToDraw));
 
 			circle.enter().append('circle')
-				.attr('r', 3)
+				.attr('class', 'cs')
+				.attr('r', 2)
 				.on('mousedown', function(d, i) {
 					if (interactConnected) {
 						selectedIndex = draggedIndex = i;
@@ -668,7 +670,7 @@ function redrawDualAxes(dualAxes, recreate) {
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
 			dualAxes.blueCircles.enter().append('circle')
-				.attr('r', 3)
+				.attr('r', 2)
 				.attr('class', 'line1')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -681,13 +683,13 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.blueCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return y1Scale(d.value1); });
+				.attr('cy', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
 
 			dualAxes.greenCircles = dualAxes.foreground.selectAll('circle.line2')
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
 			dualAxes.greenCircles.enter().append('circle')
-				.attr('r', 3)
+				.attr('r', 2)
 				.attr('class', 'line2')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -700,7 +702,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.greenCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return y2Scale(d.value2); });
+				.attr('cy', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); });
 		} else {
 			dualAxes.blueCircles.remove();
 			dualAxes.greenCircles.remove();
@@ -892,7 +894,7 @@ function importData() {
 	};
 	if (currentDataSet === oldData) {
 		leftChart.points = rightChart.points = datasets[18].data;
-	  commonScales = !!datasets[18].commonScales;
+	  // commonScales = !!datasets[18].commonScales;
 	  afterUpdatePoints();
 	};
 }

@@ -16,8 +16,20 @@ line,
 }
 
 circle {
-	fill: white;
+	/*fill: white;*/
 	cursor: move;
+}
+
+circle.line1 {
+	fill: blue;
+}
+
+circle.line2 {
+	fill: green;
+}
+
+circle.cs {
+	fill: purple;
 }
 
 .axis1 text, .axis2 text, .axis text {
