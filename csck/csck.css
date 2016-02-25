@@ -66,6 +66,10 @@ circle.cs {
 	shape-rendering: crispEdges;
 }
 
+path {
+	stroke-width:1.5px;
+}
+
 
 .axis1 line, .axis1 path, .line1 {
 	stroke: blue;
