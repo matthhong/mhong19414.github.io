@@ -11,6 +11,14 @@ rect {
 	display: none;
 }
 
+use.line1 {
+	fill:blue;
+}
+
+use.line2 {
+	fill:green;
+}
+
 circle,
 line,
 .line {

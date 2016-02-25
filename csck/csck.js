@@ -116,6 +116,8 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 		foreground: null,
 		blueCircles: null,
 		greenCircles: null,
+		blueTriangles: null,
+		greenTriangles: null,
 		points: dataPoints,
 		isConnected: false
 	}
@@ -586,8 +588,13 @@ function redrawConnected(connected, recreate) {
 
 function redrawDualAxes(dualAxes, recreate) {
 	if (recreate) {
-		dualAxes.foreground.select('path.line1').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA1);
-		dualAxes.foreground.select('path.line2').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA2);
+		if (study) {
+			dualAxes.foreground.select('path.line1').datum(dualAxes.points).attr('d', dualAxes.lineDA1);
+			dualAxes.foreground.select('path.line2').datum(dualAxes.points).attr('d', dualAxes.lineDA2);
+		} else {
+			dualAxes.foreground.select('path.line1').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA1);
+			dualAxes.foreground.select('path.line2').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA2);
+		}
 
 		if (cheatMode) {
 			dualAxes.background.select('path.cheat1').datum(otherChart(dualAxes).points).attr('d', dualAxes.lineDA1);
@@ -685,32 +692,16 @@ function redrawDualAxes(dualAxes, recreate) {
 				}
 
 		if (showDots) {
+			// Draw circles
 			dualAxes.foreground.selectAll('circle').remove();
-			triSize = 3;
-			triHeight = Math.sqrt(3) * triSize;
-			circR = 2*triSize/Math.sqrt(3);
-			triPoints = "0,-"+circR+" "+triSize+","+(triHeight-circR)+" -"+triSize+","+(triHeight-circR);
-			console.log(triPoints)
-			dualAxes.foreground.append('defs')
-				.append('polygon')
-				.attr('id', 'triangle')
-				.attr('points', triPoints)
-				.style('fill', 'blue');
+			dualAxes.foreground.selectAll('use').remove();
+			var pointSize = 2;
 
-			// dualAxes.foreground.append('use')
-			// 	.attr('xlink:href', '#triangle')
-			// 	.style('stroke-width', 1)
-			// 	.style('fill', 'blue');
-
-			dualAxes.blueCircles = dualAxes.foreground
-				.selectAll("use")
+			dualAxes.blueCircles = dualAxes.foreground.selectAll('circle.line1')
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
-			// dualAxes.blueCircles = dualAxes.foreground.selectAll('triangle.line1')
-			// 	.data(dualAxes.points.slice(0, pointsToDraw));
-
-			dualAxes.blueCircles.enter().append('use').attr('xlink:href', '#triangle')
-				// .attr('r', 2)
+			dualAxes.blueCircles.enter().append('circle')
+				.attr('r', pointSize)
 				.attr('class', 'line1')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -722,14 +713,14 @@ function redrawDualAxes(dualAxes, recreate) {
 
 			dualAxes.blueCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-				.attr('x', function(d) { return timeScale(d.date); })
-				.attr('y', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
+				.attr('cx', function(d) { return timeScale(d.date); })
+				.attr('cy', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
 
 			dualAxes.greenCircles = dualAxes.foreground.selectAll('circle.line2')
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
 			dualAxes.greenCircles.enter().append('circle')
-				.attr('r', 2)
+				.attr('r', pointSize)
 				.attr('class', 'line2')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -743,6 +734,44 @@ function redrawDualAxes(dualAxes, recreate) {
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
 				.attr('cy', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); });
+
+			// draw triangles
+			if (study) {
+				var triSize = pointSize + 0.5;
+				triHeight = Math.sqrt(3) * triSize;
+				circR = 2*triSize/Math.sqrt(3);
+				triPoints = "0,-"+circR+" "+triSize+","+(triHeight-circR)+" -"+triSize+","+(triHeight-circR);
+
+				dualAxes.foreground.append('defs')
+					.append('polygon')
+					.attr('id', 'triangle')
+					.attr('points', triPoints)
+
+				dualAxes.blueTriangles = dualAxes.foreground
+					.selectAll("use.line1")
+					.data(dualAxes.points.slice(pointsToDraw));
+
+				dualAxes.blueTriangles.enter().append('use').attr('xlink:href', '#triangle')
+					.attr('class', 'line1')
+
+				dualAxes.blueTriangles
+					.classed('selected', function(d, i) { return i === selectedIndex && !study; })
+					.attr('x', function(d) { return timeScale(d.date); })
+					.attr('y', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
+
+				dualAxes.greenTriangles = dualAxes.foreground
+					.selectAll("use.line2")
+					.data(dualAxes.points.slice(pointsToDraw));
+
+				dualAxes.greenTriangles.enter().append('use').attr('xlink:href', '#triangle')
+					.attr('class', 'line2')
+
+				dualAxes.greenTriangles
+					.classed('selected', function(d, i) { return i === selectedIndex && !study; })
+					.attr('x', function(d) { return timeScale(d.date); })
+					.attr('y', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); });
+			}
+
 		} else {
 			dualAxes.blueCircles.remove();
 			dualAxes.greenCircles.remove();
