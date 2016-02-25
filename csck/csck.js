@@ -1,5 +1,7 @@
-var width = 400,
-    height = 400;
+var width = 500,
+    height = 500;
+
+var pointSize = 4;
 
 var showArrows = false;
 var showDots = true;
@@ -414,7 +416,12 @@ function redrawConnected(connected, recreate) {
 		connected.foreground.selectAll('line').remove();
 
 		var path = connected.foreground.select('path');
-		path.datum(connected.points.slice(0, pointsToDraw)).attr('d', connected.lineDA);
+
+		if (!study) {
+			path.datum(connected.points.slice(0, pointsToDraw)).attr('d', connected.lineDA);
+		} else {
+			path.datum(connected.points).attr('d', connected.lineDA);
+		}
 
 		connected.arrows = [];
 
@@ -486,7 +493,7 @@ function redrawConnected(connected, recreate) {
 				.attr('x', 0)
 				.attr('y', 0)
 				.attr('text-anchor', 'end')
-				.text(currentDataSet.label1);
+				.text(study ? 'Price' : currentDataSet.label1);
 
 		var yAxis = d3.svg.axis()
 			.scale(yScale)
@@ -503,11 +510,12 @@ function redrawConnected(connected, recreate) {
 			.append('text')
 				.attr('class', 'axis2')
 				.attr('x', 0)
-				.attr('y', 0)
+				.attr('y', 4)
 				.attr('text-anchor', 'end')
-				.text(currentDataSet.label2);
+				.text(study ? 'Demand' : currentDataSet.label2);
 
 		connected.foreground.selectAll('circle').remove();
+		connected.foreground.selectAll('use').remove();
 
 		if (showDots) {
 
@@ -516,7 +524,7 @@ function redrawConnected(connected, recreate) {
 
 			circle.enter().append('circle')
 				.attr('class', 'cs')
-				.attr('r', 2)
+				.attr('r', pointSize)
 				.on('mousedown', function(d, i) {
 					if (interactConnected) {
 						selectedIndex = draggedIndex = i;
@@ -530,6 +538,30 @@ function redrawConnected(connected, recreate) {
 				.attr('cy', function(d) { return yScale(d.value2); });
 
 			circle.exit().remove();
+
+			if (study) {
+				var triSize = pointSize + 0.5;
+				triHeight = Math.sqrt(3) * triSize;
+				circR = 2*triSize/Math.sqrt(3);
+				triPoints = "0,-"+circR+" "+triSize+","+(triHeight-circR)+" -"+triSize+","+(triHeight-circR);
+
+				connected.foreground.append('defs')
+					.append('polygon')
+					.attr('id', 'triangle')
+					.attr('points', triPoints)
+
+				var triangles = connected.foreground
+					.selectAll("use.cs")
+					.data(connected.points.slice(pointsToDraw));
+
+				triangles.enter().append('use').attr('xlink:href', '#triangle')
+					.attr('class', 'cs')
+
+				triangles
+					.classed('selected', function(d, i) { return i === selectedIndex && !study; })
+					.attr('x', function(d) { return width-xScale(d.value1); })
+					.attr('y', function(d) { return yScale(d.value2); });
+			}
 
 			if (showLabels) {
 				var text = connected.foreground.selectAll('text')
@@ -630,12 +662,12 @@ function redrawDualAxes(dualAxes, recreate) {
 		if (dalc) {
 			dualAxes.background.append('g')
 				.attr('class', 'axis1')
-				.attr('transform', 'translate('+PADX+' '+PADY+')')
-				.call(axis1);
+				.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
+				.call(axis2);
 
 			dualAxes.background.append('g')
 				.attr('class', 'axislabel')
-				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
+				.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
 				.append('text')
 					.attr('class', 'axis1')
 					.attr('x', 0)
@@ -645,18 +677,19 @@ function redrawDualAxes(dualAxes, recreate) {
 
 			dualAxes.background.append('g')
 				.attr('class', 'axis2')
-				.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
-				.call(axis2);
+				.attr('transform', 'translate('+PADX+' '+PADY+')')
+				.call(axis1);
 
 			dualAxes.background.append('g')
 				.attr('class', 'axislabel')
-				.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
+				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
 				.append('text')
 					.attr('class', 'axis2')
 					.attr('x', 0)
-					.attr('y', 0)
+					.attr('y', 4)
 					.attr('text-anchor', 'end')
 					.text(study ? 'Demand' : currentDataSet.label2);
+
 		} else {
 
 			dualAxes.background.append('g')
@@ -672,7 +705,7 @@ function redrawDualAxes(dualAxes, recreate) {
 					.attr('x', 0)
 					.attr('y', 0)
 					.attr('text-anchor', 'end')
-					.text(currentDataSet.label1);
+					.text(study ? 'Price' : currentDataSet.label1);
 
 			dualAxes.background.append('g')
 				.attr('class', 'axis2')
@@ -688,14 +721,13 @@ function redrawDualAxes(dualAxes, recreate) {
 					.attr('y', 0)
 					.attr('text-anchor', 'end')
 					.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
-					.text(currentDataSet.label2)
+					.text(study ? 'Demand' : currentDataSet.label2);
 				}
 
 		if (showDots) {
 			// Draw circles
 			dualAxes.foreground.selectAll('circle').remove();
 			dualAxes.foreground.selectAll('use').remove();
-			var pointSize = 2;
 
 			dualAxes.blueCircles = dualAxes.foreground.selectAll('circle.line1')
 				.data(dualAxes.points.slice(0, pointsToDraw));
