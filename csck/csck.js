@@ -1,6 +1,8 @@
 var width = 400,
     height = 400;
 
+var dalc = true;
+
 var showArrows = false;
 var showDots = true;
 var showLabels = false;
@@ -127,12 +129,12 @@ function makeDALC(lineChartSelector, interactive, dataPoints) {
 
 	dualAxes.lineDA1 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return y1Scale(d.value1); })
+		.y(function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	dualAxes.lineDA2 = d3.svg.line()
 		.x(function(d) { return timeScale(d.date); })
-		.y(function(d) { return y2Scale(d.value2); })
+		.y(function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	d3.select(lineChartSelector).select('svg').remove();
@@ -608,7 +610,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			.call(timeAxis);
 
 		var axis1 = d3.svg.axis()
-			.scale(y1Scale)
+			.scale(dalc ? xScale : y1Scale)
 			.orient('left');
 
 		dualAxes.background.append('g')
@@ -627,39 +629,41 @@ function redrawDualAxes(dualAxes, recreate) {
 				.text(currentDataSet.label1);
 
 		var axis2 = d3.svg.axis()
-			.scale(y2Scale)
+			.scale(dalc ? yScale : y2Scale)
 			.orient('left');
 
-		dualAxes.background.append('g')
-			.attr('class', 'axis2')
-			.attr('transform', 'translate('+PADX+' '+PADY+')')
-			.call(axis2);
-
-		dualAxes.background.append('g')
-			.attr('class', 'axislabel')
-			.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
-			.append('text')
+		if (!dalc) {
+			dualAxes.background.append('g')
 				.attr('class', 'axis2')
-				.attr('x', 0)
-				.attr('y', 0)
-				.attr('text-anchor', 'end')
-				.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
-				.text(currentDataSet.label2)
+				.attr('transform', 'translate('+PADX+' '+PADY+')')
+				.call(axis2);
 
-		// dualAxes.background.append('g')
-		// 	.attr('class', 'axis2')
-		// 	.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
-		// 	.call(axis2);
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis2')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.attr('transform', 'translate(-'+((PADY+height)/2)+' 0)')
+					.text(currentDataSet.label2)
+		} else {
+			dualAxes.background.append('g')
+				.attr('class', 'axis2')
+				.attr('transform', 'translate('+(PADX+width)+' '+PADY+')')
+				.call(axis2);
 
-		// dualAxes.background.append('g')
-		// 	.attr('class', 'axislabel')
-		// 	.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
-		// 	.append('text')
-		// 		.attr('class', 'axis2')
-		// 		.attr('x', 0)
-		// 		.attr('y', 0)
-		// 		.attr('text-anchor', 'end')
-		// 		.text(currentDataSet.label2);
+			dualAxes.background.append('g')
+				.attr('class', 'axislabel')
+				.attr('transform', 'translate('+(PADX+width-5)+' '+PADY+') rotate(-90)')
+				.append('text')
+					.attr('class', 'axis2')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('text-anchor', 'end')
+					.text(currentDataSet.label2);
+		}
 
 		if (showDots) {
 			dualAxes.foreground.selectAll('circle').remove();
@@ -681,7 +685,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.blueCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return y1Scale(d.value1); });
+				.attr('cy', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); });
 
 			dualAxes.greenCircles = dualAxes.foreground.selectAll('circle.line2')
 				.data(dualAxes.points.slice(0, pointsToDraw));
@@ -700,7 +704,7 @@ function redrawDualAxes(dualAxes, recreate) {
 			dualAxes.greenCircles
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return timeScale(d.date); })
-				.attr('cy', function(d) { return y2Scale(d.value2); });
+				.attr('cy', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); });
 		} else {
 			dualAxes.blueCircles.remove();
 			dualAxes.greenCircles.remove();
@@ -717,11 +721,11 @@ function redrawDualAxes(dualAxes, recreate) {
 		dualAxes.blueCircles
 			.data(dualAxes.points.slice(0, pointsToDraw))
 			.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-			.attr('cy', function(d) { return y1Scale(d.value1); });
+			.attr('cy', function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1);});
 		dualAxes.greenCircles
 			.data(dualAxes.points.slice(0, pointsToDraw))
 			.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-			.attr('cy', function(d) { return y2Scale(d.value2); });
+			.attr('cy', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2);});
 	}
 }
 
