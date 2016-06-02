@@ -630,7 +630,7 @@ function redrawDualAxes(dualAxes, recreate) {
 
 		var axis2 = d3.svg.axis()
 			.scale(dalc ? yScale : y2Scale)
-			.orient('left');
+			.orient(dalc ? "right" : "left");
 
 		if (!dalc) {
 			dualAxes.background.append('g')
@@ -764,11 +764,19 @@ function mousemoveDALC(dualAxes) {
 		m[1] = Math.round(m[1]/DAGRIDSIZE)*DAGRIDSIZE;
 	}
 
+if (!dalc) {
 	if (draggingBlue) {
 		dualAxes.points[draggedIndex].value1 = y1Scale.invert(Math.max(0, Math.max(0, m[1])));
 	} else {
 		dualAxes.points[draggedIndex].value2 = y2Scale.invert(Math.max(0, Math.min(height, m[1])));
 	}
+} else {
+	if (draggingBlue) {
+		dualAxes.points[draggedIndex].value1 = xScale.invert(Math.max(0, Math.max(0, m[1])));
+	} else {
+		dualAxes.points[draggedIndex].value2 = yScale.invert(Math.max(0, Math.min(height, m[1])));
+	}
+}
 
 	if (!disconnected) {
 		globalCS.points[draggedIndex].value1 = dualAxes.points[draggedIndex].value1;
