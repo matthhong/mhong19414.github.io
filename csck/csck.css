@@ -1,5 +1,5 @@
 body {
-	font: 13px sans-serif;
+	font: 13px 'Helvetica Neue' sans-serif;
 }
 
 rect {
@@ -11,8 +11,8 @@ circle,
 line,
 .line {
 	fill: none;
-	stroke: purple;
-	stroke-width: 1.5px;
+	stroke: #DA6937;
+	stroke-width: 2px;
 }
 
 circle {
@@ -21,24 +21,26 @@ circle {
 }
 
 .axis1 text, .axis2 text, .axis text {
-	font: 10px sans-serif;
-	fill: gray;
+	font: 10px 'Helvetica Neue' sans-serif;
+	fill: #969696;
 }
 
 .axis1 line, .axis1 path, .axis2 line, .axis2 path, .axis line, .axis path {
 	fill: none;
-	stroke-width: 1px;
-	stroke: gray;
+	stroke-width: 2px;
+	stroke: #969696;
 	shape-rendering: crispEdges;
 }
 
 
 .axis1 line, .axis1 path, .line1 {
-	stroke: blue;
+	stroke: #3F7128;
+	stroke-width: 2px;
 }
 
 .axis2 line, .axis2 path, .line2 {
-	stroke: green;
+	stroke: #6E73BE;
+	stroke-width: 2px;
 }
 
 .axis1 path, .axis2 path, .axis path {
@@ -94,11 +96,11 @@ text {
 
 
 text.axis1 {
-	fill: blue;
+	fill: #3F7128;
 }
 
 text.axis2 {
-	fill: green;
+	fill: #6E73BE;
 }
 
 
