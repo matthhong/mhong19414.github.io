@@ -7,6 +7,10 @@ rect {
 	pointer-events: all;
 }
 
+text {
+	display: none;
+}
+
 circle,
 line,
 .line {
@@ -15,9 +19,16 @@ line,
 	stroke-width: 2px;
 }
 
-circle {
-	fill: white;
-	cursor: move;
+circle.line1 {
+	fill: #3F7128;
+}
+
+circle.line2 {
+	fill: #6E73BE;
+}
+
+circle.cs{
+	fill:#DA6937;
 }
 
 .axis1 text, .axis2 text, .axis text {
@@ -27,7 +38,6 @@ circle {
 
 .axis1 line, .axis1 path, .axis2 line, .axis2 path, .axis line, .axis path {
 	fill: none;
-	stroke-width: 2px;
 	stroke: #969696;
 	shape-rendering: crispEdges;
 }
@@ -43,7 +53,7 @@ circle {
 	stroke-width: 2px;
 }
 
-.axis1 path, .axis2 path, .axis path {
+.axis path {
 	stroke-width: 2px;
 }
 

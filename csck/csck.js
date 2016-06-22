@@ -514,7 +514,7 @@ function redrawConnected(connected, recreate) {
 				.data(connected.points.slice(0, pointsToDraw));
 
 			circle.enter().append('circle')
-				.attr('r', 3)
+				.attr('r', 2)
 				.on('mousedown', function(d, i) {
 					if (interactConnected) {
 						selectedIndex = draggedIndex = i;
@@ -672,7 +672,7 @@ function redrawDualAxes(dualAxes, recreate) {
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
 			dualAxes.blueCircles.enter().append('circle')
-				.attr('r', 3)
+				.attr('r', 2)
 				.attr('class', 'line1')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {
@@ -691,7 +691,7 @@ function redrawDualAxes(dualAxes, recreate) {
 				.data(dualAxes.points.slice(0, pointsToDraw));
 
 			dualAxes.greenCircles.enter().append('circle')
-				.attr('r', 3)
+				.attr('r', 2)
 				.attr('class', 'line2')
 				.on('mousedown', function(d, i) {
 					if (interactDALC) {

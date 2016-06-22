@@ -40,7 +40,7 @@ div {
 }
 #study{
 	display: none;
-	text-align: center;
+	/*text-align: center;*/
 }
 .exp2 {
 	float: left;
@@ -68,14 +68,11 @@ div {
 	width: 800px;
 	margin-left: -160px;
 }
-circle.line1 {
-	fill: blue;
+#leftChart, #rightChart{
+	display:inline-block;
 }
-circle.line2 {
-	fill: green;
-}
-circle.cs {
-	fill: purple;
+#wrapper{
+	width:970px;
 }
 	</style>
 </head>
@@ -193,7 +190,10 @@ circle.cs {
 			<p>You finished! You rock! Thanks for participating!</p>
 		</div>
 	</div>
-	<div id="leftChart"></div>
+	<div id="wrapper">
+		<div id="leftChart"></div>
+		<div id="rightChart"></div>
+	</div>
 	<script type="text/javascript" src="trends-data.js"></script>
 	<script type="text/javascript" src="trends-draw.js"></script>
 	<script type="text/javascript" src="trends.js"></script>
