@@ -1,0 +1,52 @@
+{
+ "chartType": "c",
+ "blockClass": "h",
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "2016-06-26T19:25:27.264Z",
+     "value1": 6.783333333333333,
+     "value2": 2.4208333333333334
+    },
+    {
+     "date": "2016-06-25T19:25:27.264Z",
+     "value1": 4.8028337980878355,
+     "value2": 1.2949466266439895
+    },
+    {
+     "date": "2016-06-24T19:25:27.264Z",
+     "value1": 4.021680741389699,
+     "value2": 2.3808813285534134
+    },
+    {
+     "date": "2016-06-23T19:25:27.264Z",
+     "value1": 2.2,
+     "value2": 4.687500000000001
+    },
+    {
+     "date": "2016-06-22T19:25:27.264Z",
+     "value1": 1.9666666666666668,
+     "value2": 8.004166666666666
+    }
+   ],
+   "label1": "Size of the Army (millions)",
+   "label2": "Military Budget (billions)",
+   "ind": 1,
+   "params": {
+    "slope1": -1,
+    "slope2": 1,
+    "actualSlope1": -0.7811530566981364,
+    "actualSlope2": 1.0859347019094236,
+    "dist": 3
+   },
+   "opacity": 0.5101371523323656,
+   "response": 68,
+   "responseTime": 1752,
+   "correct": true
+  }
+ ],
+ "avgRT": 1752,
+ "avgCorrect": 1
+}

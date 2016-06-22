@@ -1,11 +1,20 @@
 $(function(){
 
+	var config = {
+    apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
+    authDomain: "project-1718224482862335212.firebaseapp.com",
+    databaseURL: "https://project-1718224482862335212.firebaseio.com",
+    storageBucket: "",
+  };
+firebase.initializeApp(config);
+var db = firebase.database();
+
 var debug = window.location.href.indexOf('debug') >= 0;
 
 var delay = (debug ? 0 : 2000);
 var penalty = (debug ? 0 : 5000);
 var timeLimit = (debug ? 1000000 : 10000);
-var numTrials = 5;
+var numTrials = 1;
 
 // Order of chart types to be given
 var chartTypeSeq = d3.shuffle(['c', 'd']);
@@ -145,12 +154,31 @@ var runExperiment = function(){
 		});
 };
 
+// Pressing both shift keys
+var keys = {
+  qkey: false,
+  backslash: false
+};
+
+$(document.body).keyup(function(event) {
+    // reset status of the button 'released' == 'false'
+    if (event.keyCode == 81) {
+        keys["qkey"] = false;
+    } else if (event.keyCode == 220) {
+        keys["backslash"] = false;
+    }
+});
+
 var tutorialNow = 1;
 var tutorialStep = function(event){
-	var k = event.keyCode;
-
-	if (k === 83 || k === 68) {
-		if (tutorialNow < 6) {
+	if (event.keyCode == 81) {
+      keys["qkey"] = true;
+  } else if (event.keyCode == 220) {
+      keys["backslash"] = true;
+      console.log('msg')
+  }
+  if (keys["qkey"] && keys["backslash"]) {
+     if (tutorialNow < 6) {
 			$('#tutorial-' + tutorialNow).hide();
 			$('#tutorial-' + (tutorialNow + 1)).show();
 		} 
@@ -160,7 +188,8 @@ var tutorialStep = function(event){
 			runExperiment();
 		}
 		++tutorialNow;
-	}
+  }
+
 };
 
 //To send results
@@ -176,6 +205,9 @@ var sendJSON = function(_block, callback) {
 
     // send
     delete _block.datasets;
+
+    db.ref(_block.blockClass+'/'+_block.chartType+'/'+ 
+    	_block.avgRT + '-' +  _block.avgCorrect + '_' + _block.subjectID).set(_block);
 
     d3.xhr('submit-trends.php', 'application/x-www-form-urlencoded', callback)
         .header('content-type', 'application/x-www-form-urlencoded')
@@ -327,7 +359,7 @@ var runTrials = function(block){
 	return r;
 };
 
-$(document).keyup(tutorialStep);
+$(document).keydown(tutorialStep);
 $('#tutorial-1').show();
 
 });

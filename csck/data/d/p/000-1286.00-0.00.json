@@ -1,0 +1,52 @@
+{
+ "chartType": "d",
+ "blockClass": "p",
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "2016-06-26T19:25:34.618Z",
+     "value1": 0.85,
+     "value2": 9.137500000000001
+    },
+    {
+     "date": "2016-06-25T19:25:34.618Z",
+     "value1": 4.227970697704071,
+     "value2": 3.538095687530239
+    },
+    {
+     "date": "2016-06-24T19:25:34.618Z",
+     "value1": 2.5326562114844844,
+     "value2": 2.39255528608731
+    },
+    {
+     "date": "2016-06-23T19:25:34.618Z",
+     "value1": 8.566666666666666,
+     "value2": 1.9708333333333332
+    },
+    {
+     "date": "2016-06-22T19:25:34.618Z",
+     "value1": 8.783333333333333,
+     "value2": 3.8875000000000006
+    }
+   ],
+   "label1": "Long-term Unemployment Rate (%)",
+   "label2": "Job Openings Rate (%)",
+   "ind": 1,
+   "params": {
+    "slope1": -2,
+    "slope2": -1,
+    "actualSlope1": -1.695314486219587,
+    "actualSlope2": -1.145540401442929,
+    "dist": 0
+   },
+   "opacity": 1,
+   "response": 68,
+   "responseTime": 1286,
+   "correct": false
+  }
+ ],
+ "avgRT": 1286,
+ "avgCorrect": 0
+}

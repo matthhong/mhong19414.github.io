@@ -374,7 +374,6 @@ function scaleScales() {
 	};
 
 	timeScale.domain([leftChart.points[0].date, leftChart.points[leftChart.points.length-1].date]);
-	console.log(timeScale.domain())
 	if (study) {
 		xScale.domain([0, 10]);
 		y1Scale.domain([0, 10]);

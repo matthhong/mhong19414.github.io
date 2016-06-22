@@ -6,6 +6,7 @@
 {"name":"dow-gold", "display":"Dow vs. Gold", "label1":"Price of Gold", "label2":"Dow-Jones Industrial Index", "study":true},
 {"name":"scorpion", "display":"Unemployment/Scorpion", "label1":"Long-term Unemployment Rate (%)", "label2":"Job Openings Rate (%)", "study":true},
 {"name":"yellen", "display":"Yellen (cropped)", "label1":"Unemployment Rate (%)", "label2":"Inflation Rate (%)", "study":true},
+{"name":"opec", "display":"OPEC", "label1":"", "label2":"", "study":true},
 {"name":"steamship", "display":"Steamship", "label1":"", "label2":"", "study":true},
 {"name":"sofa", "display":"Sofa vs. Couch", "label1":"", "label2":"", "study":true},
 {"name":"sofa2", "display":"Sofa vs. Couch v.2", "label1":"", "label2":"", "study":true},
