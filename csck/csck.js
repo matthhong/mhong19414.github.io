@@ -51,8 +51,12 @@ var timeScale = d3.time.scale(d3.time.month, 3)
 var xScale = d3.scale.linear()
 	.range([width, 0]);
 
+var y1Scale = xScale;
+
 var yScale = d3.scale.linear()
 	.range([height, 0]);
+
+var y2Scale = yScale;
 
 var draggedIndex = -1,
 	draggingBlue = true,

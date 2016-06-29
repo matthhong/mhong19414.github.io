@@ -1,0 +1,52 @@
+{
+ "chartType": "d",
+ "blockClass": "p",
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "2016-07-03T19:52:14.124Z",
+     "value1": 1.4166666666666665,
+     "value2": 8.020833333333334
+    },
+    {
+     "date": "2016-07-02T19:52:14.124Z",
+     "value1": 7.745807594964457,
+     "value2": 6.58300780737127
+    },
+    {
+     "date": "2016-07-01T19:52:14.124Z",
+     "value1": 8.663345816780694,
+     "value2": 8.054503675146782
+    },
+    {
+     "date": "2016-06-30T19:52:14.124Z",
+     "value1": 3.016666666666667,
+     "value2": 4.954166666666667
+    },
+    {
+     "date": "2016-06-29T19:52:14.124Z",
+     "value1": 1.4,
+     "value2": 7.620833333333333
+    }
+   ],
+   "label1": "Production of refined helium worldwide (billion cubic feet)",
+   "label2": "Price per thousand cubic feet of refined helium",
+   "ind": 1,
+   "params": {
+    "slope1": 1,
+    "slope2": 1,
+    "actualSlope1": 0.9175382218162376,
+    "actualSlope2": 1.4714958677755117,
+    "dist": 1
+   },
+   "opacity": 1,
+   "response": 68,
+   "responseTime": 2641,
+   "correct": false
+  }
+ ],
+ "avgRT": 2641,
+ "avgCorrect": 0
+}

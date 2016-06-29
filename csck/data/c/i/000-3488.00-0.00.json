@@ -1,0 +1,52 @@
+{
+ "chartType": "c",
+ "blockClass": "i",
+ "subjectID": "000",
+ "trials": [
+  {
+   "data": [
+    {
+     "date": "2016-07-03T19:56:58.748Z",
+     "value1": 1.5000000000000002,
+     "value2": 3.8333333333333335
+    },
+    {
+     "date": "2016-07-02T19:56:58.748Z",
+     "value1": 2.9000000000000004,
+     "value2": 2.65
+    },
+    {
+     "date": "2016-07-01T19:56:58.748Z",
+     "value1": 7.12036866643635,
+     "value2": 7.6649361046937114
+    },
+    {
+     "date": "2016-06-30T19:56:58.748Z",
+     "value1": 5.006752697205638,
+     "value2": 9.745021079082303
+    },
+    {
+     "date": "2016-06-29T19:56:58.748Z",
+     "value1": 5.2,
+     "value2": 4.166666666666667
+    }
+   ],
+   "label1": "Price of Gold (x100)",
+   "label2": "Dow-Jones Industrial Index (x1000)",
+   "ind": 2,
+   "params": {
+    "slope1": -2,
+    "slope2": 2,
+    "actualSlope1": -2.113615969230712,
+    "actualSlope2": 2.0800849743885923,
+    "dist": 3
+   },
+   "opacity": 0,
+   "response": 83,
+   "responseTime": 3488,
+   "correct": false
+  }
+ ],
+ "avgRT": 3488,
+ "avgCorrect": 0
+}
