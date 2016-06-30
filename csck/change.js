@@ -11,10 +11,8 @@ var db = firebase.database();
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
-var delay = (debug ? 0 : 2000);
-var penalty = (debug ? 0 : 5000);
 var timeLimit = (debug ? 1000000 : 10000);
-var numTrials = 1;
+var numTrials = 5;
 
 // Order of chart types to be given
 var chartTypeSeq = d3.shuffle(['c', 'd']);
@@ -115,7 +113,7 @@ var Trial = function(blockClass, dataset){
 	this.correct = null;
 };
 
-var runBlock = function(chartType, blockNo){
+var runBlock = function(exp,chartType, blockNo){
 	/**
 	* Run blocks
 	* blockSeq contains the order of blocks 
@@ -129,16 +127,16 @@ var runBlock = function(chartType, blockNo){
 		block.trials.push(trial);
 	};
 
-	runTrials(block).then(function(){ r.resolve(); });
+	runTrials(exp, block).then(function(){ r.resolve(); });
 
 	return r;
 };
 
-var runExperiment = function(){
+var runExperiment = function(exp){
 	//Runs the three blocks in the order given by the global var blockSeq
-	runBlock(chartTypeSeq[0], blockSeq[0])
+	runBlock(exp,chartTypeSeq[0], blockSeq[0])
 		.then(function(){
-			reset('A');
+			reset(exp);
 		});
 };
 
@@ -156,7 +154,7 @@ $(document.body).keyup(function(event) {
         keys["backslash"] = false;
     }
     $('#leftChart').empty();
-				$('#rightChart').empty();
+		$('#rightChart').empty();
 });
 
 var step = function(event, callback){
@@ -168,13 +166,12 @@ var step = function(event, callback){
   if (keys["qkey"] && keys["backslash"]) {
   	keys["qkey"] = false;
   	keys["backslash"] = false;
-  	console.log('msg')
   	callback();
   }
 }
 
 var tutorialNow = 1;
-var tutorialStep = function(event){
+var tutorialStep = function(event,exp){
 	step(event, function(){
 		if (tutorialNow < 6) {
 			$('#tutorial-' + tutorialNow).hide();
@@ -183,7 +180,7 @@ var tutorialStep = function(event){
 		else {
 			$('#tutorial-' + tutorialNow).hide();
 			$(document).off();
-			runExperiment();
+			runExperiment(exp);
 		}
 		++tutorialNow;
 	});
@@ -193,9 +190,11 @@ var reset = function(exp){
 	tutorialNow = 1;
 	$('#study').hide();
 	$('#leftChart').empty();
-	$(document).keydown(tutorialStep);
+	$(document).keydown(function(event){
+		tutorialStep(event,exp)
+	});
 	$('#tutorial-1').show();
-	if (exp === 'c') {
+	if (exp === 'd') {
 		$('#done').show();
 	}
 }
@@ -218,45 +217,25 @@ var sendJSON = function(_block, callback) {
     db.ref(_block.blockClass+'/'+_block.chartType+'/'+_block.subjectID).set(_block);
 };
 
-var runTrials = function(block){
+var runTrials = function(exp, block){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
 	var r = $.Deferred();
 
 	var recur = function(block, trialNo){
-		var endTrial = function(event){
-			/**
-			* Callback to move on to the next trial
-			*/
-			var k = event.keyCode;
-
-			step(event, function(){
-				$(document).off();
-				$('.choice').css('color', 'black');
-				$('.result').hide();
-				$('#leftChart').empty();
-				$('#rightChart').empty();
-
-				if (trialNo === 0) {
-					sendJSON(block);
-					r.resolve();
-				} else {
-					recur(block, --trialNo);
-				}
-			});
-		};
-
+		// Recursion
 		var draw = function(){
 			var dateStart = new Date();
 
 			$(document).off();
 
-			$('#same').on('click', function(){
+			$('.choice').on('click', function(){
 				var dateEnd = new Date();
 				trial.responseTime = (dateEnd-dateStart)/1000;
-				trial.response = "same";
+				trial.response = $(this).html();
+
 				$(document).off();
-				$('.choice').css('color', 'black');
+				// $('.choice').css('color', 'black');
 				$('.result').hide();
 				$('#leftChart').empty();
 				$('#rightChart').empty();
@@ -293,9 +272,10 @@ var runTrials = function(block){
 		var trial = block.trials[trialNo];
 
 		// Show question
-		$('#year1').text('198' + trial.ind);
-		$('#year2').text('198' + (trial.ind + 1));
 		$('#study').show();
+		console.log('msg2')
+		console.log(exp)
+		$('#exp-' + exp).show();
 
 		// Draw chart on click
 		$(document).keydown(function(event){
@@ -309,6 +289,6 @@ var runTrials = function(block){
 	return r;
 };
 
-reset();
+reset('a');
 
 });
