@@ -1,5 +1,11 @@
 $(function(){
 
+$(".choice").on('click', function(){
+	$(this)
+		.addClass('active')
+		.siblings().removeClass('active');
+})
+
 	var config = {
     apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
     authDomain: "project-1718224482862335212.firebaseapp.com",
@@ -12,7 +18,7 @@ var db = firebase.database();
 var debug = window.location.href.indexOf('debug') >= 0;
 
 var timeLimit = (debug ? 1000000 : 10000);
-var numTrials = 5;
+var numTrials = 1;
 
 // Order of chart types to be given
 var chartTypeSeq = d3.shuffle(['c', 'd']);
@@ -132,14 +138,6 @@ var runBlock = function(exp,chartType, blockNo){
 	return r;
 };
 
-var runExperiment = function(exp){
-	//Runs the three blocks in the order given by the global var blockSeq
-	runBlock(exp,chartTypeSeq[0], blockSeq[0])
-		.then(function(){
-			reset(exp);
-		});
-};
-
 // Pressing both shift keys
 var keys = {
   qkey: false,
@@ -153,8 +151,7 @@ $(document.body).keyup(function(event) {
     } else if (event.keyCode == 220) {
         keys["backslash"] = false;
     }
-    $('#leftChart').empty();
-		$('#rightChart').empty();
+    erase();
 });
 
 var step = function(event, callback){
@@ -173,30 +170,41 @@ var step = function(event, callback){
 var tutorialNow = 1;
 var tutorialStep = function(event,exp){
 	step(event, function(){
-		if (tutorialNow < 6) {
+		if (tutorialNow < 3) {
 			$('#tutorial-' + tutorialNow).hide();
 			$('#tutorial-' + (tutorialNow + 1)).show();
 		} 
 		else {
 			$('#tutorial-' + tutorialNow).hide();
 			$(document).off();
-			runExperiment(exp);
+
+			runBlock(exp,chartTypeSeq[0], blockSeq[0])
+				.then(function(){
+					reset(exp);
+				});
 		}
 		++tutorialNow;
 	});
 };
 
 var reset = function(exp){
-	tutorialNow = 1;
+	if (exp === 'd') {
+		$('#done').show();
+	}
+	$(document).off();
 	$('#study').hide();
-	$('#leftChart').empty();
+	erase();
+
+	tutorialNow = 1;
 	$(document).keydown(function(event){
 		tutorialStep(event,exp)
 	});
 	$('#tutorial-1').show();
-	if (exp === 'd') {
-		$('#done').show();
-	}
+}
+
+function erase() {
+	$('#leftChart').empty();
+	$('#rightChart').empty();
 }
 
 //To send results
@@ -224,28 +232,31 @@ var runTrials = function(exp, block){
 
 	var recur = function(block, trialNo){
 		// Recursion
-		var draw = function(){
+		var trial = block.trials[trialNo];
+
+		// Show question
+		$('#study').show();
+		$('#exp-' + exp).show();
+
+		// Draw chart upon holding down two keys
+		$(document).keydown(function(event){
+			step(event, draw);
+		});
+
+		function draw(){
 			var dateStart = new Date();
 
 			$(document).off();
 
 			$('.choice').on('click', function(){
-				var dateEnd = new Date();
-				trial.responseTime = (dateEnd-dateStart)/1000;
-				trial.response = $(this).html();
+				if ($('.active').length > 1) {
+					$('.problem').append("<br><p>Press <span>q</span> and <span>\\</span> to continue.</p>");
+					$('.choice').off('click');
 
-				$(document).off();
-				// $('.choice').css('color', 'black');
-				$('.result').hide();
-				$('#leftChart').empty();
-				$('#rightChart').empty();
-
-				if (trialNo === 0) {
-					sendJSON(block);
-					r.resolve();
-				} else {
-					recur(block, --trialNo);
-				}
+					$(document).keydown(function(event){
+						step(event, endTrial);
+					})
+				};
 			})
 			//Draw chart
 			if (block.chartType === 'c') {
@@ -266,21 +277,27 @@ var runTrials = function(exp, block){
 					$(document).keydown(endTrial);
 				}
 			}, timeLimit);
+
+			function endTrial() {
+				var dateEnd = new Date();
+				trial.responseTime = (dateEnd-dateStart)/1000;
+				trial.response = {};
+				$('.active').each(function(i,v){
+					trial.response[i] = $(v).text();
+				});
+
+				$('.result').hide();
+				$('#leftChart').empty();
+				$('#rightChart').empty();
+
+				if (trialNo === 0) {
+					sendJSON(block);
+					r.resolve();
+				} else {
+					recur(block, --trialNo);
+				}
+			}
 		};
-
-		// Take a trial
-		var trial = block.trials[trialNo];
-
-		// Show question
-		$('#study').show();
-		console.log('msg2')
-		console.log(exp)
-		$('#exp-' + exp).show();
-
-		// Draw chart on click
-		$(document).keydown(function(event){
-			step(event, draw);
-		});
 	};
 
 	// Begin recursion

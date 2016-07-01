@@ -12,12 +12,10 @@
 	<script type="text/javascript" src="common.js"></script>
 	<script type="text/javascript" src="csck.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<style type="text/css">
-div {
-	width: 800px;
-}
 @media screen and (max-height: 600px) {
     body {
         padding: 10px;
@@ -33,10 +31,28 @@ div {
         transform-origin: left top;
     }
 }
+body {
+	color: #999;
+}
 #header {
+	font-family: 'Inconsolata', 'Consolas', 'Courier New';
 	margin: 60px 60px;
 	font-size: 16px;
 	height: 100px;
+}
+#header span {
+	color: #333;
+}
+.btn-group {
+	margin-top:-3px;
+	margin-left:5px;
+}
+.btn-group-xs > .btn{
+	padding:0px 5px;
+	font-size: 16px;
+}
+.problem p, #radio {
+	display:inline-block;
 }
 #study{
 	display: none;
@@ -64,7 +80,7 @@ div {
 }
 .tutorial img {
 	position: absolute;
-	top:140px;
+	top:200px;
 	width: 800px;
 }
 #leftChart, #rightChart{
@@ -75,10 +91,6 @@ div {
 #wrapper{
 	width:1100px;
 }
-.choice {
-	text-decoration: underline;
-	color:black;
-}
 .problem {
 	display: none;
 }
@@ -88,58 +100,61 @@ div {
 	<div id="header">
 		<div class="tutorial" id="tutorial-1">
 			<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
-			<p>Press <b>q</b> and <b>\</b> to continue.</p>
+			<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			<img src="img/cs-tutorial1.png">
 		</div>
 		<div class="tutorial" id="tutorial-2">
 			<p>Example:</p>
-			<p>[First chart] The lines form a shape tilted right. So blue and green are positively related.</p>
-			<p>[Second chart] The lines form a shape tilted left. So blue and green are negatively related</p>
-			<p>Press <b>q</b> and <b>\</b> to continue.</p>
+			<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
+			<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
+			<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			<img src="img/cs-tutorial2.png">
 		</div>
 		<div class="tutorial" id="tutorial-3">
-			<p>You will be given 15 pairs of such charts.</p>
-			<p>For each chart, the task will be to complete the statement:</p>
-			<p>"Blue and green are 
-					<a class="choice">positively</a>/<a class="choice">negatively</a> related."</p>
-			<p>as <b>fast</b> and <b>accurately</b> as possible by choosing an option with the cursor.</p>
-			<p>Press <b>q</b> and <b>\</b> to continue.</p>
-		</div>
-		<div class="tutorial" id="tutorial-4">
-			<p>The two values are on the left drawn with two points, and on the right drawn with a single point.</p>
-			<img src="img/cs-tutorial4.png">
-		</div>
-		<div class="tutorial" id="tutorial-5">
-			<p>On the left, time flows left to right. On the right, there are arrowheads on the lines to indicate such direction.</p>
-			<p>Press <b>q</b> and <b>\</b> to continue.</p>
-			<img src="img/cs-tutorial5.png">
-		</div>
-		<div class="tutorial" id="tutorial-6">
-			<p>The tutorial has ended. Now, once you press <b>s</b> or <b>d</b>, you will be given <b>5</b> practice trials.</p>
-			<p>When a trial begins, a question is first shown.</p>
-			<p>Then after a few seconds, a chart will be revealed and you will be able to answer the question.</p>
-			<p>Pick the correct answer by pressing <b>s</b> or <b>d</b>.</p>
-			<p>You are being timed, and time is as important as correctness.</p>
-			<p>Be as <b>quick</b> and <b>accurate</b> as you can.</p>
+			<p>You will be given <span>15 pairs</span> of such charts.</p>
+			<p>For each chart, the task will be to <span>complete the statement</span>:</p>
+			<blockquote>Blue and green are [positively/negatively] related.</blockquote>
+			<p>as <span>fast</span> and <span>accurately</span> as possible by choosing an option with the cursor.</p>
+			<br>
+			<p>Three practice trials will now follow.</p>
+			<p>Press <span>q</span> and <span>\</span> to continue.</p>
 		</div>
 		<div id="study">
 			<div class="problem" id="exp-a">
 				<p>[1st chart] Blue and green are 
-					<a class="choice">positively</a>/<a class="choice">negatively</a> related.</p>
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a1">
+					  <button type="button" class="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">negatively</button>
+					</div>
+					related.
+				</p><br>
 				<p>[2nd chart] Blue and green are 
-					<a class="choice">positively</a>/<a class="choice">negatively</a> related.</p>
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a2">
+					  <button type="button" class="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">negatively</button>
+					</div>
+					related.
+				</p>
 			</div>
 			<div class="problem" id="exp-b">
-				<p>Blue and green are <a class="constant">positively<a> related.</p>
-				<p>[1st chart] Green moves at a
-					<a class="choice">faster</a>/<a class="choice">slower</a> rate than blue.</p>
-				<p>[2nd chart] Green moves at a
-					<a class="choice">faster</a>/<a class="choice">slower</a> rate than blue.</p>
+				<p>[1st chart] Blue and green are 
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">negatively</button>
+					</div>
+					related.
+				</p><br>
+				<p>[2nd chart] Blue and green are 
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b2">
+					  <button type="button" class="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">negatively</button>
+					</div>
+					related.
+				</p>
 			</div>
 			<p id='wrong' class='result'>Your answer was incorrect. Timed out for 5 seconds...</p>
 			<p id='timed-out' class='result'>That took more than <a id="time-limit"></a> seconds. Please answer more quickly.</p>
-			<p id='continue' class='result'>Press <b>q</b> and <b>\</b> to continue.</p>
+			<p id='continue' class='result'>Press <span>q</span> and <span>\</span> to continue.</p>
 		</div>
 		<div id="done">
 			<p>You finished! You rock! Thanks for participating!</p>
