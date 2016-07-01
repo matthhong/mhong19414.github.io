@@ -1,11 +1,5 @@
 $(function(){
 
-$(".choice").on('click', function(){
-	$(this)
-		.addClass('active')
-		.siblings().removeClass('active');
-})
-
 	var config = {
     apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
     authDomain: "project-1718224482862335212.firebaseapp.com",
@@ -249,8 +243,11 @@ var runTrials = function(exp, block){
 			$(document).off();
 
 			$('.choice').on('click', function(){
+				$(this).addClass('active')
+					.siblings().removeClass('active');
+
 				if ($('.active').length > 1) {
-					$('.problem').append("<br><p>Press <span>q</span> and <span>\\</span> to continue.</p>");
+					$('#continue').show();
 					$('.choice').off('click');
 
 					$(document).keydown(function(event){
@@ -289,6 +286,8 @@ var runTrials = function(exp, block){
 				$('.result').hide();
 				$('#leftChart').empty();
 				$('#rightChart').empty();
+				$('.choice').removeClass('active');
+				$('#continue').hide();
 
 				if (trialNo === 0) {
 					sendJSON(block);
