@@ -15,6 +15,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 	<script src="//code.jquery.com/jquery-1.11.0.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="Staircase.js"></script>
 	<style type="text/css">
 @media screen and (max-height: 600px) {
     body {
@@ -36,7 +37,7 @@ body {
 }
 #header {
 	font-family: 'Inconsolata', 'Consolas', 'Courier New';
-	margin: 60px 60px;
+	margin: 60px 60px 0 60px;
 	font-size: 16px;
 	height: 100px;
 }
@@ -85,13 +86,19 @@ body {
 }
 #leftChart, #rightChart{
 	display:inline-block;
-	margin:0;
-	width: 400px;
+	margin-left: 80px;
+	width: 300px;
 }
 #wrapper{
-	width:1100px;
+	width:840px;
 }
 .problem {
+	display: none;
+}
+#next {
+	left: 400px;
+	top: 250px;
+	position: fixed;
 	display: none;
 }
 	</style>
@@ -162,6 +169,9 @@ body {
 	<div id="wrapper">
 		<div id="leftChart"></div>
 		<div id="rightChart"></div>
+	</div>
+	<div id="next">
+		<img src="img/next.png">
 	</div>
 	<script type="text/javascript" src="trends-data.js"></script>
 	<script type="text/javascript" src="change-draw.js"></script>

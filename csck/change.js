@@ -1,11 +1,11 @@
 $(function(){
 
-	var config = {
-    apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
-    authDomain: "project-1718224482862335212.firebaseapp.com",
-    databaseURL: "https://project-1718224482862335212.firebaseio.com",
-    storageBucket: "",
-  };
+var config = {
+  apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
+  authDomain: "project-1718224482862335212.firebaseapp.com",
+  databaseURL: "https://project-1718224482862335212.firebaseio.com",
+  storageBucket: "",
+};
 firebase.initializeApp(config);
 var db = firebase.database();
 
@@ -15,6 +15,8 @@ var timeLimit = (debug ? 1000000 : 10000);
 var numTrials = 1;
 
 // Order of chart types to be given
+// Order of blocks to be given
+var blockSeq = d3.shuffle(['p', 'h', 'i']);
 var chartTypeSeq = d3.shuffle(['c', 'd']);
 
 switch (qs['type']) {
@@ -26,20 +28,17 @@ switch (qs['type']) {
 		break;
 }
 
-// Order of blocks to be given
-var blockSeq = d3.shuffle(['p', 'h', 'i']);
-
-switch (qs['block']) {
-	case 'pure':
-		blockSeq = ['p','p','p'];
-		break;
-	case 'highlighted':
-		blockSeq = ['h','h','h'];
-		break;
-	case 'isolated':
-		blockSeq = ['i','i','i'];
-		break;
-}
+var stair = new Staircase({
+	deltaT: {
+		firstVal: 4000,
+		limits: [0, 30000],
+		direction: '-1',
+		operation: 'multiply',
+		factor: 4/3,
+		down: 1
+	}
+});
+stair.init();
 
 ARROW_FRACTION = 0.5;
 GENERATEDATASETS = false;
@@ -132,6 +131,15 @@ var runBlock = function(exp,chartType, blockNo){
 	return r;
 };
 
+/////INTERACTION
+
+$('#next').hover(function(){
+	$('html').css('cursor','none');
+	$(this).fadeOut(500);
+}, function() {
+	// $(this).css('cursor','default')
+})
+
 // Pressing both shift keys
 var keys = {
   qkey: false,
@@ -145,7 +153,7 @@ $(document.body).keyup(function(event) {
     } else if (event.keyCode == 220) {
         keys["backslash"] = false;
     }
-    erase();
+    // erase();
 });
 
 var step = function(event, callback){
@@ -233,59 +241,65 @@ var runTrials = function(exp, block){
 		$('#exp-' + exp).show();
 
 		// Draw chart upon holding down two keys
+		$('#next').show()
+			.hover(function(){
+				$('html').css('cursor','none');
+				$(this).fadeOut(500, function(){
+					draw();
+				});
+			}, function() {
+				// $(this).css('cursor','default')
+			});
+
 		$(document).keydown(function(event){
 			step(event, draw);
 		});
 
 		function draw(){
+			console.log(stair.getLast('deltaT'))
+			setTimeout(enableChoice, stair.getLast('deltaT'))
 			var dateStart = new Date();
 
 			$(document).off();
 
-			$('.choice').on('click', function(){
-				$(this).addClass('active')
-					.siblings().removeClass('active');
-
-				if ($('.active').length > 1) {
-					$('#continue').show();
-					$('.choice').off('click');
-
-					$(document).keydown(function(event){
-						step(event, endTrial);
-					})
-				};
-			})
 			//Draw chart
 			if (block.chartType === 'c') {
 				drawCS(trial);
 			} else {
 				drawDALC(trial);
 			}
-					
-			setTimeout(function(){
-			//If time limit reached
-				if (!trial.response) {
-					//And if no response yet
-					$('#time-limit').text(timeLimit/1000);
-					$('#timed-out').show();
-					$('#continue').css('color', 'red').show();
 
-					$(document).off();
-					$(document).keydown(endTrial);
-				}
-			}, timeLimit);
+			// Choice buttons
+			function enableChoice() {
+				erase();
+				$('.choice').on('click', function(){
+					// Just so only two can be active
+					$(this).addClass('active')
+						.siblings().removeClass('active');
+
+					if ($('.active').length > 1) {
+						// When both choices made
+						$('#continue').show();
+						$('.choice').off('click');
+
+						$(document).keydown(function(event){
+							step(event, endTrial);
+						})
+					};
+				});
+			}
 
 			function endTrial() {
 				var dateEnd = new Date();
-				trial.responseTime = (dateEnd-dateStart)/1000;
+				trial.responseTime = stair.getLast('deltaT');
 				trial.response = {};
 				$('.active').each(function(i,v){
 					trial.response[i] = $(v).text();
 				});
 
 				$('.result').hide();
-				$('#leftChart').empty();
-				$('#rightChart').empty();
+				// $('#leftChart').empty();
+				// $('#rightChart').empty();
 				$('.choice').removeClass('active');
 				$('#continue').hide();
 
