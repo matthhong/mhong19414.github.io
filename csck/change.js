@@ -112,24 +112,6 @@ var Trial = function(blockClass, dataset){
 	this.correct = null;
 };
 
-var runBlock = function(exp,chartType, blockNo){
-	/**
-	* Run blocks
-	* blockSeq contains the order of blocks 
-	*/
-	var r = $.Deferred();
-
-	var block = new Block(chartType, blockNo, '000');
-
-	for (var j = 0; j<numTrials; j++) {
-		var trial = new Trial(block.blockClass, block.datasets[j]);
-		block.trials.push(trial);
-	};
-
-	runTrials(exp, block).then(function(){ r.resolve(); });
-
-	return r;
-};
 
 /////INTERACTION
 
@@ -169,6 +151,29 @@ var step = function(event, callback){
   }
 }
 
+function reset (exp){
+	if (exp === 'd') {
+		$('#done').show();
+	} else {
+		$(document).off();
+		$('#study').hide();
+		erase();
+
+		tutorialNow = 1;
+		$(document).keydown(function(event){
+			tutorialStep(event,exp)
+		});
+		$('#tutorial-1').show();
+	}
+}
+
+function erase() {
+	$('#leftChart').empty();
+	$('#rightChart').empty();
+}
+
+//////EXPERIMENT
+// Tutorial
 var tutorialNow = 1;
 var tutorialStep = function(event,exp){
 	step(event, function(){
@@ -180,37 +185,14 @@ var tutorialStep = function(event,exp){
 			$('#tutorial-' + tutorialNow).hide();
 			$(document).off();
 
-			runBlock(exp,chartTypeSeq[0], blockSeq[0])
-				.then(function(){
-					reset(exp);
-				});
+			runTrials(exp);
 		}
 		++tutorialNow;
 	});
 };
 
-var reset = function(exp){
-	if (exp === 'd') {
-		$('#done').show();
-	}
-	$(document).off();
-	$('#study').hide();
-	erase();
-
-	tutorialNow = 1;
-	$(document).keydown(function(event){
-		tutorialStep(event,exp)
-	});
-	$('#tutorial-1').show();
-}
-
-function erase() {
-	$('#leftChart').empty();
-	$('#rightChart').empty();
-}
-
 //To send results
-var sendJSON = function(_block, callback) {
+function sendJSON(_block, callback) {
     // // make sure version is set
     // _block.version = perfExperiment.version;
     // // show size of block data
@@ -227,10 +209,15 @@ var sendJSON = function(_block, callback) {
     db.ref(_block.blockClass+'/'+_block.chartType+'/'+_block.subjectID).set(_block);
 };
 
-var runTrials = function(exp, block){
+function runTrials(exp){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
-	var r = $.Deferred();
+	var block = new Block(chartTypeSeq[0], blockSeq[0], '000');
+
+	for (var j = 0; j<numTrials; j++) {
+		var trial = new Trial(block.blockClass, block.datasets[j]);
+		block.trials.push(trial);
+	};
 
 	var recur = function(block, trialNo){
 		// Recursion
@@ -239,6 +226,9 @@ var runTrials = function(exp, block){
 		// Show question
 		$('#study').show();
 		$('#exp-' + exp).show();
+
+		// Disable buttons
+		$('button').prop('disabled', true);
 
 		// Draw chart upon holding down two keys
 		$('#next').show()
@@ -251,12 +241,8 @@ var runTrials = function(exp, block){
 				// $(this).css('cursor','default')
 			});
 
-		$(document).keydown(function(event){
-			step(event, draw);
-		});
-
 		function draw(){
-			console.log(stair.getLast('deltaT'))
+
 			setTimeout(enableChoice, stair.getLast('deltaT'))
 			var dateStart = new Date();
 
@@ -271,9 +257,15 @@ var runTrials = function(exp, block){
 
 			// Choice buttons
 			function enableChoice() {
+
 				erase();
+
+				$('html').css('cursor','auto');
+				$('button').prop('disabled', false);
+
 				$('.choice').on('click', function(){
-					// Just so only two can be active
+
+					// So one in each can be active
 					$(this).addClass('active')
 						.siblings().removeClass('active');
 
@@ -290,22 +282,21 @@ var runTrials = function(exp, block){
 			}
 
 			function endTrial() {
+
 				var dateEnd = new Date();
 				trial.responseTime = stair.getLast('deltaT');
 				trial.response = {};
 				$('.active').each(function(i,v){
+					console.log($(v).text())
 					trial.response[i] = $(v).text();
 				});
 
 				$('.result').hide();
-				// $('#leftChart').empty();
-				// $('#rightChart').empty();
 				$('.choice').removeClass('active');
-				$('#continue').hide();
 
 				if (trialNo === 0) {
 					sendJSON(block);
-					r.resolve();
+					reset(exp);
 				} else {
 					recur(block, --trialNo);
 				}
@@ -315,8 +306,6 @@ var runTrials = function(exp, block){
 
 	// Begin recursion
 	recur(block, block.trials.length - 1);
-
-	return r;
 };
 
 reset('a');
