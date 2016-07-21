@@ -1,27 +1,27 @@
 var drawCS = function(trial){
 	//Draw normally
-	currentDataSet = trial.data;
-	globalCS = leftChart = makeConnected('#leftChart', true, trial.data);
-	globalDALC = rightChart = makeConnected('#rightChart', true, trial.data);
-	afterUpdatePoints();
+	currentDataSet = trial.left.data;
+	leftChart = makeConnected('#leftChart', true, trial.left.data);
+	rightChart = makeConnected('#rightChart', true, trial.right.data);
+	// afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
-	xScale.domain([0, 10]);
-	yScale.domain([0, 10]);
+	xScale.domain([0, 1]);
+	yScale.domain([0, 1]);
 
 	redraw(true);
 }
 
 var drawDALC = function(trial) {
 	//Draw normally
-	currentDataSet = trial.data;
-	globalDALC = leftChart = makeDALC('#leftChart', true, trial.data);
-	globalCS = rightChart = makeDALC('#rightChart', true, trial.data);
+	currentDataSet = trial.left.data;
+	globalDALC = leftChart = makeDALC('#leftChart', true, trial.left.data);
+	globalCS = rightChart = makeDALC('#rightChart', true, trial.right.data);
 	afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
-	xScale.domain([0, 10]);
-	yScale.domain([0, 10]);
+	xScale.domain([0, 1]);
+	yScale.domain([0, 1]);
 
 	redraw(true);
 };

@@ -4,7 +4,7 @@ var width = 300,
 var dalc = true;
 
 var showArrows = false;
-var showDots = true;
+var showDots = false;
 var showLabels = false;
 var showGrid = false;
 var smoothLines = true;
@@ -709,8 +709,8 @@ function redrawDualAxes(dualAxes, recreate) {
 				.attr('cx', function(d) { return timeScale(d.date); })
 				.attr('cy', function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); });
 		} else {
-			dualAxes.blueCircles.remove();
-			dualAxes.greenCircles.remove();
+			dualAxes.foreground.selectAll('circle').remove();
+			dualAxes.foreground.selectAll('text').remove();
 		}
 	} else {
 		dualAxes.foreground.select('path.line1').attr('d', dualAxes.lineDA1);

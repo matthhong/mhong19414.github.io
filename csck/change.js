@@ -14,23 +14,14 @@ var debug = window.location.href.indexOf('debug') >= 0;
 var timeLimit = (debug ? 1000000 : 10000);
 var numTrials = 1;
 
-// Order of chart types to be given
-// Order of blocks to be given
-var blockSeq = d3.shuffle(['p', 'h', 'i']);
-var chartTypeSeq = d3.shuffle(['c', 'd']);
-
-switch (qs['type']) {
-	case 'dalc':
-		chartTypeSeq = ['d','d'];
-		break;
-	case 'cs':
-		chartTypeSeq = ['c','c'];
-		break;
-}
+// Set Hurst randomly
+// var hurst = math.ceil(Math.random() * 4) * 2;
+var hurst = 2;
+var chartType = d3.shuffle(['cs', 'cs']).pop();
 
 var stair = new Staircase({
 	deltaT: {
-		firstVal: 4000,
+		firstVal: 100,
 		limits: [0, 30000],
 		direction: '-1',
 		operation: 'multiply',
@@ -39,6 +30,10 @@ var stair = new Staircase({
 	}
 });
 stair.init();
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 ARROW_FRACTION = 0.5;
 GENERATEDATASETS = false;
@@ -52,64 +47,91 @@ disconnected = true;
 commonScales = true;
 cheatMode = false;
 
-var trendsDatasets = [];
-
-loadDataSets(true, function(){
-	dataAngles = makeTrendsDataAngles();
-	dataSlopes = makeTrendsDataSlopes();
-
-	trendsDatasets = dataAngles.concat(dataSlopes);
-
-	if (qs['greenslope'] || qs['blueslope'] || qs['distance']) {
-		trendsDatasets = dataSlopes;
-	} else if (qs['angle'] || qs['length']) {
-		trendsDatasets = dataAngles;
-	}
-	// switch (qs['data']) {
-	// 	case 'angles':
-	// 		trendsDatasets = dataAngles;
-	// 		break;
-	// 	case 'slopes':
-	// 		trendsDatasets = dataSlopes;
-	// 		break;
-	// }
-	// trendsDatasets = makeHyperbolaDatasets();
-}, 'translate'); //Borrowing some factors from the translate study
-
-// Block 1: Chart
-// Block 2: Chart with highlighting
-// Block 3: Chart with filtering
-// Block 4: Single segment
-var Block = function(chartType,blockClass, subjectID){
+var block;
+var Block = function(chartType, hurst, exp, signOfCorr){
 	this.chartType = chartType;
-	this.blockClass = blockClass;
-	this.subjectID = subjectID;
+	this.hurst = hurst;
+	this.exp = exp;
+	this.signOfCorr = signOfCorr;
+	this.subjectID = getRandomInt(1000000, 9999999);
 	this.trials = [];
-	this.datasets = d3.shuffle(trendsDatasets);
 };
 
-var Trial = function(blockClass, dataset){
-	// Attach data
-	this.data = dataset.data;
-	this.label1 = dataset.label1;
-	this.label2 = dataset.label2;
-	this.ind = dataset.ind;
-	this.params = dataset.params;
+function getData(hurstCoeff, exp, signOfCorr) {
+	var dir = 
+		exp == 'a' 
+		? 'datasets/change/H' + hurstCoeff + '-' + exp + '.json' 
+		: 'datasets/change/H' + hurstCoeff + '-' + exp + signOfCorr + '.json'; 
 
-	// Opacity of the features not in question
-	if (blockClass === 'p') {
-		this.opacity = 1;
-	} else if (blockClass === 'h') {
-		//Opacity varies between 0.2 and 0.7
-		this.opacity = (Math.random() * 5 + 2) / 10;
-	} else if (blockClass === 'i') {
-		this.opacity = 0;
+	d3.json(dir, function(d){
+		datasets = [];
+
+		for (var i = 0; i < d.length; i++) {
+			var date;
+			var dataset = {};
+			var data = [];
+			var temp = d[i];
+
+			for (var j = 0; j < 100; j++) {
+				date = new Date(2016,j,1);
+				data.push({
+					date: date,
+					value1: temp.values1[j],
+					value2: temp.values2[j],
+				});
+			}
+			dataset.data = data;
+
+			for (var k in temp) {
+				if ((k !== 'values1' || k !== 'values2') && temp.hasOwnProperty(k)) {
+					dataset[k] = temp[k];
+				}
+			};
+			datasets.push(dataset);
+			// dataset is 1 chart 
+			// need 2 charts per trial 
+			// take 2 at once
+		};
+
+		block = new Block(chartType, hurst, exp, signOfCorr);
+		block.datasets = d3.shuffle(datasets);
+	});
+}
+
+var Trial = function(exp, dataset1, dataset2){
+	// Attach data
+	this.exp = exp;
+	this.left = {};
+	this.right = {};
+	for (var i in dataset1) {
+		if (dataset1.hasOwnProperty(i)){
+			this.left[i] = dataset1[i];
+		}
+	}
+	for (var i in dataset2) {
+		if (dataset2.hasOwnProperty(i)){
+			this.right[i] = dataset2[i];
+		}
 	}
 
+	this.setResponse = function(chart, response) {
+		if (exp === "a") {
+			answerKey = {
+				"positively": 1,
+				"negatively": -1
+			}
+
+			if (this[chart]["Sign of correlation"] === answerKey[response]) {
+				this[chart].correct = true;
+			} else { this[chart].correct = false; }
+		}
+	};
 	// Results
-	this.response = null;
 	this.responseTime = 0;
-	this.correct = null;
+	this.left.response = null;
+	this.right.response = null;
+	this.left.correct = null;
+	this.right.correct = null;
 };
 
 
@@ -152,7 +174,8 @@ var step = function(event, callback){
 }
 
 function reset (exp){
-	if (exp === 'd') {
+	getData(hurst,exp);
+	if (exp === 'dalc') {
 		$('#done').show();
 	} else {
 		$(document).off();
@@ -160,7 +183,7 @@ function reset (exp){
 		erase();
 
 		tutorialNow = 1;
-		$(document).keydown(function(event){
+		$(document).on('keydown', function(event){
 			tutorialStep(event,exp)
 		});
 		$('#tutorial-1').show();
@@ -170,6 +193,8 @@ function reset (exp){
 function erase() {
 	$('#leftChart').empty();
 	$('#rightChart').empty();
+	$('#leftChart').hide();
+	$('#rightChart').hide();
 }
 
 //////EXPERIMENT
@@ -212,10 +237,9 @@ function sendJSON(_block, callback) {
 function runTrials(exp){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
-	var block = new Block(chartTypeSeq[0], blockSeq[0], '000');
-
-	for (var j = 0; j<numTrials; j++) {
-		var trial = new Trial(block.blockClass, block.datasets[j]);
+	for (var j = 0; j<block.datasets.length; j+=2) {
+		var trial = new Trial(exp, block.datasets[j], block.datasets[j+1]);
+		// should take 2 at once, unless C: already comes at once
 		block.trials.push(trial);
 	};
 
@@ -227,37 +251,44 @@ function runTrials(exp){
 		$('#study').show();
 		$('#exp-' + exp).show();
 
+		//Hidden but draw chart
+		if (block.chartType === 'cs') {
+			drawCS(trial);
+		} else {
+			drawDALC(trial);
+		}
+
 		// Disable buttons
 		$('button').prop('disabled', true);
 
 		// Draw chart upon holding down two keys
 		$('#next').show()
-			.hover(function(){
+			.on('mouseenter', function(){
 				$('html').css('cursor','none');
 				$(this).fadeOut(500, function(){
 					draw();
+					$('#next').off('mouseenter');
 				});
-			}, function() {
-				// $(this).css('cursor','default')
 			});
 
 		function draw(){
+			console.log(stair.getLast('deltaT'))
 
-			setTimeout(enableChoice, stair.getLast('deltaT'))
+			var start = new Date().getTime();
+			$('#leftChart').show();
+			$('#rightChart').show();
+			setTimeout(enableChoice, stair.getLast('deltaT'));
+
 			var dateStart = new Date();
 
 			$(document).off();
 
-			//Draw chart
-			if (block.chartType === 'c') {
-				drawCS(trial);
-			} else {
-				drawDALC(trial);
-			}
-
 			// Choice buttons
 			function enableChoice() {
 
+				var end = new Date().getTime();
+				var time = end - start;
+				console.log('Execution time: ' + time);
 				erase();
 
 				$('html').css('cursor','auto');
@@ -272,9 +303,8 @@ function runTrials(exp){
 					if ($('.active').length > 1) {
 						// When both choices made
 						$('#continue').show();
-						$('.choice').off('click');
 
-						$(document).keydown(function(event){
+						$(document).on('keydown', function(event){
 							step(event, endTrial);
 						})
 					};
@@ -285,19 +315,21 @@ function runTrials(exp){
 
 				var dateEnd = new Date();
 				trial.responseTime = stair.getLast('deltaT');
-				trial.response = {};
-				$('.active').each(function(i,v){
-					console.log($(v).text())
-					trial.response[i] = $(v).text();
-				});
+
+				var responses = $.find('.active');
+				trial.setResponse('left', $(responses[0]).text());
+				trial.setResponse('right', $(responses[1]).text());
 
 				$('.result').hide();
+				$('.choice').off('click');
 				$('.choice').removeClass('active');
+				$(document).off('keydown');
 
 				if (trialNo === 0) {
 					sendJSON(block);
 					reset(exp);
 				} else {
+					stair.next(trial.left.correct && trial.right.correct);
 					recur(block, --trialNo);
 				}
 			}
