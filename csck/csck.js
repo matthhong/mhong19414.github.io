@@ -1,7 +1,7 @@
 var width = 300,
     height = 300;
 
-var dalc = true;
+var dalc = false;
 
 var showArrows = false;
 var showDots = false;
@@ -114,7 +114,6 @@ function makeDataSets() {
 }
 
 function makeDALC(lineChartSelector, interactive, dataPoints) {
-
 	var dualAxes = {
 		svg: null,
 		background: null,
@@ -588,6 +587,7 @@ function redrawConnected(connected, recreate) {
 }
 
 function redrawDualAxes(dualAxes, recreate) {
+
 	if (recreate) {
 		dualAxes.foreground.select('path.line1').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA1);
 		dualAxes.foreground.select('path.line2').datum(dualAxes.points.slice(0, pointsToDraw)).attr('d', dualAxes.lineDA2);
@@ -913,13 +913,9 @@ function importData() {
 }
 
 function copyLefttoRight() {
-	rightChart.points = [];
-	leftChart.points.forEach(function(d) {
-		rightChart.points.push({
-			date:d.date,
-			value1:d.value1,
-			value2:d.value2
-		});
+	// temp = [];
+	leftChart.points.forEach(function(d, i) {
+		rightChart.points[i].date = d.date;
 	});
 }
 

@@ -1,9 +1,18 @@
-var drawCS = function(trial){
-	//Draw normally
+var drawCS = function(trial, mask, i){
+	if (mask == "Mask") {
+		$('#leftWrapper').append("<div class='mask' id='leftMask" + i + "''></div>")
+		$('#rightWrapper').append("<div class='mask' id='rightMask" + i + "'></div>")
+		var leftID = '#leftMask' + i;
+		var rightID = '#rightMask' + i;
+	} else {
+		var leftID = '#leftChart';
+		var rightID = '#rightChart';
+	}
+
 	currentDataSet = trial.left.data;
-	leftChart = makeConnected('#leftChart', true, trial.left.data);
-	rightChart = makeConnected('#rightChart', true, trial.right.data);
-	// afterUpdatePoints();
+	leftChart = makeConnected(leftID, true, trial.left.data);
+	rightChart = makeConnected(rightID, true, trial.right.data);
+	afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
 	xScale.domain([0, 1]);
@@ -12,16 +21,50 @@ var drawCS = function(trial){
 	redraw(true);
 }
 
-var drawDALC = function(trial) {
-	//Draw normally
+var drawDALC = function(trial, mask, i) {
+	if (mask == "Mask") {
+		$('#leftWrapper').append("<div class='mask' id='leftMask" + i + "''></div>")
+		$('#rightWrapper').append("<div class='mask' id='rightMask" + i + "'></div>")
+		var leftID = '#leftMask' + i;
+		var rightID = '#rightMask' + i;
+	} else {
+		var leftID = '#leftChart';
+		var rightID = '#rightChart';
+	}
+
 	currentDataSet = trial.left.data;
-	globalDALC = leftChart = makeDALC('#leftChart', true, trial.left.data);
-	globalCS = rightChart = makeDALC('#rightChart', true, trial.right.data);
+	leftChart = makeDALC(leftID, true, trial.left.data);
+	rightChart = makeDALC(rightID, true, trial.right.data);
 	afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
 	xScale.domain([0, 1]);
 	yScale.domain([0, 1]);
 
+	y1Scale.domain([0, 1]);
+	y2Scale.domain([0, 1]);
+
 	redraw(true);
 };
+
+// var drawDALCMask = function(masks) {
+// 	var charts = drawDALC(masks[0], 'Mask');
+
+// 	var line1 = d3.svg.line()
+// 		.x(function(d) { return timeScale(d.date); })
+// 		.y(function(d) { return dalc ? xScale(d.value1) : y1Scale(d.value1); })
+// 		.interpolate(smoothLines?'cardinal':'linear');
+
+// 	var line2 = d3.svg.line()
+// 		.x(function(d) { return timeScale(d.date); })
+// 		.y(function(d) { return dalc ? yScale(d.value2) : y2Scale(d.value2); })
+// 		.interpolate(smoothLines?'cardinal':'linear');
+// 	asd = charts[0]
+// 	for (var i = 0; i < 2; i++) {
+// 		charts[0].foreground.select('path.line1').datum(masks[i].left.data).attr('d', line1);
+// 		charts[0].foreground.select('path.line2').datum(masks[i].left.data).attr('d', line2);
+
+// 		charts[1].foreground.select('path.line1').datum(masks[i].right.data).attr('d', line1);
+// 		charts[1].foreground.select('path.line2').datum(masks[i].right.data).attr('d', line2);
+// 	}
+// }

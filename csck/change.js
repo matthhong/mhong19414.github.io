@@ -1,13 +1,13 @@
 $(function(){
 
-var config = {
-  apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
-  authDomain: "project-1718224482862335212.firebaseapp.com",
-  databaseURL: "https://project-1718224482862335212.firebaseio.com",
-  storageBucket: "",
-};
-firebase.initializeApp(config);
-var db = firebase.database();
+// var config = {
+//   apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
+//   authDomain: "project-1718224482862335212.firebaseapp.com",
+//   databaseURL: "https://project-1718224482862335212.firebaseio.com",
+//   storageBucket: "",
+// };
+// firebase.initializeApp(config);
+// var db = firebase.database();
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
@@ -21,7 +21,7 @@ var chartType = d3.shuffle(['cs', 'cs']).pop();
 
 var stair = new Staircase({
 	deltaT: {
-		firstVal: 100,
+		firstVal: 500,
 		limits: [0, 30000],
 		direction: '-1',
 		operation: 'multiply',
@@ -48,20 +48,24 @@ commonScales = true;
 cheatMode = false;
 
 var block;
-var Block = function(chartType, hurst, exp, signOfCorr){
+var Block = function(chartType, hurst, exp, signOfCorr, sens){
 	this.chartType = chartType;
 	this.hurst = hurst;
 	this.exp = exp;
 	this.signOfCorr = signOfCorr;
+	this.sens = sens;
 	this.subjectID = getRandomInt(1000000, 9999999);
 	this.trials = [];
 };
 
+
+var masks = [];
+
 function getData(hurstCoeff, exp, signOfCorr) {
-	var dir = 
-		exp == 'a' 
-		? 'datasets/change/H' + hurstCoeff + '-' + exp + '.json' 
-		: 'datasets/change/H' + hurstCoeff + '-' + exp + signOfCorr + '.json'; 
+	var dir = ''
+	if (exp === 'a') { dir = 'datasets/change/H' + hurstCoeff + '-a.json' }
+	else if (exp === 'b') { dir = 'datasets/change/H' + hurstCoeff + '-b-' + signOfCorr + '.json'  }
+	else if (exp === 'c') { dir = 'datasets/change/H' + hurstCoeff + '-c-' + signOfCorr + '-' + sens + '.json'} 
 
 	d3.json(dir, function(d){
 		datasets = [];
@@ -72,6 +76,8 @@ function getData(hurstCoeff, exp, signOfCorr) {
 			var data = [];
 			var temp = d[i];
 
+			var mask = { left: { data: [] }, right: { data: [] }};
+
 			for (var j = 0; j < 100; j++) {
 				date = new Date(2016,j,1);
 				data.push({
@@ -79,6 +85,17 @@ function getData(hurstCoeff, exp, signOfCorr) {
 					value1: temp.values1[j],
 					value2: temp.values2[j],
 				});
+				if (i%20 === 0){
+					mask.left.data.push({
+						date: date,
+						value1: temp.values1[j],
+						value2: temp.values2[j],
+					});
+				}
+			}
+			if (i%20 === 0){
+				mask.right.data = mask.left.data;
+				masks.push(mask);
 			}
 			dataset.data = data;
 
@@ -114,24 +131,52 @@ var Trial = function(exp, dataset1, dataset2){
 		}
 	}
 
-	this.setResponse = function(chart, response) {
-		if (exp === "a") {
-			answerKey = {
-				"positively": 1,
-				"negatively": -1
-			}
-
-			if (this[chart]["Sign of correlation"] === answerKey[response]) {
-				this[chart].correct = true;
-			} else { this[chart].correct = false; }
-		}
-	};
 	// Results
 	this.responseTime = 0;
 	this.left.response = null;
 	this.right.response = null;
 	this.left.correct = null;
 	this.right.correct = null;
+	this.correct = null;
+};
+
+function setResponse (exp, trial, chart, response) {
+	if (exp === "a") {
+		answerKey = {
+			"positively": 1,
+			"negatively": -1
+		}
+
+		if (trial[chart]["Sign of correlation"] === answerKey[response]) {
+			trial[chart].correct = true;
+		} else { trial[chart].correct = false; }
+
+		trial.correct = trial.left.correct && trial.right.correct;
+	} else if (exp === "b") {
+		answerKey = {
+			"shallow": 'Shallow',
+			'steep': 'Steep'
+		}
+
+		if (trial[chart]["Steepness"] === answerKey[response]) {
+			trial[chart].correct = true;
+		} else { trial[chart].correct = false; }
+
+		trial.correct = trial.left.correct && trial.right.correct;	
+	} else if (exp === "c") {
+		var slopeDiff = abs(trial[chart]["Regression slope"]) - abs(trial[otherChart(chart)]["Regression slope"]);
+
+		if (slopeDiff > 1) {
+			trial.correct = true;
+		} else { trial.correct = false; }
+	}
+
+	function otherChart(chart){
+		if (chart === "left") {
+			return "right";
+		} 
+		return "left";
+	}
 };
 
 
@@ -175,11 +220,12 @@ var step = function(event, callback){
 
 function reset (exp){
 	getData(hurst,exp);
-	if (exp === 'dalc') {
+	if (exp === 'd') {
 		$('#done').show();
 	} else {
 		$(document).off();
 		$('#study').hide();
+
 		erase();
 
 		tutorialNow = 1;
@@ -190,11 +236,14 @@ function reset (exp){
 	}
 }
 
-function erase() {
+function erase(mask) {
 	$('#leftChart').empty();
 	$('#rightChart').empty();
 	$('#leftChart').hide();
 	$('#rightChart').hide();
+	// if (mask) {
+		$('.mask').hide();
+	// }
 }
 
 //////EXPERIMENT
@@ -237,25 +286,46 @@ function sendJSON(_block, callback) {
 function runTrials(exp){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
-	for (var j = 0; j<block.datasets.length; j+=2) {
-		var trial = new Trial(exp, block.datasets[j], block.datasets[j+1]);
-		// should take 2 at once, unless C: already comes at once
-		block.trials.push(trial);
+	var trial;
+
+	for (var i = 0; i < masks.length; i++) {
+		if (block.chartType === 'cs') {
+			drawCS(masks[i], 'Mask', i);
+		} else {
+			drawDALC(masks[i], 'Mask', i);
+		}
 	};
+	$('.mask').hide();
+
+	if (exp === 'a' || exp === 'b') {
+		for (var j = 0; j<block.datasets.length; j+=2) {
+			trial = new Trial(exp, block.datasets[j], block.datasets[j+1]);
+			// should take 2 at once, unless C: already comes at once
+			block.trials.push(trial);
+		};
+	} else if (exp === 'c') {
+		for (var j = 0; j < block.datasets.length; j++) {
+			d3.shuffle(block.datasets[j]);
+			trial = new Trial(exp, block.datasets[j][0], block.datasets[j][1]);
+			block.trials.push(trial)
+		};
+	}
+
+	var lastCorrect = null;
+	var reversals = 0;
 
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
-
 		// Show question
 		$('#study').show();
 		$('#exp-' + exp).show();
 
 		//Hidden but draw chart
 		if (block.chartType === 'cs') {
-			drawCS(trial);
+			drawCS(trial, 'Chart');
 		} else {
-			drawDALC(trial);
+			drawDALC(trial, 'Chart');
 		}
 
 		// Disable buttons
@@ -274,7 +344,6 @@ function runTrials(exp){
 		function draw(){
 			console.log(stair.getLast('deltaT'))
 
-			var start = new Date().getTime();
 			$('#leftChart').show();
 			$('#rightChart').show();
 			setTimeout(enableChoice, stair.getLast('deltaT'));
@@ -285,11 +354,8 @@ function runTrials(exp){
 
 			// Choice buttons
 			function enableChoice() {
-
-				var end = new Date().getTime();
-				var time = end - start;
-				console.log('Execution time: ' + time);
-				erase();
+				// erase();
+				$('.mask').show();
 
 				$('html').css('cursor','auto');
 				$('button').prop('disabled', false);
@@ -312,20 +378,23 @@ function runTrials(exp){
 			}
 
 			function endTrial() {
-
+				erase();
 				var dateEnd = new Date();
 				trial.responseTime = stair.getLast('deltaT');
 
 				var responses = $.find('.active');
-				trial.setResponse('left', $(responses[0]).text());
-				trial.setResponse('right', $(responses[1]).text());
+				setResponse(exp, trial, 'left', $(responses[0]).text());
+				setResponse(exp, trial, 'right', $(responses[1]).text());
+
+				if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
+				lastCorrect = trial.correct;
 
 				$('.result').hide();
 				$('.choice').off('click');
 				$('.choice').removeClass('active');
 				$(document).off('keydown');
 
-				if (trialNo === 0) {
+				if (trialNo === 0 || reversals === 12) {
 					sendJSON(block);
 					reset(exp);
 				} else {
