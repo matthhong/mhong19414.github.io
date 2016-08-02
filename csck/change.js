@@ -21,7 +21,7 @@ var chartType = d3.shuffle(['cs', 'cs']).pop();
 
 var stair = new Staircase({
 	deltaT: {
-		firstVal: 500,
+		firstVal: 20000,
 		limits: [0, 30000],
 		direction: '-1',
 		operation: 'multiply',
@@ -251,7 +251,7 @@ function erase(mask) {
 var tutorialNow = 1;
 var tutorialStep = function(event,exp){
 	step(event, function(){
-		if (tutorialNow < 3) {
+		if (tutorialNow < 4) {
 			$('#tutorial-' + tutorialNow).hide();
 			$('#tutorial-' + (tutorialNow + 1)).show();
 		} 
