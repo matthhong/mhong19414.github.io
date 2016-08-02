@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+/*		body {
+			width:1020px;
+			height:625px;
+		}*/
+		.wrapper, iframe {
+			width:1020px;
+			height:625px;
+			margin: 0 auto;
+		}
+		img {
+			max-width:100%;
+		}
+		.title, .subtitle {
+			font-family: "Goudy Old Style", Garamond, serif;
+			font-weight: bold;
+			color: #888888;
+			text-align: right;
+			margin-right: 8px;
+			font-size: 42px;
+		}
+		.subtitle {
+			color: #888888;
+			font-size: 20px;
+		}
+		.subtitle span {
+			color: #333333;
+		}
+		.dropdown .btn, .dropdown-menu {
+			font-family: 'Gill Sans MT', Calibri, sans-serif;
+			font-size: 18px;
+			width: 315px;
+			padding: 9px 12px;
+		}
+		.dropdown .btn {
+			height: 47px;
+			margin-top: 5px;
+			text-align: left;
+		}
+		.stories:hover/*, .stories>.dropdown-menu>li>a:hover*/ {
+			color: white;
+			background-color: #d62728;
+		}
+		.stories {
+			color: #d62728;
+	    background:rgb(214,39,40);
+	    background: transparent\9;
+	    background:rgba(214,39,40,0.2);
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33d62728,endColorstr=#33d62728);
+	    zoom: 1;
+		}
+		#explore:hover {
+			color: white;
+			background-color: #ff7f0e;
+		}
+		#explore {
+			color: #ff7f0e;
+	    background:rgb(255,127,14);
+	    background: transparent\9;
+	    background:rgba(255,127,14,0.2);
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33ff7f0e,endColorstr=#33ff7f0e);
+	    zoom: 1;
+		}
+		#compare:hover{
+			color: white;
+			background-color: #e377c2;
+		}
+		#compare {
+			color: #e377c2;
+			background:rgb(227,119,194);
+	    background: transparent\9;
+	    background:rgba(227,119,194,0.2);
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33e377c2,endColorstr=#33e377c2);
+	    zoom: 1;
+		}
+		.btn:nth-child(n) {  
+		  filter: none;  
+		}
+		.glyphicon {
+			top: 4px;
+		}
+		.glyphicon-sunglasses{
+			left: 2px;
+		}
+		.lightbox {
+			/** Default lightbox to hidden */
+
+			/** Position and style */
+			position: relative;
+			margin: 0 auto;
+			z-index: 999;
+			width: 1020px;
+			height: 625px;
+			text-align: center;
+			top: -200px;
+			left: 0;
+			background: rgba(0,0,0,0.8);
+			visibility: hidden;
+		  opacity: 0;
+		  transition: visibility 0s, opacity 0.5s linear;
+		}
+		.lightbox:target {
+			/** Remove default browser outline */
+			outline: none;
+
+			/** Unhide lightbox **/
+			display:block;
+			visibility: visible;
+  		/*opacity: 1;*/
+		}
+		.lightbox iframe {
+			background-color: white;
+		}
+		.col-xs-4 {
+			position: relative;
+		  top: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div class="row wrapper">
+	  <div class="col-xs-4 col-xs-offset-2">
+	  	<div class="row disney-logo">
+				<img src="disney-logo.png">
+			</div>
+			<div class="row title">
+				CSAT Dashboard
+			</div>
+			<div class="row subtitle">
+				by The <span>Blackstone</span> Group
+			</div>
+	  </div>
+	  <div class="col-xs-4">
+	  	<!-- Single button -->
+			<div class="row dropdown">
+			  <button class="btn btn-default dropdown-toggle stories" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Stories
+			    <span class="glyphicon glyphicon-book pull-right"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a id="accenture-story" href="#dash">Accenture</a></li>
+			    <li><a id="capgemini-story" href="#dash">Capgemini</a></li>
+			  </ul>
+			</div>
+			<div class="row dropdown">
+			  <a class="btn btn-default" id="explore" href="#dash" type="button">Explore
+			    <span class="glyphicon glyphicon-stats pull-right"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+			<div class="row"></div>
+			<div class="row dropdown">
+			  <a class="btn btn-default" id="compare" href="#dash" type="button">
+			    Compare
+			    <span class="glyphicon glyphicon-sunglasses pull-right"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+			<div class="explore-menu"></div>
+			<div class="compare-menu"></div>
+	  </div>
+	<a href="#_" class="lightbox" id="dash">
+  </a>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+	  $("a").on('click', function() {
+	  	$("#dash").empty();
+	  	$('.lightbox').css('opacity',1);
+	  })
+	  $("#accenture-story").on('click', function(){
+	  	$("#dash").append(
+	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/StoryAccenture?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  });
+	  $("#explore").on('click', function(){
+	  	$("#dash").append(
+	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/Explore?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  });
+	  $("#capgemini-story").on('click', function(){
+	  	$("#dash").append(
+	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/StoryCapgemini?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  });
+	  $("#compare").on('click', function(){
+	  	$("#dash").append(
+	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/Comparedistributions?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  });
+	})
+
+    </script>
+</body>
+</html>
