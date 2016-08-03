@@ -21,7 +21,7 @@ var chartType = d3.shuffle(['cs', 'cs']).pop();
 
 var stair = new Staircase({
 	deltaT: {
-		firstVal: 20000,
+		firstVal: 1500,
 		limits: [0, 30000],
 		direction: '-1',
 		operation: 'multiply',
