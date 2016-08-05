@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-darkly.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<style type="text/css">
@@ -11,7 +11,18 @@
 			width:1020px;
 			height:625px;
 		}*/
-		.wrapper, iframe {
+		body{}
+		.wrapper{
+			width:1020px;
+			height:625px;
+			margin: 0 auto;
+			top:0;
+			left:50%;
+			position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+		}
+		iframe {
 			width:1020px;
 			height:625px;
 			margin: 0 auto;
@@ -20,29 +31,29 @@
 			max-width:100%;
 		}
 		.title, .subtitle {
-			font-family: "Goudy Old Style", Garamond, serif;
+			font-family: "Trebuchet MS", sans-serif;
 			font-weight: bold;
-			color: #888888;
+			color: #f7f7f7;
 			text-align: right;
 			margin-right: 8px;
 			font-size: 42px;
 		}
 		.subtitle {
-			color: #888888;
+			font-weight: normal;
 			font-size: 20px;
 		}
 		.subtitle span {
-			color: #333333;
+			color: #ffffff;
 		}
 		.dropdown .btn, .dropdown-menu {
-			font-family: 'Gill Sans MT', Calibri, sans-serif;
+			font-family: 'Arial', sans-serif;
 			font-size: 18px;
 			width: 315px;
 			padding: 9px 12px;
 		}
 		.dropdown .btn {
 			height: 47px;
-			margin-top: 5px;
+			margin-top: 8px;
 			text-align: left;
 		}
 		.stories:hover/*, .stories>.dropdown-menu>li>a:hover*/ {
@@ -56,33 +67,6 @@
 	    background:rgba(214,39,40,0.2);
 	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33d62728,endColorstr=#33d62728);
 	    zoom: 1;
-		}
-		#explore:hover {
-			color: white;
-			background-color: #ff7f0e;
-		}
-		#explore {
-			color: #ff7f0e;
-	    background:rgb(255,127,14);
-	    background: transparent\9;
-	    background:rgba(255,127,14,0.2);
-	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33ff7f0e,endColorstr=#33ff7f0e);
-	    zoom: 1;
-		}
-		#compare:hover{
-			color: white;
-			background-color: #e377c2;
-		}
-		#compare {
-			color: #e377c2;
-			background:rgb(227,119,194);
-	    background: transparent\9;
-	    background:rgba(227,119,194,0.2);
-	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33e377c2,endColorstr=#33e377c2);
-	    zoom: 1;
-		}
-		.btn:nth-child(n) {  
-		  filter: none;  
 		}
 		.glyphicon {
 			top: 4px;
@@ -100,7 +84,7 @@
 			width: 1020px;
 			height: 625px;
 			text-align: center;
-			top: -200px;
+			top: -148px;
 			left: 0;
 			background: rgba(0,0,0,0.8);
 			visibility: hidden;
@@ -117,30 +101,53 @@
   		/*opacity: 1;*/
 		}
 		.lightbox iframe {
-			background-color: white;
+			background-color: #1B1B1B;
 		}
 		.col-xs-4 {
 			position: relative;
-		  top: 150px;
+		  top: 200px;
 		}
+		.overlay{
+		    background-image: url('magic-kingdom.jpg');
+		    background-repeat:no-repeat;
+		    /*height: 625px;*/
+		    /*width: 1020px;*/
+		    height:100vh;
+		    margin: 0 auto;
+		    opacity: 0.2;
+		    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+			-o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+			-webkit-filter: grayscale(100%);
+			filter: gray;
+			filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+		    
+/*		  //Make BG IMage responsive  
+		  background-position: center center;
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+*/			background-size: cover;
+		    
+		    z-index:0;
+		  }
 	</style>
 </head>
 <body>
+	<div class="overlay"></div>
 	<div class="row wrapper">
 	  <div class="col-xs-4 col-xs-offset-2">
-	  	<div class="row disney-logo">
+<!-- 	  	<div class="row disney-logo">
 				<img src="disney-logo.png">
-			</div>
+			</div> -->
 			<div class="row title">
-				CSAT Dashboard
+				Disney CSAT Dashboard
 			</div>
 			<div class="row subtitle">
-				by The <span>Blackstone</span> Group
+				The <span>Blackstone</span> Group
 			</div>
 	  </div>
 	  <div class="col-xs-4">
 	  	<!-- Single button -->
-			<div class="row dropdown">
+<!-- 			<div class="row dropdown">
 			  <button class="btn btn-default dropdown-toggle stories" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			    Stories
 			    <span class="glyphicon glyphicon-book pull-right"></span>
@@ -149,9 +156,9 @@
 			    <li><a id="accenture-story" href="#dash">Accenture</a></li>
 			    <li><a id="capgemini-story" href="#dash">Capgemini</a></li>
 			  </ul>
-			</div>
+			</div> -->
 			<div class="row dropdown">
-			  <a class="btn btn-default" id="explore" href="#dash" type="button">Explore
+			  <a class="btn btn-default btn-success" id="explore" href="#dash" type="button">Explore
 			    <span class="glyphicon glyphicon-stats pull-right"></span>
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -164,7 +171,7 @@
 			</div>
 			<div class="row"></div>
 			<div class="row dropdown">
-			  <a class="btn btn-default" id="compare" href="#dash" type="button">
+			  <a class="btn btn-default btn-info" id="compare" href="#dash" type="button">
 			    Compare
 			    <span class="glyphicon glyphicon-sunglasses pull-right"></span>
 			  </button>
@@ -188,21 +195,17 @@
 	  	$("#dash").empty();
 	  	$('.lightbox').css('opacity',1);
 	  })
-	  $("#accenture-story").on('click', function(){
-	  	$("#dash").append(
-	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/StoryAccenture?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
-	  });
+
+	  var iframe_before = '<iframe frameborder="0" allowtransparency="true" src="';
+	  var iframe_after = '?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no&:tabs=no&:showVizHome=no"></iframe>';
+
 	  $("#explore").on('click', function(){
 	  	$("#dash").append(
-	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/Explore?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
-	  });
-	  $("#capgemini-story").on('click', function(){
-	  	$("#dash").append(
-	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/StoryCapgemini?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneydark/Darkdash' + iframe_after)
 	  });
 	  $("#compare").on('click', function(){
 	  	$("#dash").append(
-	  		'<iframe frameborder="0" src="https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disney_0/Comparedistributions?:embed=y&:showShareOptions=true&:toolbar=no&:display_count=no&:tabs=no&:showVizHome=no#5"></iframe>')
+	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneydark/Comparedistributions' + iframe_after)
 	  });
 	})
 
