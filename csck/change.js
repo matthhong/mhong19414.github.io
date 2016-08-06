@@ -182,28 +182,18 @@ function setResponse (exp, trial, chart, response) {
 
 /////INTERACTION
 
-$('#next').hover(function(){
-	$('html').css('cursor','none');
-	$(this).fadeOut(500);
-}, function() {
-	// $(this).css('cursor','default')
-})
+// $('#next').hover(function(){
+// 	$('html').css('cursor','none');
+// 	$(this).fadeOut(500);
+// }, function() {
+// 	// $(this).css('cursor','default')
+// })
 
 // Pressing both shift keys
 var keys = {
   qkey: false,
   backslash: false
 };
-
-$(document.body).keyup(function(event) {
-    // reset status of the button 'released' == 'false'
-    if (event.keyCode == 81) {
-        keys["qkey"] = false;
-    } else if (event.keyCode == 220) {
-        keys["backslash"] = false;
-    }
-    // erase();
-});
 
 var step = function(event, callback){
 	if (event.keyCode == 81) {
@@ -285,8 +275,7 @@ function sendJSON(_block, callback) {
 
 function runTrials(exp){
 	//Runs all trials in a block, recursively
-	//Deferred function; resolves after entire recursion finishes
-	var trial;
+	//Deferred function; resolves after entire recursion finishes\
 
 	for (var i = 0; i < masks.length; i++) {
 		if (block.chartType === 'cs') {
@@ -299,15 +288,15 @@ function runTrials(exp){
 
 	if (exp === 'a' || exp === 'b') {
 		for (var j = 0; j<block.datasets.length; j+=2) {
-			trial = new Trial(exp, block.datasets[j], block.datasets[j+1]);
+			var t = new Trial(exp, block.datasets[j], block.datasets[j+1]);
 			// should take 2 at once, unless C: already comes at once
-			block.trials.push(trial);
+			block.trials.push(t);
 		};
 	} else if (exp === 'c') {
 		for (var j = 0; j < block.datasets.length; j++) {
 			d3.shuffle(block.datasets[j]);
-			trial = new Trial(exp, block.datasets[j][0], block.datasets[j][1]);
-			block.trials.push(trial)
+			var t = new Trial(exp, block.datasets[j][0], block.datasets[j][1]);
+			block.trials.push(t);
 		};
 	}
 
@@ -317,6 +306,7 @@ function runTrials(exp){
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
+		
 		// Show question
 		$('#study').show();
 		$('#exp-' + exp).show();
@@ -331,14 +321,23 @@ function runTrials(exp){
 		// Disable buttons
 		$('button').prop('disabled', true);
 
-		// Draw chart upon holding down two keys
+		// Lure cursor, hide it, then switch
 		$('#next').show()
 			.on('mouseenter', function(){
 				$('html').css('cursor','none');
-				$(this).fadeOut(500, function(){
-					draw();
-					$('#next').off('mouseenter');
+				$('#next img').attr('src', 'img/hold-buttons.png');
+				// $(this).fadeOut(500, function(){
+				$(document).on('keydown', function(event){
+					step(event, function(){
+						$('#next').hide();
+						$('#next img').attr('src', 'img/next.png');
+						$('#next').off('mouseenter');
+						draw();
+					});
 				});
+					// draw();
+					// $('#next').off('mouseenter');
+				// });
 			});
 
 		function draw(){
@@ -346,7 +345,16 @@ function runTrials(exp){
 
 			$('#leftChart').show();
 			$('#rightChart').show();
-			setTimeout(enableChoice, stair.getLast('deltaT'));
+			
+			$(document.body).on('keyup', function(event) {
+		    // reset status of the button 'released' == 'false'
+		    if (event.keyCode == 81) {
+		        keys["qkey"] = false;
+		    } else if (event.keyCode == 220) {
+		        keys["backslash"] = false;
+		    }
+		    enableChoice();
+			});
 
 			var dateStart = new Date();
 
@@ -354,7 +362,7 @@ function runTrials(exp){
 
 			// Choice buttons
 			function enableChoice() {
-				// erase();
+				$(document.body).off('keyup');
 				$('.mask').show();
 
 				$('html').css('cursor','auto');
@@ -385,6 +393,7 @@ function runTrials(exp){
 				var responses = $.find('.active');
 				setResponse(exp, trial, 'left', $(responses[0]).text());
 				setResponse(exp, trial, 'right', $(responses[1]).text());
+				console.log(trial)
 
 				if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
 				lastCorrect = trial.correct;
