@@ -63,11 +63,10 @@ body {
 .exp2 {
 	float: left;
 }
-#wrong, #timed-out{
+#response-time{
 	display: none;
-	color: red;
 }
-#continue, #done{
+#correct, #done{
 	display: none;
 }
 #highlighted{
@@ -119,6 +118,12 @@ img.instructional {
     visibility: hidden;
   }
 }
+p:first-letter {
+    text-transform:capitalize;
+}
+#press-continue {
+	display: none;
+}
 
 	</style>
 </head>
@@ -137,18 +142,16 @@ img.instructional {
 			<img class="instructional" src="img/instructional-a.png">
 		</div>
 		<div class="tutorial" id="tutorial-3">
-			<p>A series of such charts will be <span class="blink">flashed</span> briefly, in pairs.</p>
-			<p>After the charts disappear, <span>complete the statement</span>:</p>
+			<p>During each trial, a pair of charts will appear.</p>
+			<p>When you are ready, <span>complete the statement</span>:</p>
 			<blockquote><img id="cursor" src="img/cursor.gif"></blockquote>
 			<p>for each chart by choosing an option with the cursor.</p>
 			<br>
 			<p>Press <span>q</span> and <span>\</span> to continue.</p>
 		</div>
 		<div class="tutorial" id="tutorial-4">
-			<p>The charts will be flashed <span>more quickly</span> after every correct answer,</p>
-			<p>but <span>more slowly</span> after every incorrect answer.</p>
-			<br>
-			<p>This experiment ends when an algorithm suggests you are at your quickest.</p>
+			<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
+			<p>There will be a time-out for every wrong answer.</p>
 			<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
 			<br>
 			<p>Three practice trials will now follow.</p>
@@ -178,7 +181,7 @@ img.instructional {
 					  <button type="button" class="btn btn-default choice">negatively</button>
 					</div>
 					related.
-				</p><br>
+				</p>
 				<p>[2nd chart] Blue and green are 
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b2">
 					  <button type="button" class="btn btn-default choice">positively</button>
@@ -187,8 +190,9 @@ img.instructional {
 					related.
 				</p>
 			</div>
-			<p id='timed-out' class='result'>That took more than <a id="time-limit"></a> seconds. Please answer more quickly.</p>
-			<p id='continue' class='result'>Press <span>q</span> and <span>\</span> to continue.</p>
+			<p id='response-time' class='result'>That took <span id="time-display"></span> seconds.</p>
+			<p id='correct' class='result'><span id="feedback"></span></p>
+			<p id="press-continue" class='result'>Press <span>q</span> and <span>\</span> to continue.</p>
 		</div>
 		<div id="done">
 			<p>You finished! You rock! Thanks for participating!</p>

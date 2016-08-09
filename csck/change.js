@@ -318,9 +318,6 @@ function runTrials(exp){
 			drawDALC(trial, 'Chart');
 		}
 
-		// Disable buttons
-		$('button').prop('disabled', true);
-
 		// Lure cursor, hide it, then switch
 		$('#next').show()
 			.on('mouseenter', function(){
@@ -341,10 +338,10 @@ function runTrials(exp){
 			});
 
 		function draw(){
-			console.log(stair.getLast('deltaT'))
 
 			$('#leftChart').show();
 			$('#rightChart').show();
+			var dateStart = new Date();
 			
 			$(document.body).on('keyup', function(event) {
 		    // reset status of the button 'released' == 'false'
@@ -353,10 +350,9 @@ function runTrials(exp){
 		    } else if (event.keyCode == 220) {
 		        keys["backslash"] = false;
 		    }
+		    timed();
 		    enableChoice();
 			});
-
-			var dateStart = new Date();
 
 			$(document).off();
 
@@ -376,28 +372,56 @@ function runTrials(exp){
 
 					if ($('.active').length > 1) {
 						// When both choices made
-						$('#continue').show();
-
-						$(document).on('keydown', function(event){
-							step(event, endTrial);
-						})
+						evaluate();
 					};
 				});
 			}
 
-			function endTrial() {
-				erase();
+			function timed() {
 				var dateEnd = new Date();
-				trial.responseTime = stair.getLast('deltaT');
+				trial.responseTime = (dateEnd - dateStart)/1000;
+				$('#time-display').html(trial.responseTime);
+				$('#response-time').show();
+			}
 
+			function evaluate() {
 				var responses = $.find('.active');
 				setResponse(exp, trial, 'left', $(responses[0]).text());
 				setResponse(exp, trial, 'right', $(responses[1]).text());
-				console.log(trial)
 
-				if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
-				lastCorrect = trial.correct;
+				if (trial.correct) {
+					$('#feedback').html('Correct!').css('color', 'blue');
+					$('#correct').show();
+					$('#press-continue').show();
+					moveOn();
+				} else {
+					$('#feedback').html('Wrong. Timed out for 5 seconds...').css('color', 'red');
+					$('#time-out').show();
+					$('#correct').show();
+					setTimeout(function(){
+						$('#press-continue').show();
+						moveOn();
+					}, 5000)
+				}
 
+				function moveOn() {
+					$(document).on('keydown', function(event){
+						step(event, endTrial);
+					})
+				}
+				// Disable buttons
+				$('button').prop('disabled', true);
+				erase();
+			}
+
+			function endTrial() {
+				console.log(trial.responseTime);
+				console.log(trial.correct);
+
+				// if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
+				// lastCorrect = trial.correct;
+
+				$('#time-out').hide();
 				$('.result').hide();
 				$('.choice').off('click');
 				$('.choice').removeClass('active');
@@ -407,7 +431,7 @@ function runTrials(exp){
 					sendJSON(block);
 					reset(exp);
 				} else {
-					stair.next(trial.left.correct && trial.right.correct);
+					// stair.next(trial.left.correct && trial.right.correct);
 					recur(block, --trialNo);
 				}
 			}
