@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="csck.css">
 	<script src="jquery.min.js"></script>
 	<script src="d3.v3.min.js"></script>
-  <!-- // <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
 	<script type="text/javascript" src="moment.min.js"></script>
 	<script type="text/javascript" src="queue.min.js"></script>
 	<script type="text/javascript" src="common.js"></script>
@@ -175,19 +175,31 @@ p:first-letter {
 				</p>
 			</div>
 			<div class="problem" id="exp-b">
-				<p>[1st chart] Blue and green are 
+				<p>Blue and green are <span id="direction"></span> related.</p><br>
+				<p>[1st chart] Blue moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
-					  <button type="button" class="btn btn-default choice">positively</button>
-					  <button type="button" class="btn btn-default choice">negatively</button>
+					  <button type="button" class="btn btn-default choice">faster</button>
+					  <button type="button" class="btn btn-default choice">slower</button>
 					</div>
-					related.
-				</p>
-				<p>[2nd chart] Blue and green are 
+					rate than green.
+				</p><br>
+				<p>[2nd chart] Blue moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b2">
-					  <button type="button" class="btn btn-default choice">positively</button>
-					  <button type="button" class="btn btn-default choice">negatively</button>
+					  <button type="button" class="btn btn-default choice">faster</button>
+					  <button type="button" class="btn btn-default choice">slower</button>
 					</div>
-					related.
+					rate than green.
+				</p>
+			</div>
+			<div class="problem" id="exp-c">
+				<p>Blue and green are <span id="direction"></span> related.</p><br>
+				<p>Blue changes at a <span id="sensitivity"></span> rate than green.</p><br>
+				<p>This difference is
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">greater</button>
+					  <button type="button" class="btn btn-default choice">smaller</button>
+					</div>
+					for the 1st chart than for the 2nd chart.
 				</p>
 			</div>
 			<p id='response-time' class='result'>That took <span id="time-display"></span> seconds.</p>

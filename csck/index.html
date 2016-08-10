@@ -149,9 +149,10 @@
 
 	function exportData() {
 		var data = [];
-		leftChart.points.forEach(function(p) {
+		leftChart.points.forEach(function(p, i) {
+			date = new Date(2016,i,1);
 			var d = {
-				date: (p.date.getMonth()+1)+'/'+p.date.getDate()+'/'+p.date.getFullYear(),
+				date: date,
 				value1: p.value1,
 				value2: p.value2
 			}
