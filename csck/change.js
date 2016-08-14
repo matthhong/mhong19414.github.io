@@ -16,13 +16,13 @@ var numTrials = 2;
 
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
-var exp = 'c';
+var exps = d3.shuffle(['a','b','c']);
 var config = {
-	'hurst': 2,
+	'hurst': 8,
 	'signOfCorr': 'negative',
-	'sensitivity': 'slower'
+	'sensitivity': 'faster'
 }
-var chartType = d3.shuffle(['cs', 'cs']).pop();
+var chartType = d3.shuffle(['cs', 'dalc']).pop();
 
 var stair = new Staircase({
 	deltaT: {
@@ -67,7 +67,7 @@ var masks = [];
 var mask = { left: { data: [] }, right: { data: [] }};
 
 function makeMask() {
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 7; i++) {
 		var mask = { left: { data: [] }, right: { data: [] }};
 		for (var j = 0; j < 100; j++) {
 			date = new Date(2016,j,1);
@@ -91,14 +91,14 @@ function getData(exp, config) {
 
 	var dir = ''
 	if (exp === 'a') { 
-		dir = 'datasets/change/H' + config.hurst + '-a.json'; 
+		dir = 'datasets/change-data/H' + config.hurst + '-a.json'; 
 	}
 	else if (exp === 'b') { 
-		dir = 'datasets/change/H' + config.hurst + '-b-' + config.signOfCorr + '.json';
+		dir = 'datasets/change-data/H' + config.hurst + '-b-' + config.signOfCorr + '.json';
 		$('#direction').html(config.signOfCorr + 'ly');
 	}
 	else if (exp === 'c') { 
-		dir = 'datasets/change/H' + config.hurst + '-c-' + config.signOfCorr + '-' + config.sensitivity + '.json';
+		dir = 'datasets/change-data/H' + config.hurst + '-c-' + config.signOfCorr + '-' + config.sensitivity + '.json';
 		$('#direction').html(config.signOfCorr + 'ly');
 		$('#sensitivity').html(config.sensitivity);
 	} 
@@ -114,24 +114,24 @@ function getData(exp, config) {
 				var pair = [];
 				var temp = d[i];
 
-				for (var i = 0; i < temp.length; i++) {
+				for (var j = 0; j < temp.length; j++) {
 					var date;
 					var dataset = {};
 					var data = [];
 
-					for (var j = 0; j < temp[i].values1.length; j++) {
-						date = new Date(2016,j,1);
+					for (var k = 0; k < temp[j].values1.length; k++) {
+						date = new Date(2016,k,1);
 						data.push({
 							date: date,
-							value1: temp[i].values1[j],
-							value2: temp[i].values2[j]
+							value1: temp[j].values1[k],
+							value2: temp[j].values2[k]
 						});
 					};
 
 					dataset.data = data;
-					for (var k in temp) {
-						if ((k !== 'values1' || k !== 'values2') && temp.hasOwnProperty(k)) {
-							dataset[k] = temp[k];
+					for (var k in temp[j]) {
+						if ((k !== 'values1' || k !== 'values2') && temp[j].hasOwnProperty(k)) {
+							dataset[k] = temp[j][k];
 						}
 					};
 
@@ -227,7 +227,8 @@ function setResponse (exp, trial, chart, response) {
 	} else if (exp === "c") {
 		var slopeDiff = Math.abs(trial[chart]["Regression slope"]) - Math.abs(trial[otherChart(chart)]["Regression slope"]);
 
-		if (slopeDiff > 1) {
+		if (Math.abs(trial[chart]["Regression slope"]) > 1 && slopeDiff > 0
+				|| Math.abs(trial[chart]["Regression slope"]) < 1 && slopeDiff < 0) {
 			trial.correct = true;
 		} else { trial.correct = false; }
 	}
@@ -269,7 +270,9 @@ var step = function(event, callback){
   }
 }
 
-function reset (exp, config){
+function reset (exps, config){
+	var exp = exps[exps.length-1]
+	exps.pop();
 	$('#exp-' + lastLetter(exp)).hide();
 	getData(exp, config);
 	if (exp === 'd') {
@@ -457,7 +460,7 @@ function runTrials(exp){
 					setResponse(exp, trial, 'right', $(responses[1]).text());
 				} else {
 					var response = $(responses[0]).text();
-					var chart = response === 'faster' ? 'left' : 'right';
+					var chart = response === 'greater' ? 'left' : 'right';
 					setResponse(exp, trial, chart, response);
 				}
 
@@ -467,13 +470,13 @@ function runTrials(exp){
 					$('#press-continue').show();
 					moveOn();
 				} else {
-					$('#feedback').html('Wrong. Timed out for 5 seconds...').css('color', 'red');
+					$('#feedback').html('Wrong. Timed out for 10 seconds...').css('color', 'red');
 					$('#time-out').show();
 					$('#correct').show();
 					setTimeout(function(){
 						$('#press-continue').show();
 						moveOn();
-					}, 5000)
+					}, 10000)
 				}
 
 				function moveOn() {
@@ -499,6 +502,9 @@ function runTrials(exp){
 				$('.choice').removeClass('active');
 				$(document).off('keydown');
 
+				delete trial.left.data;
+				delete trial.right.data;
+
 				if (trialNo === 0 || reversals === 12) {
 					sendJSON(block);
 					reset(nextLetter(exp), config);
@@ -514,7 +520,7 @@ function runTrials(exp){
 	recur(block, block.trials.length - 1);
 };
 
-reset(exp, config);
+reset(exps, config);
 
 function nextLetter(alphabet){
 	return String.fromCharCode(alphabet.charCodeAt() + 1);
