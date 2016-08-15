@@ -11,18 +11,19 @@ var db = firebase.database();
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
+var penalty = (debug ? 0 : 10000);
 var timeLimit = (debug ? 1000000 : 10000);
 var numTrials = 2;
 
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
-var exps = d3.shuffle(['a','b','c']);
+var exps = d3.shuffle(['a','a','a']);
 var config = {
-	'hurst': 8,
+	'hurst': 6,
 	'signOfCorr': 'negative',
 	'sensitivity': 'faster'
 }
-var chartType = d3.shuffle(['cs', 'dalc']).pop();
+var chartType = d3.shuffle(['dalc', 'dalc']).pop();
 
 var stair = new Staircase({
 	deltaT: {
@@ -95,7 +96,7 @@ function getData(exp, config) {
 	}
 	else if (exp === 'b') { 
 		dir = 'datasets/change-data/H' + config.hurst + '-b-' + config.signOfCorr + '.json';
-		$('#direction').html(config.signOfCorr + 'ly');
+		$('.direction').html(config.signOfCorr + 'ly');
 	}
 	else if (exp === 'c') { 
 		dir = 'datasets/change-data/H' + config.hurst + '-c-' + config.signOfCorr + '-' + config.sensitivity + '.json';
@@ -176,9 +177,10 @@ function getData(exp, config) {
 	});
 }
 
-var Trial = function(exp, dataset1, dataset2){
+var Trial = function(exp, index, dataset1, dataset2){
 	// Attach data
 	this.exp = exp;
+	this.index = index;
 	this.left = {};
 	this.right = {};
 	for (var i in dataset1) {
@@ -271,16 +273,15 @@ var step = function(event, callback){
 }
 
 function reset (exps, config){
-	var exp = exps[exps.length-1]
-	exps.pop();
-	$('#exp-' + lastLetter(exp)).hide();
-	getData(exp, config);
-	if (exp === 'd') {
+	if (exps.length === 0) {
 		$('#done').show();
 	} else {
+		var exp = exps[exps.length-1]
+		exps.pop();
+		$('#exp-' + lastLetter(exp)).hide();
+		getData(exp, config);
 		$(document).off();
 		$('#study').hide();
-		$('button').prop('disabled', true)
 
 		erase();
 
@@ -288,7 +289,7 @@ function reset (exps, config){
 		$(document).on('keydown', function(event){
 			tutorialStep(event,exp)
 		});
-		$('#tutorial-1').show();
+		$('#tutorial-' + exp + ' #tutorial-1').show();
 	}
 }
 
@@ -308,11 +309,11 @@ var tutorialNow = 1;
 var tutorialStep = function(event,exp){
 	step(event, function(){
 		if (tutorialNow < 4) {
-			$('#tutorial-' + tutorialNow).hide();
-			$('#tutorial-' + (tutorialNow + 1)).show();
+			$('#tutorial-' + exp + ' #tutorial-' + tutorialNow).hide();
+			$('#tutorial-' + exp + ' #tutorial-' + (tutorialNow + 1)).show();
 		} 
 		else {
-			$('#tutorial-' + tutorialNow).hide();
+			$('#tutorial-' + exp + ' #tutorial-' + tutorialNow).hide();
 			$(document).off();
 
 			runTrials(exp);
@@ -353,14 +354,14 @@ function runTrials(exp){
 
 	if (exp === 'a' || exp === 'b') {
 		for (var j = 0; j<block.datasets.length; j+=2) {
-			var t = new Trial(exp, block.datasets[j], block.datasets[j+1]);
+			var t = new Trial(exp, j, block.datasets[j], block.datasets[j+1]);
 			// should take 2 at once, unless C: already comes at once
 			block.trials.push(t);
 		};
 	} else if (exp === 'c') {
 		for (var j = 0; j < block.datasets.length; j++) {
 			d3.shuffle(block.datasets[j]);
-			var t = new Trial(exp, block.datasets[j][0], block.datasets[j][1]);
+			var t = new Trial(exp, j, block.datasets[j][0], block.datasets[j][1]);
 			block.trials.push(t);
 		};
 	}
@@ -375,6 +376,8 @@ function runTrials(exp){
 		// Show question
 		$('#study').show();
 		$('#exp-' + exp).show();
+		$('button').prop('disabled', true);
+		$('.choice').removeClass('active');
 
 		//Hidden but draw chart
 		if (block.chartType === 'cs') {
@@ -416,7 +419,7 @@ function runTrials(exp){
 		        keys["backslash"] = false;
 		    }
 		    timed();
-		    enableChoice();
+		    // enableChoice();
 			});
 
 			$(document).off();
@@ -470,13 +473,13 @@ function runTrials(exp){
 					$('#press-continue').show();
 					moveOn();
 				} else {
-					$('#feedback').html('Wrong. Timed out for 10 seconds...').css('color', 'red');
+					$('#feedback').html('Wrong. Timed out for ' + penalty + ' seconds...').css('color', 'red');
 					$('#time-out').show();
 					$('#correct').show();
 					setTimeout(function(){
 						$('#press-continue').show();
 						moveOn();
-					}, 10000)
+					}, penalty)
 				}
 
 				function moveOn() {
@@ -499,7 +502,6 @@ function runTrials(exp){
 				$('#time-out').hide();
 				$('.result').hide();
 				$('.choice').off('click');
-				$('.choice').removeClass('active');
 				$(document).off('keydown');
 
 				delete trial.left.data;
@@ -507,7 +509,7 @@ function runTrials(exp){
 
 				if (trialNo === 0 || reversals === 12) {
 					sendJSON(block);
-					reset(nextLetter(exp), config);
+					reset(exps, config);
 				} else {
 					// stair.next(trial.left.correct && trial.right.correct);
 					recur(block, --trialNo);

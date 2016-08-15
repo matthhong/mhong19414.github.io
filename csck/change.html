@@ -124,38 +124,124 @@ p:first-letter {
 #press-continue {
 	display: none;
 }
+blockquote {
+	line-height: 32px;
+}
 
 	</style>
 </head>
 <body>
 	<div id="header">
-		<div class="tutorial" id="tutorial-1">
-			<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
-			<p>Press <span>q</span> and <span>\</span> to continue.</p>
-			<img class="instructional" src="img/instructional-a.png">
+		<div id="tutorial-a">
+			<div class="tutorial" id="tutorial-1">
+				<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-2">
+				<p>Example:</p>
+				<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
+				<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-3">
+				<p>During each trial, a pair of charts will appear.</p>
+				<p>When you are ready, <span>complete the statement</span>:</p>
+				<blockquote>[1st chart] Blue and green are
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button"  xxclass="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">negatively</button>
+					</div>
+					related.
+				</blockquote>
+				<p>for each chart by choosing an option with the cursor.</p>
+				<br>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
+			<div class="tutorial" id="tutorial-4">
+				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
+				<p>There will be a time-out for every wrong answer.</p>
+				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<br>
+				<p>Three practice trials will now follow.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
 		</div>
-		<div class="tutorial" id="tutorial-2">
-			<p>Example:</p>
-			<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
-			<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
-			<p>Press <span>q</span> and <span>\</span> to continue.</p>
-			<img class="instructional" src="img/instructional-a.png">
+		<div id="tutorial-b">
+			<div class="tutorial" id="tutorial-1">
+				<p>Connected scatterplots are useful for comparing rates of change between two related measures.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-2">
+				<p>Example:</p>
+				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>[1st chart]  The lines form a <span>steep</span> shape. So blue moves at a <span>faster </span>rate than green.</p>
+				<p>[2nd chart]  The lines form a <span>shallow</span> shape. So blue moves at a <span>slower </span>rate than green.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-3">
+				<p>During each trial, a pair of charts will appear.</p>
+				<p>When you are ready, <span>complete the statement</span>:</p>
+				<blockquote>Blue and green are <span class="direction"></span> related.
+					<br>
+					Blue moves at a
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">faster</button>
+					  <button type="button" class="btn btn-default choice">slower</button>
+					</div>
+					rate than green.
+				</blockquote>
+				<p>for each chart by choosing an option with the cursor.</p>
+				<br>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
+			<div class="tutorial" id="tutorial-4">
+				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
+				<p>There will be a time-out for every wrong answer.</p>
+				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<br>
+				<p>Three practice trials will now follow.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
 		</div>
-		<div class="tutorial" id="tutorial-3">
-			<p>During each trial, a pair of charts will appear.</p>
-			<p>When you are ready, <span>complete the statement</span>:</p>
-			<blockquote><img id="cursor" src="img/cursor.gif"></blockquote>
-			<p>for each chart by choosing an option with the cursor.</p>
-			<br>
-			<p>Press <span>q</span> and <span>\</span> to continue.</p>
-		</div>
-		<div class="tutorial" id="tutorial-4">
-			<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
-			<p>There will be a time-out for every wrong answer.</p>
-			<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
-			<br>
-			<p>Three practice trials will now follow.</p>
-			<p>Press <span>q</span> and <span>\</span> to continue.</p>
+		<div id="tutorial-c">
+			<div class="tutorial" id="tutorial-1">
+				<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-2">
+				<p>Example:</p>
+				<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
+				<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial" id="tutorial-3">
+				<p>During each trial, a pair of charts will appear.</p>
+				<p>When you are ready, <span>complete the statement</span>:</p>
+				<blockquote>This difference is
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">greater</button>
+					  <button type="button" class="btn btn-default choice">smaller</button>
+					</div>
+					for the 1st chart than for the 2nd chart.
+				</blockquote>
+				<p>for each chart by choosing an option with the cursor.</p>
+				<br>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
+			<div class="tutorial" id="tutorial-4">
+				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
+				<p>There will be a time-out for every wrong answer.</p>
+				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<br>
+				<p>Three practice trials will now follow.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+			</div>
 		</div>
 		<div id="study">
 			<div class="problem" id="exp-a">
@@ -175,7 +261,7 @@ p:first-letter {
 				</p>
 			</div>
 			<div class="problem" id="exp-b">
-				<p>Blue and green are <span id="direction"></span> related.</p><br>
+				<p>Blue and green are <span class="direction"></span> related.</p><br>
 				<p>[1st chart] Blue moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">faster</button>
@@ -192,7 +278,7 @@ p:first-letter {
 				</p>
 			</div>
 			<div class="problem" id="exp-c">
-				<p>Blue and green are <span id="direction"></span> related.</p><br>
+				<p>Blue and green are <span class="direction"></span> related.</p><br>
 				<p>Blue changes at a <span id="sensitivity"></span> rate than green.</p><br>
 				<p>This difference is
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">

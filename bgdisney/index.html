@@ -7,11 +7,6 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<style type="text/css">
-/*		body {
-			width:1020px;
-			height:625px;
-		}*/
-		body{}
 		.wrapper{
 			width:1020px;
 			height:625px;
@@ -86,7 +81,6 @@
 			text-align: center;
 			top: -148px;
 			left: 0;
-			background: rgba(0,0,0,0.8);
 			visibility: hidden;
 		  opacity: 0;
 		  transition: visibility 0s, opacity 0.5s linear;
@@ -129,9 +123,50 @@
 		    
 		    z-index:0;
 		  }
+		 .navbar {
+		 	margin-bottom: 0;
+		 	color:black;
+		 	border-radius: 0px;
+		 }
+		 .wrapper {
+		 	margin-top:60px;
+		 }
 	</style>
 </head>
+
 <body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Dashboard Demo</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Disney <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="explore" href="#dash">Explore</a></li>
+            <li><a class="explore" href="#dash">Compare</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">The Blackstone Group</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="main-wrapper">
 	<a href="#" class=""><div class="overlay"></div></a>
 	<div class="row wrapper">
 	  <div class="col-xs-4 col-xs-offset-2">
@@ -158,36 +193,23 @@
 			  </ul>
 			</div> -->
 			<div class="row dropdown">
-			  <a class="btn btn-default btn-success" id="explore" href="#dash" type="button">Explore
+			  <a class="btn btn-default btn-success explore" href="#dash" type="button">Explore
 			    <span class="glyphicon glyphicon-stats pull-right"></span>
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a href="#">Action</a></li>
-			    <li><a href="#">Another action</a></li>
-			    <li><a href="#">Something else here</a></li>
-			    <li role="separator" class="divider"></li>
-			    <li><a href="#">Separated link</a></li>
-			  </ul>
+			  </a>
 			</div>
 			<div class="row"></div>
 			<div class="row dropdown">
-			  <a class="btn btn-default btn-info" id="compare" href="#dash" type="button">
+			  <a class="btn btn-default btn-info compare" href="#dash" type="button">
 			    Compare
 			    <span class="glyphicon glyphicon-sunglasses pull-right"></span>
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a href="#">Action</a></li>
-			    <li><a href="#">Another action</a></li>
-			    <li><a href="#">Something else here</a></li>
-			    <li role="separator" class="divider"></li>
-			    <li><a href="#">Separated link</a></li>
-			  </ul>
+			  </a>
 			</div>
 			<div class="explore-menu"></div>
 			<div class="compare-menu"></div>
 	  </div>
 	<a href="#_" class="lightbox" id="dash">
   </a>
+	</div>
 	</div>
 	<script type="text/javascript">
 	$(function(){
@@ -199,11 +221,11 @@
 	  var iframe_before = '<iframe frameborder="0" allowtransparency="true" src="';
 	  var iframe_after = '?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no&:tabs=no&:showVizHome=no"></iframe>';
 
-	  $("#explore").on('click', function(){
+	  $(".explore").on('click', function(){
 	  	$("#dash").append(
 	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneydark2/Darkdash' + iframe_after)
 	  });
-	  $("#compare").on('click', function(){
+	  $(".compare").on('click', function(){
 	  	$("#dash").append(
 	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneydark2/Compareaverages' + iframe_after)
 	  });

@@ -1,7 +1,7 @@
 var width = 300,
     height = 300;
 
-var dalc = false;
+var dalc = true;
 
 var showArrows = false;
 var showDots = false;
