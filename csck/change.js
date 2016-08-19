@@ -1,5 +1,3 @@
-$(function(){
-
 var config = {
   apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
   authDomain: "project-1718224482862335212.firebaseapp.com",
@@ -17,13 +15,16 @@ var numTrials = 2;
 
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
-var exps = d3.shuffle(['a','a','a']);
+var exps = d3.shuffle(['b','b','b']);
 var config = {
 	'hurst': 6,
-	'signOfCorr': 'negative',
-	'sensitivity': 'faster'
+	'direction': 'positive',
+	'sensitivity': 'slower'
 }
-var chartType = d3.shuffle(['dalc', 'dalc']).pop();
+var chartType = d3.shuffle(['cs', 'cs']).pop();
+if (chartType === 'sm') {
+	dalc = false;
+}
 
 var stair = new Staircase({
 	deltaT: {
@@ -54,11 +55,11 @@ commonScales = true;
 cheatMode = false;
 
 var block;
-var Block = function(chartType, hurst, exp, signOfCorr, sensitivity){
+var Block = function(chartType, hurst, exp, direction, sensitivity){
 	this.chartType = chartType;
 	this.hurst = hurst;
 	this.exp = exp;
-	this.signOfCorr = signOfCorr || '';
+	this.direction = direction || '';
 	this.sensitivity = sensitivity || '';
 	this.subjectID = getRandomInt(1000000, 9999999);
 	this.trials = [];
@@ -95,13 +96,13 @@ function getData(exp, config) {
 		dir = 'datasets/change-data/H' + config.hurst + '-a.json'; 
 	}
 	else if (exp === 'b') { 
-		dir = 'datasets/change-data/H' + config.hurst + '-b-' + config.signOfCorr + '.json';
-		$('.direction').html(config.signOfCorr + 'ly');
+		dir = 'datasets/change-data/H' + config.hurst + '-b-' + config.direction + '.json';
+		$('.direction').html(config.direction + 'ly');
 	}
 	else if (exp === 'c') { 
-		dir = 'datasets/change-data/H' + config.hurst + '-c-' + config.signOfCorr + '-' + config.sensitivity + '.json';
-		$('#direction').html(config.signOfCorr + 'ly');
-		$('#sensitivity').html(config.sensitivity);
+		dir = 'datasets/change-data/H' + config.hurst + '-c-' + config.direction + '-' + config.sensitivity + '-.json';
+		$('.direction').html(config.direction + 'ly');
+		$('.sensitivity').html(config.sensitivity);
 	} 
 
 	d3.json(dir, function(d){
@@ -124,6 +125,7 @@ function getData(exp, config) {
 						date = new Date(2016,k,1);
 						data.push({
 							date: date,
+							// Switch... mixed up green and blue... blame Robert and Steves
 							value1: temp[j].values1[k],
 							value2: temp[j].values2[k]
 						});
@@ -172,7 +174,7 @@ function getData(exp, config) {
 		}
 
 
-		block = new Block(chartType, config.hurst, exp, config.signOfCorr, config.sensitivity);
+		block = new Block(chartType, config.hurst, exp, config.direction, config.sensitivity);
 		block.datasets = datasets;
 	});
 }
@@ -217,8 +219,8 @@ function setResponse (exp, trial, chart, response) {
 		trial.correct = trial.left.correct && trial.right.correct;
 	} else if (exp === "b") {
 		answerKey = {
-			"slower": 'Shallow',
-			'faster': 'Steep'
+			"faster": 'Shallow',
+			'slower': 'Steep'
 		}
 		console.log(trial[chart]["Steepness"])
 		if (trial[chart]["Steepness"] === answerKey[response]) {
@@ -285,11 +287,13 @@ function reset (exps, config){
 
 		erase();
 
+		setChartName(chartType);
+		setTutorialImage(exp, chartType,config)
 		tutorialNow = 1;
 		$(document).on('keydown', function(event){
-			tutorialStep(event,exp)
+			tutorialStep(event,exp,chartType)
 		});
-		$('#tutorial-' + exp + ' #tutorial-1').show();
+		$(tutorialClass(exp,1,chartType)).show();
 	}
 }
 
@@ -303,17 +307,46 @@ function erase(mask) {
 	// }
 }
 
+function setChartName(chartType) {
+	var name= ''
+	if (chartType === 'cs') {
+		name = 'Connected scatterplots';
+	} else {
+		name = 'Line charts';
+	}
+	$('.chart-name').html(name);
+}
+
+function setTutorialImage(exp, chartType, config, id) {
+	if (id !== 0) { id = 1; }
+	if (exp === 'c') {
+		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+'.png')
+	} else if (exp === 'b' ){
+		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+'.png')
+	} else {
+		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+chartType+'.png')
+	}
+}
+
+function tutorialClass(exp, i, chartType) {
+	return '#tutorial-' + exp + ' .tutorial-' + i + '.tutorial-' + chartType;
+}
+
 //////EXPERIMENT
 // Tutorial
 var tutorialNow = 1;
-var tutorialStep = function(event,exp){
+var tutorialStep = function(event,exp,chartType){
 	step(event, function(){
 		if (tutorialNow < 4) {
-			$('#tutorial-' + exp + ' #tutorial-' + tutorialNow).hide();
-			$('#tutorial-' + exp + ' #tutorial-' + (tutorialNow + 1)).show();
+			if (exp === 'c' && tutorialNow === 2) {
+				console.log('msg')
+				setTutorialImage(exp, chartType, config, 0);
+			}
+			$(tutorialClass(exp, tutorialNow, chartType)).hide();
+			$(tutorialClass(exp, tutorialNow+1, chartType)).show();
 		} 
 		else {
-			$('#tutorial-' + exp + ' #tutorial-' + tutorialNow).hide();
+			$(tutorialClass(exp, tutorialNow, chartType)).hide();
 			$(document).off();
 
 			runTrials(exp);
@@ -419,7 +452,7 @@ function runTrials(exp){
 		        keys["backslash"] = false;
 		    }
 		    timed();
-		    // enableChoice();
+		    enableChoice();
 			});
 
 			$(document).off();
@@ -473,7 +506,7 @@ function runTrials(exp){
 					$('#press-continue').show();
 					moveOn();
 				} else {
-					$('#feedback').html('Wrong. Timed out for ' + penalty + ' seconds...').css('color', 'red');
+					$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 					$('#time-out').show();
 					$('#correct').show();
 					setTimeout(function(){
@@ -531,5 +564,3 @@ function nextLetter(alphabet){
 function lastLetter(alphabet){
 	return String.fromCharCode(alphabet.charCodeAt() - 1);
 };
-
-});

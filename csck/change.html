@@ -15,7 +15,6 @@
 	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
 	<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="jquery-ui.js"></script>
-	<script type="text/javascript" src="Staircase.js"></script>
 	<style type="text/css">
 @media screen and (max-height: 600px) {
     body {
@@ -81,7 +80,7 @@ body {
 }
 img.instructional {
 	position: absolute;
-	top:190px;
+	top:260px;
 	left:100px;
 }
 #leftWrapper, #rightWrapper {
@@ -127,30 +126,41 @@ p:first-letter {
 blockquote {
 	line-height: 32px;
 }
-
+#header span.direction, #header span.sensitivity {
+	color: #999;
+}
 	</style>
 </head>
 <body>
 	<div id="header">
 		<div id="tutorial-a">
-			<div class="tutorial" id="tutorial-1">
-				<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
+			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
+				<p><span class="chart-name"></span> are useful for presenting relationships between two measures.</p>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-2">
+
+			<div class="tutorial tutorial-2 tutorial-cs">
 				<p>Example:</p>
-				<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
-				<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
+				<p>[1st phase] The lines form a shape <span>tilted right</span>. So green and blue are <span>positively</span> related.</p>
+				<p>[2nd phase] The lines form a shape <span>tilted left</span>. So green and blue are <span>negatively</span> related.</p>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-3">
+			<div class="tutorial tutorial-2 tutorial-dalc tutorial-sm">
+				<p>Example:</p>
+				<p>[1st phase] The lines form <span>similar</span> shapes. So green and blue are <span>positively</span> related.</p>
+				<p>[2nd phase] The lines form <span>symmetric</span> shapes. So green and blue are <span>negatively</span> related.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+
+			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
 				<p>During each trial, a pair of charts will appear.</p>
 				<p>When you are ready, <span>complete the statement</span>:</p>
-				<blockquote>[1st chart] Blue and green are
+				<blockquote>Green and blue are
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
-					  <button type="button"  xxclass="btn btn-default choice">positively</button>
+					  <button type="button" class="btn btn-default choice">positively</button>
 					  <button type="button" class="btn btn-default choice">negatively</button>
 					</div>
 					related.
@@ -159,7 +169,8 @@ blockquote {
 				<br>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
-			<div class="tutorial" id="tutorial-4">
+
+			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
 				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
 				<p>There will be a time-out for every wrong answer.</p>
 				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
@@ -168,37 +179,52 @@ blockquote {
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
 		</div>
+
+
+
 		<div id="tutorial-b">
-			<div class="tutorial" id="tutorial-1">
-				<p>Connected scatterplots are useful for comparing rates of change between two related measures.</p>
+
+			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
+				<p><span class="chart-name"></span> are useful for comparing rates of change between two related measures.</p>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-2">
+
+			<div class="tutorial tutorial-2 tutorial-cs">
 				<p>Example:</p>
 				<p>Green and blue are <span class="direction"></span> related.</p>
-				<p>[1st chart]  The lines form a <span>steep</span> shape. So blue moves at a <span>faster </span>rate than green.</p>
-				<p>[2nd chart]  The lines form a <span>shallow</span> shape. So blue moves at a <span>slower </span>rate than green.</p>
+				<p>[1st phase]  The lines form a <span>shallow</span> shape. So green moves at a <span>faster </span>rate than blue.</p>
+				<p>[2nd phase]  The lines form a <span>steep</span> shape. So green moves at a <span>slower </span>rate than blue.</p>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-3">
+			<div class="tutorial tutorial-2 tutorial-dalc tutorial-sm">
+				<p>Example:</p>
+				<p>Green and green are <span class="direction"></span> related.</p>
+				<p>[1st phase]  The green lines are <span>larger</span> than the blue lines. So green moves at a <span>faster </span>rate than blue.</p>
+				<p>[2nd phase]  The green lines are <span>smaller</span> than the blue lines. So green moves at a <span>slower </span>rate than blue.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+
+			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
 				<p>During each trial, a pair of charts will appear.</p>
 				<p>When you are ready, <span>complete the statement</span>:</p>
-				<blockquote>Blue and green are <span class="direction"></span> related.
+				<blockquote>Green and blue are <span class="direction"></span> related.
 					<br>
-					Blue moves at a
+					Green moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">faster</button>
 					  <button type="button" class="btn btn-default choice">slower</button>
 					</div>
-					rate than green.
+					rate than blue.
 				</blockquote>
 				<p>for each chart by choosing an option with the cursor.</p>
 				<br>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
-			<div class="tutorial" id="tutorial-4">
+
+			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
 				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
 				<p>There will be a time-out for every wrong answer.</p>
 				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
@@ -207,34 +233,74 @@ blockquote {
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
 		</div>
+
+
+
 		<div id="tutorial-c">
-			<div class="tutorial" id="tutorial-1">
-				<p>Connected scatterplots are useful for presenting relationships between two measures.</p>
+			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
+				<p><span class="chart-name"></span> can be used to show time's effect on the difference between two rates of change.
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-2">
+
+			<div class="tutorial tutorial-2 tutorial-cs">
 				<p>Example:</p>
-				<p>[1st chart] The lines form a shape <span>tilted right</span>. So blue and green are <span>positively</span> related.</p>
-				<p>[2nd chart] The lines form a shape <span>tilted left</span>. So blue and green are <span>negatively</span> related.</p>
+				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The lines in the 1st phase form a <span>steeper</span> shape than the lines in the 2nd phase.</p>
+				<p>So the difference in rates of change between blue and green are <span>greater</span> in the 1st phase.</p>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 				<img class="instructional" src="img/instructional-a.png">
 			</div>
-			<div class="tutorial" id="tutorial-3">
+			<div class="tutorial tutorial-2 tutorial-dalc tutorial-sm">
+				<p>Example:</p>
+				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The difference in size between green and blue lines is <span>larger</span> in the 1st phase than in the 2nd phase.</p>
+				<p>So the difference in rates of change between blue and green are <span>greater</span> in the 1st phase.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+
+			<div class="tutorial tutorial-3 tutorial-cs">
+				<p>Example:</p>
+				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The lines in the first phase form a <span>less steep</span> shape than the lines in the second phase.</p>
+				<p>So the difference in rates of change between blue and green are <span>smaller</span> in the first phase.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+			<div class="tutorial tutorial-3 tutorial-dalc tutorial-sm">
+				<p>Example:</p>
+				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The difference in size between green and blue lines is <span>smaller</span> in the first phase than in the second phase.</p>
+				<p>So the difference in rates of change between blue and green are <span>smaller</span> in the first phase.</p>
+				<p>Press <span>q</span> and <span>\</span> to continue.</p>
+				<img class="instructional" src="img/instructional-a.png">
+			</div>
+
+			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
 				<p>During each trial, a pair of charts will appear.</p>
 				<p>When you are ready, <span>complete the statement</span>:</p>
-				<blockquote>This difference is
+				<blockquote>Green and blue are <span class="direction"></span> related.
+					<br>
+					Green changes at a <span class="sensitivity"></span> rate than blue.
+					<br>
+					The difference is
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">greater</button>
 					  <button type="button" class="btn btn-default choice">smaller</button>
 					</div>
-					for the 1st chart than for the 2nd chart.
+					for the 1st phase than for the 2nd phase.
 				</blockquote>
-				<p>for each chart by choosing an option with the cursor.</p>
+				<p>by choosing an option with the cursor.</p>
 				<br>
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
-			<div class="tutorial" id="tutorial-4">
+
+			<div class="tutorial tutorial-5">
 				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
 				<p>There will be a time-out for every wrong answer.</p>
 				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
@@ -243,16 +309,28 @@ blockquote {
 				<p>Press <span>q</span> and <span>\</span> to continue.</p>
 			</div>
 		</div>
+
+
+
+
+
+
+
+
+
+
+
 		<div id="study">
+
 			<div class="problem" id="exp-a">
-				<p>[1st chart] Blue and green are 
+				<p>[1st phase] Green and blue are 
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a1">
 					  <button type="button" class="btn btn-default choice">positively</button>
 					  <button type="button" class="btn btn-default choice">negatively</button>
 					</div>
 					related.
 				</p><br>
-				<p>[2nd chart] Blue and green are 
+				<p>[2nd phase] Green and blue are 
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a2">
 					  <button type="button" class="btn btn-default choice">positively</button>
 					  <button type="button" class="btn btn-default choice">negatively</button>
@@ -260,34 +338,37 @@ blockquote {
 					related.
 				</p>
 			</div>
+
 			<div class="problem" id="exp-b">
-				<p>Blue and green are <span class="direction"></span> related.</p><br>
-				<p>[1st chart] Blue moves at a
+				<p>Green and blue are <span class="direction"></span> related.</p><br>
+				<p>[1st phase] Green moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">faster</button>
 					  <button type="button" class="btn btn-default choice">slower</button>
 					</div>
-					rate than green.
+					rate than blue.
 				</p><br>
-				<p>[2nd chart] Blue moves at a
+				<p>[2nd phase] Green moves at a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b2">
 					  <button type="button" class="btn btn-default choice">faster</button>
 					  <button type="button" class="btn btn-default choice">slower</button>
 					</div>
-					rate than green.
+					rate than blue.
 				</p>
 			</div>
+
 			<div class="problem" id="exp-c">
-				<p>Blue and green are <span class="direction"></span> related.</p><br>
-				<p>Blue changes at a <span id="sensitivity"></span> rate than green.</p><br>
-				<p>This difference is
+				<p>Green and blue are <span class="direction"></span> related.</p><br>
+				<p>Green changes at a <span class="sensitivity"></span> rate than blue.</p><br>
+				<p>The difference is
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">greater</button>
 					  <button type="button" class="btn btn-default choice">smaller</button>
 					</div>
-					for the 1st chart than for the 2nd chart.
+					for the 1st phase than for the 2nd phase.
 				</p>
 			</div>
+
 			<p id='response-time' class='result'>That took <span id="time-display"></span> seconds.</p>
 			<p id='correct' class='result'><span id="feedback"></span></p>
 			<p id="press-continue" class='result'>Press <span>q</span> and <span>\</span> to continue.</p>
