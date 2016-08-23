@@ -3,8 +3,7 @@ var interactionEffect = config.sensitivity === 'slower' ? 'steep' : 'shallow';
 var masks = [];
 var mask = { left: { data: [] }, right: { data: [] }};
 
-var block;
-var mixed = [];
+var allData = {a:{},b:{},c:{}};
 
 function makeMask() {
 	for (var i = 0; i < 7; i++) {
@@ -114,8 +113,8 @@ function getData(exp, config) {
 		}
 
 
-		block = new Block(chartType, config.hurst, exp, config.direction, config.sensitivity);
+		var block = new Block(chartType, config.hurst, exp, config.direction, config.sensitivity);
 		block.datasets = datasets;
-		mixed.push(block);
+		allData[exp] = block;
 	});
 }

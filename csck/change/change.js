@@ -14,13 +14,15 @@ function reset (exps, config, user_id){
 		$('#done').show();
 		$('#user-id').html(user_id);
 	} else {
+		// Move on to next experiment
 		var exp = exps[exps.length-1]
 		var lastExp = exps.pop();
-		$('#exp-' + lastExp).hide();
 		getData(exp, config);
+
+		// Set up tutorial mode
+		$('#exp-' + lastExp).hide();
 		$(document).off();
 		$('#study').hide();
-
 		erase();
 
 		setChartName(chartType);
@@ -158,6 +160,7 @@ function runTrials() {
 function runBlock(exp){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
+	var block = allData[exp];
 
 	for (var i = 0; i < masks.length; i++) {
 		if (block.chartType === 'cs') {
@@ -227,7 +230,7 @@ function runBlock(exp){
 //Hidden but draw chart
 function drawHidden(trial, trialNo) {
 
-	if (block.chartType === 'cs') {
+	if (trial.chartType === 'cs') {
 		drawCS(trial, 'Chart');
 	} else {
 		drawDALC(trial, 'Chart');
