@@ -1,0 +1,25 @@
+var dbConfig = {
+  apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
+  authDomain: "project-1718224482862335212.firebaseapp.com",
+  databaseURL: "https://project-1718224482862335212.firebaseio.com",
+  storageBucket: "",
+};
+firebase.initializeApp(dbConfig);
+var db = firebase.database();
+
+function sendJSON(_block, callback) {
+    // // make sure version is set
+    // _block.version = perfExperiment.version;
+    // // show size of block data
+    // console.log(encodeURIComponent(JSON.stringify(_block, null, " ")).length);
+
+    // get correctess and time
+    _block.avgRT = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.responseTime; }, 0) / _block.trials.length;
+    _block.avgCorrect = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.correct; }, 0) / _block.trials.length;
+
+    // send
+    delete _block.datasets;
+    _block.config = config;
+    console.log(_block.chartType+'/'+ _block.exp+'/'+_block.subjectID)
+    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.exp+'/'+_block.subjectID).set(_block);
+};

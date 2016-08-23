@@ -1,3 +1,15 @@
+ARROW_FRACTION = 0.5;
+GENERATEDATASETS = false;
+
+interactDALC = false;
+showArrows = false;
+smoothLines = false;
+showLabels = true;
+study = true;
+disconnected = true;
+commonScales = true;
+cheatMode = false;
+
 var drawCS = function(trial, mask, i){
 	if (mask == "Mask") {
 		$('#leftWrapper').append("<div class='mask' id='leftMask" + i + "''></div>")
