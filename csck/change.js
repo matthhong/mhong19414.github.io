@@ -41,7 +41,7 @@ var config = {
 	'direction': 'positive',
 	'sensitivity': 'slower'
 }
-var chartType = d3.shuffle(['cs', 'cs']).pop();
+var chartType = d3.shuffle(['sm', 'sm']).pop();
 if (chartType === 'sm') {
 	dalc = false;
 }
