@@ -155,21 +155,14 @@ function setResponse (trial, chart, response) {
 function runTrials() {
 	// Mixed design
 
+	// Combine trials
+	// Recursively run them
 }
 
 function runBlock(exp){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
 	var block = allData[exp];
-
-	for (var i = 0; i < masks.length; i++) {
-		if (block.chartType === 'cs') {
-			drawCS(masks[i], 'Mask', i);
-		} else {
-			drawDALC(masks[i], 'Mask', i);
-		}
-	};
-	$('.mask').hide();
 
 	if (exp === 'a' || exp === 'b') {
 		for (var j = 0; j<block.datasets.length; j+=2) {
@@ -347,4 +340,16 @@ function endTrial(block, trialNo) {
 	}
 }
 
+function drawMask(chartType) {
+	for (var i = 0; i < masks.length; i++) {
+		if (chartType === 'cs') {
+			drawCS(masks[i], 'Mask', i);
+		} else {
+			drawDALC(masks[i], 'Mask', i);
+		}
+	};
+	$('.mask').hide();
+}
+
+drawMask();
 reset(exps, config);

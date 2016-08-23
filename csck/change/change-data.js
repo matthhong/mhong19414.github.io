@@ -24,9 +24,9 @@ function makeMask() {
 		masks.push(mask);
 	};
 }
+makeMask();
 
 function getData(exp, config) {
-	makeMask();
 
 	var dir = ''
 	if (exp === 'a') { 
