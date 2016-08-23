@@ -26,18 +26,6 @@ if (chartType === 'sm') {
 	dalc = false;
 }
 
-var stair = new Staircase({
-	deltaT: {
-		firstVal: 1500,
-		limits: [0, 30000],
-		direction: '-1',
-		operation: 'multiply',
-		factor: 4/3,
-		down: 1
-	}
-});
-stair.init();
-
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
