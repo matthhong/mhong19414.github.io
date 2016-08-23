@@ -1,3 +1,18 @@
+// http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
 var config = {
   apiKey: "AIzaSyCpAJIO8anJshx1G-Qhy2qDl2u-QtD_UD4",
   authDomain: "project-1718224482862335212.firebaseapp.com",
@@ -16,6 +31,11 @@ var numTrials = 2;
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
 var exps = d3.shuffle(['b','b','b']);
+
+if (qs['block']) {
+ exps = [qs['block']];
+}
+
 var config = {
 	'hurst': 6,
 	'direction': 'positive',
