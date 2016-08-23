@@ -405,8 +405,8 @@ function sendJSON(_block, callback) {
     // send
     delete _block.datasets;
     _block.config = config;
-    console.log(_block.chartType+'/'+ _block.hurst+'/'+_block.subjectID)
-    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.hurst+'/'+_block.subjectID).set(_block);
+    console.log(_block.chartType+'/'+ _block.exp+'/'+_block.subjectID)
+    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.exp+'/'+_block.subjectID).set(_block);
 };
 
 function runTrials(exp){
