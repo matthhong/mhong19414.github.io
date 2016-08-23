@@ -24,24 +24,29 @@ var db = firebase.database();
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
+var testOrPilot = 'test';
 var penalty = (debug ? 0 : 10000);
 var timeLimit = (debug ? 1000000 : 10000);
-var numTrials = 2;
+var numTrials = 1;
 
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
-var exps = d3.shuffle(['b','b','b']);
+
+var config = {
+	'hurst': d3.shuffle([2,4,6,8]).pop(),
+	'direction': d3.shuffle(['positive','negative']).pop(),
+	'sensitivity': d3.shuffle(['slower','faster']).pop(),
+	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
+	'block_order': d3.shuffle(['a','b','c'])
+}
+var chartType = config.chart_type;
+var exps = config.block_order;
+var interactionEffect = config.sensitivity === 'slower' ? 'steep' : 'shallow';
 
 if (qs['block']) {
  exps = [qs['block']];
 }
 
-var config = {
-	'hurst': 6,
-	'direction': 'positive',
-	'sensitivity': 'slower'
-}
-var chartType = d3.shuffle(['sm', 'sm']).pop();
 if (chartType === 'sm') {
 	dalc = false;
 }
@@ -111,6 +116,8 @@ function getData(exp, config) {
 		dir = 'datasets/change-data/H' + config.hurst + '-c-' + config.direction + '-' + config.sensitivity + '-.json';
 		$('.direction').html(config.direction + 'ly');
 		$('.sensitivity').html(config.sensitivity);
+		$('.interaction1').html(interactionEffect+'er');
+		$('.interaction2').html('less ' + interactionEffect);
 	} 
 
 	d3.json(dir, function(d){
@@ -141,7 +148,7 @@ function getData(exp, config) {
 
 					dataset.data = data;
 					for (var k in temp[j]) {
-						if ((k !== 'values1' || k !== 'values2') && temp[j].hasOwnProperty(k)) {
+						if (k !== 'values1' && k !== 'values2' && temp[j].hasOwnProperty(k)) {
 							dataset[k] = temp[j][k];
 						}
 					};
@@ -170,7 +177,7 @@ function getData(exp, config) {
 				dataset.data = data;
 
 				for (var k in temp) {
-					if ((k !== 'values1' || k !== 'values2') && temp.hasOwnProperty(k)) {
+					if (k !== 'values1' && k !== 'values2' && temp.hasOwnProperty(k)) {
 						dataset[k] = temp[k];
 					}
 				};
@@ -282,13 +289,24 @@ var step = function(event, callback){
   }
 }
 
-function reset (exps, config){
-	if (exps.length === 0) {
+var backwardOrForward = function(event, callback, callforward) {
+	console.log(event.keyCode)
+	if (event.keyCode == 81) {
+		callback();
+	} else if (event.keyCode == 220) {
+		callforward();
+	}
+}
+
+function reset (exps, config, user_id){
+	if (exps.length === 0 && user_id) {
+		$('#study').hide();
 		$('#done').show();
+		$('#user-id').html(user_id);
 	} else {
 		var exp = exps[exps.length-1]
-		exps.pop();
-		$('#exp-' + lastLetter(exp)).hide();
+		var lastExp = exps.pop();
+		$('#exp-' + lastExp).hide();
 		getData(exp, config);
 		$(document).off();
 		$('#study').hide();
@@ -344,23 +362,33 @@ function tutorialClass(exp, i, chartType) {
 // Tutorial
 var tutorialNow = 1;
 var tutorialStep = function(event,exp,chartType){
-	step(event, function(){
-		if (tutorialNow < 4) {
-			if (exp === 'c' && tutorialNow === 2) {
-				console.log('msg')
-				setTutorialImage(exp, chartType, config, 0);
+	backwardOrForward(event, 
+	  function(){
+			if (tutorialNow != 1) {
+				if (exp==='c' && tutorialNow === 3) {
+					setTutorialImage(exp, chartType, config, 1);
+				}
+				$(tutorialClass(exp, tutorialNow, chartType)).hide();
+				$(tutorialClass(exp, tutorialNow-1, chartType)).show();
+				--tutorialNow;
 			}
-			$(tutorialClass(exp, tutorialNow, chartType)).hide();
-			$(tutorialClass(exp, tutorialNow+1, chartType)).show();
-		} 
-		else {
-			$(tutorialClass(exp, tutorialNow, chartType)).hide();
-			$(document).off();
+		},
+		function(){
+			if (tutorialNow < 4) {
+				if (exp === 'c' && tutorialNow === 2) {
+					setTutorialImage(exp, chartType, config, 0);
+				}
+				$(tutorialClass(exp, tutorialNow, chartType)).hide();
+				$(tutorialClass(exp, tutorialNow+1, chartType)).show();
+			} 
+			else {
+				$(tutorialClass(exp, tutorialNow, chartType)).hide();
+				$(document).off();
 
-			runTrials(exp);
-		}
-		++tutorialNow;
-	});
+				runTrials(exp);
+			}
+			++tutorialNow;
+		});
 };
 
 //To send results
@@ -376,8 +404,9 @@ function sendJSON(_block, callback) {
 
     // send
     delete _block.datasets;
+    _block.config = config;
     console.log(_block.chartType+'/'+ _block.hurst+'/'+_block.subjectID)
-    db.ref(_block.chartType+'/'+ _block.hurst+'/'+_block.subjectID).set(_block);
+    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.hurst+'/'+_block.subjectID).set(_block);
 };
 
 function runTrials(exp){
@@ -482,6 +511,8 @@ function runTrials(exp){
 					$(this).addClass('active')
 						.siblings().removeClass('active');
 
+					$(this).siblings().prop('disabled', true)
+
 					if ($('#exp-'+exp+' button').length/2 - $('.active').length == 0) {
 						// When both choices made
 						evaluate();
@@ -550,7 +581,7 @@ function runTrials(exp){
 
 				if (trialNo === 0 || reversals === 12) {
 					sendJSON(block);
-					reset(exps, config);
+					reset(exps, config, block.subjectID);
 				} else {
 					// stair.next(trial.left.correct && trial.right.correct);
 					recur(block, --trialNo);
