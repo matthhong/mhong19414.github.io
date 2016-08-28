@@ -3,7 +3,8 @@ var config = {
 	'direction': d3.shuffle(['positive','negative']).pop(),
 	'sensitivity': d3.shuffle(['slower','faster']).pop(),
 	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
-	'block_order': d3.shuffle(['a','b','c'])
+    // I pop stuff from the back of block_order
+	'block_order': ['all', 'c', 'b', 'a']
 }
 
 // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
@@ -26,7 +27,10 @@ var debug = window.location.href.indexOf('debug') >= 0;
 var testOrPilot = 'test';
 var penalty = (debug ? 0 : 10000);
 var timeLimit = (debug ? 1000000 : 10000);
-var numTrials = 1;
+
+var numPracticeTrials = 5;
+var numRealTrials = 10; // Per block
+var numTrials = numPracticeTrials + numRealTrials;
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -36,10 +40,10 @@ function getRandomInt(min, max) {
 // Set Hurst randomly
 // var hurst = math.ceil(Math.random() * 4) * 2;
 var chartType = config.chart_type;
-var exps = config.block_order;
+var blockSeq = config.block_order;
 
 if (qs['block']) {
- exps = [qs['block']];
+ blockSeq = [qs['block']];
 }
 
 if (qs['chart']) {

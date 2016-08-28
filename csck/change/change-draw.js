@@ -59,6 +59,43 @@ var drawDALC = function(trial, mask, i) {
 	redraw(true);
 };
 
+function erase(mask) {
+	$('#leftChart').empty();
+	$('#rightChart').empty();
+	$('#leftChart').hide();
+	$('#rightChart').hide();
+	// if (mask) {
+		$('.mask').hide();
+	// }
+}
+
+//Hidden but draw chart
+function drawHidden(trial, trialNo) {
+
+	erase();
+	if (trial.chartType === 'cs') {
+		drawCS(trial, 'Chart');
+	} else {
+		drawDALC(trial, 'Chart');
+	}
+	$
+	delete trial.left.data;
+	delete trial.right.data;
+}
+
+
+function drawMask() {
+	for (var i = 0; i < masks.length; i++) {
+		if (chartType === 'cs') {
+			drawCS(masks[i], 'Mask', i);
+		} else {
+			drawDALC(masks[i], 'Mask', i);
+		}
+	};
+	$('.mask').hide();
+}
+
+
 // var drawDALCMask = function(masks) {
 // 	var charts = drawDALC(masks[0], 'Mask');
 

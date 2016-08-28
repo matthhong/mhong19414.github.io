@@ -1,22 +1,16 @@
-function startExperiment (){
-	$('#mixed-start').show();
-	setTimeout(function(){
-		$('.press-continue').show();
-		$(document).on('keydown', function(event){
-			backwardOrForward(event, null, runTrials);
-		})
-	})
-}
-
-function reset (exps, config, user_id){
-	if (exps.length === 0 && user_id) {
+function reset (blockSeq, config, user_id){
+	if (blockSeq.length === 1) {
+		$('#study').hide();
+		blockSeq.pop();
+		startExperiment();
+	} else if (blockSeq.length === 0) {
 		$('#study').hide();
 		$('#done').show();
 		$('#user-id').html(user_id);
 	} else {
 		// Move on to next experiment
-		var exp = exps[exps.length-1]
-		var lastExp = exps.pop();
+		var exp = blockSeq[blockSeq.length-1]
+		var lastExp = blockSeq.pop();
 		getData(exp, config);
 
 		// Set up tutorial mode
@@ -28,26 +22,12 @@ function reset (exps, config, user_id){
 		setChartName(chartType);
 		setTutorialImage(exp, chartType,config)
 		tutorialNow = 1;
-		$(document).on('keydown', function(event){
+		$(document).on('keyup', function(event){
 			tutorialStep(event,exp,chartType)
 		});
 		$(tutorialClass(exp,1,chartType)).show();
 	}
 }
-
-function erase(mask) {
-	$('#leftChart').empty();
-	$('#rightChart').empty();
-	$('#leftChart').hide();
-	$('#rightChart').hide();
-	// if (mask) {
-		$('.mask').hide();
-	// }
-}
-
-
-
-
 
 // Tutorial
 function setChartName(chartType) {
@@ -63,8 +43,6 @@ function setChartName(chartType) {
 function setTutorialImage(exp, chartType, id) {
 	if (id !== 0) { id = 1; }
 	if (exp === 'c') {
-		console.log(config)
-		console.log('img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+'.png')
 		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+'.png')
 	} else if (exp === 'b' ){
 		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+'.png')
@@ -102,92 +80,28 @@ var tutorialStep = function(event,exp,chartType){
 				$(tutorialClass(exp, tutorialNow, chartType)).hide();
 				$(document).off();
 
-				runBlock(exp);
+				prepareBlocks(allData[exp]);
+				runBlock(allData[exp], numPracticeTrials);
 			}
 			++tutorialNow;
 		});
 };
 
-
-
-
-
-// Actual experiment
-function setResponse (trial, chart, response) {
-	if (trial.exp === "a") {
-		answerKey = {
-			"positively": 1,
-			"negatively": -1
-		}
-
-		if (trial[chart]["Sign of correlation"] === answerKey[response]) {
-			trial[chart].correct = true;
-		} else { trial[chart].correct = false; }
-
-		trial.correct = trial.left.correct && trial.right.correct;
-	} else if (trial.exp === "b") {
-		answerKey = {
-			"faster": 'Shallow',
-			'slower': 'Steep'
-		}
-		if (trial[chart]["Steepness"] === answerKey[response]) {
-			trial[chart].correct = true;
-		} else { trial[chart].correct = false; }
-
-		trial.correct = trial.left.correct && trial.right.correct;	
-	} else if (trial.exp === "c") {
-		var slopeDiff = Math.abs(trial[chart]["Regression slope"]) - Math.abs(trial[otherChart(chart)]["Regression slope"]);
-
-		if (Math.abs(trial[chart]["Regression slope"]) > 1 && slopeDiff > 0
-				|| Math.abs(trial[chart]["Regression slope"]) < 1 && slopeDiff < 0) {
-			trial.correct = true;
-		} else { trial.correct = false; }
-	}
-
-	function otherChart(chart){
-		if (chart === "left") {
-			return "right";
-		} 
-		return "left";
-	}
-};
-
-function runTrials() {
-	// Mixed design
-
-	// Combine trials
-	// Recursively run them
-}
-
-function runBlock(exp){
+function runBlock(block, numTrials){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
-	var block = allData[exp];
 
-	if (exp === 'a' || exp === 'b') {
-		for (var j = 0; j<block.datasets.length; j+=2) {
-			var t = new Trial(exp, j, block.datasets[j], block.datasets[j+1]);
-			// should take 2 at once, unless C: already comes at once
-			block.trials.push(t);
-		};
-	} else if (exp === 'c') {
-		for (var j = 0; j < block.datasets.length; j++) {
-			d3.shuffle(block.datasets[j]);
-			var t = new Trial(exp, j, block.datasets[j][0], block.datasets[j][1]);
-			block.trials.push(t);
-		};
-	}
-
-	var lastCorrect = null;
-	var reversals = 0;
+	// var lastCorrect = null;
+	// var reversals = 0;
 
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
+		trial.index = numTrials - trialNo;
 		
 		// Show question
 		$('#study').show();
-		$('#exp-' + exp).show();
+		$('#exp-' + trial.exp).show();
 		$('button').prop('disabled', true);
 		$('.choice').removeClass('active');
 
@@ -201,7 +115,7 @@ function runBlock(exp){
 				$('#next img').attr('src', 'img/hold-buttons.png');
 				// $(this).fadeOut(500, function(){
 				$(document).on('keydown', function(event){
-					step(event, function(){
+					heldDown(event, function(){
 						$('#next').hide();
 						$('#next img').attr('src', 'img/next.png');
 						$('#next').off('mouseenter');
@@ -214,23 +128,29 @@ function runBlock(exp){
 					// $('#next').off('mouseenter');
 				// });
 			});
+		function endTrial(block, trialNo) {
+			// if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
+			// lastCorrect = trial.correct;
+
+			$('#time-out').hide();
+			$('.problem').hide();
+			$('.result').hide();
+			$('.choice').off('click');
+			$(document).off('keydown');
+
+			if (trialNo === 0) {
+				sendJSON(block);
+				reset(blockSeq, config, block.subjectID);
+			} else {
+				// stair.next(trial.left.correct && trial.right.correct);
+				recur(block, --trialNo);
+			}
+		}
 	};
 
 	// Begin recursion
-	recur(block, block.trials.length - 1);
+	recur(block, numTrials-1);
 };
-
-//Hidden but draw chart
-function drawHidden(trial, trialNo) {
-
-	if (trial.chartType === 'cs') {
-		drawCS(trial, 'Chart');
-	} else {
-		drawDALC(trial, 'Chart');
-	}
-	delete trial.left.data;
-	delete trial.right.data;
-}
 
 function reveal(trial, callback){
 
@@ -239,16 +159,11 @@ function reveal(trial, callback){
 	var dateStart = new Date();
 	
 	$(document.body).on('keyup', function(event) {
-    // reset status of the button 'released' == 'false'
-    if (event.keyCode == 81) {
-        keys["qkey"] = false;
-    } else if (event.keyCode == 220) {
-        keys["backslash"] = false;
-    }
-    timed();
-    enableChoice();
+		released(event, function(){
+			timed();
+			enableChoice();
+		});
 	});
-
 	$(document).off();
 
 	// Choice buttons
@@ -312,8 +227,8 @@ function reveal(trial, callback){
 		}
 
 		function moveOn() {
-			$(document).on('keydown', function(event){
-				step(event, callback);
+			$(document).on('keyup', function(event){
+				backwardOrForward(event, null, callback);
 			})
 		}
 		// Disable buttons
@@ -322,34 +237,6 @@ function reveal(trial, callback){
 	}
 };
 
-function endTrial(block, trialNo) {
-	// if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
-	// lastCorrect = trial.correct;
-
-	$('#time-out').hide();
-	$('.result').hide();
-	$('.choice').off('click');
-	$(document).off('keydown');
-
-	if (trialNo === 0) {
-		sendJSON(block);
-		reset(exps, config, block.subjectID);
-	} else {
-		// stair.next(trial.left.correct && trial.right.correct);
-		recur(block, --trialNo);
-	}
-}
-
-function drawMask(chartType) {
-	for (var i = 0; i < masks.length; i++) {
-		if (chartType === 'cs') {
-			drawCS(masks[i], 'Mask', i);
-		} else {
-			drawDALC(masks[i], 'Mask', i);
-		}
-	};
-	$('.mask').hide();
-}
-
 drawMask();
-reset(exps, config);
+reset(blockSeq, config);
+// startExperiment();

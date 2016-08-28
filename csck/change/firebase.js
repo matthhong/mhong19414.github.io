@@ -15,11 +15,11 @@ function sendJSON(_block, callback) {
 
     // get correctess and time
     _block.avgRT = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.responseTime; }, 0) / _block.trials.length;
-    _block.avgCorrect = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.correct; }, 0) / _block.trials.length;
+    _block.score = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.correct; }, 0) / _block.trials.length;
 
     // send
     delete _block.datasets;
-    _block.config = config;
     console.log(_block.chartType+'/'+ _block.exp+'/'+_block.subjectID)
+    console.log(_block);
     db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.exp+'/'+_block.subjectID).set(_block);
 };

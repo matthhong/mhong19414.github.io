@@ -14,7 +14,7 @@ var keys = {
   backslash: false
 };
 
-var step = function(event, callback){
+var heldDown = function(event, callback){
 	if (event.keyCode == 81) {
       keys["qkey"] = true;
   } else if (event.keyCode == 220) {
@@ -27,11 +27,21 @@ var step = function(event, callback){
   }
 }
 
+var released = function(event, callback) {
+    // reset status of the button 'released' == 'false'
+  if (event.keyCode == 81) {
+      keys["qkey"] = false;
+  } else if (event.keyCode == 220) {
+      keys["backslash"] = false;
+  }
+  callback();
+};
+
+
 var backwardOrForward = function(event, callback, callforward) {
-	console.log(event.keyCode)
-	if (event.keyCode == 81) {
+	if (event.keyCode == 37) {
 		callback();
-	} else if (event.keyCode == 220) {
+	} else if (event.keyCode == 39) {
 		callforward();
 	}
 }

@@ -112,9 +112,38 @@ function getData(exp, config) {
 			};
 		}
 
-
 		var block = new Block(chartType, config.hurst, exp, config.direction, config.sensitivity);
 		block.datasets = datasets;
 		allData[exp] = block;
 	});
+}
+
+function prepareBlocks (block){
+	if (block.exp === 'a' || block.exp === 'b') {
+		for (var j = 0; j<block.datasets.length; j+=2) {
+			// Pushes all data into trials
+			var t = new Trial(block.exp, block.chartType, block.datasets[j], block.datasets[j+1]);
+			// should take 2 at once, unless C: already comes at once
+			block.trials.push(t);
+		};
+	} else if (block.exp === 'c') {
+		for (var j = 0; j < block.datasets.length; j++) {
+			d3.shuffle(block.datasets[j]);
+			var t = new Trial(block.exp, block.chartType, block.datasets[j][0], block.datasets[j][1]);
+			block.trials.push(t);
+		};
+	}
+}
+
+function prepareMixed () {
+
+	var combinedBlock = new Block(chartType, config.hurst, 'all', config.direction, config.sensitivity);
+
+	for (var exp in allData) {
+		if (exp === 'a' || exp === 'b' || exp === 'c') {
+			Array.prototype.push.apply(combinedBlock.trials, allData[exp].trials.filter(function(e){ if(e.correct === null){return true;}}))
+		}
+	}
+	d3.shuffle(combinedBlock.trials);
+	return combinedBlock;
 }
