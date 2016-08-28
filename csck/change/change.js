@@ -143,6 +143,10 @@ function runBlock(block, numTrials){
 			$('.choice').off('click');
 
 			if (trialNo === 0) {
+				if (stage === 2) {
+					var totalEndTime = new Date();
+					block.totalTime = totalEndTime - totalStartTime; //including practice
+				}
 				sendJSON(block);
 				reset(blockSeq, config, block.subjectID);
 			} else {
@@ -224,7 +228,7 @@ function reveal(trial, callback){
 				$('.mask').hide();
 				setTimeout(function(){
 					moveOn();
-				}, 3000);
+				}, debug ? 0 : 3000);
 			} else {
 				moveOn();
 			}
@@ -238,7 +242,7 @@ function reveal(trial, callback){
 				$('.mask').hide();
 				setTimeout(function(){
 					moveOn();
-				}, 5000);
+				}, debug ? 0 : 5000);
 
 			} else {
 

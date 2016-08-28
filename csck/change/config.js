@@ -34,6 +34,8 @@ var numPracticeTrials = 5;
 var numRealTrials = 5; // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 
+var totalStartTime = new Date();
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
