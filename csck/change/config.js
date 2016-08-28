@@ -55,6 +55,7 @@ if (qs['stage']) {
 if (pilot) {
  testOrPilot = 'pilot';
 }
+console.log(testOrPilot);
 
 if (qs['chartType']) {
  chartType = qs['chartType'];
