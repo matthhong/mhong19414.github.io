@@ -15,7 +15,6 @@ function reset (blockSeq, config, user_id){
 
 		// Set up tutorial mode
 		$('#exp-' + lastExp).hide();
-		$(document).off();
 		$('#study').hide();
 		erase();
 
@@ -23,7 +22,7 @@ function reset (blockSeq, config, user_id){
 		setTutorialImage(exp, chartType,config)
 		tutorialNow = 1;
 		$(document).on('keyup', function(event){
-			tutorialStep(event,exp,chartType)
+			tutorialStep(event,exp,chartType,this)
 		});
 		$(tutorialClass(exp,1,chartType)).show();
 	}
@@ -56,7 +55,7 @@ function tutorialClass(exp, i, chartType) {
 }
 
 var tutorialNow = 1;
-var tutorialStep = function(event,exp,chartType){
+var tutorialStep = function(event,exp,chartType,selector){
 	backwardOrForward(event, 
 	  function(){
 			if (tutorialNow != 1) {
@@ -67,6 +66,9 @@ var tutorialStep = function(event,exp,chartType){
 				$(tutorialClass(exp, tutorialNow-1, chartType)).show();
 				--tutorialNow;
 			}
+			$(document).on('keyup', function(event){
+				tutorialStep(event,exp,chartType,this)
+			});
 		},
 		function(){
 			if (tutorialNow < 4) {
@@ -75,16 +77,19 @@ var tutorialStep = function(event,exp,chartType){
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).hide();
 				$(tutorialClass(exp, tutorialNow+1, chartType)).show();
+				$(document).on('keyup', function(event){
+					tutorialStep(event,exp,chartType,this)
+				});
 			} 
 			else {
 				$(tutorialClass(exp, tutorialNow, chartType)).hide();
-				$(document).off();
 
 				prepareBlocks(allData[exp]);
 				runBlock(allData[exp], numPracticeTrials);
 			}
 			++tutorialNow;
-		});
+		},
+		selector);
 };
 
 function runBlock(block, numTrials){
@@ -122,7 +127,7 @@ function runBlock(block, numTrials){
 						reveal(trial, function(){
 							endTrial(block, trialNo);
 						});
-					});
+					}, this);
 				});
 					// reveal();
 					// $('#next').off('mouseenter');
@@ -136,7 +141,6 @@ function runBlock(block, numTrials){
 			$('.problem').hide();
 			$('.result').hide();
 			$('.choice').off('click');
-			$(document).off('keydown');
 
 			if (trialNo === 0) {
 				sendJSON(block);
@@ -162,16 +166,16 @@ function reveal(trial, callback){
 		released(event, function(){
 			timed();
 			enableChoice();
-		});
+		}, this);
 	});
-	$(document).off();
 
 	// Choice buttons
 	function enableChoice() {
-		$(document.body).off('keyup');
 
-		$('#leftChart').empty();
-		$('#rightChart').empty();
+		if (stage === 2) {
+	 		$('#leftChart').empty();
+			$('#rightChart').empty();
+		}
 		$('.mask').show();
 
 		$('html').css('cursor','auto');
@@ -214,26 +218,59 @@ function reveal(trial, callback){
 		if (trial.correct) {
 			$('#feedback').html('Correct!').css('color', 'blue');
 			$('#correct').show();
-			$('.press-continue').show();
-			moveOn();
+
+			if (stage == 1) {
+				// Reveal chart again, then move on after 5 seconds
+				$('.mask').hide();
+				setTimeout(function(){
+					moveOn();
+				}, 3000);
+			} else {
+				moveOn();
+			}
 		} else {
-			$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 			$('#time-out').show();
 			$('#correct').show();
-			setTimeout(function(){
-				$('.press-continue').show();
-				moveOn();
-			}, penalty)
+
+			if (stage == 1) {
+
+				$('#feedback').html('Wrong.').css('color', 'red');
+				$('.mask').hide();
+				setTimeout(function(){
+					moveOn();
+				}, 5000);
+
+			} else {
+
+				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
+				erase();
+				setTimeout(function(){
+					$('.press-continue').show();
+					moveOn();
+				}, penalty);
+
+			}
 		}
 
+		// Disable buttons
+		// $('button').prop('disabled', true);
+		// if (stage == 1) {
+		// 	$('.mask').hide();
+		// 	setTimeout(function(){
+		// 		erase();
+		// 	}, 5000);
+		// } else {
+		// 	erase();
+		// }
+
 		function moveOn() {
+			$('button').prop('disabled', true);
+			erase();
+			$('.press-continue').show();
 			$(document).on('keyup', function(event){
-				backwardOrForward(event, null, callback);
+				backwardOrForward(event, null, callback, this);
 			})
 		}
-		// Disable buttons
-		$('button').prop('disabled', true);
-		erase();
 	}
 };
 

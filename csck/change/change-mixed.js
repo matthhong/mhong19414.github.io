@@ -1,11 +1,12 @@
 function startExperiment (){
+	stage++;
 	$('#mixed-start').show();
 	setTimeout(function(){
 		$('.press-continue').show();
 		$(document).on('keydown', function(event){
 			backwardOrForward(event, null, runTrials);
 		})
-	}, 10000);
+	}, 15000);
 }
 
 // Actual experiment

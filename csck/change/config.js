@@ -23,13 +23,15 @@ var qs = (function(a) {
 })(window.location.search.substr(1).split('&'));
 
 var debug = window.location.href.indexOf('debug') >= 0;
+var pilot = window.location.href.indexOf('pilot') >= 0;
 
+var stage = 1;
 var testOrPilot = 'test';
-var penalty = (debug ? 0 : 10000);
+var penalty = (debug ? 0 : 7000);
 var timeLimit = (debug ? 1000000 : 10000);
 
-var numPracticeTrials = 5;
-var numRealTrials = 10; // Per block
+var numPracticeTrials = 1;
+var numRealTrials = 1; // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 
 function getRandomInt(min, max) {
@@ -43,11 +45,19 @@ var chartType = config.chart_type;
 var blockSeq = config.block_order;
 
 if (qs['block']) {
- blockSeq = [qs['block']];
+ blockSeq = ['all',qs['block'],qs['block'],qs['block']];
 }
 
-if (qs['chart']) {
- chartType = qs['chart'];
+if (qs['stage']) {
+ stage = +qs['stage'];
+}
+
+if (pilot) {
+ testOrPilot = 'pilot';
+}
+
+if (qs['chartType']) {
+ chartType = qs['chartType'];
 }
 
 if (qs['hurst']) {

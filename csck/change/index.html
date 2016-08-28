@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="../csck.js"></script>
 	<script type="text/javascript" src="../jquery-ui.js"></script>
 	<style type="text/css">
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 600px), screen and (max-width:960px) {
     body {
         padding: 10px;
         -moz-transform: scale(0.85,0.85);
@@ -37,7 +37,7 @@ body {
 }
 #header {
 	font-family: 'Inconsolata', 'Consolas', 'Courier New';
-	margin: 60px 60px 0 60px;
+	margin: 40px 60px 0 60px;
 	font-size: 16px;
 	height: 100px;
 }
@@ -93,6 +93,7 @@ img.instructional {
 }
 .wrapper{
 	width:840px;
+	margin-top: 30px;
 }
 .problem {
 	display: none;
@@ -139,7 +140,7 @@ blockquote {
 		<div id="tutorial-a">
 			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
 				<i>Practice experiment 1.</i><br><br>
-				<p><span class="chart-name"></span> are useful for presenting relationships between two measures.</p>
+				<p><span class="chart-name"></span> are useful for presenting <span>relationships</span> between two measures.</p>
 				<p>Press <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
@@ -160,8 +161,8 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
-				<p>During each trial, a pair of charts will appear.</p>
-				<p>When you are ready, <span>complete the statement</span>:</p>
+				<p>On your cue, a pair of charts will appear.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
 				<blockquote>Green and blue are
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">positively</button>
@@ -175,11 +176,12 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
-				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
-				<p>There will be a time-out for every wrong answer.</p>
-				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br>
-				<p>Five practice trials will now follow.</p>
+				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
+				<br>
+				<p>Five practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 			</div>
 		</div>
@@ -190,7 +192,7 @@ blockquote {
 
 			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
 				<i>Practice experiment 2.</i><br><br>
-				<p><span class="chart-name"></span> are useful for comparing rates of change between two related measures.</p>
+				<p><span class="chart-name"></span> are useful for comparing <span>rates of change</span> between two related measures.</p>
 				<p>Press <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
@@ -213,8 +215,8 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
-				<p>During each trial, a pair of charts will appear.</p>
-				<p>When you are ready, <span>complete the statement</span>:</p>
+				<p>On your cue, a pair of charts will appear.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
 				<blockquote>Green and blue are <span class="direction"></span> related.
 					<br>
 					Green moves at a
@@ -230,11 +232,12 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
-				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
-				<p>There will be a time-out for every wrong answer.</p>
-				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br>
-				<p>Five practice trials will now follow.</p>
+				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
+				<br>
+				<p>Five practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 			</div>
 		</div>
@@ -244,7 +247,7 @@ blockquote {
 		<div id="tutorial-c">
 			<div class="tutorial tutorial-1 tutorial-cs tutorial-dalc tutorial-sm">
 				<i>Practice experiment 3.</i><br><br>
-				<p><span class="chart-name"></span> can be used to show time's effect on the difference between two rates of change.
+				<p><span class="chart-name"></span> can be used to show time's <span>effect on the difference</span> between two rates of change.
 				<p>Press <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
@@ -288,8 +291,8 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
-				<p>During each trial, a pair of charts will appear.</p>
-				<p>When you are ready, <span>complete the statement</span>:</p>
+				<p>On your cue, a pair of charts will appear.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
 				<blockquote>Green and blue are <span class="direction"></span> related.
 					<br>
 					Green changes at a <span class="sensitivity"></span> rate than blue.
@@ -307,11 +310,12 @@ blockquote {
 			</div>
 
 			<div class="tutorial tutorial-5">
-				<p>Please answer the questions as <span>quickly</span>	and <span>accurately</span> as possible.</p>
-				<p>There will be a time-out for every wrong answer.</p>
-				<p>So the <span>better</span> you are, the <span>sooner</span> you can move on.</p>
+				<p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br>
-				<p>Five practice trials will now follow.</p>
+				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
+				<br>
+				<p>Five practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 			</div>
 		</div>
@@ -375,19 +379,21 @@ blockquote {
 				</p>
 			</div>
 
-			<p id='response-time' class='result'>That took <span id="time-display"></span> seconds.</p>
+			<p id='response-time' class='result'>You saw the chart for <span id="time-display"></span> seconds.</p>
 			<p id='correct' class='result'><span id="feedback"></span></p>
 			<p class="press-continue result">Press <span>→</span> to continue.</p>
 		</div>
 
 		<div id="mixed-start">
-			<p>The practice stage has ended. In 10 seconds, the experiment can <span>formally begin</span>.</p>
+			<p>In 15 seconds, the experiment can <span>formally begin</span>. It is a bit different from the practice stage.</p>
 			<br>
-			<p>During the practice stage, the three types of problems were presented separately, and in sequence.</p>
+			<p>During the practice stage, the three types of problems were presented in sequence and separately.</p>
+			<p>In the following stage, they will be presented in <span>randomized</span> and <span>mixed</span> fashion.</p>
 			<br>
-			<p>In the following stage, they presented will be presented in <span>randomized</span> and <span>mixed</span> fashion.</p>
+			<p>Please <span>first read each problem</span> carefully to not confuse one type of question for another.</p>
+			<p>After you have done so, please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 			<br>
-			<p><span>Please read each problem carefully</span> to not confuse one type of question for another of the three.</p>
+			<p>There are 15 trials in this stage.</p>
 			<br>
 			<p class="press-continue">Press <span>→</span> to continue.</p>
 		</div>

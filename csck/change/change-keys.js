@@ -14,7 +14,7 @@ var keys = {
   backslash: false
 };
 
-var heldDown = function(event, callback){
+var heldDown = function(event, callback, selector){
 	if (event.keyCode == 81) {
       keys["qkey"] = true;
   } else if (event.keyCode == 220) {
@@ -23,25 +23,35 @@ var heldDown = function(event, callback){
   if (keys["qkey"] && keys["backslash"]) {
   	keys["qkey"] = false;
   	keys["backslash"] = false;
+    $(selector).off('keydown');
   	callback();
   }
 }
 
-var released = function(event, callback) {
+var released = function(event, callback, selector) {
     // reset status of the button 'released' == 'false'
   if (event.keyCode == 81) {
       keys["qkey"] = false;
   } else if (event.keyCode == 220) {
       keys["backslash"] = false;
   }
-  callback();
+  if (!keys["qkey"] || !keys["backslash"]) {
+    $(selector).off('keyup');
+    callback();
+  }
 };
 
 
-var backwardOrForward = function(event, callback, callforward) {
+var backwardOrForward = function(event, callback, callforward, selector) {
 	if (event.keyCode == 37) {
-		callback();
+    if (callback) {
+      $(selector).off('keyup');
+      callback();
+    }
 	} else if (event.keyCode == 39) {
-		callforward();
+    if (callforward) {
+      $(selector).off('keyup');
+  		callforward();
+    }
 	}
 }
