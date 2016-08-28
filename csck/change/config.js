@@ -30,8 +30,8 @@ var testOrPilot = 'test';
 var penalty = (debug ? 0 : 7000);
 var timeLimit = (debug ? 1000000 : 10000);
 
-var numPracticeTrials = 1;
-var numRealTrials = 1; // Per block
+var numPracticeTrials = 5;
+var numRealTrials = 5; // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 
 function getRandomInt(min, max) {
