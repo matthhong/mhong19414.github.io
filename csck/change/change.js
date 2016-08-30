@@ -149,8 +149,8 @@ function runBlock(block, numTrials){
 				}
 
 				// Remove wasted trials
-				var toSend = $.extend({}, block)
-				toSend.trials = toSend.trials.filter(function(el){ if (el.index !== 0) { return true; }})
+				var toSend = $.extend({}, block);
+				toSend.trials = toSend.trials.filter(function(el){ if (el.index !== 0) { return true; }});
 
 				sendJSON(toSend);
 				reset(blockSeq, config, block.subjectID);
