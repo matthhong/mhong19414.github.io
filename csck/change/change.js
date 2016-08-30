@@ -147,7 +147,12 @@ function runBlock(block, numTrials){
 					var totalEndTime = new Date();
 					block.totalTime = totalEndTime - totalStartTime; //including practice
 				}
-				sendJSON(block);
+
+				// Remove wasted trials
+				var toSend = $.extend({}, block)
+				toSend.trials = toSend.trials.filter(function(el){ if (el.index !== 0) { return true; }})
+
+				sendJSON(toSend);
 				reset(blockSeq, config, block.subjectID);
 			} else {
 				// stair.next(trial.left.correct && trial.right.correct);

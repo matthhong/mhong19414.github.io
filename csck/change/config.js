@@ -59,8 +59,9 @@ if (pilot) {
 }
 console.log(testOrPilot);
 
-if (qs['chartType']) {
- chartType = qs['chartType'];
+if (qs['type']) {
+ config.chart_type = qs['type'];
+ chartType = config.chart_type;
 }
 
 if (qs['hurst']) {
