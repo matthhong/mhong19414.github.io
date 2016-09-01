@@ -23,7 +23,6 @@ var qs = (function(a) {
 })(window.location.search.substr(1).split('&'));
 
 var debug = window.location.href.indexOf('debug') >= 0;
-var pilot = window.location.href.indexOf('pilot') >= 0;
 
 var stage = 1;
 var testOrPilot = 'test';
@@ -54,8 +53,8 @@ if (qs['stage']) {
  stage = +qs['stage'];
 }
 
-if (pilot) {
- testOrPilot = 'pilot';
+if (qs['pilot']) {
+ testOrPilot = 'pilot' + qs['pilot'];
 }
 console.log(testOrPilot);
 
