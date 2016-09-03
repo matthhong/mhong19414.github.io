@@ -26,10 +26,10 @@ var debug = window.location.href.indexOf('debug') >= 0;
 
 var stage = 1;
 var testOrPilot = 'test';
-var penalty = (debug ? 0 : 7000);
+var penalty = (debug ? 0 : 10000);
 var timeLimit = (debug ? 1000000 : 10000);
 
-var numPracticeTrials = 5;
+var numPracticeTrials = 3;
 var numRealTrials = 5; // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 

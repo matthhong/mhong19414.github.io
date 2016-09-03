@@ -243,11 +243,11 @@ function reveal(trial, callback){
 
 			if (stage == 1) {
 
-				$('#feedback').html('Wrong.').css('color', 'red');
+				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 				$('.mask').hide();
 				setTimeout(function(){
 					moveOn();
-				}, debug ? 0 : 5000);
+				}, debug ? 0 : penalty);
 
 			} else {
 
