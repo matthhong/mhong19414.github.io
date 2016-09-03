@@ -31,14 +31,11 @@ var Trial = function(exp, chartType, dataset1, dataset2){
 	// Results
 	this.responseTime = 0;
 
-	if (exp !== 'c') {
-		this.left.response = null;
-		this.right.response = null;
-		this.left.correct = null;
-		this.right.correct = null;
-	} else {
-		this.response = null;
-	}
+	this.left.response = null;
+	this.right.response = null;
+	this.left.correct = null;
+	this.right.correct = null;
+	this.response = null;
 
 	this.correct = null;
 };
