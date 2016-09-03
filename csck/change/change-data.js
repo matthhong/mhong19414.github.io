@@ -6,7 +6,7 @@ var mask = { left: { data: [] }, right: { data: [] }};
 var allData = {a:{},b:{},c:{}};
 
 function makeMask() {
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < 8; i++) {
 		var mask = { left: { data: [] }, right: { data: [] }};
 		for (var j = 0; j < 100; j++) {
 			date = new Date(2016,j,1);
