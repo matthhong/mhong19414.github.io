@@ -1,6 +1,7 @@
 function startExperiment (){
 	stage++;
 	$('#mixed-start').show();
+	$('.press-continue').hide();
 	setTimeout(function(){
 		$('.press-continue').show();
 		$(document).on('keydown', function(event){

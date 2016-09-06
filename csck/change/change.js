@@ -92,7 +92,7 @@ var tutorialStep = function(event,exp,chartType,selector){
 		selector);
 };
 
-function runBlock(block, numTrials){
+function runBlock(block, count){
 	//Runs all trials in a block, recursively
 	//Deferred function; resolves after entire recursion finishes
 
@@ -102,7 +102,7 @@ function runBlock(block, numTrials){
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
-		trial.index = numTrials - trialNo;
+		trial.index = count - trialNo;
 		
 		// Show question
 		$('#study').show();
@@ -162,7 +162,8 @@ function runBlock(block, numTrials){
 	};
 
 	// Begin recursion
-	recur(block, numTrials-1);
+	console.log(block);
+	recur(block, count-1);
 };
 
 function reveal(trial, callback){

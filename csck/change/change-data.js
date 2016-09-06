@@ -2,6 +2,7 @@ var interactionEffect = config.sensitivity === 'slower' ? 'steep' : 'shallow';
 
 var masks = [];
 var mask = { left: { data: [] }, right: { data: [] }};
+var qual = {};
 
 var allData = {a:{},b:{},c:{}};
 
@@ -64,7 +65,6 @@ function getData(exp, config) {
 						date = new Date(2016,k,1);
 						data.push({
 							date: date,
-							// Switch... mixed up green and blue... blame Robert and Steves
 							value1: temp[j].values1[k],
 							value2: temp[j].values2[k]
 						});
@@ -118,6 +118,8 @@ function getData(exp, config) {
 	});
 }
 
+var qual = {};
+var qualIndex = Math.floor(Math.random()*numPracticeTrials);
 function prepareBlocks (block){
 	if (block.exp === 'a' || block.exp === 'b') {
 		for (var j = 0; j<block.datasets.length; j+=2) {
@@ -125,7 +127,25 @@ function prepareBlocks (block){
 			var t = new Trial(block.exp, block.chartType, block.datasets[j], block.datasets[j+1]);
 			// should take 2 at once, unless C: already comes at once
 			block.trials.push(t);
+			if (block.exp === 'a' && j/2 === qualIndex) {
+				qual = createQualTrial(block, qualIndex);
+				// qualification trial
+				block.trials.pop();
+				block.trials.push(qual);
+			}
 		};
+		// if (block.exp === 'a') {
+		// 	// qualification trial
+		// 	var left = {
+		// 		data:[{date: new Date(2016,1,1), value1: 0.7, value2: 0.3},{date: new Date(2016,2,1), value1: 0.3, value2: 0.7}],
+		// 		'Sign of correlation': -1};
+		// 	var right = {data:[{date: new Date(2016,1,1), value1: 0.2, value2: 0.25},{date: new Date(2016,2,1), value1: 0.8, value2: 0.75}],
+		// 		'Sign of correlation': 1};
+		// 	var insertShift = Math.floor(Math.random()*numPracticeTrials);
+		// 	console.log(insertShift);
+		// 	qual = createQualTrial(block);
+		// 	block.trials.splice(2, 0, qual);
+		// }
 	} else if (block.exp === 'c') {
 		for (var j = 0; j < block.datasets.length; j++) {
 			d3.shuffle(block.datasets[j]);
@@ -133,6 +153,29 @@ function prepareBlocks (block){
 			block.trials.push(t);
 		};
 	}
+}
+
+function createQualTrial(block, j) {
+	var left = {data:[], 'Sign of correlation': -1};
+	var right = {data: [], 'Sign of correlation': 1};
+
+	var leftTemp = block.trials[j].left;
+	var rightTemp = block.trials[j].right;
+	for (var i = 0; i < leftTemp.data.length; i++) {
+
+		left.data.push({
+			date: new Date(2016,i,1),
+			value1: leftTemp.data[i].value1,
+			value2: 1 - leftTemp.data[i].value1
+		})
+		right.data.push({
+			date: new Date(2016,i,1),
+			value1: rightTemp.data[i].value1,
+			value2: rightTemp.data[i].value1/2
+		})
+	}
+	var obj = new Trial(block.exp, block.chartType, left, right);
+	return obj;
 }
 
 function prepareMixed () {
