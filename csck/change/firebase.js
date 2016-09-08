@@ -17,6 +17,9 @@ function sendJSON(_block, callback) {
     _block.avgRT = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.responseTime; }, 0) / _block.trials.length;
     _block.score = _block.trials.reduce(function (accumulator, trial) { return accumulator + trial.correct; }, 0) / _block.trials.length;
 
+    $('#avgRT').html(Math.floor(_block.avgRT));
+    $('#score').html(Math.ceil(_block.score*100));
+
     // send
     delete _block.datasets;
     console.log(qual.correct+'/'+_block.chartType+'/'+ _block.exp+'/'+_block.subjectID)
