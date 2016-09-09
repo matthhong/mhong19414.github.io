@@ -74,8 +74,8 @@ function setResponse (trial, chart, response) {
 
 		if (Math.abs(trial[chart]["Regression slope"]) > 1 && slopeDiff > 0
 				|| Math.abs(trial[chart]["Regression slope"]) < 1 && slopeDiff < 0) {
-			trial.correct = true;
-		} else { trial.correct = false; }
+			trial.correct = false;
+		} else { trial.correct = true; }
 	}
 
 	function otherChart(chart){
