@@ -119,7 +119,8 @@ function getData(exp, config) {
 }
 
 var qual = {};
-var qualIndex = Math.floor(Math.random()*numPracticeTrials);
+// var qualIndex = Math.floor(Math.random()*numPracticeTrials);
+var qualIndex = 0;
 function prepareBlocks (block){
 	if (block.exp === 'a' || block.exp === 'b') {
 		for (var j = 0; j<block.datasets.length; j+=2) {

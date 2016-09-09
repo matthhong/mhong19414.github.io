@@ -8,6 +8,7 @@ $('#dialog').dialog({
 	closeOnEscape: true,
 	dialogClass: "no-close"
 });
+var dialogClosed = false;
 
 function reset (blockSeq, config, user_id){
 	if (blockSeq.length === 1) {
@@ -212,10 +213,18 @@ function reveal(trial, callback){
 
 			if ($('#exp-'+trial.exp+' button').length/2 - $('.active').length == 0) {
 				// When both choices made
-				if (trial.responseTime < 0.5) {
+				if (trial.responseTime < 0.5 && !dialogClosed) {
+					$('#dialog').dialog({
+						close: function() {
+							$(this).dialog('destroy').remove();
+							evaluate();
+							dialogClosed = true;
+						}
+					});
 					$('#dialog').dialog('open');
+				} else {
+					evaluate();
 				}
-				evaluate();
 			};
 		});
 	}
