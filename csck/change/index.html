@@ -133,6 +133,9 @@ blockquote {
 #mixed-start {
 	display:none;
 }
+.ui-dialog {
+	margin: 60px 80px;
+}
 .ui-dialog-content, .ui-widget-header {
 	font-family: 'Inconsolata', 'Consolas', 'Courier New';
 	font-size: 18px;
@@ -141,16 +144,22 @@ blockquote {
 .ui-dialog span {
 	color: #333;
 }
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
 	</style>
 </head>
 <body>
-	<div id="dialog" title="Hold on!">It seems like you are leaving the charts really fast. 
+	<div id="dialog" title="Pause!">It seems like you are leaving the charts really fast. 
 	<br>
 	<br>
 	Just to make sure you know, the charts are shown as long as you <span>keep holding down</span> p and \.
 	<br>
 	<br>
 	They do <span>not</span> simply disappear on you.
+	<br>
+	<br>
+	Press ESC to continue.
 	</div>
 	<div id="header">
 		<div id="tutorial-a">

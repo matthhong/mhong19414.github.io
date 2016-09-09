@@ -3,7 +3,10 @@ $('#dialog').dialog({
 	autoOpen: false,
 	close: function() {
 		$(this).dialog('destroy').remove();
-	}
+	},
+	position: { my: "left top", at: "left top"},
+	closeOnEscape: true,
+	dialogClass: "no-close"
 });
 
 function reset (blockSeq, config, user_id){
@@ -209,6 +212,9 @@ function reveal(trial, callback){
 
 			if ($('#exp-'+trial.exp+' button').length/2 - $('.active').length == 0) {
 				// When both choices made
+				if (trial.responseTime < 0.5) {
+					$('#dialog').dialog('open');
+				}
 				evaluate();
 			};
 		});
@@ -219,9 +225,6 @@ function reveal(trial, callback){
 		trial.responseTime = (dateEnd - dateStart)/1000;
 		$('#time-display').html(trial.responseTime);
 		$('#response-time').show();
-		if (trial.responseTime < 0.5) {
-			$('#dialog').dialog('open');
-		}
 	}
 
 	function evaluate() {
