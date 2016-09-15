@@ -128,12 +128,12 @@ function prepareBlocks (block){
 			var t = new Trial(block.exp, block.chartType, block.datasets[j], block.datasets[j+1]);
 			// should take 2 at once, unless C: already comes at once
 			block.trials.push(t);
-			if (block.exp === 'a' && j/2 === qualIndex) {
-				qual = createQualTrial(block, qualIndex);
-				// qualification trial
-				block.trials.pop();
-				block.trials.push(qual);
-			}
+			// if (block.exp === 'a' && j/2 === qualIndex) {
+			// 	qual = createQualTrial(block, qualIndex);
+			// 	// qualification trial
+			// 	block.trials.pop();
+			// 	block.trials.push(qual);
+			// }
 		};
 		// if (block.exp === 'a') {
 		// 	// qualification trial
