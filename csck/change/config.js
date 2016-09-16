@@ -1,7 +1,7 @@
 var config = {
-	'hurst': d3.shuffle([2,4,6,8]).pop(),
+	'hurst': d3.shuffle([2,8]).pop(),
 	'direction': d3.shuffle(['positive','negative']).pop(),
-	'sensitivity': d3.shuffle(['slower','faster']).pop(),
+	'sensitivity': d3.shuffle(['slower']).pop(),
 	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
     // I pop stuff from the back of block_order
 	'block_order': ['all', 'c', 'b', 'a']
