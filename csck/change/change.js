@@ -213,7 +213,8 @@ function reveal(trial, callback){
 
 			if ($('#exp-'+trial.exp+' button').length/2 - $('.active').length == 0) {
 				// When both choices made
-				if (trial.responseTime < 0.5 && !dialogClosed && trial.index == 1) {
+				if (trial.responseTime < 0.5 && !dialogClosed 
+					&& trial.index == 1 && trial.exp == 'a' && stage == 1) {
 					$('#dialog').dialog({
 						close: function() {
 							$(this).dialog('destroy').remove();

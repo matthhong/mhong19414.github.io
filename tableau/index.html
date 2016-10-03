@@ -6,10 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-darkly.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="../js/jquery.scrollTo-1.4.3.1-min.js"></script>
 	<style type="text/css">
 		.wrapper{
 			width:1020px;
-			height:625px;
+			height:647px;
 			margin: 0 auto;
 			top:0;
 			left:50%;
@@ -19,16 +20,17 @@
 		}
 		iframe {
 			width:1020px;
-			height:625px;
+			height:647px;
 			margin: 0 auto;
+			overflow: hidden;
 		}
 		img {
 			max-width:100%;
 		}
 		.title, .subtitle {
-			font-family: "Trebuchet MS", sans-serif;
+			font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;;
 			font-weight: bold;
-			color: #f7f7f7;
+			color: #fafafa;
 			text-align: right;
 			margin-right: 8px;
 			font-size: 42px;
@@ -38,10 +40,10 @@
 			font-size: 20px;
 		}
 		.subtitle span {
-			color: #ffffff;
+			color: #fafafa;
 		}
 		.dropdown .btn, .dropdown-menu {
-			font-family: 'Arial', sans-serif;
+			font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;;
 			font-size: 18px;
 			width: 315px;
 			padding: 9px 12px;
@@ -77,9 +79,9 @@
 			margin: 0 auto;
 			z-index: 999;
 			width: 1020px;
-			height: 625px;
+			height: 647px;
 			text-align: center;
-			top: -148px;
+			/*top: -120px;*/
 			left: 0;
 			visibility: hidden;
 		  opacity: 0;
@@ -97,14 +99,10 @@
 		.lightbox iframe {
 			background-color: #1B1B1B;
 		}
-		.col-xs-4 {
-			position: relative;
-		  top: 200px;
-		}
 		.overlay{
-		    background-image: url('magic-kingdom.jpg');
+		    background-image: url('analytics1.jpeg');
 		    background-repeat:no-repeat;
-		    /*height: 625px;*/
+		    /*height: 647px;*/
 		    /*width: 1020px;*/
 		    height:100vh;
 		    margin: 0 auto;
@@ -127,7 +125,7 @@
 		 	margin-bottom: 0;
 		 	color:black;
 		 	border-radius: 0px;
-		 	background-color: #d3d3d3;
+		 	background-color: #fafafa;
 		 }
 		 .wrapper {
 		 	margin-top:60px;
@@ -149,67 +147,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Dashboard Demo</a>
+      <a class="navbar-brand" href="#">Dashboard Demos</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="button">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Disney</a>
+          <a href="#dash" class="dropdown-toggle" id="csat-dark" role="button">Satisfaction 1</a>
+        </li>
+        <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="colleges" role="button" aria-haspopup="true">Colleges</a>
+        </li>
+        <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="hospitals" role="button" aria-haspopup="true">Hospitals</a>
+        </li>
+         <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="csat-light" role="button" aria-haspopup="true">Satisfaction 2</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">The Blackstone Group</a></li>
+        <li><a href="http://mhong.me">Matt Hong</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
-<div class="main-wrapper">
-	<a href="#" class=""><div class="overlay"></div></a>
-	<div class="row wrapper">
-	  <div class="col-xs-4 col-xs-offset-2">
-<!-- 	  	<div class="row disney-logo">
-				<img src="disney-logo.png">
-			</div> -->
-			<div class="row title">
-				Disney CSAT Dashboard
-			</div>
-			<div class="row subtitle">
-				The <span>Blackstone</span> Group
-			</div>
-	  </div>
-	  <div class="col-xs-4">
-	  	<!-- Single button -->
-<!-- 			<div class="row dropdown">
-			  <button class="btn btn-default dropdown-toggle stories" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			    Stories
-			    <span class="glyphicon glyphicon-book pull-right"></span>
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			    <li><a id="accenture-story" href="#dash">Accenture</a></li>
-			    <li><a id="capgemini-story" href="#dash">Capgemini</a></li>
-			  </ul>
-			</div> -->
-			<div class="row dropdown">
-			  <a class="btn btn-default btn-success explore" href="#dash" type="button">Explore
-			    <span class="glyphicon glyphicon-stats pull-right"></span>
-			  </a>
-			</div>
-			<div class="row"></div>
-			<div class="row dropdown">
-			  <a class="btn btn-default btn-info compare" href="#dash" type="button">
-			    Compare
-			    <span class="glyphicon glyphicon-sunglasses pull-right"></span>
-			  </a>
-			</div>
-			<div class="explore-menu"></div>
-			<div class="compare-menu"></div>
-	  </div>
-	<a href="#_" class="lightbox" id="dash">
-  </a>
-	</div>
+	</nav>
+	<div class="main-wrapper">
+		<a href="#" class="">
+			<div class="overlay"></div>
+		</a>
+		<div class="row wrapper">
+			<a href="#_" class="lightbox" id="dash"></a>
+		</div>
 	</div>
 	<script type="text/javascript">
 	$(function(){
@@ -218,16 +188,39 @@
 	  	$('.lightbox').css('opacity',1);
 	  })
 
-	  var iframe_before = '<iframe frameborder="0" allowtransparency="true" src="';
-	  var iframe_after = '?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no&:toolbar=no&:tabs=no&:showVizHome=no"></iframe>';
+	  var iframe_before = '<iframe frameborder="0" scrolling="no" allowtransparency="true" src="';
+	  var iframe_after = '?:embed=y&:display_count=no&:showVizHome=no&:toolbar=no&:showVizHome=no"></iframe>';
 
-	  $(".explore").on('click', function(){
+	  $("#csat-dark").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
 	  	$("#dash").append(
-	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneyanon/Darkdash' + iframe_after)
+	  		iframe_before + 'https://public.tableau.com/views/Darkdashboard/Exploreresponses?:embed=y' + iframe_after)
 	  });
-	  $(".compare").on('click', function(){
+
+	  $("#colleges").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
 	  	$("#dash").append(
-	  		iframe_before + 'https://10ay.online.tableau.com/t/theblackstonegroupinc/views/Disneyanon/Compareaverages' + iframe_after)
+	  		iframe_before + 'https://public.tableau.com/views/Blackstudentsareunderrepresentedatrichselectiveresearchuniversities/Blackstudentsareunderrepresentedatrichselectiveresearchuniversities?:embed=y' + iframe_after)
+	  });
+
+	  $("#hospitals").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/AHA_public_dummy/Intro?:embed=y' + iframe_after)
+	  });
+
+	  $("#csat-light").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/florida-dummy/Mapview?:embed=y' + iframe_after)
 	  });
 	})
 
