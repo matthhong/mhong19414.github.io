@@ -16,6 +16,7 @@ div{
 }
 a{
 	position: relative;
+	text-decoration: none;
 }
 .title:hover{
 	text-decoration: underline; 
