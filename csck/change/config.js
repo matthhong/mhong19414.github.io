@@ -28,6 +28,7 @@ var stage = 1;
 var testOrPilot = 'test';
 var penalty = (debug ? 0 : 7000);
 var timeLimit = (debug ? 1000000 : 10000);
+var displayFor = (debug ? 0 : 4000);
 
 var numPracticeTrials = 3;
 var numRealTrials = 5; // Per block
@@ -44,6 +45,25 @@ function getRandomInt(min, max) {
 // var hurst = math.ceil(Math.random() * 4) * 2;
 var chartType = config.chart_type;
 var blockSeq = config.block_order;
+
+var chartTypes = ['sm', 'dalc', 'cs'];
+
+if (qs['id'] && qs['j']) { //j goes from 3 to 1
+  var j = +qs['j'], id = +qs['id'];
+
+  var k3 = chartTypes[id % 3]; chartTypes.splice(chartTypes.indexOf(k3),1);
+  var k2 = chartTypes[id % 2]; chartTypes.splice(chartTypes.indexOf(k2),1);
+  var k1 = chartTypes[0];
+  if (j == 3) {
+    chartType = k3;
+  } else if (j == 2) {
+    chartType = k2;
+  } else if (j == 1) {
+    chartType = k1;
+  }
+  console.log(id);
+  console.log(j);
+}
 
 if (qs['block']) {
  blockSeq = ['all',qs['block'],qs['block'],qs['block']];

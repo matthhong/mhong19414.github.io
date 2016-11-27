@@ -18,6 +18,15 @@ function reset (blockSeq, config, user_id){
 	} else if (blockSeq.length === 0) {
 		$('#study').hide();
 		$('#done').show();
+		$('.next').show();
+		$('#next-p').html('You have ' + (+qs['j'] -1) + ' more sections left.');
+
+		$('.next-btn').click(function(e) {
+        e.preventDefault(); e.stopPropagation();
+        window.location.href = 'http://localhost:8888/change/?id=293&j=' + (+qs['j'] -1);
+		});
+
+		$('.next-btn').prop('disabled', false);
 		$('#user-id').html(user_id);
 	} else {
 		// Move on to next experiment
@@ -184,12 +193,17 @@ function reveal(trial, callback){
 	$('#rightChart').show();
 	var dateStart = new Date();
 	
-	$(document.body).on('keyup', function(event) {
-		released(event, function(){
-			timed();
-			enableChoice();
-		}, this);
-	});
+	// $(document.body).on('keyup', function(event) {
+	// 	released(event, function(){
+	// 		timed();
+	// 		enableChoice();
+	// 	}, this);
+	// });
+
+	setTimeout(function(){
+		timed();
+		enableChoice();
+	}, displayFor);
 
 	// Choice buttons
 	function enableChoice() {
