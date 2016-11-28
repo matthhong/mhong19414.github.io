@@ -3,14 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+	body {
+	font-family: 'Inconsolata', 'Consolas', 'Courier New';
+	margin: 40px 60px 0 60px;
+	font-size: 16px;
+	line-height: 30px;
+	color: #999;
+}
+span {
+	color: #333;
+}
+</style>
 </head>
 <body>
+	<div id="header">
+You will take part in <span>three</span> separate challenges today.
+<br>
+There are two parts to each challenge.
+<br>
+<br>
+The first is the <span>practice stage</span>, introducing the different types of tasks you will encounter.
+<br>
+The second is the <span>challenge</span>. Here you will encounter those three tasks, multiple times, in random order.
+<br>
+<br>
+Your <span>score</span> will be shown to you after each challenge is over. Aim for a good performance! 
+<br>
+More relevant instructions are contained within. Have fun!
+<br>
+<br>
 	<form action="http://localhost:8888/change/?debug">
     <input id="textbox" name="id" type="text" value="" size="25" />
     <input name="j" value="3" hidden/>
 		<input name="debug" value="1" hidden/>
-    <input type="submit" value="Go" />
+		<input name="pilot" value="20" hidden/>
+    <input type="submit" value="<-  Enter your participant ID to begin" />
 </form>
-</form>
+</div>
 </body>
 </html>
