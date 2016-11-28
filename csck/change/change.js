@@ -11,8 +11,10 @@ $('#dialog').dialog({
 var dialogClosed = false;
 
 function reset (blockSeq, config, user_id){
+	$('button').prop('disabled', false);
 	if (blockSeq.length === 1) {
 		$('#study').hide();
+		erase();
 		blockSeq.pop();
 		startExperiment();
 	} else if (blockSeq.length === 0) {
@@ -31,6 +33,7 @@ function reset (blockSeq, config, user_id){
 			$('.next-btn').prop('disabled', false);
 		} else {
 			$('#next-p').html('You are done!');
+			$('.next-btn').hide();
 		}
 
 		$('#user-id').html(user_id);
@@ -129,7 +132,7 @@ function runBlock(block, count){
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
-		trial.index = count - trialNo;
+		trial.index = count - trialNo; console.log(trialNo);
 		
 		// Show question
 		$('#study').show();
@@ -217,7 +220,7 @@ function reveal(trial, callback){
 		if (trial.exp == 'a' || trial.exp == 'b') {
 			// $('#'+ chosen +'Chart').css('border-bottom','3px dashed #333');
 			var interval = setInterval(function () {
-	        $('#'+ chosen +'Chart').toggleClass('bottom-border');
+	        $('#'+ chosen +'Mask0').toggleClass('bottom-border');
 	    }, 1000);
 
 	    setTimeout(function() {
@@ -271,9 +274,16 @@ function reveal(trial, callback){
 	function evaluate() {
 		var responses = $.find('.active');
 
+		function otherChart(chart){
+			if (chart === "left") {
+				return "right";
+			} 
+			return "left";
+		}
+
 		if (trial.exp === 'a' || trial.exp === 'b') {
 			setResponse(trial, chosen, $(responses[0]).text());
-			// setResponse(trial, 'right', $(responses[1]).text());
+			setResponse(trial, otherChart(chosen), 'NA');
 		} else {
 			var response = $(responses[0]).text();
 			var chart = response === 'greater' ? 'left' : 'right';
@@ -329,11 +339,11 @@ function reveal(trial, callback){
 		// 	erase();
 		// }
 
-		function moveOn(erase) {
+		function moveOn(eraseCharts) {
 			$('button').prop('disabled', true);
-			$('#'+ chosen +'Chart').removeClass('bottom-border');
+			$('#'+ chosen +'Mask0').removeClass('bottom-border');
 
-			if (erase) erase();
+			if (eraseCharts) erase();
 
 			$('.press-continue').show();
 			$(document).on('keyup', function(event){

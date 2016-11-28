@@ -24,6 +24,8 @@ var qs = (function(a) {
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
+var subjectID = +qs['id'] || getRandomInt(1000000, 9999999);
+
 var stage = 1;
 var testOrPilot = 'test';
 var penalty = (debug ? 0 : 7000);
@@ -47,23 +49,32 @@ var chartType = config.chart_type;
 var blockSeq = config.block_order;
 
 var chartTypes = ['sm', 'dalc', 'cs'];
+var hursts = [2,4,6,8];
 
 if (qs['id'] && qs['j']) { //j goes from 3 to 1
-  var j = +qs['j']; 
-  subjectID = +qs['id'];
+  config.j = +qs['j']; 
 
   var k3 = chartTypes[subjectID % 3]; chartTypes.splice(chartTypes.indexOf(k3),1);
   var k2 = chartTypes[subjectID % 2]; chartTypes.splice(chartTypes.indexOf(k2),1);
   var k1 = chartTypes[0];
-  if (j == 3) {
-    chartType = k3;
-  } else if (j == 2) {
-    chartType = k2;
-  } else if (j == 1) {
-    chartType = k1;
+  if (config.j == 3) {
+    config.chartType = chartType = k3;
+  } else if (config.j == 2) {
+    config.chartType = chartType = k2;
+  } else if (config.j == 1) {
+    config.chartType = chartType = k1;
   }
-  console.log(subjectID);
-  console.log(j);
+
+  var h3 = hursts[subjectID % 3]; hursts.splice(hursts.indexOf(h3),1);
+  var h2 = hursts[subjectID % 2]; hursts.splice(hursts.indexOf(h2),1);
+  var h1 = hursts[subjectID % 1];
+  if (config.j == 3) {
+    config.hurst = h3;
+  } else if (config.j == 2) {
+    config.hurst = h2;
+  } else if (config.j == 1) {
+    config.hurst = h1;
+  }
 }
 
 if (qs['block']) {
@@ -80,8 +91,7 @@ if (qs['pilot']) {
 console.log(testOrPilot);
 
 if (qs['type']) {
- config.chart_type = qs['type'];
- chartType = config.chart_type;
+ chartType = config.chart_type = qs['type'];
 }
 
 if (qs['hurst']) {

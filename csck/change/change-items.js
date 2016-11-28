@@ -1,9 +1,10 @@
-var subjectID = getRandomInt(1000000, 9999999);
+
 
 var Block = function(chartType, hurst, exp, direction, sensitivity){
 	this.chartType = chartType;
 	this.hurst = hurst;
 	this.exp = exp;
+	this.j = config.j;
 	this.direction = direction || '';
 	this.sensitivity = sensitivity || '';
 	this.subjectID = subjectID;
