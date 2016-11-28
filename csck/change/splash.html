@@ -4,7 +4,24 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
+
+	@media screen and (max-height: 600px), screen and (max-width:960px) {
+    body {
+        padding: 10px;
+        -moz-transform: scale(0.85,0.85);
+        -ms-transform: scale(0.85,0.85);
+        -o-transform: scale(0.85,0.85);
+        -webkit-transform: scale(0.85,0.85);
+        transform: scale(0.85,0.85);
+        -moz-transform-origin: left top;
+        -ms-transform-origin: left top;
+        -o-transform-origin: left top;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+    }
+}
 	body {
+		width:1000px;
 	font-family: 'Inconsolata', 'Consolas', 'Courier New';
 	margin: 40px 60px 0 60px;
 	font-size: 16px;
@@ -25,7 +42,7 @@ There are two parts to each challenge.
 <br>
 The first is the <span>practice stage</span>, introducing the different types of tasks you will encounter.
 <br>
-The second is the <span>challenge</span>. Here you will encounter those three tasks, multiple times, in random order.
+The second is the <span>challenge</span>. Here you will encounter those tasks, multiple times, in random order.
 <br>
 <br>
 Your <span>score</span> will be shown to you after each challenge is over. Aim for a good performance! 
