@@ -49,10 +49,11 @@ var blockSeq = config.block_order;
 var chartTypes = ['sm', 'dalc', 'cs'];
 
 if (qs['id'] && qs['j']) { //j goes from 3 to 1
-  var j = +qs['j'], id = +qs['id'];
+  var j = +qs['j']; 
+  subjectID = +qs['id'];
 
-  var k3 = chartTypes[id % 3]; chartTypes.splice(chartTypes.indexOf(k3),1);
-  var k2 = chartTypes[id % 2]; chartTypes.splice(chartTypes.indexOf(k2),1);
+  var k3 = chartTypes[subjectID % 3]; chartTypes.splice(chartTypes.indexOf(k3),1);
+  var k2 = chartTypes[subjectID % 2]; chartTypes.splice(chartTypes.indexOf(k2),1);
   var k1 = chartTypes[0];
   if (j == 3) {
     chartType = k3;
@@ -61,7 +62,7 @@ if (qs['id'] && qs['j']) { //j goes from 3 to 1
   } else if (j == 1) {
     chartType = k1;
   }
-  console.log(id);
+  console.log(subjectID);
   console.log(j);
 }
 

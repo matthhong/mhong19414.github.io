@@ -19,14 +19,20 @@ function reset (blockSeq, config, user_id){
 		$('#study').hide();
 		$('#done').show();
 		$('.next').show();
-		$('#next-p').html('You have ' + (+qs['j'] -1) + ' more sections left.');
 
-		$('.next-btn').click(function(e) {
+		var numLeft = (+qs['j'] -1);
+		if (numLeft > 0) {
+			$('#next-p').html('You have ' + numLeft + ' more sections left.');
+			$('.next-btn').click(function(e) {
         e.preventDefault(); e.stopPropagation();
-        window.location.href = 'http://localhost:8888/change/?id=293&j=' + (+qs['j'] -1);
-		});
+        window.location.href = 'http://localhost:8888/change/?id=293&j=' + numLeft;
+			});
 
-		$('.next-btn').prop('disabled', false);
+			$('.next-btn').prop('disabled', false);
+		} else {
+			$('#next-p').html('You are done!');
+		}
+
 		$('#user-id').html(user_id);
 	} else {
 		// Move on to next experiment
@@ -274,7 +280,7 @@ function reveal(trial, callback){
 					moveOn();
 				}, debug ? 0 : 3000);
 			} else {
-				moveOn();
+				moveOn(true);
 			}
 		} else {
 			$('#time-out').show();
@@ -284,6 +290,7 @@ function reveal(trial, callback){
 
 				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 				$('.mask').hide();
+				
 				setTimeout(function(){
 					moveOn();
 				}, debug ? 0 : penalty);
@@ -291,10 +298,10 @@ function reveal(trial, callback){
 			} else {
 
 				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
-				erase();
+
 				setTimeout(function(){
 					$('.press-continue').show();
-					moveOn();
+					moveOn(true);
 				}, penalty);
 
 			}
@@ -311,9 +318,9 @@ function reveal(trial, callback){
 		// 	erase();
 		// }
 
-		function moveOn() {
+		function moveOn(erase) {
 			$('button').prop('disabled', true);
-			erase();
+			if (erase) erase();
 			$('.press-continue').show();
 			$(document).on('keyup', function(event){
 				backwardOrForward(event, null, callback, this);
