@@ -144,18 +144,18 @@ function runBlock(block, count){
 		$('#next').show()
 			.on('mouseenter', function(){
 				$('html').css('cursor','none');
-				$('#next img').attr('src', 'img/hold-buttons.png');
+				// $('#next img').attr('src', 'img/hold-buttons.png');
 				// $(this).fadeOut(500, function(){
-				$(document).on('keydown', function(event){
-					heldDown(event, function(){
+				// $(document).on('keydown', function(event){
+				// 	heldDown(event, function(){
 						$('#next').hide();
-						$('#next img').attr('src', 'img/next.png');
+				// 		$('#next img').attr('src', 'img/next.png');
 						$('#next').off('mouseenter');
 						reveal(trial, function(){
 							endTrial(block, trialNo);
 						});
-					}, this);
-				});
+					// }, this);
+				// });
 					// reveal();
 					// $('#next').off('mouseenter');
 				// });
@@ -197,6 +197,7 @@ function reveal(trial, callback){
 
 	$('#leftChart').show();
 	$('#rightChart').show();
+	var chosen = d3.shuffle(['left', 'right']).pop();
 	var dateStart = new Date();
 	
 	// $(document.body).on('keyup', function(event) {
@@ -213,6 +214,16 @@ function reveal(trial, callback){
 
 	// Choice buttons
 	function enableChoice() {
+		if (trial.exp == 'a' || trial.exp == 'b') {
+			// $('#'+ chosen +'Chart').css('border-bottom','3px dashed #333');
+			var interval = setInterval(function () {
+	        $('#'+ chosen +'Chart').toggleClass('bottom-border');
+	    }, 1000);
+
+	    setTimeout(function() {
+	    	clearInterval(interval)
+	    }, 3500);
+		}
 
 		if (stage === 2) {
 	 		$('#leftChart').empty();
@@ -261,8 +272,8 @@ function reveal(trial, callback){
 		var responses = $.find('.active');
 
 		if (trial.exp === 'a' || trial.exp === 'b') {
-			setResponse(trial, 'left', $(responses[0]).text());
-			setResponse(trial, 'right', $(responses[1]).text());
+			setResponse(trial, chosen, $(responses[0]).text());
+			// setResponse(trial, 'right', $(responses[1]).text());
 		} else {
 			var response = $(responses[0]).text();
 			var chart = response === 'greater' ? 'left' : 'right';
@@ -290,7 +301,7 @@ function reveal(trial, callback){
 
 				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 				$('.mask').hide();
-				
+
 				setTimeout(function(){
 					moveOn();
 				}, debug ? 0 : penalty);
@@ -320,7 +331,10 @@ function reveal(trial, callback){
 
 		function moveOn(erase) {
 			$('button').prop('disabled', true);
+			$('#'+ chosen +'Chart').removeClass('bottom-border');
+
 			if (erase) erase();
+
 			$('.press-continue').show();
 			$(document).on('keyup', function(event){
 				backwardOrForward(event, null, callback, this);

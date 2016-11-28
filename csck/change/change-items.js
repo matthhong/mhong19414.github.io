@@ -53,7 +53,8 @@ function setResponse (trial, chart, response) {
 			trial[chart].correct = true;
 		} else { trial[chart].correct = false; }
 
-		trial.correct = trial.left.correct && trial.right.correct;
+		// trial.correct = trial.left.correct && trial.right.correct;
+		trial.correct = trial.left.correct || trial.right.correct;
 	} else if (trial.exp === "b") {
 		answerKey = {
 			"faster": 'Shallow',
@@ -66,7 +67,8 @@ function setResponse (trial, chart, response) {
 			trial[chart].correct = true;
 		} else { trial[chart].correct = false; }
 
-		trial.correct = trial.left.correct && trial.right.correct;	
+		// trial.correct = trial.left.correct && trial.right.correct;	
+		trial.correct = trial.left.correct || trial.right.correct;	
 	} else if (trial.exp === "c") {
 		var slopeDiff = Math.abs(trial[chart]["Regression slope"]) - Math.abs(trial[otherChart(chart)]["Regression slope"]);
 
