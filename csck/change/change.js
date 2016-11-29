@@ -27,7 +27,7 @@ function reset (blockSeq, config, user_id){
 			$('#next-p').html('You have ' + numLeft + ' more sections left.');
 			$('.next-btn').click(function(e) {
         e.preventDefault(); e.stopPropagation();
-        window.location.href = 'http://localhost:8888/change/?id=293&j=' + numLeft;
+        window.location.href = 'http://mhong.me/csck/change/?pilot=20&id='+subjectID+'&j=' + numLeft;
 			});
 
 			$('.next-btn').prop('disabled', false);
@@ -132,7 +132,7 @@ function runBlock(block, count){
 	var recur = function(block, trialNo){
 		// Recursion
 		var trial = block.trials[trialNo];
-		trial.index = count - trialNo; console.log(trialNo);
+		trial.index = count - trialNo;
 		
 		// Show question
 		$('#study').show();
@@ -144,8 +144,23 @@ function runBlock(block, count){
 		drawHidden(trial);
 
 		// Lure cursor, hide it, then switch
-		$('#next').show()
-			.on('mouseenter', function(){
+
+		$("#next").mouseover(function(e)
+    {
+    $(this).addClass("over");
+    });
+
+$("#next").mouseout(function(e)
+    {
+    $(this).removeClass("over");
+    });
+
+		$('#next').show();
+
+		if (!$("#next").hasClass('over')) {
+			console.log('obj');
+
+			$('#next').on('mouseenter', function(){
 				$('html').css('cursor','none');
 				// $('#next img').attr('src', 'img/hold-buttons.png');
 				// $(this).fadeOut(500, function(){
@@ -163,6 +178,8 @@ function runBlock(block, count){
 					// $('#next').off('mouseenter');
 				// });
 			});
+		}
+
 		function endTrial(block, trialNo) {
 			// if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
 			// lastCorrect = trial.correct;
@@ -218,14 +235,14 @@ function reveal(trial, callback){
 	// Choice buttons
 	function enableChoice() {
 		if (trial.exp == 'a' || trial.exp == 'b') {
-			// $('#'+ chosen +'Chart').css('border-bottom','3px dashed #333');
-			var interval = setInterval(function () {
-	        $('#'+ chosen +'Mask0').toggleClass('bottom-border');
-	    }, 1000);
+			$('#'+ chosen +'Mask0').addClass('bottom-border');
+			// var interval = setInterval(function () {
+	  //       $('#'+ chosen +'Mask0').toggleClass('bottom-border');
+	  //   }, 1000);
 
-	    setTimeout(function() {
-	    	clearInterval(interval)
-	    }, 3500);
+	  //   setTimeout(function() {
+	  //   	clearInterval(interval)
+	  //   }, 3500);
 		}
 
 		if (stage === 2) {

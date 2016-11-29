@@ -32,8 +32,8 @@ var penalty = (debug ? 0 : 7000);
 var timeLimit = (debug ? 1000000 : 10000);
 var displayFor = (debug ? 0 : 4000);
 
-var numPracticeTrials = 3;
-var numRealTrials = 5; // Per block
+var numPracticeTrials = (debug ? 2 : 3);
+var numRealTrials = (debug ? 2 : 5); // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 
 var totalStartTime = new Date();
