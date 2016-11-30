@@ -13,14 +13,14 @@ var dialogClosed = false;
 function reset (blockSeq, config, user_id){
 	$('button').prop('disabled', false);
 	if (blockSeq.length === 1) {
-		$('#study').hide();
+		$('#study').animate({'opacity': 0}).hide(200);
 		erase();
 		blockSeq.pop();
 		startExperiment();
 	} else if (blockSeq.length === 0) {
-		$('#study').hide();
-		$('#done').show();
-		$('.next').show();
+		$('#study').animate({'opacity': 0}).hide(200);
+		$('#done').css('opacity', 1).show();
+		$('.next').css('opacity', 1).show();
 
 		var numLeft = (+qs['j'] -1);
 		if (numLeft > 0) {
@@ -33,7 +33,7 @@ function reset (blockSeq, config, user_id){
 			$('.next-btn').prop('disabled', false);
 		} else {
 			$('#next-p').html('You are done!');
-			$('.next-btn').hide();
+			$('.next-btn').animate({'opacity': 0}).hide(200);
 		}
 
 		$('#user-id').html(user_id);
@@ -44,8 +44,8 @@ function reset (blockSeq, config, user_id){
 		getData(exp, config);
 
 		// Set up tutorial mode
-		$('#exp-' + lastExp).hide();
-		$('#study').hide();
+		$('#exp-' + lastExp).animate({'opacity': 0}).hide(200);
+		$('#study').animate({'opacity': 0}).hide(200);
 		erase();
 
 		setChartName(chartType);
@@ -54,7 +54,7 @@ function reset (blockSeq, config, user_id){
 		$(document).on('keyup', function(event){
 			tutorialStep(event,exp,chartType,this)
 		});
-		$(tutorialClass(exp,1,chartType)).show();
+		$(tutorialClass(exp,1,chartType)).css('opacity', 1).show();
 	}
 }
 
@@ -92,8 +92,8 @@ var tutorialStep = function(event,exp,chartType,selector){
 				if (exp==='c' && tutorialNow === 3) {
 					setTutorialImage(exp, chartType, 1);
 				}
-				$(tutorialClass(exp, tutorialNow, chartType)).hide();
-				$(tutorialClass(exp, tutorialNow-1, chartType)).show();
+				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
+				$(tutorialClass(exp, tutorialNow-1, chartType)).css('opacity', 1).show();
 				--tutorialNow;
 			}
 			$(document).on('keyup', function(event){
@@ -105,14 +105,14 @@ var tutorialStep = function(event,exp,chartType,selector){
 				if (exp === 'c' && tutorialNow === 2) {
 					setTutorialImage(exp, chartType, 0);
 				}
-				$(tutorialClass(exp, tutorialNow, chartType)).hide();
-				$(tutorialClass(exp, tutorialNow+1, chartType)).show();
+				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
+				$(tutorialClass(exp, tutorialNow+1, chartType)).css('opacity', 1).show();
 				$(document).on('keyup', function(event){
 					tutorialStep(event,exp,chartType,this)
 				});
 			} 
 			else {
-				$(tutorialClass(exp, tutorialNow, chartType)).hide();
+				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 
 				prepareBlocks(allData[exp]);
 				runBlock(allData[exp], numPracticeTrials);
@@ -135,8 +135,8 @@ function runBlock(block, count){
 		trial.index = count - trialNo;
 		
 		// Show question
-		$('#study').show();
-		$('#exp-' + trial.exp).show();
+		$('#study').css('opacity', 1).show();
+		$('#exp-' + trial.exp).css('opacity', 1).show();
 		$('button').prop('disabled', true);
 		$('.choice').removeClass('active');
 
@@ -144,49 +144,59 @@ function runBlock(block, count){
 		drawHidden(trial);
 
 		// Lure cursor, hide it, then switch
+		// $('#next').css('opacity', 1).show();
+		// $('#next img').on('mouseenter', function(){
+		// 	$('html').css('cursor','none');
+		// 	// $('#next img').attr('src', 'img/hold-buttons.png');
+		// 	// $(this).fadeOut(500, function(){
+		// 	// $(document).on('keydown', function(event){
+		// 	// 	heldDown(event, function(){
+		// 			$('#next').animate({'opacity': 0}).hide(200);
+		// 	// 		$('#next img').attr('src', 'img/next.png');
+		// 			$('#next').off('mouseenter');
+		// 			reveal(trial, function(){
+		// 				endTrial(block, trialNo);
+		// 			});
+		// 		// }, this);
+		// 	// });
+		// 		// reveal();
+		// 		// $('#next').off('mouseenter');
+		// 	// });
+		// });
 
-		$("#next").mouseover(function(e)
-    {
-    $(this).addClass("over");
-    });
-
-$("#next").mouseout(function(e)
-    {
-    $(this).removeClass("over");
-    });
-
-		$('#next').show();
-
-		if (!$("#next").hasClass('over')) {
-			console.log('obj');
-
-			$('#next').on('mouseenter', function(){
-				$('html').css('cursor','none');
-				// $('#next img').attr('src', 'img/hold-buttons.png');
-				// $(this).fadeOut(500, function(){
-				// $(document).on('keydown', function(event){
-				// 	heldDown(event, function(){
-						$('#next').hide();
-				// 		$('#next img').attr('src', 'img/next.png');
-						$('#next').off('mouseenter');
-						reveal(trial, function(){
-							endTrial(block, trialNo);
-						});
-					// }, this);
-				// });
-					// reveal();
-					// $('#next').off('mouseenter');
-				// });
-			});
-		}
+		$('#next').css('opacity', 1).show(200);
+		$('#next').on('mouseenter', function(){
+			
+			$('#next img').attr('src', 'img/next2.png');
+			$('#next').css('top', '+=170px');
+			$(this).on('mouseenter', function() {
+					$('html').css('cursor','none');
+			
+			// $(this).fadeOut(500, function(){
+			// $(document).on('keydown', function(event){
+			// 	heldDown(event, function(){
+					$('#next').hide();
+					$('#next img').attr('src', 'img/next.png');
+					$('#next').off('mouseenter');
+					$('#next').css('top', '170px');
+					reveal(trial, function(){
+						endTrial(block, trialNo);
+					});
+				// }, this);
+			// });
+				// reveal();
+				// $('#next').off('mouseenter');
+			// });
+			})
+		});
 
 		function endTrial(block, trialNo) {
 			// if (lastCorrect !== trial.correct && lastCorrect !== null) { reversals++; }
 			// lastCorrect = trial.correct;
 
-			$('#time-out').hide();
+			$('#time-out').animate({'opacity': 0}).hide(200);
 			$('.problem').hide();
-			$('.result').hide();
+			$('.result').animate({'opacity': 0}).hide(200);
 			$('.choice').off('click');
 
 			if (trialNo === 0) {
@@ -199,7 +209,7 @@ $("#next").mouseout(function(e)
 				var toSend = $.extend({}, block);
 				toSend.trials = toSend.trials.filter(function(el){ if (el.index !== 0) { return true; }});
 
-				sendJSON(toSend);
+				// sendJSON(toSend);
 				reset(blockSeq, config, block.subjectID);
 			} else {
 				// stair.next(trial.left.correct && trial.right.correct);
@@ -215,8 +225,8 @@ $("#next").mouseout(function(e)
 
 function reveal(trial, callback){
 
-	$('#leftChart').show();
-	$('#rightChart').show();
+	$('#leftChart').css('opacity', 1).show();
+	$('#rightChart').css('opacity', 1).show();
 	var chosen = d3.shuffle(['left', 'right']).pop();
 	var dateStart = new Date();
 	
@@ -249,7 +259,7 @@ function reveal(trial, callback){
 	 		$('#leftChart').empty();
 			$('#rightChart').empty();
 		}
-		$('.mask').show();
+		$('.mask').css('opacity', 1).show();
 
 		$('html').css('cursor','auto');
 		$('button').prop('disabled', false);
@@ -285,7 +295,7 @@ function reveal(trial, callback){
 		var dateEnd = new Date();
 		trial.responseTime = (dateEnd - dateStart)/1000;
 		$('#time-display').html(trial.responseTime);
-		$('#response-time').show();
+		$('#response-time').css('opacity', 1).show();
 	}
 
 	function evaluate() {
@@ -309,11 +319,11 @@ function reveal(trial, callback){
 
 		if (trial.correct) {
 			$('#feedback').html('Correct!').css('color', 'blue');
-			$('#correct').show();
+			$('#correct').css('opacity', 1).show();
 
 			if (stage == 1) {
 				// Reveal chart again, then move on after 5 seconds
-				$('.mask').hide();
+				$('.mask').animate({'opacity': 0}).hide(200);
 				setTimeout(function(){
 					moveOn();
 				}, debug ? 0 : 3000);
@@ -321,13 +331,13 @@ function reveal(trial, callback){
 				moveOn(true);
 			}
 		} else {
-			$('#time-out').show();
-			$('#correct').show();
+			$('#time-out').css('opacity', 1).show();
+			$('#correct').css('opacity', 1).show();
 
 			if (stage == 1) {
 
 				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
-				$('.mask').hide();
+				$('.mask').animate({'opacity': 0}).hide(200);
 
 				setTimeout(function(){
 					moveOn();
@@ -338,7 +348,7 @@ function reveal(trial, callback){
 				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
 
 				setTimeout(function(){
-					$('.press-continue').show();
+					$('.press-continue').css('opacity', 1).show();
 					moveOn(true);
 				}, penalty);
 
@@ -348,7 +358,7 @@ function reveal(trial, callback){
 		// Disable buttons
 		// $('button').prop('disabled', true);
 		// if (stage == 1) {
-		// 	$('.mask').hide();
+		// 	$('.mask').animate({'opacity': 0}).hide(200);
 		// 	setTimeout(function(){
 		// 		erase();
 		// 	}, 5000);
@@ -362,7 +372,7 @@ function reveal(trial, callback){
 
 			if (eraseCharts) erase();
 
-			$('.press-continue').show();
+			$('.press-continue').css('opacity', 1).show();
 			$(document).on('keyup', function(event){
 				backwardOrForward(event, null, callback, this);
 			})
