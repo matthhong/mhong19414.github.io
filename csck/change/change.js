@@ -210,7 +210,7 @@ function runBlock(block, count){
 				var toSend = $.extend({}, block);
 				toSend.trials = toSend.trials.filter(function(el){ if (el.index !== 0) { return true; }});
 
-				// sendJSON(toSend);
+				sendJSON(toSend);
 				reset(blockSeq, config, block.subjectID);
 			} else {
 				// stair.next(trial.left.correct && trial.right.correct);
