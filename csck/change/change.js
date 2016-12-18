@@ -32,7 +32,8 @@ function reset (blockSeq, config, user_id){
 
 			$('.next-btn').prop('disabled', false);
 		} else {
-			$('#next-p').html('You are done!');
+			$('#done-p').attr('hidden', false)
+			// $('#next-p').html('You are done!');
 			$('.next-btn').animate({'opacity': 0}).hide(200);
 		}
 

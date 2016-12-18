@@ -5,6 +5,23 @@
 */
 
 $(function() {
+	// Copy to clipboard
+	var clip = new Clipboard('#email');
+	$("#email").tipsy({trigger:'manual'});
+
+	clip.on('success', function(e) {
+		$("#email").prop('title', 'Copied to clipboard!');
+    $("#email").tipsy("show");
+
+    e.clearSelection();
+	});
+
+	clip.on('error', function(e) {
+	  $("#email").prop('title', 'hello@data-vinci.com');
+	  $("#email").tipsy("show");
+
+    e.clearSelection();
+	});
 
 	// Vars.
 		var	$window = $(window),

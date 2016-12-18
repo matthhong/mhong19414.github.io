@@ -7,7 +7,7 @@ function startExperiment (){
 		$(document).on('keydown', function(event){
 			backwardOrForward(event, null, runTrials);
 		})
-	}, 15000);
+	}, debug ? 1000 : 15000);
 }
 
 // Actual experiment
