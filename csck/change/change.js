@@ -27,7 +27,7 @@ function reset (blockSeq, config, user_id){
 			$('#next-p').html('You have ' + numLeft + ' more sections left.');
 			$('.next-btn').click(function(e) {
         e.preventDefault(); e.stopPropagation();
-        window.location.href = 'http://mhong.me/csck/change/?pilot='+qs['pilot']+'&id='+subjectID+'&j=' + numLeft;
+        window.location.href = 'http://mhong.me/csck/change/?pilot='+qs['pilot']+'&id='+subjectID+'&j=' + numLeft+'&direction='+qs['direction']+'&hurst=' + qs['hurst'];
 			});
 
 			$('.next-btn').prop('disabled', false);
