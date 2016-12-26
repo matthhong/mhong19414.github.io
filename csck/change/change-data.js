@@ -31,14 +31,14 @@ function getData(exp, config) {
 
 	var dir = ''
 	if (exp === 'a') { 
-		dir = 'data/H' + config.hurst + '-a.json'; 
+		dir = 'data/H' + config.hurst + '-a-' +qs['j']+'.json'; 
 	}
 	else if (exp === 'b') { 
-		dir = 'data/H' + config.hurst + '-b-' + config.direction + '.json';
+		dir = 'data/H' + config.hurst + '-b-' + config.direction + '-' +qs['j']+'.json';
 		$('.direction').html(config.direction + 'ly');
 	}
 	else if (exp === 'c') { 
-		dir = 'data/H' + config.hurst + '-c-' + config.direction + '-' + config.sensitivity + '-.json';
+		dir = 'data/H' + config.hurst + '-c-' + config.direction + '-' + config.sensitivity + '-' + qs['j'] +'.json';
 		$('.direction').html(config.direction + 'ly');
 		$('.sensitivity').html(config.sensitivity);
 		$('.interaction1').html(interactionEffect+'er');
@@ -88,7 +88,7 @@ function getData(exp, config) {
 				var dataset = {};
 				var data = [];
 				var temp = d[i];
-
+				
 				for (var j = 0; j < temp.values1.length; j++) {
 					date = new Date(2016,j,1);
 					data.push({
