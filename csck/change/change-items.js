@@ -58,8 +58,8 @@ function setResponse (trial, chart, response) {
 		trial.correct = trial.left.correct || trial.right.correct;
 	} else if (trial.exp === "b") {
 		answerKey = {
-			"faster": 'Shallow',
-			'slower': 'Steep'
+			"faster": 'Steep',
+			'slower': 'Shallow'
 		}
 
 		trial[chart].response = response;

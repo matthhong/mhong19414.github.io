@@ -1,4 +1,4 @@
-var interactionEffect = config.sensitivity === 'slower' ? 'steep' : 'shallow';
+var interactionEffect = config.sensitivity === 'slower' ? 'shallow' : 'steep';
 
 var masks = [];
 var mask = { left: { data: [] }, right: { data: [] }};

@@ -235,8 +235,8 @@ function makeConnected(connectedScatterSelector, interactive, dataPoints) {
 	};
 
 	connected.lineDA = d3.svg.line()
-		.x(function(d) { return width-xScale(d.value1); })
-		.y(function(d) { return yScale(d.value2); })
+		.x(function(d) { return width-xScale(d.value2); })
+		.y(function(d) { return yScale(d.value1); })
 		.interpolate(smoothLines?'cardinal':'linear');
 
 	d3.select(connectedScatterSelector).select('svg').remove();
@@ -475,7 +475,7 @@ function redrawConnected(connected, recreate) {
 			.orient('bottom');
 
 		connected.background.append('g')
-			.attr('class', 'axis1')
+			.attr('class', 'axis2')
 			.attr('transform', 'translate('+PADX+' '+(PADY+height)+')')
 			.call(xAxis);
 
@@ -483,7 +483,7 @@ function redrawConnected(connected, recreate) {
 			.attr('class', 'axislabel')
 			.attr('transform', 'translate('+(PADX+width)+' '+(PADY+height-5)+')')
 			.append('text')
-				.attr('class', 'axis1')
+				.attr('class', 'axis2')
 				.attr('x', 0)
 				.attr('y', 0)
 				.attr('text-anchor', 'end')
@@ -494,7 +494,7 @@ function redrawConnected(connected, recreate) {
 			.orient('left');
 
 		connected.background.append('g')
-			.attr('class', 'axis2')
+			.attr('class', 'axis1')
 			.attr('transform', 'translate('+PADX+' '+PADY+')')
 			.call(yAxis);
 
@@ -502,7 +502,7 @@ function redrawConnected(connected, recreate) {
 			.attr('class', 'axislabel')
 			.attr('transform', 'translate('+(PADX+11)+' '+PADY+') rotate(-90)')
 			.append('text')
-				.attr('class', 'axis2')
+				.attr('class', 'axis1')
 				.attr('x', 0)
 				.attr('y', 0)
 				.attr('text-anchor', 'end')
@@ -526,8 +526,8 @@ function redrawConnected(connected, recreate) {
 
 			circle
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-				.attr('cx', function(d) { return width-xScale(d.value1); })
-				.attr('cy', function(d) { return yScale(d.value2); });
+				.attr('cx', function(d) { return width-xScale(d.value2); })
+				.attr('cy', function(d) { return yScale(d.value1); });
 
 			circle.exit().remove();
 
@@ -538,8 +538,8 @@ function redrawConnected(connected, recreate) {
 				text.enter()
 					.append('text')
 						.text(function(d) { return (d.date.getFullYear()%5==0)?d.date.getFullYear():''; })
-						.attr('x', function(d) { return width-xScale(d.value1); })
-						.attr('y', function(d) { return yScale(d.value2) + 12; });
+						.attr('x', function(d) { return width-xScale(d.value2); })
+						.attr('y', function(d) { return yScale(d.value1) + 12; });
 
 				text.exit().remove();
 			}
@@ -571,13 +571,13 @@ function redrawConnected(connected, recreate) {
 		connected.foreground.selectAll('circle')
 			.data(connected.points.slice(0, pointsToDraw))
 			.classed('selected', function(d, i) { return i === selectedIndex && !study; })
-			.attr('cx', function(d) { return width-xScale(d.value1); })
-			.attr('cy', function(d) { return yScale(d.value2); });
+			.attr('cx', function(d) { return width-xScale(d.value2); })
+			.attr('cy', function(d) { return yScale(d.value1); });
 
 		connected.foreground.selectAll('text')
 			.data(connected.points.slice(0, pointsToDraw))
-			.attr('x', function(d) { return width-xScale(d.value1); })
-			.attr('y', function(d) { return yScale(d.value2) + 12; });
+			.attr('x', function(d) { return width-xScale(d.value2); })
+			.attr('y', function(d) { return yScale(d.value1) + 12; });
 	}
 
 	if (d3.event) {
