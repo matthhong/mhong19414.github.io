@@ -22,20 +22,20 @@ function reset (blockSeq, config, user_id){
 		$('#done').css('opacity', 1).show();
 		$('.next').css('opacity', 1).show();
 
-		var numLeft = (+qs['j'] -1);
-		if (numLeft > 0) {
-			$('#next-p').html('You have ' + numLeft + ' more sections left.');
-			$('.next-btn').click(function(e) {
-        e.preventDefault(); e.stopPropagation();
-        window.location.href = 'http://mhong19414.github.io/csck/change/?pilot='+qs['pilot']+'&id='+subjectID+'&j=' + numLeft+'&direction='+qs['direction']+'&hurst=' + qs['hurst'];
-			});
+		var numLeft = (3 - +qs['j']);
+		// if (numLeft > 0) {
+			// $('#next-p').html('You have ' + numLeft + ' more sections left.');
+		// 	$('.next-btn').click(function(e) {
+  //       e.preventDefault(); e.stopPropagation();
+  //       window.location.href = 'http://mhong19414.github.io/csck/change/?pilot='+qs['pilot']+'&id='+subjectID+'&j=' + numLeft+'&direction='+qs['direction']+'&hurst=' + qs['hurst'];
+		// 	});
 
-			$('.next-btn').prop('disabled', false);
-		} else {
+		// 	$('.next-btn').prop('disabled', false);
+		// } else {
 			$('#done-p').attr('hidden', false)
 			// $('#next-p').html('You are done!');
 			$('.next-btn').animate({'opacity': 0}).hide(200);
-		}
+		// }
 
 		$('#user-id').html(user_id);
 	} else {
