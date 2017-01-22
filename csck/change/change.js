@@ -22,7 +22,29 @@ function reset (blockSeq, config, user_id){
 		$('#done').css('opacity', 1).show();
 		$('.next').css('opacity', 1).show();
 
-		var numLeft = (3 - +qs['j']);
+		var numLeft = (+qs['j'] - 1);
+		if (+qs['lab'] == 1) {
+			if (numLeft > 0) {
+				$('#out-lab').hide();
+				$('#next-p').html('You have ' + numLeft + ' more sections left.');
+				$('.next-btn').click(function(e) {
+	        e.preventDefault(); e.stopPropagation();
+	        window.location.href = '/csck/change/?lab=1&pilot='+qs['pilot']
+	        	+'&id='+hitID
+	        	+'&j=' + numLeft
+	        	+'&direction='+qs['direction']
+	        	+'&hurst=' + qs['hurst'];
+				});
+
+				$('.next-btn').prop('disabled', false);
+			} else {
+				// $('#done-p').attr('hidden', false)
+				$('#next-p').html('You are done!');
+				$('.next-btn').hide();
+			}
+		// }
+		} else {
+
 		// if (numLeft > 0) {
 			// $('#next-p').html('You have ' + numLeft + ' more sections left.');
 		// 	$('.next-btn').click(function(e) {
@@ -33,11 +55,13 @@ function reset (blockSeq, config, user_id){
 		// 	$('.next-btn').prop('disabled', false);
 		// } else {
 			$('#done-p').attr('hidden', false)
+			$('#out-lab').show();
 			// $('#next-p').html('You are done!');
-			$('.next-btn').animate({'opacity': 0}).hide(200);
+			$('.next-btn').hide();
+			$('#user-id').html(user_id);
 		// }
+		}
 
-		$('#user-id').html(user_id);
 	} else {
 		// Move on to next experiment
 		var exp = blockSeq[blockSeq.length-1]

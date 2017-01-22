@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+    <script src="../jquery.min.js"></script>
 	<style>
 
 	@media screen and (max-height: 600px), screen and (max-width:960px) {
@@ -32,6 +33,39 @@ span {
 	color: #333;
 }
 </style>
+<script>
+
+// http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+
+$(function() {
+    $('<input>')
+        .attr('type','hidden')
+        .attr('name', 'direction')
+        .attr('value', qs['direction'])
+        .appendTo('form');
+
+    $('<input>')
+        .attr('type','hidden')
+        .attr('name', 'hurst')
+        .attr('value', qs['hurst'])
+        .appendTo('form');
+
+})
+    
+</script>
 </head>
 <body>
 	<div id="header">
@@ -50,10 +84,11 @@ Your <span>score</span> will be shown to you after each challenge is over. Aim f
 More relevant instructions are contained within. Have fun!
 <br>
 <br>
-	<form action="http://mhong.me/csck/change/">
+	<form action="/csck/change/">
     <input id="textbox" name="id" type="text" value="" size="25" />
     <input name="j" value="3" hidden/>
-		<input name="pilot" value="20" hidden/>
+		<input name="pilot" value="1" hidden/>
+        <input name="lab" value="1" hidden/>
     <input type="submit" value="<-  Enter your participant ID to begin" />
 </form>
 </div>
