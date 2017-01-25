@@ -270,9 +270,9 @@ function reveal(trial, callback){
 	// Choice buttons
 	function enableChoice() {
 		if (trial.exp == 'a' || trial.exp == 'b') {
-			$('#'+ chosen +'Mask0').addClass('bottom-border');
+			$('#'+ chosen +'Chart').addClass('bottom-border');
 			// var interval = setInterval(function () {
-	  //       $('#'+ chosen +'Mask0').toggleClass('bottom-border');
+	  //       $('#'+ chosen +'Chart').toggleClass('bottom-border');
 	  //   }, 1000);
 
 	  //   setTimeout(function() {
@@ -284,7 +284,10 @@ function reveal(trial, callback){
 	 		$('#leftChart').empty();
 			$('#rightChart').empty();
 		}
-		$('.mask').css('opacity', 1).show();
+
+		if (stage === 2 || trial.index === 3) {
+			$('.mask').css('opacity', 1).show();
+		}
 
 		$('html').css('cursor','auto');
 		$('button').prop('disabled', false);
@@ -393,7 +396,7 @@ function reveal(trial, callback){
 
 		function moveOn(eraseCharts) {
 			$('button').prop('disabled', true);
-			$('#'+ chosen +'Mask0').removeClass('bottom-border');
+			$('#'+ chosen +'Chart').removeClass('bottom-border');
 
 			if (eraseCharts) erase();
 

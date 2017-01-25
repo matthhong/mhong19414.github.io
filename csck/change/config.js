@@ -1,10 +1,10 @@
 var config = {
 	'hurst': d3.shuffle([2,8]).pop(),
 	'direction': d3.shuffle(['positive','negative']).pop(),
-	'sensitivity': d3.shuffle(['slower']).pop(),
+	'sensitivity': d3.shuffle(['faster']).pop(),
 	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
     // I pop stuff from the back of block_order
-	'block_order': ['all', 'c', 'b', 'a']
+	'block_order': ['all', 'c', 'b', 'c']
 }
 
 // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
