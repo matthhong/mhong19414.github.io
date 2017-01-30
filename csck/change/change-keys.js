@@ -46,12 +46,16 @@ var backwardOrForward = function(event, callback, callforward, selector) {
 	if (event.keyCode == 37) {
     if (callback) {
       $(selector).off('keyup');
-      callback();
+      setTimeout(function(){
+        callback();
+      }, 200)
     }
 	} else if (event.keyCode == 39) {
     if (callforward) {
       $(selector).off('keyup');
-  		callforward();
+  		setTimeout(function(){
+        callforward();
+      }, 200)
     }
 	}
 }

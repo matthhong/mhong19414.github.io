@@ -270,7 +270,8 @@ function reveal(trial, callback){
 	// Choice buttons
 	function enableChoice() {
 		if (trial.exp == 'a' || trial.exp == 'b') {
-			$('#'+ chosen +'Chart').addClass('bottom-border');
+			chartOrMask = stage === 1 ? 'Chart' : 'Mask0'; 
+			$('#'+ chosen + chartOrMask).addClass('bottom-border');
 			// var interval = setInterval(function () {
 	  //       $('#'+ chosen +'Chart').toggleClass('bottom-border');
 	  //   }, 1000);
@@ -352,9 +353,9 @@ function reveal(trial, callback){
 			if (stage == 1) {
 				// Reveal chart again, then move on after 5 seconds
 				$('.mask').animate({'opacity': 0}).hide(200);
-				setTimeout(function(){
-					moveOn();
-				}, debug ? 0 : 3000);
+				// setTimeout(function(){
+				moveOn();
+				// }, debug ? 0 : 3000);
 			} else {
 				moveOn(true);
 			}
