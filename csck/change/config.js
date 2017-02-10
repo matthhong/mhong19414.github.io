@@ -24,8 +24,9 @@ var qs = (function(a) {
 
 var debug = window.location.href.indexOf('debug') >= 0;
 
-var subjectID = getRandomInt(1000000, 9999999);
-var hitID = +qs['id'];
+// var subjectID = getRandomInt(1000000, 9999999);
+var subjectID;
+var hitID = subjectID = +qs['id'];
 
 var stage = 1;
 var testOrPilot = 'test';
