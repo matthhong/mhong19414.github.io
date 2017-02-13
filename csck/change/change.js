@@ -365,7 +365,9 @@ function reveal(trial, callback){
 
 			if (stage == 1) {
 
-				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
+				// $('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
+				$('#feedback').html('Wrong.').css('color', 'red');
+
 				$('.mask').animate({'opacity': 0}).hide(200);
 
 				setTimeout(function(){
@@ -374,7 +376,8 @@ function reveal(trial, callback){
 
 			} else {
 
-				$('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
+				// $('#feedback').html('Wrong. Timed out for ' + penalty/1000 + ' seconds...').css('color', 'red');
+				$('#feedback').html('Wrong.').css('color', 'red');
 
 				setTimeout(function(){
 					$('.press-continue').css('opacity', 1).show();

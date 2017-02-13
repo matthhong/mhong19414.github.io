@@ -30,7 +30,7 @@ var hitID = subjectID = +qs['id'];
 
 var stage = 1;
 var testOrPilot = 'test';
-var penalty = (debug ? 0 : 7000);
+var penalty = (debug ? 0 : 0);
 var timeLimit = (debug ? 1000000 : 10000);
 var displayFor = (debug ? 0 : 4000);
 
