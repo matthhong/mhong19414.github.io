@@ -400,7 +400,9 @@ function reveal(trial, callback){
 
 		function moveOn(eraseCharts) {
 			$('button').prop('disabled', true);
-			$('#'+ chosen +'Chart').removeClass('bottom-border');
+			
+			chartOrMask = stage === 1 ? 'Chart' : 'Mask0'; 
+			$('#'+ chosen + chartOrMask).addClass('bottom-border');
 
 			if (eraseCharts) erase();
 
