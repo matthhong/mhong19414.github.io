@@ -111,6 +111,7 @@ function tutorialClass(exp, i, chartType) {
 
 var tutorialNow = 1;
 var tutorialStep = function(event,exp,chartType,selector){
+	$(document).off('keyup');
 	backwardOrForward(event, 
 	  function(){
 			if (tutorialNow != 1) {
@@ -121,9 +122,11 @@ var tutorialStep = function(event,exp,chartType,selector){
 				$(tutorialClass(exp, tutorialNow-1, chartType)).css('opacity', 1).show();
 				--tutorialNow;
 			}
-			$(document).on('keyup', function(event){
-				tutorialStep(event,exp,chartType,this)
-			});
+			setTimeout(function() {
+				$(document).on('keyup', function(event){
+					tutorialStep(event,exp,chartType,this)
+				});
+			}, 200)
 		},
 		function(){
 			if (tutorialNow < 4) {
@@ -132,9 +135,11 @@ var tutorialStep = function(event,exp,chartType,selector){
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 				$(tutorialClass(exp, tutorialNow+1, chartType)).css('opacity', 1).show();
-				$(document).on('keyup', function(event){
-					tutorialStep(event,exp,chartType,this)
-				});
+				setTimeout(function() {
+					$(document).on('keyup', function(event){
+						tutorialStep(event,exp,chartType,this)
+					});
+				}, 200)
 			} 
 			else {
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
@@ -400,7 +405,7 @@ function reveal(trial, callback){
 
 		function moveOn(eraseCharts) {
 			$('button').prop('disabled', true);
-			
+
 			chartOrMask = stage === 1 ? 'Chart' : 'Mask0'; 
 			$('#'+ chosen + chartOrMask).addClass('bottom-border');
 
