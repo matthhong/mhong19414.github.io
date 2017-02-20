@@ -22,7 +22,7 @@ function sendJSON(_block, callback) {
 
     // send
     delete _block.datasets;
-    console.log(_block.chartType+'/'+ _block.exp+'/'+_block.subjectID)
+    console.log(_block.chartType+'/'+ _block.exp+'/'+hitID+'-'+_block.subjectID)
     console.log(_block);
-    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.exp+'/'+_block.subjectID).set(_block);
+    db.ref(testOrPilot +'/' + _block.chartType+'/'+ _block.exp+'/'+hitID+'-'+_block.subjectID).set(_block);
 };
