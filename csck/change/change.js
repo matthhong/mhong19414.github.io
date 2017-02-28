@@ -94,12 +94,15 @@ function setChartName(chartType) {
 	$('.chart-name').html(name);
 }
 
-function setTutorialImage(exp, chartType, id) {
+function setTutorialImage(exp, chartType, id, marked) {
 	if (id !== 0) { id = 1; }
+	if (marked === 'marked')  {
+		marked = '-marked'
+	} else { marked = '' }
 	if (exp === 'c') {
-		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+'.png')
+		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+marked+'.png')
 	} else if (exp === 'b' ){
-		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+'.png')
+		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+marked+'.png')
 	} else {
 		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+chartType+'.png')
 	}
@@ -116,7 +119,11 @@ var tutorialStep = function(event,exp,chartType,selector){
 	  function(){
 			if (tutorialNow != 1) {
 				if (exp==='c' && tutorialNow === 3) {
+					setTutorialImage(exp, chartType, 1, 'marked');
+				} else if (exp==='c' && tutorialNow === 2) {
 					setTutorialImage(exp, chartType, 1);
+				} else if (exp==='b' && tutorialNow === 2) {
+					setTutorialImage(exp, chartType)
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 				$(tutorialClass(exp, tutorialNow-1, chartType)).css('opacity', 1).show();
@@ -130,8 +137,15 @@ var tutorialStep = function(event,exp,chartType,selector){
 		},
 		function(){
 			if (tutorialNow < 4) {
-				if (exp === 'c' && tutorialNow === 2) {
-					setTutorialImage(exp, chartType, 0);
+				if (exp === 'c') {
+					if (tutorialNow === 2) {
+						setTutorialImage(exp, chartType, 0, 'marked');
+					}
+					if (tutorialNow === 1) {
+						setTutorialImage(exp, chartType, 1, 'marked');
+					}
+				} else if (exp==='b' && tutorialNow === 1) {
+					setTutorialImage(exp, chartType, 0, 'marked')
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 				$(tutorialClass(exp, tutorialNow+1, chartType)).css('opacity', 1).show();
