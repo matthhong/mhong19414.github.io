@@ -4,7 +4,7 @@ var config = {
 	'sensitivity': d3.shuffle(['faster']).pop(),
 	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
     // I pop stuff from the back of block_order
-	'block_order': ['all', 'c', 'b', 'b']
+	'block_order': ['all', 'c', 'b', 'a']
 }
 
 var quantToShape = {
