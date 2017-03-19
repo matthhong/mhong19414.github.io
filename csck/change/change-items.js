@@ -1,4 +1,6 @@
-
+String.prototype.title= function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 var Block = function(chartType, hurst, exp, direction, sensitivity){
 	this.chartType = chartType;
@@ -44,8 +46,8 @@ var Trial = function(exp, chartType, dataset1, dataset2){
 function setResponse (trial, chart, response) {
 	if (trial.exp === "a") {
 		answerKey = {
-			"positively": 1,
-			"negatively": -1
+			"right": 1,
+			"left": -1
 		}
 
 		trial[chart].response = response;
@@ -59,7 +61,9 @@ function setResponse (trial, chart, response) {
 	} else if (trial.exp === "b") {
 		answerKey = {
 			"faster": 'Steep',
-			'slower': 'Shallow'
+			'slower': 'Shallow',
+			"larger": 'Steep',
+			'smaller': 'Shallow'
 		}
 
 		trial[chart].response = response;

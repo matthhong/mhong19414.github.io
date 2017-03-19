@@ -41,7 +41,7 @@ body {
 	font-size: 16px;
 	height: 100px;
 }
-#header span {
+#header .tutorial span {
 	color: #333;
 }
 .btn-group {
@@ -78,7 +78,7 @@ body {
 .tutorial{
 	display: none;
 }
-img.instructional {
+img.instructional, img.instructional-mask {
 	position: absolute;
 	top:260px;
 	left:100px;
@@ -188,16 +188,34 @@ blockquote {
 				<img class="instructional">
 			</div>
 
-			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
+			<div class="tutorial tutorial-3 tutorial-cs">
 				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
 				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
 				<p>After inspection, <span>complete the statement</span>:</p>
-				<blockquote>Green and blue are
+				<blockquote>The lines form a shape tilted
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
-					  <button type="button" class="btn btn-default choice">positively</button>
-					  <button type="button" class="btn btn-default choice">negatively</button>
+					  <button type="button" class="btn btn-default choice">left</button>
+					  <button type="button" class="btn btn-default choice">right</button>
 					</div>
-					related.
+					.
+				</blockquote>
+				<p>for one of the charts by choosing an option with the cursor.</p>
+				
+				<p>You will have to <span>inspect both</span> charts, but one will be singled out for the task.</p>
+				<br>
+				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+			</div>
+
+			<div class="tutorial tutorial-3 tutorial-dalc tutorial-sm">
+				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
+				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
+				<blockquote>The lines form
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">similar</button>
+					  <button type="button" class="btn btn-default choice">symmetric</button>
+					</div>
+					shapes.
 				</blockquote>
 				<p>for one of the charts by choosing an option with the cursor.</p>
 				
@@ -209,13 +227,14 @@ blockquote {
 			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
 				<!-- <p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br> -->
-				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
-				<br>
-				<p>Furthermore, you will see the charts for an indefinite amount of time in the <span>first two</span> practice trials.</p>
-				<br>
 				<p>Three practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
 				<br>
+				<p>You will see the charts for an indefinite amount of time in the <span>first two practice trials.</span></p>
+				<br>
+				<p>They will be masked as below after <span>four</span> seconds in the last practice trial, as in the real challenge.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+				<img class="instructional-mask">
 			</div>
 		</div>
 
@@ -232,7 +251,7 @@ blockquote {
 
 			<div class="tutorial tutorial-2 tutorial-cs">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>The lines are tilted <span class="direction-shape"></span>. So green and blue are <span class="direction"></span> related.</p>
 				<p>[1st phase]  The lines form a <span>steep</span> shape. So green moves at a <span>faster </span>rate than blue.</p>
 				<p>[2nd phase]  The lines form a <span>shallow</span> shape. So green moves at a <span>slower </span>rate than blue.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
@@ -240,25 +259,25 @@ blockquote {
 			</div>
 			<div class="tutorial tutorial-2 tutorial-dalc tutorial-sm">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
+				<p>The lines form <span class="direction-shape"></span> shapes. So green and blue are <span class="direction"></span> related.</p>
 				<p>[1st phase]  The green line is <span>vertically larger</span> than the blue line. So green moves at a <span>faster </span>rate than blue.</p>
 				<p>[2nd phase]  The green line is <span>vertically smaller</span> than the blue line. So green moves at a <span>slower </span>rate than blue.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
 
-			<div class="tutorial tutorial-3 tutorial-cs tutorial-dalc tutorial-sm">
+			<div class="tutorial tutorial-3 tutorial-cs">
 				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
 				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
 				<p>After inspection, <span>complete the statement</span>:</p>
-				<blockquote>Green and blue are <span class="direction"></span> related.
+				<blockquote>The lines are tilted <span class="direction-shape"></span>.
 					<br>
-					Green moves at a
+					The lines form a
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
-					  <button type="button" class="btn btn-default choice">slower</button>
-					  <button type="button" class="btn btn-default choice">faster</button>
+					  <button type="button" class="btn btn-default choice">shallow</button>
+					  <button type="button" class="btn btn-default choice">steep</button>
 					</div>
-					rate than blue.
+					shape.
 				</blockquote>
 				<p>for one of the charts by choosing an option with the cursor.</p>
 				
@@ -267,14 +286,39 @@ blockquote {
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 			</div>
 
+			<div class="tutorial tutorial-3 tutorial-dalc tutorial-sm">
+				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
+				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
+				<blockquote>The lines form <span class="direction-shape"></span> shapes.
+					<br>
+					The green line is vertically
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">smaller</button>
+					  <button type="button" class="btn btn-default choice">larger</button>
+					</div>
+					than the blue line.
+				</blockquote>
+				<p>for one of the charts by choosing an option with the cursor.</p>
+				
+				<p>You will have to <span>inspect both</span> charts, but one will be singled out for the task.</p>
+				<br>
+				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+			</div>
+
+
+
 			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
 <!-- 				<p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br> -->
-				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
-				<br>
 				<p>Three practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
 				<br>
+				<p>You will see the charts for an indefinite amount of time in the <span>first two practice trials.</span></p>
+				<br>
+				<p>They will be masked as below after <span>four</span> seconds in the last practice trial, as in the real challenge.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+				<img class="instructional-mask">
 			</div>
 		</div>
 
@@ -290,51 +334,72 @@ blockquote {
 
 			<div class="tutorial tutorial-2 tutorial-cs">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
-				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The lines are tilted <span class="direction-shape"></span>. So green and blue are <span class="direction"></span> related.</p>
+				<p>The lines form a <span class="sensitivity-shape"></span> shape. So green moves at a <span class="sensitivity"></span>rate than blue.</p>
 				<p>But the lines in the 2nd phase form a <span class="interaction2">less </span> shape than the lines in the 1st phase.</p>
-				<p>So the relative difference in rates of change between green and blue becomes <span>smaller</span> in the 2nd phase.</p>
+				<p>So the relative difference in rate of change between green and blue becomes <span>smaller</span> in the 2nd phase.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
 			<div class="tutorial tutorial-2 tutorial-dalc tutorial-sm">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
-				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
-				<p>But the difference in size between the two lines, in proportion to each other, becomes <span>smaller</span> in the 2nd phase.</p>
-				<p>So the relative difference in rates of change between green and blue becomes <span>smaller</span> in the 2nd phase.</p>
+				<p>The lines form <span class="direction-shape"></span> shapes. So green and blue are <span class="direction"></span> related.</p>
+				<p>The green line is <span class="sensitivity-shape"></span> than the blue line. So green moves at a <span class="sensitivity"></span>rate than blue.</p>
+				<p>But this difference in size, as a proportion, becomes <span>smaller</span> in the 2nd phase.</p>
+				<p>So the relative difference in rate of change between green and blue becomes <span>smaller</span> in the 2nd phase.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
 
 			<div class="tutorial tutorial-3 tutorial-cs">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
-				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
+				<p>The lines are tilted <span class="direction-shape"></span>. So green and blue are <span class="direction"></span> related.</p>
+				<p>The lines form a <span class="sensitivity-shape"></span> shape. So green moves at a <span class="sensitivity"></span>rate than blue.</p>
 				<p>But the lines in the 2nd phase form a <span class="interaction1">er</span> shape than the lines in the 1st phase.</p>
-				<p>So the relative difference in rates of change between green and blue becomes <span>greater</span> in the 2nd phase.</p>
+				<p>So the relative difference in rate of change between green and blue becomes <span>greater</span> in the 2nd phase.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
 			<div class="tutorial tutorial-3 tutorial-dalc tutorial-sm">
 				<p>Example:</p>
-				<p>Green and blue are <span class="direction"></span> related.</p>
-				<p>In addition, green moves at a <span class="sensitivity"></span> rate than blue.</p>
-				<p>But the difference in size between the two lines, in proportion to each other, becomes <span>greater</span> in the 2nd phase.</p>
-				<p>So the relative difference in rates of change between green and blue becomes <span>greater</span> in the 2nd phase.</p>
+				<p>The lines form <span class="direction-shape"></span> shapes. So green and blue are <span class="direction"></span> related.</p>
+				<p>The green line is <span class="sensitivity-shape"></span> than the blue line. So green moves at a <span class="sensitivity"></span>rate than blue.</p>
+				<p>But this difference in size, as a proportion, becomes <span>greater</span> in the 2nd phase.</p>
+				<p>So the relative difference in rate of change between green and blue becomes <span>greater</span> in the 2nd phase.</p>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
 				<img class="instructional">
 			</div>
 
-			<div class="tutorial tutorial-4 tutorial-cs tutorial-dalc tutorial-sm">
+			<div class="tutorial tutorial-4 tutorial-cs">
 				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
 				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
 				<p>After inspection, <span>complete the statement</span>:</p>
-				<blockquote>Green and blue are <span class="direction"></span> related.
+				<blockquote>The lines are tilted <span class="direction-shape"></span>.
 					<br>
-					Green changes at a <span class="sensitivity"></span> rate than blue.
+					The lines form a <span class="sensitivity-shape"></span> shape.
 					<br>
-					The relative difference becomes
+					The lines in the 2nd phase form a
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">less <span class="sensitivity-shape"></span></button>
+					  <button type="button" class="btn btn-default choice"><span class="sensitivity-shape"></span>er</button>
+					</div>
+					than the lines in the 1st phase.
+				</blockquote>
+				<p>by choosing an option with the cursor.</p>
+				<br>
+				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+			</div>
+
+
+			<div class="tutorial tutorial-4 tutorial-dalc tutorial-sm">
+				<!-- <p>While you are <span>holding down</span> a pair of buttons, a pair of charts will appear.</p> -->
+				<p>On your cue, a pair of charts will appear for <span>four</span> seconds.</p>
+				<p>After inspection, <span>complete the statement</span>:</p>
+				<blockquote>The lines form <span class="direction-shape"></span> shapes.
+					<br>
+					The green line is vertically <span class="sensitivity-shape"></span> than the blue line.
+					<br>
+					This difference, as a proportion, becomes
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">smaller</button>
 					  <button type="button" class="btn btn-default choice">greater</button>
@@ -349,11 +414,14 @@ blockquote {
 			<div class="tutorial tutorial-5">
 <!-- 				<p>Please inspect the charts as <span>quickly</span> and <span>accurately</span> as possible.</p>
 				<br> -->
-				<p>As feedback, <span>in this practice stage only</span>, the charts will be shown again after you respond.</p>
-				<br>
 				<p>Three practice trials will follow; you will <span>not</span> be able to come back to these instructions.</p>
 				<br>
+				<p>You will see the charts for an indefinite amount of time in the <span>first two practice trials.</span></p>
+				<br>
+				<p>They will be masked as below after <span>four</span> seconds in the last practice trial, as in the real challenge.</p>
+				<br>
 				<p>Press <span>←</span> to go back, <span>→</span> to continue.</p>
+				<img class="instructional-mask">
 			</div>
 		</div>
 
@@ -369,45 +437,64 @@ blockquote {
 
 		<div id="study">
 
-			<div class="problem" id="exp-a">
-				<p>Green and blue are 
-					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a1">
-					  <button type="button" class="btn btn-default choice">positively</button>
-					  <button type="button" class="btn btn-default choice">negatively</button>
-					</div>
-					related.
-				</p><br>
-<!-- 				<p>[2nd phase] Green and blue are 
-					<div class="btn-group btn-group-xs" role="group" aria-label="choices-a2">
-					  <button type="button" class="btn btn-default choice">positively</button>
-					  <button type="button" class="btn btn-default choice">negatively</button>
-					</div>
-					related.
-				</p> -->
-			</div>
-
-			<div class="problem" id="exp-b">
-				<p>Green and blue are <span class="direction"></span> related.</p><br>
-				<p>Green moves at a
+			<div class="problem cs exp-a">
+				<p>The lines form a shape tilted
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
-					  <button type="button" class="btn btn-default choice">slower</button>
-					  <button type="button" class="btn btn-default choice">faster</button>
+					  <button type="button" class="btn btn-default choice">left</button>
+					  <button type="button" class="btn btn-default choice">right</button>
 					</div>
-					rate than blue.
+					.
 				</p><br>
-<!-- 				<p>[2nd phase] Green moves at a
-					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b2">
-					  <button type="button" class="btn btn-default choice">faster</button>
-					  <button type="button" class="btn btn-default choice">slower</button>
-					</div>
-					rate than blue.
-				</p>-->
 			</div>
 
-			<div class="problem" id="exp-c">
-				<p>Green and blue are <span class="direction"></span> related.</p><br>
-				<p>Green changes at a relatively <span class="sensitivity"></span> rate than blue.</p><br>
-				<p>The relative difference becomes
+			<div class="problem cs exp-b">
+				<p>The lines form a shape tilted <span class="direction-shape"></span>.</p><br>
+				<p>The lines form a
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">shallow</button>
+					  <button type="button" class="btn btn-default choice">steep</button>
+					</div>
+					shape.
+				</p><br>
+			</div>
+
+			<div class="problem cs exp-c">
+				<p>The lines form a shape tilted <span class="direction-shape"></span>.</p><br>
+				<p>The lines form a <span class="sensitivity-shape"></span> shape.</p><br>
+				<p>The lines in the 2nd phase form a
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">less <span class="sensitivity-shape"></span></button>
+					  <button type="button" class="btn btn-default choice"><span class="sensitivity-shape"></span>er</button>
+					</div>
+					shape than the lines in the 1st phase.
+				</p>
+			</div>
+
+			<div class="problem dalc sm exp-a">
+				<p>The lines form
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">similar</button>
+					  <button type="button" class="btn btn-default choice">symmetric</button>
+					</div>
+					shapes.
+				</p><br>
+			</div>
+
+			<div class="problem dalc sm exp-b">
+				<p>The lines form <span class="direction-shape"></span> shapes.</p><br>
+				<p>The green line is vertically
+					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
+					  <button type="button" class="btn btn-default choice">smaller</button>
+					  <button type="button" class="btn btn-default choice">larger</button>
+					</div>
+					than the blue line.
+				</p><br>
+			</div>
+
+			<div class="problem dalc sm exp-c">
+				<p>The lines form <span class="direction-shape"></span> shapes.</p><br>
+				<p>The green line is vertically <span class="sensitivity-shape"></span> than the blue line.</p><br>
+				<p>This difference, as a proportion, becomes
 					<div class="btn-group btn-group-xs" role="group" aria-label="choices-b1">
 					  <button type="button" class="btn btn-default choice">smaller</button>
 					  <button type="button" class="btn btn-default choice">greater</button>

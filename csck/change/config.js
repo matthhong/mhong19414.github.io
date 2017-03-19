@@ -4,7 +4,49 @@ var config = {
 	'sensitivity': d3.shuffle(['faster']).pop(),
 	'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
     // I pop stuff from the back of block_order
-	'block_order': ['all', 'c', 'b', 'a']
+	'block_order': ['all', 'c', 'b', 'b']
+}
+
+var quantToShape = {
+  'cs': {
+    'positive': 'right',
+    'negative': 'left',
+    'faster': 'steep',
+    'slower': 'shallow'
+  },
+  'dalc': {
+    'positive': 'similar',
+    'negative': 'symmetric',
+    'faster': 'larger',
+    'slower': 'smaller'
+  },
+  'sm': {
+    'positive': 'similar',
+    'negative': 'symmetric',
+    'faster': 'larger',
+    'slower': 'smaller'
+  }
+}
+
+var shapeToQuant = {
+  'cs': {
+    'right': 'positive',
+    'left': 'negative',
+    'steep': 'faster',
+    'shallow': 'slower'
+  },
+  'dalc': {
+    'similar': 'positive',
+    'symmetric': 'negative',
+    'larger': 'faster',
+    'smaller': 'slower'
+  },
+  'sm': {
+    'similar': 'positive',
+    'symmetric': 'negative',
+    'larger': 'faster',
+    'smaller': 'slower'
+  }
 }
 
 // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript

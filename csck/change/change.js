@@ -69,7 +69,7 @@ function reset (blockSeq, config, user_id){
 		getData(exp, config);
 
 		// Set up tutorial mode
-		$('#exp-' + lastExp).animate({'opacity': 0}).hide(200);
+		$('.'+ chartType +'.exp-' + lastExp).animate({'opacity': 0}).hide(200);
 		$('#study').animate({'opacity': 0}).hide(200);
 		erase();
 
@@ -113,11 +113,17 @@ function tutorialClass(exp, i, chartType) {
 }
 
 var tutorialNow = 1;
+$('.direction-shape').html(quantToShape[chartType][config.direction]);
+$('.sensitivity-shape').html(quantToShape[chartType][config.sensitivity]);
+
 var tutorialStep = function(event,exp,chartType,selector){
 	$(document).off('keyup');
 	backwardOrForward(event, 
-	  function(){
+	  	function(){
 			if (tutorialNow != 1) {
+				if (tutorialNow === 4) {
+					$('img.instructional-mask').animate({'opacity': 0}).hide(200)
+				}
 				if (exp==='c' && tutorialNow === 3) {
 					setTutorialImage(exp, chartType, 1, 'marked');
 				} else if (exp==='c' && tutorialNow === 2) {
@@ -137,6 +143,10 @@ var tutorialStep = function(event,exp,chartType,selector){
 		},
 		function(){
 			if (tutorialNow < 4) {
+				if (tutorialNow === 3) {
+					$('img.instructional-mask').attr('src', 'img/change-tutorial/'+chartType+'-masked.png')
+					$('img.instructional-mask').css('opacity', 1).show()
+				}
 				if (exp === 'c') {
 					if (tutorialNow === 2) {
 						setTutorialImage(exp, chartType, 0, 'marked');
@@ -157,7 +167,6 @@ var tutorialStep = function(event,exp,chartType,selector){
 			} 
 			else {
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
-
 				prepareBlocks(allData[exp]);
 				runBlock(allData[exp], numPracticeTrials);
 			}
@@ -180,7 +189,7 @@ function runBlock(block, count){
 		
 		// Show question
 		$('#study').css('opacity', 1).show();
-		$('#exp-' + trial.exp).css('opacity', 1).show();
+		$('.'+ chartType +'.exp-' + trial.exp).css('opacity', 1).show();
 		$('button').prop('disabled', true);
 		$('.choice').removeClass('active');
 
@@ -320,7 +329,7 @@ function reveal(trial, callback){
 
 			$(this).siblings().prop('disabled', true)
 
-			if ($('#exp-'+trial.exp+' button').length/2 - $('.active').length == 0) {
+			if ($('.'+ chartType +'.exp-'+trial.exp+' button').length/2 - $('.active').length == 0) {
 				// When both choices made
 				if (trial.responseTime < 0.5 && !dialogClosed 
 					&& trial.index == 1 && trial.exp == 'a' && stage == 1) {
@@ -331,7 +340,7 @@ function reveal(trial, callback){
 							dialogClosed = true;
 						}
 					});
-					$('#dialog').dialog('open');
+					// $('#dialog').dialog('open');
 				} else {
 					evaluate();
 				}
