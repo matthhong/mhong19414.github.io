@@ -100,6 +100,11 @@ var blockSeq = config.block_order;
 var chartTypes = ['sm', 'dalc', 'cs'];
 var hursts = [2,4,6,8];
 
+if (qs['t']) {
+  displayFor = +qs['t'];
+  console.log(displayFor)
+}
+
 if (qs['id'] && qs['j']) { //j goes from 3 to 1
   config.j = +qs['j']; 
 

@@ -10,6 +10,10 @@ $('#dialog').dialog({
 });
 var dialogClosed = false;
 
+console.log($('#time').html())
+$('.time').html(Math.round(displayFor/1000).toString())
+console.log($('#time').html())
+
 function reset (blockSeq, config, user_id){
 	$('button').prop('disabled', false);
 	if (blockSeq.length === 1) {
