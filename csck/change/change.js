@@ -121,7 +121,7 @@ $('.direction-shape').html(quantToShape[chartType][config.direction]);
 $('.sensitivity-shape').html(quantToShape[chartType][config.sensitivity]);
 
 var tutorialStep = function(event,exp,chartType,selector){
-	$(document).off('keyup');
+	// $(document).off('keyup');
 	backwardOrForward(event, 
 	  	function(){
 			if (tutorialNow != 1) {
