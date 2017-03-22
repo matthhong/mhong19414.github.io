@@ -222,20 +222,20 @@ function runBlock(block, count){
 		// });
 
 		$('#next').css('opacity', 1).show(200);
-		$('#next').on('mouseenter', function(){
+		$('#next').on('click', function(){
 			
-			$('#next img').attr('src', 'img/next2.png');
-			$('#next').css('top', '+=170px');
-			$(this).on('mouseenter', function() {
+			// $('#next img').attr('src', 'img/next2.png');
+			// $('#next').css('top', '+=170px');
+			// $(this).on('mouseenter', function() {
 					$('html').css('cursor','none');
 			
 			// $(this).fadeOut(500, function(){
 			// $(document).on('keydown', function(event){
 			// 	heldDown(event, function(){
 					$('#next').hide();
-					$('#next img').attr('src', 'img/next.png');
-					$('#next').off('mouseenter');
-					$('#next').css('top', '170px');
+					// $('#next img').attr('src', 'img/next.png');
+					$('#next').off('click');
+					// $('#next').css('top', '170px');
 					reveal(trial, function(){
 						endTrial(block, trialNo);
 					});
@@ -244,7 +244,7 @@ function runBlock(block, count){
 				// reveal();
 				// $('#next').off('mouseenter');
 			// });
-			})
+			// })
 		});
 
 		function endTrial(block, trialNo) {
