@@ -37,7 +37,8 @@ function reset (blockSeq, config, user_id){
 	        	+'&id='+hitID
 	        	+'&j=' + numLeft
 	        	+'&direction='+qs['direction']
-	        	+'&hurst=' + qs['hurst'];
+	        	+'&hurst=' + qs['hurst']
+	        	+'&t=' + qs['t']
 				});
 
 				$('.next-btn').prop('disabled', false);
@@ -146,7 +147,7 @@ var tutorialStep = function(event,exp,chartType,selector){
 			}, 200)
 		},
 		function(){
-			if (tutorialNow < 4) {
+			if ((exp === 'c' && tutorialNow < 5) || tutorialNow < 4) {
 				if (tutorialNow === 3) {
 					$('img.instructional-mask').attr('src', 'img/change-tutorial/'+chartType+'-masked.png')
 					$('img.instructional-mask').css('opacity', 1).show()
@@ -374,7 +375,8 @@ function reveal(trial, callback){
 			setResponse(trial, otherChart(chosen), 'NA');
 		} else {
 			var response = $(responses[0]).text();
-			var chart = response === 'greater' ? 'left' : 'right';
+			console.log(response)
+			var chart = (response === 'less steep' || response === 'smaller') ? 'left' : 'right';
 			setResponse(trial, chart, response);
 		}
 
