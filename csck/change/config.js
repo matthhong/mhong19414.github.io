@@ -79,7 +79,7 @@ var stage = 1;
 var testOrPilot = 'test';
 var penalty = (debug ? 0 : 0);
 var timeLimit = (debug ? 1000000 : 10000);
-var displayFor = (debug ? 0 : 2000);
+var displayFor = (debug ? 0 : 1000);
 
 var numPracticeTrials = (debug ? 2 : 3);
 var numRealTrials = (debug ? 2 : 5); // Per block
