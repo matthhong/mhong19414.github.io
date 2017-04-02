@@ -10,7 +10,7 @@ $('#dialog').dialog({
 });
 var dialogClosed = false;
 
-$('.time').html(Math.round(displayFor/1000).toString())
+$('.time').html((displayFor/1000).toFixed(1))
 
 function reset (blockSeq, config, user_id){
 	$('button').prop('disabled', false);
