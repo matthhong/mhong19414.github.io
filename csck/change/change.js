@@ -103,11 +103,11 @@ function setTutorialImage(exp, chartType, id, marked) {
 		marked = '-marked'
 	} else { marked = '' }
 	if (exp === 'c') {
-		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+marked+'.png')
+		$('img.instructional.charts').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+config.sensitivity+'-'+chartType+'-'+id+marked+'.png')
 	} else if (exp === 'b' ){
-		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+marked+'.png')
+		$('img.instructional.charts').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+config.direction+'-'+chartType+marked+'.png')
 	} else {
-		$('img.instructional').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+chartType+'.png')
+		$('img.instructional.charts').attr('src', 'img/change-tutorial/instructional-'+exp+'-'+chartType+'.png')
 	}
 }
 
@@ -118,6 +118,7 @@ function tutorialClass(exp, i, chartType) {
 var tutorialNow = 1;
 $('.direction-shape').html(quantToShape[chartType][config.direction]);
 $('.sensitivity-shape').html(quantToShape[chartType][config.sensitivity]);
+$('.instructional.signs.'+config.direction).show();
 
 var tutorialStep = function(event,exp,chartType,selector){
 	// $(document).off('keyup');
@@ -128,7 +129,7 @@ var tutorialStep = function(event,exp,chartType,selector){
 					$('img.instructional-mask').animate({'opacity': 0}).hide(200)
 				}
 				if (exp==='c' && tutorialNow === 3) {
-					setTutorialImage(exp, chartType, 1, 'marked');
+					setTutorialImage(exp, chartType, 1);
 				} else if (exp==='c' && tutorialNow === 2) {
 					setTutorialImage(exp, chartType, 1);
 				} else if (exp==='b' && tutorialNow === 2) {
@@ -152,13 +153,13 @@ var tutorialStep = function(event,exp,chartType,selector){
 				}
 				if (exp === 'c') {
 					if (tutorialNow === 2) {
-						setTutorialImage(exp, chartType, 0, 'marked');
+						setTutorialImage(exp, chartType, 0);
 					}
 					if (tutorialNow === 1) {
-						setTutorialImage(exp, chartType, 1, 'marked');
+						setTutorialImage(exp, chartType, 1);
 					}
 				} else if (exp==='b' && tutorialNow === 1) {
-					setTutorialImage(exp, chartType, 0, 'marked')
+					setTutorialImage(exp, chartType, 0)
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 				$(tutorialClass(exp, tutorialNow+1, chartType)).css('opacity', 1).show();
