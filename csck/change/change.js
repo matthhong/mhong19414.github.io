@@ -129,9 +129,9 @@ var tutorialStep = function(event,exp,chartType,selector){
 					$('img.instructional-mask').animate({'opacity': 0}).hide(200)
 				}
 				if (exp==='c' && tutorialNow === 3) {
-					setTutorialImage(exp, chartType, 1);
+					setTutorialImage(exp, chartType, 1, 'marked');
 				} else if (exp==='c' && tutorialNow === 2) {
-					setTutorialImage(exp, chartType, 1);
+					setTutorialImage(exp, chartType, 1, 'marked');
 				} else if (exp==='b' && tutorialNow === 2) {
 					setTutorialImage(exp, chartType)
 				}
@@ -153,10 +153,10 @@ var tutorialStep = function(event,exp,chartType,selector){
 				}
 				if (exp === 'c') {
 					if (tutorialNow === 2) {
-						setTutorialImage(exp, chartType, 0);
+						setTutorialImage(exp, chartType, 0, 'marked');
 					}
 					if (tutorialNow === 1) {
-						setTutorialImage(exp, chartType, 1);
+						setTutorialImage(exp, chartType, 1, 'marked');
 					}
 				} else if (exp==='b' && tutorialNow === 1) {
 					setTutorialImage(exp, chartType, 0)
