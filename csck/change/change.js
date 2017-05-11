@@ -131,7 +131,7 @@ var tutorialStep = function(event,exp,chartType,selector){
 				if (exp==='c' && tutorialNow === 3) {
 					setTutorialImage(exp, chartType, 1, 'marked');
 				} else if (exp==='c' && tutorialNow === 2) {
-					setTutorialImage(exp, chartType, 1, 'marked');
+					setTutorialImage(exp, chartType, 1);
 				} else if (exp==='b' && tutorialNow === 2) {
 					setTutorialImage(exp, chartType)
 				}
@@ -159,7 +159,7 @@ var tutorialStep = function(event,exp,chartType,selector){
 						setTutorialImage(exp, chartType, 1, 'marked');
 					}
 				} else if (exp==='b' && tutorialNow === 1) {
-					setTutorialImage(exp, chartType, 0)
+					setTutorialImage(exp, chartType, 0, 'marked')
 				}
 				$(tutorialClass(exp, tutorialNow, chartType)).animate({'opacity': 0}).hide(200);
 				$(tutorialClass(exp, tutorialNow+1, chartType)).css('opacity', 1).show();
