@@ -81,7 +81,7 @@ var penalty = (debug ? 0 : 0);
 var timeLimit = (debug ? 1000000 : 10000);
 var displayFor = (debug ? 0 : 2500);
 
-var numPracticeTrials = (debug ? 2 : 3);
+var numPracticeTrials = (debug ? 5 : 3);
 var numRealTrials = (debug ? 2 : 5); // Per block
 var numTrials = numPracticeTrials + numRealTrials;
 

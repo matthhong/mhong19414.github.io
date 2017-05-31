@@ -14,17 +14,27 @@ text {
 circle,
 line,
 .line {
-	fill: none;
 	stroke: #DA6937;
+}
+
+line,
+.line {
+	fill: none;
 	stroke-width: 2px;
+}
+
+circle {
+	stroke-width: 1px;
 }
 
 circle.line1 {
 	fill: #3F7128;
+	stroke-width: 1px;
 }
 
 circle.line2 {
 	fill: #6E73BE;
+	stroke-width: 1px;
 }
 
 circle.cs{
@@ -40,17 +50,17 @@ circle.cs{
 	fill: none;
 	stroke: #969696;
 	shape-rendering: crispEdges;
+	stroke-width: 2px;
 }
 
 
 .axis1 line, .axis1 path, .line1 {
 	stroke: #3F7128;
-	stroke-width: 2px;
 }
 
 .axis2 line, .axis2 path, .line2 {
 	stroke: #6E73BE;
-	stroke-width: 2px;
+
 }
 
 .axis path {

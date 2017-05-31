@@ -61,7 +61,7 @@ function getData(exp, config) {
 					var dataset = {};
 					var data = [];
 
-					for (var k = 0; k < temp[j].values1.length; k++) {
+					for (var k = 0; k < temp[j].values1.length; k+=2) {
 						date = new Date(2016,k,1);
 						data.push({
 							date: date,
@@ -89,7 +89,7 @@ function getData(exp, config) {
 				var data = [];
 				var temp = d[i];
 				
-				for (var j = 0; j < temp.values1.length; j++) {
+				for (var j = 0; j < temp.values1.length; j+=2) {
 					date = new Date(2016,j,1);
 					data.push({
 						date: date,

@@ -4,7 +4,7 @@ var width = 300,
 var dalc = true;
 
 var showArrows = false;
-var showDots = false;
+var showDots = true;
 var showLabels = false;
 var showGrid = false;
 var smoothLines = true;
@@ -527,7 +527,8 @@ function redrawConnected(connected, recreate) {
 			circle
 				.classed('selected', function(d, i) { return i === selectedIndex && !study; })
 				.attr('cx', function(d) { return width-xScale(d.value2); })
-				.attr('cy', function(d) { return yScale(d.value1); });
+				.attr('cy', function(d) { return yScale(d.value1); })
+				.attr('class', 'cs');
 
 			circle.exit().remove();
 
@@ -668,7 +669,7 @@ function redrawDualAxes(dualAxes, recreate) {
 					.text(currentDataSet.label2);
 		}
 
-		if (showDots) {
+		if (false) {
 			dualAxes.foreground.selectAll('circle').remove();
 
 			dualAxes.blueCircles = dualAxes.foreground.selectAll('circle.line1')

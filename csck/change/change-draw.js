@@ -22,8 +22,8 @@ var drawCS = function(trial, mask, i){
 	}
 
 	currentDataSet = trial.left.data;
-	leftChart = makeConnected(leftID, true, trial.left.data);
-	rightChart = makeConnected(rightID, true, trial.right.data);
+	leftChart = makeConnected(leftID, false, trial.left.data);
+	rightChart = makeConnected(rightID, false, trial.right.data);
 	afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
@@ -45,8 +45,8 @@ var drawDALC = function(trial, mask, i) {
 	}
 
 	currentDataSet = trial.left.data;
-	leftChart = makeDALC(leftID, true, trial.left.data);
-	rightChart = makeDALC(rightID, true, trial.right.data);
+	leftChart = makeDALC(leftID, false, trial.left.data);
+	rightChart = makeDALC(rightID, false, trial.right.data);
 	afterUpdatePoints();
 
 	//Change if you wanna mess with the axis min/max
