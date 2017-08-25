@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Matt Hong's Tableau Portfolio</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-darkly.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<style type="text/css">
+		.wrapper{
+			width:1020px;
+			height:647px;
+			margin: 0 auto;
+			top:0;
+			left:50%;
+			position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+		}
+		iframe {
+			width:1020px;
+			height:647px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		img {
+			max-width:100%;
+		}
+		.title, .subtitle {
+			font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+			font-weight: bold;
+			color: #fafafa;
+			text-align: right;
+			margin-right: 8px;
+			font-size: 42px;
+		}
+		.subtitle {
+			font-weight: normal;
+			font-size: 20px;
+		}
+		.subtitle span {
+			color: #fafafa;
+		}
+		.dropdown .btn, .dropdown-menu {
+			font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+			font-size: 18px;
+			width: 315px;
+			padding: 9px 12px;
+		}
+		.dropdown .btn {
+			height: 47px;
+			margin-top: 8px;
+			text-align: left;
+		}
+		.stories:hover/*, .stories>.dropdown-menu>li>a:hover*/ {
+			color: white;
+			background-color: #d62728;
+		}
+		.stories {
+			color: #d62728;
+	    background:rgb(214,39,40);
+	    background: transparent\9;
+	    background:rgba(214,39,40,0.2);
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33d62728,endColorstr=#33d62728);
+	    zoom: 1;
+		}
+		.glyphicon {
+			top: 4px;
+		}
+		.glyphicon-sunglasses{
+			left: 2px;
+		}
+		.lightbox {
+			/** Default lightbox to hidden */
+
+			/** Position and style */
+			position: relative;
+			margin: 0 auto;
+			z-index: 999;
+			width: 1020px;
+			height: 647px;
+			text-align: center;
+			/*top: -120px;*/
+			left: 0;
+			visibility: hidden;
+		  opacity: 0;
+		  transition: visibility 0s, opacity 0.5s linear;
+		}
+		.lightbox:target {
+			/** Remove default browser outline */
+			outline: none;
+
+			/** Unhide lightbox **/
+			display:block;
+			visibility: visible;
+  		/*opacity: 1;*/
+		}
+		.lightbox iframe {
+			background-color: #1B1B1B;
+		}
+		.overlay{
+		    background-image: url('analytics1-bw.jpg');
+		    background-repeat:no-repeat;
+		    /*height: 647px;*/
+		    /*width: 1020px;*/
+		    height:100vh;
+		    margin: 0 auto;
+		    opacity: 0.2;
+		    			filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+		    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+			-o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+			-webkit-filter: grayscale(100%);
+			filter: gray;
+		    
+/*		  //Make BG IMage responsive  
+		  background-position: center center;
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+*/			background-size: cover;
+		    
+		    z-index:0;
+		  }
+		 .navbar {
+		 	margin-bottom: 0;
+		 	color:black;
+		 	border-radius: 0px;
+		 	background-color: #fafafa;
+		 }
+		 .wrapper {
+		 	margin-top:60px;
+		 }
+		 .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+		 	color: #000000;
+		 }
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Our Portfolio</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="csat-dark" role="button">Satisfaction survey 1</a>
+        </li>
+        <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="colleges" role="button" aria-haspopup="true">College demographics</a>
+        </li>
+        <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="hospitals" role="button" aria-haspopup="true">Hospital demographics</a>
+        </li>
+         <li class="button">
+          <a href="#dash" class="dropdown-toggle" id="csat-light" role="button" aria-haspopup="true">Satisfaction survey 2</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a>Thea</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="main-wrapper">
+		<a href="#" class="">
+			<div class="overlay"></div>
+		</a>
+		<div class="row wrapper">
+			<a href="#_" class="lightbox" id="dash"></a>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+	  $("a").on('click', function() {
+	  	$("#dash").empty();
+	  	$('.lightbox').css('opacity',1);
+	  })
+
+	  var iframe_before = '<iframe frameborder="0" scrolling="no" allowtransparency="true" src="';
+	  var iframe_after = '?:embed=y&:display_count=no&:showVizHome=no&:toolbar=no&:showVizHome=no"></iframe>';
+
+	  $("#csat-dark").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000,
+	  		axis: 'y'
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/Darkdashboard/Exploreresponses?:embed=y' + iframe_after)
+	  });
+
+	  $("#colleges").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/Blackstudentsareunderrepresentedatrichselectiveresearchuniversities/Blackstudentsareunderrepresentedatrichselectiveresearchuniversities?:embed=y' + iframe_after)
+	  });
+
+	  $("#hospitals").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/AHA_public_dummy/Intro?:embed=y' + iframe_after)
+	  });
+
+	  $("#csat-light").on('click', function(){
+	  	$(window).scrollTo("#dash", {
+	  		duration:1000
+	  	});
+	  	$("#dash").append(
+	  		iframe_before + 'https://public.tableau.com/views/florida-dummy/Mapview?:embed=y' + iframe_after)
+	  });
+	})
+
+    </script>
+</body>
+</html>
