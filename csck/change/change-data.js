@@ -27,7 +27,7 @@ function makeMask() {
 }
 makeMask();
 
-function getData(exp, config) {
+function getData(exp, config, callback) {
 
 	var dir = ''
 	if (exp === 'a') { 
@@ -115,6 +115,7 @@ function getData(exp, config) {
 		var block = new Block(chartType, config.hurst, exp, config.direction, config.sensitivity);
 		block.datasets = datasets;
 		allData[exp] = block;
+		if (callback) { callback(allData); }
 	});
 }
 

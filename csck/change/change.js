@@ -277,6 +277,12 @@ function runBlock(block, count){
 
 	// Begin recursion
 	console.log(block);
+	for (var i = block.trials.length - 1; i >= 0; i--) {
+		if (block.trials[i].left['Regression slope'].toString().indexOf('2.198056359') > -1
+			|| block.trials[i].right['Regression slope'].toString().indexOf('2.198056359') > -1) {
+			console.log(i)
+		}
+	}
 	recur(block, count-1);
 };
 

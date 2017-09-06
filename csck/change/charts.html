@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+        <link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+    <link rel="stylesheet" href="../csck.css">
+    <script src="../jquery.min.js"></script>
+        <script src="../d3.v3.min.js"></script>
+        <script type="text/javascript" src="../moment.min.js"></script>
+    <script type="text/javascript" src="../queue.min.js"></script>
+    <script type="text/javascript" src="../common.js"></script>
+    <script type="text/javascript" src="../csck.js"></script>
+    <script type="text/javascript" src="../jquery-ui.js"></script>
+        <script>
+        var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+        function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    var config = {
+    'hurst': qs['hurst'],
+    'direction': qs['direction'],
+    'sensitivity': d3.shuffle(['faster']).pop(),
+    'chart_type': d3.shuffle(['sm', 'dalc', 'cs']).pop(),
+    // I pop stuff from the back of block_order
+    'block_order': ['all', 'c', 'b', 'a']
+}
+    var subjectID = getRandomInt(1000000, 9999999);
+    var numTrials = 15;
+    var chartType = config.chart_type;
+var blockSeq = config.block_order;
+    </script>
+        <script type="text/javascript" src="change-data.js"></script>
+        <script type="text/javascript" src="change-items.js"></script>
+        <script type="text/javascript" src="change-draw.js"></script>
+
+
+
+
+
+
+<script>
+$(function(){
+
+var drawCS = function(left, right){
+
+    currentDataSet = left;
+
+    leftChart = makeConnected("#leftChart", false, left);
+    rightChart = makeConnected("#rightChart", false, right);
+    afterUpdatePoints();
+
+    //Change if you wanna mess with the axis min/max
+    xScale.domain([0, 1]);
+    yScale.domain([0, 1]);
+
+    redraw(true);
+}
+
+var drawDALC = function(left, right) {
+    currentDataSet = left;
+    leftChart = makeDALC("#leftChart", false, left);
+    rightChart = makeDALC("#rightChart", false, right);
+    afterUpdatePoints();
+
+    //Change if you wanna mess with the axis min/max
+    xScale.domain([0, 1]);
+    yScale.domain([0, 1]);
+
+    y1Scale.domain([0, 1]);
+    y2Scale.domain([0, 1]);
+
+    redraw(true);
+};
+
+leftNow = rightNow = null
+
+function callback(data) {
+    var corrs =data[qs['block']].datasets.map(function(e,i){return e.Correlation;}).sort();
+    var left = document.getElementById("leftSelect"); 
+    var right = document.getElementById("rightSelect"); 
+
+    for(var i = 0; i < corrs.length; i++) {
+        var opt = corrs[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        left.appendChild(el);
+        right.appendChild(el.cloneNode(true));
+    }
+    
+    leftNow = findData(corrs[0])
+    rightNow = findData(corrs[0])
+    console.log(leftNow)
+    drawCS(leftNow, rightNow)
+}
+            getData(qs['block'], config, callback);
+
+function findData(v) {
+    return allData[qs['block']].datasets.filter(function(e,i){return e.Correlation === +v})[0].data
+}
+
+
+$("#leftSelect").on('change',function(event){
+    leftNow = findData(event.target.value)
+    drawCS(findData(event.target.value), rightNow)
+})
+
+$("#rightSelect").on('change',function(event){
+    leftNow = findData(event.target.value)
+    drawCS(leftNow,findData(event.target.value))
+})
+
+})
+</script>
+
+
+
+
+	<style>
+
+	@media screen and (max-height: 600px), screen and (max-width:960px) {
+    body {
+        padding: 10px;
+        -moz-transform: scale(0.85,0.85);
+        -ms-transform: scale(0.85,0.85);
+        -o-transform: scale(0.85,0.85);
+        -webkit-transform: scale(0.85,0.85);
+        transform: scale(0.85,0.85);
+        -moz-transform-origin: left top;
+        -ms-transform-origin: left top;
+        -o-transform-origin: left top;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+    }
+}
+	body {
+		width:1000px;
+	font-family: 'Inconsolata', 'Consolas', 'Courier New';
+	margin: 40px 60px 0 60px;
+	font-size: 16px;
+	line-height: 30px;
+	color: #999;
+}
+span {
+	color: #333;
+}
+#leftWrapper, #rightWrapper {
+    display:inline-block;
+    margin-left: 80px;
+    width: 300px;
+}
+#leftChart, #rightChart{
+    position:absolute;
+}
+.wrapper{
+    width:840px;
+    margin-top: 30px;
+}
+</style>
+
+</head>
+<body>
+<select name="leftSelect" id="leftSelect"></select>
+<select name="rightSelect" id="rightSelect"></select>
+    <div class="wrapper">
+        <div id="leftWrapper">
+            <div id="leftChart"></div>
+            <!-- <div class="mask"></div> -->
+        </div>
+        <div id="rightWrapper">
+            <div id="rightChart"></div>
+            <!-- <div class="mask"></div> -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
